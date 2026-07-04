@@ -1,0 +1,10 @@
+# I-D build artifacts
+*.xml
+draft.txt
+draft.html
+draft-*-[0-9][0-9].txt
+draft-*-[0-9][0-9].html
+.refcache/
+lib/
+*.orig
+.DS_Store

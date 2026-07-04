@@ -1,0 +1,26 @@
+name: Build I-D
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.2'
+      - name: Install toolchain
+        run: |
+          gem install kramdown-rfc2629
+          python -m pip install --upgrade xml2rfc
+      - name: Build draft
+        run: make all
+      - name: Upload rendered draft
+        uses: actions/upload-artifact@v4
+        with:
+          name: draft
+          path: |
+            draft-mih-sato-agent-accountability-composition.txt
+            draft-mih-sato-agent-accountability-composition.html
