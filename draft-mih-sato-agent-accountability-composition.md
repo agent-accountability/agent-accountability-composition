@@ -1,13 +1,3 @@
-<!-- THIN -00 SKELETON — draft-mih-sato-agent-accountability-composition -->
-<!-- Purpose: hold the slot at the IETF-126 cutoff (Mon Jul 6 23:59 UTC). Thin is fine; the job of -00 is
-     to NAME the contested framing (four-question decomposition + three-digest composition model) so the
-     Datatracker timestamp is the provenance record. Flesh after the call. This is kramdown-rfc-style
-     markdown authoring content — compile to xml/txt (kramdown-rfc / xml2rfc) and submit via the I-D
-     Submission Tool. FILL IN each author's real affiliation + email before submit. Author ORDER + the
-     filename (two names: mih-sato) settle among the co-authors by email first. Public-safe: Informational;
-     composition + conformance + the anchored/disinterested assurance tier; complements the existing
-     audit-architecture work, not a rival architecture; no moat/Authority/reputation content. -->
-
 ---
 title: "Agent Accountability: Composition and Conformance"
 abbrev: "Agent Accountability Composition"
@@ -23,7 +13,7 @@ author:
     org: Action State Group, Inc.
     email: steven@actionstate.ai
  -
-    name: Toshiyuki (Tom) Sato
+    name: Toshiyuki Sato
     org: MyAuberge K.K.
     email: tomsato@myauberge.jp
  -
@@ -38,6 +28,8 @@ normative:
 informative:
   RFC9943:
   RFC9334:
+  I-D.schrock-human-authorization-binding:
+  I-D.schrock-ep-authorization-receipts:
 --- abstract
 
 Autonomous and semi-autonomous software agents increasingly take consequential
@@ -127,9 +119,108 @@ later revision.]
 # Trust-Root Separation
 
 Each slot may root in a different trust anchor (e.g. a human device key, a kernel
-attestation key, a transparency-log operator). The composition holds even if any one
+attestation key ({{RFC9334}}), a transparency-log operator). The composition holds even if any one
 party is compromised or under review. No slot is a required root of trust for
 another; profiles remain producer-agnostic.
+
+# Slot Profiles
+
+The profiles in this section are first instances filling the slots named above,
+recorded so the composition can be tested against something concrete. They are not
+the slot definitions; any conforming profile may fill a slot (see Overview). Each
+profile's text is contributed and maintained by its authors.
+
+## The CAN Slot
+
+[Profile text to be contributed by the slot's owners.]
+
+## The WHO Slot: Named-Human Authorization
+
+The WHO slot answers a single question: which named, accountable human — or quorum
+of distinct humans — authorized this exact action before it ran. It is deliberately
+narrow. It does not define the composition model itself, a sufficiency or policy
+decision, a new audit-record format, or a replacement for agent or workload
+identity: "which agent acted" is a different slot, and "was this authorization
+sufficient for this action" is a layer above the composition. It binds the
+authorization to the exact observed action by the composition's shared action
+digest — the subject digest of the Composition Model — and exposes the binding
+metadata a composition verifier needs, and nothing more. Digest equality itself
+neither authorizes the action nor proves completeness.
+
+In the first-instance profile ({{I-D.schrock-human-authorization-binding}}, with
+the receipt format in {{I-D.schrock-ep-authorization-receipts}}), the WHO record is
+an authorization receipt: a device-bound signature by a named principal — or a set
+of distinct principals — over the canonical bytes of one action, verifiable offline
+against the signer's public key. Any record form meeting the producer and verifier
+requirements below conforms.
+
+A conforming WHO producer MUST state: the authorizing principal identifier(s) — the
+named human(s), not the agent; for a quorum, the quorum descriptor (an M-of-N
+threshold or an ordered sequence) and the eligible or actual signer identifiers;
+the subject of the action being authorized; the covered action bytes or data model,
+the canonicalization rule (if any), the digest algorithm and version, and the
+domain-separation context; the binding between the subject digest and the receipt
+signature(s) — the signed payload MUST cover the digest; the validity window and
+any freshness or one-time-use semantics; and the failure behavior when a required
+binding input, signer, or quorum member is absent — fail closed: absence of
+authorization is not authorization.
+
+A conforming WHO verifier MUST be able to produce a result that states: whether
+each signature validates under the profile rules; the exact digest bytes it
+recomputed and the canonicalization and hash parameters used; whether the digest is
+covered by each signature; for a quorum, whether the threshold is met, whether the
+counted signers are distinct principals, whether every counted signer signed the
+same canonical action bytes under the same digest context, and — for an ordered
+quorum — whether the required order held; whether the receipt is within its
+validity window and any one-time-use constraint; and the verified-versus-accepted
+distinction (below). The verifier MUST keep signature validation, digest
+recomputation, quorum evaluation, and freshness as separate results, and MUST NOT
+collapse them into a single opaque "authorized" boolean.
+
+The WHO slot separates two claims a composition verifier must never conflate:
+VERIFIED — the signature(s) and the digest binding hold, given a public key;
+objective and offline — and ACCEPTED — the relying party additionally trusts the
+authorizing principal(s) via out-of-band key pinning; a relying-party decision, not
+a property of the receipt. A WHO verifier MUST surface these separately: a valid
+signature over the bound digest proves VERIFIED and never implies ACCEPTED, and
+neither implies the authorization was sufficient for the action.
+
+At the composition join, the WHO slot exposes a minimal, disclosure-aware
+reference: the subject digest and its declared digest context; the authorizing
+principal identifier(s) — or, under selective disclosure, a commitment to them; the
+quorum descriptor, if any, with a distinctness assertion; and the binding assertion
+that the signature(s) cover the subject digest. The reference carries no agent
+identity, no policy verdict, and no sufficiency claim.
+
+Where a WHO record is also registered to a transparency service (see Assurance
+Tiers), the transparency receipt proves registration of the submitted statement
+under the service policy; it does not prove that a named human authorized the
+action. A WHO verifier MUST keep native signature validation, digest recomputation,
+and transparency-receipt validation as separate results.
+
+In addition to the composition-level negative classes (see Conformance), a WHO
+profile MUST reject each of the following, and the verifier MUST report which check
+failed: semantically similar action input with different canonical bytes; a changed
+subject; a changed authorizing-principal reference; replay of the receipt under a
+different action (a different subject digest); a quorum satisfied by a non-distinct
+principal filling two slots; an ordered quorum satisfied out of order; a threshold
+not met; a mismatched or absent receipt signature; a signature that verifies but
+whose signed payload does not cover the subject digest (an unbound signature); a
+stale receipt; a post-hoc ratification presented as pre-execution authorization; a
+reusable authorization presented under one-time semantics, or a one-time
+authorization presented as reusable; and WHO digest bytes that do not match an
+adjacent slot's digest for the same claimed action under compatible digest contexts
+(per the binding rules of the Composition Model, to be imported). [The WHO
+positive-vector classes are imported with the conformance suite in a later
+revision.]
+
+## The WHAT Slot
+
+[Profile text to be contributed by the slot's owners.]
+
+## The AUDIT Slot
+
+[Profile text to be contributed by the slot's owners.]
 
 # Assurance Tiers
 
