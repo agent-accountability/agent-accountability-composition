@@ -1,3 +1,14 @@
+# Seed Text: Problem Statement & Regulatory Mapping
+
+This note is proposed seed text for `draft-mih-sato-agent-
+accountability-composition-00`. It is scoped to Tom's proposed
+responsibility area: the problem statement and regulatory mapping — why
+the four-question decomposition is necessary, and what registering an
+answer to any one of them gives a skeptical outside verifier. It does
+not define the composition mechanics themselves (the shared digest,
+canonicalization) — that is a separate, still-open question the group
+resolves together.
+
 An agent acts across a trust boundary. Some time later, someone who
 trusts neither the agent nor its operator needs to answer a simple
 question: was this action authorized, and can that be shown without
@@ -9,13 +20,15 @@ permitted, and nothing records it.
 
 This has stopped being a someday problem. The EU AI Act's Article 12
 record-keeping and automatic-logging obligations for high-risk systems,
-paired with Article 26 deployer duties, take effect this year. NIST's AI
-Agent Standards Initiative and Singapore's IMDA agentic-AI guidance are
-moving in the same direction independently. None of these converge on a
-specific format — that convergence is cited here as demand, not as a
-compliance claim this document makes on anyone's behalf — but the
-direction is consistent: regulators are going to ask deployers of
-agentic systems to produce records an outside party can check, not
+paired with Article 26 deployer duties, are now scheduled for
+application from 2 December 2027 under the adopted Digital Omnibus —
+with the Article 50 transparency duties arriving sooner, from August
+2026. NIST's AI Agent Standards Initiative and Singapore's IMDA agentic-
+AI guidance are moving in the same direction independently. None of
+these converge on a specific format — that convergence is cited here as
+demand, not as a compliance claim this document makes on anyone's behalf
+— but the direction is consistent: regulators are going to ask deployers
+of agentic systems to produce records an outside party can check, not
 records the operator merely asserts.
 
 No existing layer answers this alone, and it's worth being precise about
