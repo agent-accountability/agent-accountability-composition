@@ -1,0 +1,560 @@
+
+
+
+
+Network Working Group                                             S. Mih
+Internet-Draft                                  Action State Group, Inc.
+Intended status: Informational                                   T. Sato
+Expires: 6 January 2027                                   MyAuberge K.K.
+                                                                   S. Bu
+                                                             Independent
+                                                              I. Schrock
+                                                   EMILIA Protocol, Inc.
+                                                             5 July 2026
+
+
+           Agent Accountability: Composition and Conformance
+           draft-mih-sato-agent-accountability-composition-00
+
+Abstract
+
+   Autonomous and semi-autonomous software agents increasingly take
+   consequential actions across administrative and trust domains.
+   Holding such an action accountable — to a regulator, auditor, or
+   counterparty who does not trust the operator — requires answering
+   several questions, each answerable by an independently-verifiable
+   profile: whether the agent was permitted to act (CAN), which
+   accountable human authorized the specific action (WHO), what the
+   agent actually did (WHAT), and whether the runtime enforced correctly
+   (AUDIT).
+
+   This document specifies, in Informational terms, how such profiles
+   compose — by a shared action-digest, each verifying independently —
+   and defines a shared conformance-vector suite against which any
+   profile may be tested.  It complements existing audit-architecture
+   and record-format work rather than replacing it, reusing existing
+   signing, transport, and transparency mechanisms.  Its focus is an
+   assurance tier those documents leave open: most agent records today
+   are self-attested by an interested party; this document makes
+   reachable and testable an anchored, third-party-verifiable tier, in
+   which a record is registered to a transparency service (SCITT) so a
+   party who trusts neither the agent nor the operator can verify it.
+   Self-attestation remains a valid baseline; convergence on the
+   disinterested tier — by any conforming profile — is the goal, not a
+   single mandated format.
+
+Status of This Memo
+
+   This Internet-Draft is submitted in full conformance with the
+   provisions of BCP 78 and BCP 79.
+
+
+
+
+
+
+Mih, et al.              Expires 6 January 2027                 [Page 1]
+
+Internet-Draft      Agent Accountability Composition           July 2026
+
+
+   Internet-Drafts are working documents of the Internet Engineering
+   Task Force (IETF).  Note that other groups may also distribute
+   working documents as Internet-Drafts.  The list of current Internet-
+   Drafts is at https://datatracker.ietf.org/drafts/current/.
+
+   Internet-Drafts are draft documents valid for a maximum of six months
+   and may be updated, replaced, or obsoleted by other documents at any
+   time.  It is inappropriate to use Internet-Drafts as reference
+   material or to cite them other than as "work in progress."
+
+   This Internet-Draft will expire on 6 January 2027.
+
+Copyright Notice
+
+   Copyright (c) 2026 IETF Trust and the persons identified as the
+   document authors.  All rights reserved.
+
+   This document is subject to BCP 78 and the IETF Trust's Legal
+   Provisions Relating to IETF Documents (https://trustee.ietf.org/
+   license-info) in effect on the date of publication of this document.
+   Please review these documents carefully, as they describe your rights
+   and restrictions with respect to this document.  Code Components
+   extracted from this document must include Revised BSD License text as
+   described in Section 4.e of the Trust Legal Provisions and are
+   provided without warranty as described in the Revised BSD License.
+
+Table of Contents
+
+   1.  Introduction  . . . . . . . . . . . . . . . . . . . . . . . .   3
+     1.1.  Terminology . . . . . . . . . . . . . . . . . . . . . . .   3
+   2.  Overview: Questions and Composition . . . . . . . . . . . . .   3
+   3.  The Composition Model . . . . . . . . . . . . . . . . . . . .   4
+   4.  Trust-Root Separation . . . . . . . . . . . . . . . . . . . .   4
+   5.  Slot Profiles . . . . . . . . . . . . . . . . . . . . . . . .   5
+     5.1.  The CAN Slot  . . . . . . . . . . . . . . . . . . . . . .   5
+     5.2.  The WHO Slot: Named-Human Authorization . . . . . . . . .   5
+     5.3.  The WHAT Slot . . . . . . . . . . . . . . . . . . . . . .   7
+     5.4.  The AUDIT Slot  . . . . . . . . . . . . . . . . . . . . .   7
+   6.  Assurance Tiers . . . . . . . . . . . . . . . . . . . . . . .   7
+   7.  Conformance . . . . . . . . . . . . . . . . . . . . . . . . .   8
+   8.  Extension Points  . . . . . . . . . . . . . . . . . . . . . .   8
+   9.  Relationship to Existing Work . . . . . . . . . . . . . . . .   8
+   10. Security Considerations . . . . . . . . . . . . . . . . . . .   8
+   11. Privacy Considerations  . . . . . . . . . . . . . . . . . . .   9
+   12. IANA Considerations . . . . . . . . . . . . . . . . . . . . .   9
+   13. Informative References  . . . . . . . . . . . . . . . . . . .   9
+   Acknowledgments . . . . . . . . . . . . . . . . . . . . . . . . .  10
+   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  10
+
+
+
+Mih, et al.              Expires 6 January 2027                 [Page 2]
+
+Internet-Draft      Agent Accountability Composition           July 2026
+
+
+1.  Introduction
+
+   Autonomous agents are non-deterministic, act without per-step human
+   oversight, cross administrative and trust boundaries, and delegate to
+   other agents.  The assumptions that let earlier systems be trusted —
+   predictability, runtime supervision, a nameable human in the loop —
+   do not hold by default.  When behaviour cannot be supervised as it
+   happens, trust must relocate to evidence that can be checked
+   afterward and, because agents act across organizational boundaries,
+   checked without trusting the operator.
+
+   Identity and authorization are necessary but not sufficient: they
+   establish which agent and what it was permitted to do, but the risks
+   that characterize agent systems — goal drift, prompt injection,
+   fabricated tool results, action outside scope — occur in the gap
+   between what was authorized and what was actually done.  Holding a
+   consequential agent action accountable therefore requires answering
+   several questions, each answerable by an independently-verifiable
+   profile: whether the agent was permitted to act (CAN), which
+   accountable human authorized the specific action (WHO), what the
+   agent actually did (WHAT), and whether the runtime enforced correctly
+   (AUDIT).
+
+   This document does not define a new audit architecture; it
+   complements the existing architecture and record-format work in this
+   space (see Relationship to Existing Work) and specifies the piece
+   they leave open: how profiles answering these questions compose, by a
+   shared action-digest, into one record, and how conformance — both to
+   that composition and to an anchored, third-party-verifiable assurance
+   tier — is tested.  Two principles frame it: (1) composition by shared
+   digest, not containment — each profile verifies independently and
+   refers to the same action by a shared digest; and (2) producer-
+   agnostic neutrality — no profile is a required root of trust for
+   another.  The set of questions is open and extensible (agent identity
+   and belief-provenance are natural further slots), and the composed
+   evidence serves both after-the-fact accountability and the forward-
+   looking authorization and trust decisions that rely on it.
+
+1.1.  Terminology
+
+   Slot; profile; composition vector; profile-tagged digest; trust root.
+   [Define in a later revision; align with the constituent-profile
+   terminology.]
+
+2.  Overview: Questions and Composition
+
+   The work centers on a set of interchangeable *slots*, each a question
+   that a conforming *profile* answers:
+
+
+
+Mih, et al.              Expires 6 January 2027                 [Page 3]
+
+Internet-Draft      Agent Accountability Composition           July 2026
+
+
+   *  *CAN* — the "may": was the agent permitted to act?
+
+   *  *WHO* — which accountable human authorized this exact action?
+
+   *  *WHAT* — the "did": what did the agent actually do (verdict-
+      complete; a byte-stable serialization of the observed record, not
+      a replay)?
+
+   *  *AUDIT* — did the runtime enforce correctly, in causal order,
+      tamper-evidently?
+
+   Any conforming profile may fill a slot; the profiles cited in this
+   document are the first instances, not the definition.  An action
+   fills the slots its trust requirement calls for; not every action
+   populates every slot.  The set is extensible (see Extension Points).
+
+3.  The Composition Model
+
+   Profiles compose by reference to a shared *subject digest* over the
+   action — subject_digest = SHA-256(JCS(action)) — which is the join
+   key all slots refer to.  A profile-tagged *authority-reference
+   digest* binds a slot's evidence to the registered object it commits
+   to, and a *receipt-payload digest* binds transparency receipts.
+   Digests committing to signed bytes require deterministic encoding.
+
+   Digest equality is a join key: it does not, by itself, prove truth,
+   authorization, sufficiency, completeness, or policy compliance.
+   Native profile verification, digest recomputation, receipt or
+   transparency verification, completeness and sequencing checks, and
+   relying-party acceptance remain separate results.
+
+   [Full three-digest binding rules, profile-label discipline, and raw-
+   bytes-vs-ASCII -hex rules to be imported from the digest-binding
+   thread / conformance issue in a later revision.]
+
+4.  Trust-Root Separation
+
+   Each slot may root in a different trust anchor (e.g. a human device
+   key, a kernel attestation key ([RFC9334]), a transparency-log
+   operator).  The composition holds even if any one party is
+   compromised or under review.  No slot is a required root of trust for
+   another; profiles remain producer-agnostic.
+
+
+
+
+
+
+
+
+
+Mih, et al.              Expires 6 January 2027                 [Page 4]
+
+Internet-Draft      Agent Accountability Composition           July 2026
+
+
+5.  Slot Profiles
+
+   The profiles in this section are first instances filling the slots
+   named above, recorded so the composition can be tested against
+   something concrete.  They are not the slot definitions; any
+   conforming profile may fill a slot (see Overview).  Each profile's
+   text is contributed and maintained by its authors.
+
+5.1.  The CAN Slot
+
+   [Profile text to be contributed by the slot's owners.]
+
+5.2.  The WHO Slot: Named-Human Authorization
+
+   The WHO slot answers a single question: which named, accountable
+   human — or quorum of distinct humans — authorized this exact action
+   before it ran.  It is deliberately narrow.  It does not define the
+   composition model itself, a sufficiency or policy decision, a new
+   audit-record format, or a replacement for agent or workload identity:
+   "which agent acted" is a different slot, and "was this authorization
+   sufficient for this action" is a layer above the composition.  It
+   binds the authorization to the exact observed action by the
+   composition's shared action digest — the subject digest of the
+   Composition Model — and exposes the binding metadata a composition
+   verifier needs, and nothing more.  Digest equality itself neither
+   authorizes the action nor proves completeness.
+
+   In the first-instance profile
+   ([I-D.schrock-human-authorization-binding], with the receipt format
+   in [I-D.schrock-ep-authorization-receipts]), the WHO record is an
+   authorization receipt: a device-bound signature by a named principal
+   — or a set of distinct principals — over the canonical bytes of one
+   action, verifiable offline against the signer's public key.  Any
+   record form meeting the producer and verifier requirements below
+   conforms.
+
+   A conforming WHO producer MUST state: the authorizing principal
+   identifier(s) — the named human(s), not the agent; for a quorum, the
+   quorum descriptor (an M-of-N threshold or an ordered sequence) and
+   the eligible or actual signer identifiers; the subject of the action
+   being authorized; the covered action bytes or data model, the
+   canonicalization rule (if any), the digest algorithm and version, and
+   the domain-separation context; the binding between the subject digest
+   and the receipt signature(s) — the signed payload MUST cover the
+   digest; the validity window and any freshness or one-time-use
+   semantics; and the failure behavior when a required binding input,
+   signer, or quorum member is absent — fail closed: absence of
+   authorization is not authorization.
+
+
+
+Mih, et al.              Expires 6 January 2027                 [Page 5]
+
+Internet-Draft      Agent Accountability Composition           July 2026
+
+
+   A conforming WHO verifier MUST be able to produce a result that
+   states: whether each signature validates under the profile rules; the
+   exact digest bytes it recomputed and the canonicalization and hash
+   parameters used; whether the digest is covered by each signature; for
+   a quorum, whether the threshold is met, whether the counted signers
+   are distinct principals, whether every counted signer signed the same
+   canonical action bytes under the same digest context, and — for an
+   ordered quorum — whether the required order held; whether the receipt
+   is within its validity window and any one-time-use constraint; and
+   the verified-versus-accepted distinction (below).  The verifier MUST
+   keep signature validation, digest recomputation, quorum evaluation,
+   and freshness as separate results, and MUST NOT collapse them into a
+   single opaque "authorized" boolean.
+
+   The WHO slot separates two claims a composition verifier must never
+   conflate: VERIFIED — the signature(s) and the digest binding hold,
+   given a public key; objective and offline — and ACCEPTED — the
+   relying party additionally trusts the authorizing principal(s) via
+   out-of-band key pinning; a relying-party decision, not a property of
+   the receipt.  A WHO verifier MUST surface these separately: a valid
+   signature over the bound digest proves VERIFIED and never implies
+   ACCEPTED, and neither implies the authorization was sufficient for
+   the action.
+
+   At the composition join, the WHO slot exposes a minimal, disclosure-
+   aware reference: the subject digest and its declared digest context;
+   the authorizing principal identifier(s) — or, under selective
+   disclosure, a commitment to them; the quorum descriptor, if any, with
+   a distinctness assertion; and the binding assertion that the
+   signature(s) cover the subject digest.  The reference carries no
+   agent identity, no policy verdict, and no sufficiency claim.
+
+   Where a WHO record is also registered to a transparency service (see
+   Assurance Tiers), the transparency receipt proves registration of the
+   submitted statement under the service policy; it does not prove that
+   a named human authorized the action.  A WHO verifier MUST keep native
+   signature validation, digest recomputation, and transparency-receipt
+   validation as separate results.
+
+   In addition to the composition-level negative classes (see
+   Conformance), a WHO profile MUST reject each of the following, and
+   the verifier MUST report which check failed: semantically similar
+   action input with different canonical bytes; a changed subject; a
+   changed authorizing-principal reference; replay of the receipt under
+   a different action (a different subject digest); a quorum satisfied
+   by a non-distinct principal filling two slots; an ordered quorum
+   satisfied out of order; a threshold not met; a mismatched or absent
+   receipt signature; a signature that verifies but whose signed payload
+
+
+
+Mih, et al.              Expires 6 January 2027                 [Page 6]
+
+Internet-Draft      Agent Accountability Composition           July 2026
+
+
+   does not cover the subject digest (an unbound signature); a stale
+   receipt; a post-hoc ratification presented as pre-execution
+   authorization; a reusable authorization presented under one-time
+   semantics, or a one-time authorization presented as reusable; and WHO
+   digest bytes that do not match an adjacent slot's digest for the same
+   claimed action under compatible digest contexts (per the binding
+   rules of the Composition Model, to be imported).  [The WHO positive-
+   vector classes are imported with the conformance suite in a later
+   revision.]
+
+5.3.  The WHAT Slot
+
+   [Profile text to be contributed by the slot's owners.]
+
+5.4.  The AUDIT Slot
+
+   [Profile text to be contributed by the slot's owners.]
+
+6.  Assurance Tiers
+
+   A record answering these questions may be produced at different
+   assurance levels, and the distinction is the crux for a relying party
+   who does not trust the operator:
+
+   *  *Self-attested (baseline).* The record is signed by the agent or
+      its operator and held by an interested party.  This is useful
+      telemetry and a reasonable default, but it cannot, by itself,
+      satisfy a regulator, counterparty, or insurer who does not trust
+      the producer.
+
+   *  *Anchored / third-party-verifiable.* The record, or a digest of
+      it, is registered to a transparency service — the SCITT substrate
+      ([RFC9943]) — yielding a receipt that lets a party who trusts
+      neither the agent nor the operator verify the record's existence,
+      its content at registration time, and non-equivocation,
+      independent of any single producer's infrastructure.
+
+   This document does not mandate the anchored tier; self-attestation
+   remains valid.  It specifies how any conforming profile MAY reach the
+   anchored tier by registering to a transparency service, and how that
+   tier is tested (see Conformance) — so that third-party-verifiability
+   is a property profiles can converge on, not a single format they must
+   adopt.
+
+
+
+
+
+
+
+
+Mih, et al.              Expires 6 January 2027                 [Page 7]
+
+Internet-Draft      Agent Accountability Composition           July 2026
+
+
+7.  Conformance
+
+   Conformance is expressed as a shared vector suite: a positive
+   composition vector (one action threaded through the populated slots)
+   plus, per slot, the negative-case classes it MUST expose (e.g. non-
+   deterministic encoding, ASCII-hex-as-bytes, profile-label mismatch,
+   receipt bound to a different statement, broken join digest).
+
+   A conformance vector freezes only after it has been recomputed by at
+   least two independent implementations.  This document specifies no
+   implementation; each slot is implemented independently, and any party
+   may verify against the vectors.
+
+8.  Extension Points
+
+   Additional question-slots compose by the same digest discipline.
+   Belief-provenance ("why the agent believed what it acted on") is a
+   named extension socket.  [Others as identified.]
+
+9.  Relationship to Existing Work
+
+   This document complements, rather than replaces, existing efforts.
+   An architecture for auditing agent delegation and interactions is
+   developed separately ([I-D.kuehlewind-audit-architecture], with its
+   interaction, action, delegation, and authorization-transition record
+   types); record and logging formats and action-lineage protocols are
+   defined in adjacent documents (e.g., [I-D.sharif-agent-audit-trail],
+   [I-D.bates-atp], [I-D.aylward-aiga] — cited as live adjacent work,
+   not positioned).  The four questions here map onto those record types
+   rather than redefining them.
+
+   What this document adds is the piece those leave open: the
+   composition of independently-verifiable profiles by a shared action-
+   digest, a shared conformance-vector suite, and the anchored, third-
+   party-verifiable assurance tier (see Assurance Tiers).  It defines no
+   new signing, transport, or transparency mechanism.  Specific
+   documents will be cited normatively and informatively in a later
+   revision.
+
+10.  Security Considerations
+
+   The security properties are those of the composed profiles plus the
+   binding rules here; no single layer suffices.  The agent is not
+   trusted.  Distributed trust roots mean no single verifier or
+   transparency service is assumed sufficient.  This document does not
+   address an adversarial party that refuses to record at its own
+   boundary, nor collusion across all roles, nor model alignment.
+   [Expand.]
+
+
+
+Mih, et al.              Expires 6 January 2027                 [Page 8]
+
+Internet-Draft      Agent Accountability Composition           July 2026
+
+
+11.  Privacy Considerations
+
+   Records may be rich in information about users and the data an agent
+   processed.  Profiles SHOULD support content-private, hash-only
+   (detached-payload) records so a registered statement carries only a
+   digest, with content held under deployment controls.  The shared join
+   digest enables cross-slot correlation; pairwise or encrypted
+   correlation identifiers SHOULD be available where correlation is not
+   required.  [Expand.]
+
+12.  IANA Considerations
+
+   This document has no IANA actions.  [A registry of slot identifiers /
+   profile labels may be proposed in a later revision.]
+
+13.  Informative References
+
+   [RFC9943]  Birkholz, H., Delignat-Lavaud, A., Fournet, C., Deshpande,
+              Y., and S. Lasker, "An Architecture for Trustworthy and
+              Transparent Digital Supply Chains", RFC 9943,
+              DOI 10.17487/RFC9943, June 2026,
+              <https://www.rfc-editor.org/rfc/rfc9943>.
+
+   [RFC9334]  Birkholz, H., Thaler, D., Richardson, M., Smith, N., and
+              W. Pan, "Remote ATtestation procedureS (RATS)
+              Architecture", RFC 9334, DOI 10.17487/RFC9334, January
+              2023, <https://www.rfc-editor.org/rfc/rfc9334>.
+
+   [I-D.kuehlewind-audit-architecture]
+              Kühlewind, M. and H. Birkholz, "An Architecture for
+              Auditing AI Agent Delegation and Interactions", Work in
+              Progress, Internet-Draft, draft-kuehlewind-audit-
+              architecture-00, 18 May 2026,
+              <https://datatracker.ietf.org/doc/html/draft-kuehlewind-
+              audit-architecture-00>.
+
+   [I-D.sharif-agent-audit-trail]
+              Sharif, R., "Agent Audit Trail: A Standard Logging Format
+              for Autonomous AI Systems", Work in Progress, Internet-
+              Draft, draft-sharif-agent-audit-trail-00, 29 March 2026,
+              <https://datatracker.ietf.org/doc/html/draft-sharif-agent-
+              audit-trail-00>.
+
+   [I-D.bates-atp]
+              Bates, D. A., "Agent Transaction Protocol (ATP)", Work in
+              Progress, Internet-Draft, draft-bates-atp-00, 11 May 2026,
+              <https://datatracker.ietf.org/doc/html/draft-bates-atp-
+              00>.
+
+
+
+Mih, et al.              Expires 6 January 2027                 [Page 9]
+
+Internet-Draft      Agent Accountability Composition           July 2026
+
+
+   [I-D.aylward-aiga]
+              Aylward, E. R., "Artificial Intelligence Governance
+              Architecture (AIGA)", Work in Progress, Internet-Draft,
+              draft-aylward-aiga-00, 13 January 2026,
+              <https://datatracker.ietf.org/doc/html/draft-aylward-aiga-
+              00>.
+
+   [I-D.schrock-human-authorization-binding]
+              Schrock, I., "Binding Named-Human Authorization Evidence
+              into Agent-Action Records", Work in Progress, Internet-
+              Draft, draft-schrock-human-authorization-binding-00, 3
+              July 2026, <https://datatracker.ietf.org/doc/html/draft-
+              schrock-human-authorization-binding-00>.
+
+   [I-D.schrock-ep-authorization-receipts]
+              Schrock, I., "Authorization Receipts for High-Risk Agent
+              Actions", Work in Progress, Internet-Draft, draft-schrock-
+              ep-authorization-receipts-05, 3 July 2026,
+              <https://datatracker.ietf.org/doc/html/draft-schrock-ep-
+              authorization-receipts-05>.
+
+Acknowledgments
+
+   [To be completed with the constituent-profile authors and reviewers,
+   with permission.]
+
+Authors' Addresses
+
+   Steven Mih
+   Action State Group, Inc.
+   Email: steven@actionstate.ai
+
+
+   Tom Sato
+   MyAuberge K.K.
+   Japan
+   Email: tomsato@myauberge.jp
+
+
+   Songbo Bu
+   Independent
+   Email: bluedognull@gmail.com
+
+
+   Iman Schrock
+   EMILIA Protocol, Inc.
+   Email: team@emiliaprotocol.ai
+
+
+
+
+Mih, et al.              Expires 6 January 2027                [Page 10]
