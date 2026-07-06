@@ -7,27 +7,33 @@ ipr: trust200902
 area: Security
 keyword: [agent, accountability, audit, SCITT, composition, conformance, attestation]
 stand_alone: yes
+submissiontype: IETF
 author:
  -
     name: Steven Mih
     org: Action State Group, Inc.
     email: steven@actionstate.ai
  -
-    name: Toshiyuki Sato
+    name: Tom Sato
     org: MyAuberge K.K.
+    country: Japan
     email: tomsato@myauberge.jp
  -
     name: Songbo Bu
-    org:
+    org: Independent
     email: bluedognull@gmail.com
  -
     name: Iman Schrock
-    org: EMILIA Protocol
+    org: EMILIA Protocol, Inc.
     email: team@emiliaprotocol.ai
 normative:
 informative:
   RFC9943:
   RFC9334:
+  I-D.kuehlewind-audit-architecture:
+  I-D.sharif-agent-audit-trail:
+  I-D.bates-atp:
+  I-D.aylward-aiga:
   I-D.schrock-human-authorization-binding:
   I-D.schrock-ep-authorization-receipts:
 --- abstract
@@ -111,6 +117,11 @@ Profiles compose by reference to a shared **subject digest** over the action —
 A profile-tagged **authority-reference digest** binds a slot's evidence to the
 registered object it commits to, and a **receipt-payload digest** binds transparency
 receipts. Digests committing to signed bytes require deterministic encoding.
+
+Digest equality is a join key: it does not, by itself, prove truth, authorization,
+sufficiency, completeness, or policy compliance. Native profile verification, digest
+recomputation, receipt or transparency verification, completeness and sequencing
+checks, and relying-party acceptance remain separate results.
 
 [Full three-digest binding rules, profile-label discipline, and raw-bytes-vs-ASCII
 -hex rules to be imported from the digest-binding thread / conformance issue in a
@@ -261,10 +272,12 @@ identified.]
 # Relationship to Existing Work
 
 This document complements, rather than replaces, existing efforts. An architecture for auditing agent
-delegation and interactions is developed separately (the audit-architecture work, with its interaction,
-action, delegation, and authorization-transition record types); record and logging formats and
-action-lineage protocols are defined in adjacent documents. The four questions here map onto those
-record types rather than redefining them.
+delegation and interactions is developed separately ({{I-D.kuehlewind-audit-architecture}}, with its
+interaction, action, delegation, and authorization-transition record types); record and logging formats
+and action-lineage protocols are defined in adjacent documents (e.g.,
+{{I-D.sharif-agent-audit-trail}}, {{I-D.bates-atp}}, {{I-D.aylward-aiga}} — cited as live adjacent
+work, not positioned). The four questions here map onto those record types rather than redefining
+them.
 
 What this document adds is the piece those leave open: the composition of independently-verifiable
 profiles by a shared action-digest, a shared conformance-vector suite, and the anchored,
