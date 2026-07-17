@@ -36,6 +36,7 @@ informative:
   I-D.aylward-aiga:
   I-D.schrock-human-authorization-binding:
   I-D.schrock-ep-authorization-receipts:
+  I-D.etcheverry-action-ref:
 --- abstract
 
 Autonomous and semi-autonomous software agents increasingly take consequential
@@ -225,9 +226,56 @@ adjacent slot's digest for the same claimed action under compatible digest conte
 positive-vector classes are imported with the conformance suite in a later
 revision.]
 
-## The WHAT Slot
+## The WHAT Slot: Content-Addressed Action Digest
 
-[Profile text to be contributed by the slot's owners.]
+The WHAT slot answers a single question: what did the agent actually do — a
+byte-stable serialization of the observed action record, not a replay. It is
+deliberately narrow. It does not judge whether the agent was permitted to act
+(a different slot, CAN), whether a human authorized it (WHO), or whether the
+runtime enforced correctly (AUDIT); it commits only to the observed action
+bytes themselves, so any party holding the same four fields can independently
+recompute the same digest without trusting the emitting system.
+
+In the first-instance profile ({{I-D.etcheverry-action-ref}}), the WHAT
+record is `action_ref`: the SHA-256 digest of the RFC 8785 (JCS) canonical
+serialization of four fields — `agent_id` (the terminal executing agent after
+delegation resolution), `action_type`, `scope` (the executing agent's
+requested-intent label), and `timestamp` (RFC 3339 UTC, 3-digit ms precision,
+`Z`-suffix only). This is a concrete instance of this document's
+`subject_digest = SHA-256(JCS(action))` join key (Composition Model): the WHAT
+profile is the definition of what "action" concretely means in that formula.
+Any record form meeting the producer and verifier requirements below conforms.
+
+A conforming WHAT producer MUST state: the four preimage fields and their
+exact string forms; the canonicalization rule (RFC 8785 JCS) and hash
+algorithm (SHA-256); the timestamp grammar, with exactly one valid byte
+sequence per instant (no offset-vs-`Z` or fractional-precision ambiguity); and
+the failure behavior when a preimage field falls outside the profile's stated
+domain — reject before digest comparison, never best-effort canonicalize.
+
+A conforming WHAT verifier MUST be able to produce a result that states:
+whether it could recompute byte-identical output from the stated preimage;
+the exact digest it computed and the canonicalization/hash parameters used;
+and, where the presented action_ref diverges from a recomputed one under
+otherwise-matching context, which preimage field diverged (a rescoped-replay
+or semantic-drift signal) rather than a single opaque pass/fail.
+
+Conformance is byte equality across independent implementations, not
+self-attestation, against the versioned conformance record at
+https://github.com/giskard09/argentum-core/tree/main/examples/conformance
+(spec: https://github.com/giskard09/argentum-core/blob/main/docs/spec/action-ref.md,
+stable ref action-ref-v1.0) — the same bar this composition's Conformance
+section asks of a frozen vector (recomputed by at least two independent
+implementations).
+
+In addition to the composition-level negative classes, a WHAT profile MUST
+reject, and a verifier MUST report which field diverged: an out-of-domain
+preimage field (non-ASCII where the profile requires ASCII, malformed
+timestamp grammar); a rescoped replay (attestation issued for one scope,
+presented against another — recomputing action_ref over the presented tuple
+diverges from the embedded one); and semantic drift (action_type changed
+between issuance and verification, yielding a divergent digest for one
+logical action).
 
 ## The AUDIT Slot
 
