@@ -138,16 +138,14 @@ requirement calls for; not every action populates every slot. The set is extensi
 
 # The Composition Model
 
-Profiles compose by reference to a shared **subject digest** over the action —
-`subject_digest = SHA-256(JCS(action))` — which is the join key all slots refer to.
-A profile-tagged **authority-reference digest** binds a slot's evidence to the
-registered object it commits to, and a **receipt-payload digest** binds transparency
-receipts. Digests committing to signed bytes require deterministic encoding.
-
-Digest equality is a join key: it does not, by itself, prove truth, authorization,
-sufficiency, completeness, or policy compliance. Native profile verification, digest
-recomputation, receipt or transparency verification, completeness and sequencing
-checks, and relying-party acceptance remain separate results.
+Profiles compose either by reference to a shared **subject digest** over the action
+— the join key the slots refer to — or through an explicit, cryptographically
+protected cross-reference. A profile-tagged **authority-reference digest** binds a
+slot's evidence to the registered object it commits to, and a **receipt-payload
+digest** binds transparency receipts. Digests committing to signed bytes require
+deterministic encoding. The subject-digest construction (`subject_digest =
+HASH(subject_preimage)`) is defined per profile, as set out in the following
+subsections; no single canonicalization is imposed.
 
 ## Three Digest Roles
 
@@ -258,6 +256,10 @@ The digest preimage is the exact byte sequence designated by the selected profil
 frozen vector. Human-readable renderings, pretty-printed documents, console output,
 and files containing added line terminators are not interchangeable with that preimage
 unless the profile explicitly designates those exact bytes.
+
+This illustration states profile-specific implementation facts. It makes no CAN
+slot proposal, conformance or interoperability claim, endorsement claim,
+production-readiness claim, joint-ownership claim, or patent or license claim.
 
 Attribution: "ORPRG profile-specific worked illustration based on
 {{I-D.lee-orprg-permit-receipts}} and {{ORPRG-EVAL-V226}}. The permit-side
@@ -799,6 +801,8 @@ include vectors for at least:
   value;
 - an affirming Attestation Result paired with the wrong action evidence; and
 - a transparency receipt bound to a different payload.
+
+### Current Assurance Boundary
 
 The exercised first-instance vectors use a virtual TPM (vTPM), including
 appraisal by a locally operated Project Veraison instance. They exercise
