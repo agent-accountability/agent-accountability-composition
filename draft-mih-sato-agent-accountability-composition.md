@@ -1,35 +1,48 @@
 ---
 title: "Agent Accountability: Composition and Conformance"
 abbrev: "Agent Accountability Composition"
-docname: draft-mih-sato-agent-accountability-composition-00
+docname: draft-mih-sato-agent-accountability-composition-01
 category: info
 ipr: trust200902
 area: Security
 keyword: [agent, accountability, audit, SCITT, composition, conformance, attestation]
 stand_alone: yes
+submissiontype: IETF
 author:
  -
     name: Steven Mih
     org: Action State Group, Inc.
     email: steven@actionstate.ai
  -
-    name: Toshiyuki Sato
+    name: Tom Sato
     org: MyAuberge K.K.
+    country: Japan
     email: tomsato@myauberge.jp
  -
     name: Songbo Bu
-    org:
+    org: Independent
     email: bluedognull@gmail.com
  -
     name: Iman Schrock
-    org: EMILIA Protocol
+    org: EMILIA Protocol, Inc.
     email: team@emiliaprotocol.ai
 normative:
 informative:
   RFC9943:
   RFC9334:
+  I-D.kuehlewind-audit-architecture:
+  I-D.sharif-agent-audit-trail:
+  I-D.bates-atp:
+  I-D.aylward-aiga:
   I-D.schrock-human-authorization-binding:
   I-D.schrock-ep-authorization-receipts:
+  I-D.mih-scitt-agent-action-capsule:
+  I-D.bu-agentproto-security-principal-binding-03:
+    title: "Security Principal Binding for Agent Protocols"
+    author:
+      name: Songbo Bu
+    date: 2026
+    target: https://datatracker.ietf.org/doc/draft-bu-agentproto-security-principal-binding/
 --- abstract
 
 Autonomous and semi-autonomous software agents increasingly take consequential
@@ -112,9 +125,44 @@ A profile-tagged **authority-reference digest** binds a slot's evidence to the
 registered object it commits to, and a **receipt-payload digest** binds transparency
 receipts. Digests committing to signed bytes require deterministic encoding.
 
+Digest equality is a join key: it does not, by itself, prove truth, authorization,
+sufficiency, completeness, or policy compliance. Native profile verification, digest
+recomputation, receipt or transparency verification, completeness and sequencing
+checks, and relying-party acceptance remain separate results.
+
 [Full three-digest binding rules, profile-label discipline, and raw-bytes-vs-ASCII
 -hex rules to be imported from the digest-binding thread / conformance issue in a
 later revision.]
+
+## Cross-Profile Reviews
+
+The following entries record the application of external review frameworks to the
+composition model's slot mappings. Each entry is contributed by the reviewing author
+and records only what that author's analysis found; no entry implies byte-agreement
+results or conformance claims not explicitly stated.
+
+### Principal-Binding Review (Bu)
+
+Principal-binding review framework (Bu): verifier-facing claim, carrier, verifier,
+binding, accepted-result, and failure boundaries from
+{{I-D.bu-agentproto-security-principal-binding-03}} were used to review the WHO-slot
+mapping. The AAC Class-1 repository was independently replayed at commit
+10342f504b051a24908053465927efdaea3ec2f6, but no independent principal-binding
+byte-agreement result is claimed. Status: framework mapping reviewed; AAC reference
+suite independently replayed.
+
+[Additional cross-profile review entries in later revision.]
+
+## Worked Profile Illustration
+
+<!-- TODO: BLOCKED — awaiting Anton's PermitReceipt worked illustration text
+     (Section 3 content, email "Section 3 PermitReceipt worked illustration for -01",
+     Jul 23 09:43). Import VERBATIM: wording, [ORPRG-EVAL-V226] informative reference
+     (ZIP SHA e5c40eca…), attribution + acknowledgment blocks exactly as supplied.
+     Do NOT edit for style. Drop the text + reference into _work/ and flag in outbox. -->
+
+[Profile-specific worked illustration to be imported from Anton Shkrob's contributed
+text once available. See INTEROP.md for implementation-evidence rows.]
 
 # Trust-Root Separation
 
@@ -132,7 +180,13 @@ profile's text is contributed and maintained by its authors.
 
 ## The CAN Slot
 
-[Profile text to be contributed by the slot's owners.]
+<!-- TODO: BLOCKED — awaiting Anton Shkrob's MachineMandate CAN-instance seed text
+     (Section 5.1, email thread Jul 18–23). vct URL correction noted: live endpoint
+     is under vocab.tyche.institute/vct/. Drop text into _work/ and flag in outbox.
+     Review under -00 house style before folding in; flag scope-widening to PM. -->
+
+[MachineMandate CAN-instance seed (hostile-passed) to be imported from Anton Shkrob's
+contributed text. Pending: author's verbatim wording not yet on disk.]
 
 ## The WHO Slot: Named-Human Authorization
 
@@ -220,7 +274,14 @@ revision.]
 
 ## The AUDIT Slot
 
-[Profile text to be contributed by the slot's owners.]
+<!-- TODO: BLOCKED — awaiting Anton Shkrob's AUDIT text (Section 5.4, audit.md,
+     AEP/RATS design rule, email thread Jul 18–23). Iman's AUDIT text conditional on
+     the emulated-swtpm caveat as she framed it. Drop text into _work/ and flag in
+     outbox. Review under -00 house style before folding; flag scope-widening to PM. -->
+
+[AUDIT slot text (AEP/RATS design rule) to be imported from Anton Shkrob's
+contributed text. Pending: author's verbatim wording not yet on disk.
+Iman Schrock's text is conditional on the emulated-swtpm caveat as framed by Iman.]
 
 # Assurance Tiers
 
@@ -261,10 +322,12 @@ identified.]
 # Relationship to Existing Work
 
 This document complements, rather than replaces, existing efforts. An architecture for auditing agent
-delegation and interactions is developed separately (the audit-architecture work, with its interaction,
-action, delegation, and authorization-transition record types); record and logging formats and
-action-lineage protocols are defined in adjacent documents. The four questions here map onto those
-record types rather than redefining them.
+delegation and interactions is developed separately ({{I-D.kuehlewind-audit-architecture}}, with its
+interaction, action, delegation, and authorization-transition record types); record and logging formats
+and action-lineage protocols are defined in adjacent documents (e.g.,
+{{I-D.sharif-agent-audit-trail}}, {{I-D.bates-atp}}, {{I-D.aylward-aiga}} — cited as live adjacent
+work, not positioned). The four questions here map onto those record types rather than redefining
+them.
 
 What this document adds is the piece those leave open: the composition of independently-verifiable
 profiles by a shared action-digest, a shared conformance-vector suite, and the anchored,
@@ -287,7 +350,9 @@ Profiles SHOULD support content-private, hash-only (detached-payload) records so
 registered statement carries only a digest, with content held under deployment
 controls. The shared join digest enables cross-slot correlation; pairwise or
 encrypted correlation identifiers SHOULD be available where correlation is not
-required. [Expand.]
+required. Producer context admitted to any WHAT-leg record follows the capsule
+data-admission floor defined in the Privacy Considerations of
+{{I-D.mih-scitt-agent-action-capsule}}. [Expand.]
 
 # IANA Considerations
 
