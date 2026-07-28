@@ -815,6 +815,8 @@ additionally need to establish its attestation-key provenance, Endorsements,
 Reference Values, measured workload coverage, and deployment-specific trust
 policy.
 
+The swtpm-based exercise validates the verifier logic and evidence plumbing; it is not evidence of a hardware root of trust.
+
 The first-instance AEP/RATS AUDIT profile and this slot text were contributed by
 Anton Sokolov, Tyche Institute.
 

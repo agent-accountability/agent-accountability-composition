@@ -18,7 +18,7 @@ Anton's source either) and is flagged for Steven/Anton — NOT inserted autonomo
 | # | Item | Verdict |
 |---|---|---|
 | a | raw-bytes vs 64-ASCII-hex "MUST NOT be substituted" | PRESENT / VERBATIM (§3) |
-| b | hardware-root disclaimers | CAN "not a manufacturer-provisioned physical TPM" PRESENT/VERBATIM (§5.1); AUDIT vTPM limit PRESENT/VERBATIM (§5.4). The specific **swtpm-≠-hardware-root** framing Songbo Check 1 wants is **ABSENT — and was never in Anton's AUDIT source** → RESTORE-1 (co-author) |
+| b | hardware-root disclaimers | CAN "not a manufacturer-provisioned physical TPM" PRESENT/VERBATIM (§5.1); AUDIT vTPM limit PRESENT/VERBATIM (§5.4); **swtpm≠hw-root sentence** NOW APPLIED (§5.4 `### Current Assurance Boundary`, line 818): "The swtpm-based exercise validates the verifier logic and evidence plumbing; it is not evidence of a hardware root of trust." (Anton's accepted substitution from 02:18Z email → RESTORE-1 CLOSED) |
 | c | CAN scope-gate specifics (allowed_actions, max_spend, machine_mandate_spend) | PRESENT / VERBATIM (§5.1, incl. the four named gates + the frozen over-limit case) |
 | d | "one instance, not the slot definition" normative sentence | PRESENT / VERBATIM (§5.1: "MachineMandate is one CAN instance, not the CAN slot…") |
 
@@ -28,15 +28,15 @@ Anton's source either) and is flagged for Steven/Anton — NOT inserted autonomo
 - **RESTORE-3 (dropped source text):** restored Anton/Scott's §3 no-claims disclaimer to the Worked Profile Illustration: "This illustration states profile-specific implementation facts. It makes no CAN slot proposal, conformance or interoperability claim, endorsement claim, production-readiness claim, joint-ownership claim, or patent or license claim."
 - **Fold-introduced conflict (removed):** the fold coder had *added* a preamble line `subject_digest = SHA-256(JCS(action))` that contradicted Anton's profile-defined `HASH(subject_preimage)` + "JCS … is not imposed." Reworded the preamble to defer to the per-profile definition; also removed the duplicated "Digest equality is a join key…" paragraph (Anton's authoritative copy remains in Three Digest Roles).
 
-## Flagged — NOT applied (co-author decision)
+## Flagged → NOW APPLIED (co-author sign-off received 2026-07-28)
 
-- **RESTORE-1 (Songbo Check 1 blocker):** the "where a software TPM (`swtpm`) is used, it validates the composition plumbing and verifier logic but is NOT evidence of a hardware trust root" statement is **missing from §5.4 AUDIT and absent from Anton's AUDIT source** (his source frames only vTPM; the `swtpm` mention lives in the CAN source's assurance boundary). Songbo Check 1 explicitly requires it. This is a **content addition to Anton's contributed slot**, so it needs Anton/PM sign-off (or framing as Songbo's requested amendment that Anton accepts) — it is not a mechanical restore and was deliberately not inserted.
+- **RESTORE-1 (CLOSED):** Anton Sokolov provided his accepted substitution via email (02:18Z 2026-07-28): "The swtpm-based exercise validates the verifier logic and evidence plumbing; it is not evidence of a hardware root of trust." This sentence has been inserted verbatim into §5.4 `### Current Assurance Boundary`, after the vTPM paragraph (line 818 of the .md source). Songbo Check-1 is now fully SATISFIED. Commit: `spec(composition): apply Anton's swtpm caveat to §5.4 (RESTORE-1; Songbo Check-1 SATISFIED)`.
 
 ## Songbo four-check verdict (post-fix)
 
 | # | Check | Verdict |
 |---|---|---|
-| 1 | AUDIT separation + swtpm≠hw-root + nonce/quote/PCR-16/outcome binding + scope-bound result | **PARTIAL** — separation, binding, scope-bound all SATISFIED (verbatim); swtpm≠hw-root MISSING → RESTORE-1 (co-author) |
+| 1 | AUDIT separation + swtpm≠hw-root + nonce/quote/PCR-16/outcome binding + scope-bound result | **SATISFIED** — separation, binding, scope-bound SATISFIED (verbatim); swtpm≠hw-root SATISFIED: "The swtpm-based exercise validates the verifier logic and evidence plumbing; it is not evidence of a hardware root of trust." (Anton's substitution, 02:18Z email, applied to §5.4 `### Current Assurance Boundary`) |
 | 2 | CAN one-instance; no normative dep on SD-JWT VC/OpenID4VP; four gates each name input+rejection+result | **SATISFIED** |
 | 3 | §3 pins bytes/algorithms/domain-sep/version/raw-vs-hex; digest = join key only | **SATISFIED** (JCS-preamble hazard now removed) |
 | 4 | §7 conformance vectors (positive + per-gate rejection + replay/freshness + permit-ref + 64-hex-vs-32-raw) | **OUT OF SCOPE** — §7 vector suite; Songbo scoped it to a separate import PR; not part of this fold |

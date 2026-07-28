@@ -5,12 +5,12 @@
 Network Working Group                                             S. Mih
 Internet-Draft                                  Action State Group, Inc.
 Intended status: Informational                                   T. Sato
-Expires: 28 January 2027                                  MyAuberge K.K.
+Expires: 29 January 2027                                  MyAuberge K.K.
                                                                    S. Bu
                                                              Independent
                                                               I. Schrock
                                                    EMILIA Protocol, Inc.
-                                                            27 July 2026
+                                                            28 July 2026
 
 
            Agent Accountability: Composition and Conformance
@@ -53,7 +53,7 @@ Status of This Memo
 
 
 
-Mih, et al.              Expires 28 January 2027                [Page 1]
+Mih, et al.              Expires 29 January 2027                [Page 1]
 
 Internet-Draft      Agent Accountability Composition           July 2026
 
@@ -68,7 +68,7 @@ Internet-Draft      Agent Accountability Composition           July 2026
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 28 January 2027.
+   This Internet-Draft will expire on 29 January 2027.
 
 Copyright Notice
 
@@ -109,7 +109,7 @@ Table of Contents
 
 
 
-Mih, et al.              Expires 28 January 2027                [Page 2]
+Mih, et al.              Expires 29 January 2027                [Page 2]
 
 Internet-Draft      Agent Accountability Composition           July 2026
 
@@ -165,7 +165,7 @@ Internet-Draft      Agent Accountability Composition           July 2026
 
 
 
-Mih, et al.              Expires 28 January 2027                [Page 3]
+Mih, et al.              Expires 29 January 2027                [Page 3]
 
 Internet-Draft      Agent Accountability Composition           July 2026
 
@@ -221,7 +221,7 @@ Internet-Draft      Agent Accountability Composition           July 2026
 
 
 
-Mih, et al.              Expires 28 January 2027                [Page 4]
+Mih, et al.              Expires 29 January 2027                [Page 4]
 
 Internet-Draft      Agent Accountability Composition           July 2026
 
@@ -277,7 +277,7 @@ Internet-Draft      Agent Accountability Composition           July 2026
 
 
 
-Mih, et al.              Expires 28 January 2027                [Page 5]
+Mih, et al.              Expires 29 January 2027                [Page 5]
 
 Internet-Draft      Agent Accountability Composition           July 2026
 
@@ -333,7 +333,7 @@ Internet-Draft      Agent Accountability Composition           July 2026
 
 
 
-Mih, et al.              Expires 28 January 2027                [Page 6]
+Mih, et al.              Expires 29 January 2027                [Page 6]
 
 Internet-Draft      Agent Accountability Composition           July 2026
 
@@ -389,7 +389,7 @@ Internet-Draft      Agent Accountability Composition           July 2026
 
 
 
-Mih, et al.              Expires 28 January 2027                [Page 7]
+Mih, et al.              Expires 29 January 2027                [Page 7]
 
 Internet-Draft      Agent Accountability Composition           July 2026
 
@@ -445,7 +445,7 @@ Internet-Draft      Agent Accountability Composition           July 2026
 
 
 
-Mih, et al.              Expires 28 January 2027                [Page 8]
+Mih, et al.              Expires 29 January 2027                [Page 8]
 
 Internet-Draft      Agent Accountability Composition           July 2026
 
@@ -501,7 +501,7 @@ Internet-Draft      Agent Accountability Composition           July 2026
 
 
 
-Mih, et al.              Expires 28 January 2027                [Page 9]
+Mih, et al.              Expires 29 January 2027                [Page 9]
 
 Internet-Draft      Agent Accountability Composition           July 2026
 
@@ -557,7 +557,7 @@ Internet-Draft      Agent Accountability Composition           July 2026
 
 
 
-Mih, et al.              Expires 28 January 2027               [Page 10]
+Mih, et al.              Expires 29 January 2027               [Page 10]
 
 Internet-Draft      Agent Accountability Composition           July 2026
 
@@ -613,7 +613,7 @@ Internet-Draft      Agent Accountability Composition           July 2026
 
 
 
-Mih, et al.              Expires 28 January 2027               [Page 11]
+Mih, et al.              Expires 29 January 2027               [Page 11]
 
 Internet-Draft      Agent Accountability Composition           July 2026
 
@@ -669,7 +669,7 @@ Internet-Draft      Agent Accountability Composition           July 2026
 
 
 
-Mih, et al.              Expires 28 January 2027               [Page 12]
+Mih, et al.              Expires 29 January 2027               [Page 12]
 
 Internet-Draft      Agent Accountability Composition           July 2026
 
@@ -725,7 +725,7 @@ Internet-Draft      Agent Accountability Composition           July 2026
 
 
 
-Mih, et al.              Expires 28 January 2027               [Page 13]
+Mih, et al.              Expires 29 January 2027               [Page 13]
 
 Internet-Draft      Agent Accountability Composition           July 2026
 
@@ -781,7 +781,7 @@ Internet-Draft      Agent Accountability Composition           July 2026
 
 
 
-Mih, et al.              Expires 28 January 2027               [Page 14]
+Mih, et al.              Expires 29 January 2027               [Page 14]
 
 Internet-Draft      Agent Accountability Composition           July 2026
 
@@ -837,7 +837,7 @@ Internet-Draft      Agent Accountability Composition           July 2026
 
 
 
-Mih, et al.              Expires 28 January 2027               [Page 15]
+Mih, et al.              Expires 29 January 2027               [Page 15]
 
 Internet-Draft      Agent Accountability Composition           July 2026
 
@@ -893,7 +893,7 @@ Internet-Draft      Agent Accountability Composition           July 2026
 
 
 
-Mih, et al.              Expires 28 January 2027               [Page 16]
+Mih, et al.              Expires 29 January 2027               [Page 16]
 
 Internet-Draft      Agent Accountability Composition           July 2026
 
@@ -949,7 +949,7 @@ Internet-Draft      Agent Accountability Composition           July 2026
 
 
 
-Mih, et al.              Expires 28 January 2027               [Page 17]
+Mih, et al.              Expires 29 January 2027               [Page 17]
 
 Internet-Draft      Agent Accountability Composition           July 2026
 
@@ -1005,7 +1005,7 @@ Internet-Draft      Agent Accountability Composition           July 2026
 
 
 
-Mih, et al.              Expires 28 January 2027               [Page 18]
+Mih, et al.              Expires 29 January 2027               [Page 18]
 
 Internet-Draft      Agent Accountability Composition           July 2026
 
@@ -1061,7 +1061,7 @@ Internet-Draft      Agent Accountability Composition           July 2026
 
 
 
-Mih, et al.              Expires 28 January 2027               [Page 19]
+Mih, et al.              Expires 29 January 2027               [Page 19]
 
 Internet-Draft      Agent Accountability Composition           July 2026
 
@@ -1117,7 +1117,7 @@ Internet-Draft      Agent Accountability Composition           July 2026
 
 
 
-Mih, et al.              Expires 28 January 2027               [Page 20]
+Mih, et al.              Expires 29 January 2027               [Page 20]
 
 Internet-Draft      Agent Accountability Composition           July 2026
 
@@ -1173,7 +1173,7 @@ Internet-Draft      Agent Accountability Composition           July 2026
 
 
 
-Mih, et al.              Expires 28 January 2027               [Page 21]
+Mih, et al.              Expires 29 January 2027               [Page 21]
 
 Internet-Draft      Agent Accountability Composition           July 2026
 
@@ -1191,6 +1191,9 @@ Internet-Draft      Agent Accountability Composition           July 2026
    would additionally need to establish its attestation-key provenance,
    Endorsements, Reference Values, measured workload coverage, and
    deployment-specific trust policy.
+
+   The swtpm-based exercise validates the verifier logic and evidence
+   plumbing; it is not evidence of a hardware root of trust.
 
    The first-instance AEP/RATS AUDIT profile and this slot text were
    contributed by Anton Sokolov, Tyche Institute.
@@ -1226,10 +1229,7 @@ Internet-Draft      Agent Accountability Composition           July 2026
 
 
 
-
-
-
-Mih, et al.              Expires 28 January 2027               [Page 22]
+Mih, et al.              Expires 29 January 2027               [Page 22]
 
 Internet-Draft      Agent Accountability Composition           July 2026
 
@@ -1285,7 +1285,7 @@ Internet-Draft      Agent Accountability Composition           July 2026
 
 
 
-Mih, et al.              Expires 28 January 2027               [Page 23]
+Mih, et al.              Expires 29 January 2027               [Page 23]
 
 Internet-Draft      Agent Accountability Composition           July 2026
 
@@ -1341,7 +1341,7 @@ Internet-Draft      Agent Accountability Composition           July 2026
 
 
 
-Mih, et al.              Expires 28 January 2027               [Page 24]
+Mih, et al.              Expires 29 January 2027               [Page 24]
 
 Internet-Draft      Agent Accountability Composition           July 2026
 
@@ -1397,7 +1397,7 @@ Internet-Draft      Agent Accountability Composition           July 2026
 
 
 
-Mih, et al.              Expires 28 January 2027               [Page 25]
+Mih, et al.              Expires 29 January 2027               [Page 25]
 
 Internet-Draft      Agent Accountability Composition           July 2026
 
@@ -1453,7 +1453,7 @@ Authors' Addresses
 
 
 
-Mih, et al.              Expires 28 January 2027               [Page 26]
+Mih, et al.              Expires 29 January 2027               [Page 26]
 
 Internet-Draft      Agent Accountability Composition           July 2026
 
@@ -1509,4 +1509,4 @@ Internet-Draft      Agent Accountability Composition           July 2026
 
 
 
-Mih, et al.              Expires 28 January 2027               [Page 27]
+Mih, et al.              Expires 29 January 2027               [Page 27]
