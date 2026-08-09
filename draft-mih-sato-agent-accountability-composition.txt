@@ -5,14 +5,14 @@
 Network Working Group                                             S. Mih
 Internet-Draft                                  Action State Group, Inc.
 Intended status: Informational                                   T. Sato
-Expires: 10 February 2027                                 MyAuberge K.K.
+Expires: 9 February 2027                                  MyAuberge K.K.
                                                                    S. Bu
                                                              Independent
                                                               I. Schrock
                                                    EMILIA Protocol, Inc.
                                                               A. Sokolov
                                                          Tyche Institute
-                                                           9 August 2026
+                                                           8 August 2026
 
 
            Agent Accountability: Composition and Conformance
@@ -53,7 +53,7 @@ Status of This Memo
 
 
 
-Mih, et al.             Expires 10 February 2027                [Page 1]
+Mih, et al.              Expires 9 February 2027                [Page 1]
 
 Internet-Draft      Agent Accountability Composition         August 2026
 
@@ -68,7 +68,7 @@ Internet-Draft      Agent Accountability Composition         August 2026
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 10 February 2027.
+   This Internet-Draft will expire on 9 February 2027.
 
 Copyright Notice
 
@@ -109,7 +109,7 @@ Table of Contents
 
 
 
-Mih, et al.             Expires 10 February 2027                [Page 2]
+Mih, et al.              Expires 9 February 2027                [Page 2]
 
 Internet-Draft      Agent Accountability Composition         August 2026
 
@@ -139,8 +139,8 @@ Internet-Draft      Agent Accountability Composition         August 2026
      8.1.  Cross-Slot Conformance Mechanism  . . . . . . . . . . . .  36
        8.1.1.  Boundary  . . . . . . . . . . . . . . . . . . . . . .  36
        8.1.2.  Bundle requirements . . . . . . . . . . . . . . . . .  37
-       8.1.3.  Result vocabulary . . . . . . . . . . . . . . . . . .  37
-       8.1.4.  Run report  . . . . . . . . . . . . . . . . . . . . .  38
+       8.1.3.  Result vocabulary . . . . . . . . . . . . . . . . . .  38
+       8.1.4.  Run report  . . . . . . . . . . . . . . . . . . . . .  39
        8.1.5.  Positive, negative, and condition-removed vectors . .  39
        8.1.6.  Freeze rule . . . . . . . . . . . . . . . . . . . . .  41
        8.1.7.  Delivered and open  . . . . . . . . . . . . . . . . .  41
@@ -151,9 +151,9 @@ Internet-Draft      Agent Accountability Composition         August 2026
    13. IANA Considerations . . . . . . . . . . . . . . . . . . . . .  43
    14. References  . . . . . . . . . . . . . . . . . . . . . . . . .  43
      14.1.  Normative References . . . . . . . . . . . . . . . . . .  43
-     14.2.  Informative References . . . . . . . . . . . . . . . . .  43
-   Acknowledgments . . . . . . . . . . . . . . . . . . . . . . . . .  46
-   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  46
+     14.2.  Informative References . . . . . . . . . . . . . . . . .  44
+   Acknowledgments . . . . . . . . . . . . . . . . . . . . . . . . .  47
+   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  47
 
 
 
@@ -165,7 +165,7 @@ Internet-Draft      Agent Accountability Composition         August 2026
 
 
 
-Mih, et al.             Expires 10 February 2027                [Page 3]
+Mih, et al.              Expires 9 February 2027                [Page 3]
 
 Internet-Draft      Agent Accountability Composition         August 2026
 
@@ -221,7 +221,7 @@ Internet-Draft      Agent Accountability Composition         August 2026
 
 
 
-Mih, et al.             Expires 10 February 2027                [Page 4]
+Mih, et al.              Expires 9 February 2027                [Page 4]
 
 Internet-Draft      Agent Accountability Composition         August 2026
 
@@ -277,7 +277,7 @@ Internet-Draft      Agent Accountability Composition         August 2026
 
 
 
-Mih, et al.             Expires 10 February 2027                [Page 5]
+Mih, et al.              Expires 9 February 2027                [Page 5]
 
 Internet-Draft      Agent Accountability Composition         August 2026
 
@@ -333,7 +333,7 @@ Internet-Draft      Agent Accountability Composition         August 2026
 
 
 
-Mih, et al.             Expires 10 February 2027                [Page 6]
+Mih, et al.              Expires 9 February 2027                [Page 6]
 
 Internet-Draft      Agent Accountability Composition         August 2026
 
@@ -389,7 +389,7 @@ Internet-Draft      Agent Accountability Composition         August 2026
 
 
 
-Mih, et al.             Expires 10 February 2027                [Page 7]
+Mih, et al.              Expires 9 February 2027                [Page 7]
 
 Internet-Draft      Agent Accountability Composition         August 2026
 
@@ -445,7 +445,7 @@ Internet-Draft      Agent Accountability Composition         August 2026
 
 
 
-Mih, et al.             Expires 10 February 2027                [Page 8]
+Mih, et al.              Expires 9 February 2027                [Page 8]
 
 Internet-Draft      Agent Accountability Composition         August 2026
 
@@ -501,7 +501,7 @@ Internet-Draft      Agent Accountability Composition         August 2026
 
 
 
-Mih, et al.             Expires 10 February 2027                [Page 9]
+Mih, et al.              Expires 9 February 2027                [Page 9]
 
 Internet-Draft      Agent Accountability Composition         August 2026
 
@@ -557,7 +557,7 @@ Internet-Draft      Agent Accountability Composition         August 2026
 
 
 
-Mih, et al.             Expires 10 February 2027               [Page 10]
+Mih, et al.              Expires 9 February 2027               [Page 10]
 
 Internet-Draft      Agent Accountability Composition         August 2026
 
@@ -613,7 +613,7 @@ Internet-Draft      Agent Accountability Composition         August 2026
 
 
 
-Mih, et al.             Expires 10 February 2027               [Page 11]
+Mih, et al.              Expires 9 February 2027               [Page 11]
 
 Internet-Draft      Agent Accountability Composition         August 2026
 
@@ -669,7 +669,7 @@ Internet-Draft      Agent Accountability Composition         August 2026
 
 
 
-Mih, et al.             Expires 10 February 2027               [Page 12]
+Mih, et al.              Expires 9 February 2027               [Page 12]
 
 Internet-Draft      Agent Accountability Composition         August 2026
 
@@ -725,7 +725,7 @@ Internet-Draft      Agent Accountability Composition         August 2026
 
 
 
-Mih, et al.             Expires 10 February 2027               [Page 13]
+Mih, et al.              Expires 9 February 2027               [Page 13]
 
 Internet-Draft      Agent Accountability Composition         August 2026
 
@@ -781,7 +781,7 @@ Internet-Draft      Agent Accountability Composition         August 2026
 
 
 
-Mih, et al.             Expires 10 February 2027               [Page 14]
+Mih, et al.              Expires 9 February 2027               [Page 14]
 
 Internet-Draft      Agent Accountability Composition         August 2026
 
@@ -837,7 +837,7 @@ Internet-Draft      Agent Accountability Composition         August 2026
 
 
 
-Mih, et al.             Expires 10 February 2027               [Page 15]
+Mih, et al.              Expires 9 February 2027               [Page 15]
 
 Internet-Draft      Agent Accountability Composition         August 2026
 
@@ -893,7 +893,7 @@ Internet-Draft      Agent Accountability Composition         August 2026
 
 
 
-Mih, et al.             Expires 10 February 2027               [Page 16]
+Mih, et al.              Expires 9 February 2027               [Page 16]
 
 Internet-Draft      Agent Accountability Composition         August 2026
 
@@ -949,7 +949,7 @@ Internet-Draft      Agent Accountability Composition         August 2026
 
 
 
-Mih, et al.             Expires 10 February 2027               [Page 17]
+Mih, et al.              Expires 9 February 2027               [Page 17]
 
 Internet-Draft      Agent Accountability Composition         August 2026
 
@@ -1005,7 +1005,7 @@ Internet-Draft      Agent Accountability Composition         August 2026
 
 
 
-Mih, et al.             Expires 10 February 2027               [Page 18]
+Mih, et al.              Expires 9 February 2027               [Page 18]
 
 Internet-Draft      Agent Accountability Composition         August 2026
 
@@ -1061,7 +1061,7 @@ Internet-Draft      Agent Accountability Composition         August 2026
 
 
 
-Mih, et al.             Expires 10 February 2027               [Page 19]
+Mih, et al.              Expires 9 February 2027               [Page 19]
 
 Internet-Draft      Agent Accountability Composition         August 2026
 
@@ -1117,7 +1117,7 @@ Internet-Draft      Agent Accountability Composition         August 2026
 
 
 
-Mih, et al.             Expires 10 February 2027               [Page 20]
+Mih, et al.              Expires 9 February 2027               [Page 20]
 
 Internet-Draft      Agent Accountability Composition         August 2026
 
@@ -1173,7 +1173,7 @@ Internet-Draft      Agent Accountability Composition         August 2026
 
 
 
-Mih, et al.             Expires 10 February 2027               [Page 21]
+Mih, et al.              Expires 9 February 2027               [Page 21]
 
 Internet-Draft      Agent Accountability Composition         August 2026
 
@@ -1229,7 +1229,7 @@ Internet-Draft      Agent Accountability Composition         August 2026
 
 
 
-Mih, et al.             Expires 10 February 2027               [Page 22]
+Mih, et al.              Expires 9 February 2027               [Page 22]
 
 Internet-Draft      Agent Accountability Composition         August 2026
 
@@ -1285,7 +1285,7 @@ Internet-Draft      Agent Accountability Composition         August 2026
 
 
 
-Mih, et al.             Expires 10 February 2027               [Page 23]
+Mih, et al.              Expires 9 February 2027               [Page 23]
 
 Internet-Draft      Agent Accountability Composition         August 2026
 
@@ -1341,7 +1341,7 @@ Internet-Draft      Agent Accountability Composition         August 2026
 
 
 
-Mih, et al.             Expires 10 February 2027               [Page 24]
+Mih, et al.              Expires 9 February 2027               [Page 24]
 
 Internet-Draft      Agent Accountability Composition         August 2026
 
@@ -1397,7 +1397,7 @@ Internet-Draft      Agent Accountability Composition         August 2026
 
 
 
-Mih, et al.             Expires 10 February 2027               [Page 25]
+Mih, et al.              Expires 9 February 2027               [Page 25]
 
 Internet-Draft      Agent Accountability Composition         August 2026
 
@@ -1453,7 +1453,7 @@ Internet-Draft      Agent Accountability Composition         August 2026
 
 
 
-Mih, et al.             Expires 10 February 2027               [Page 26]
+Mih, et al.              Expires 9 February 2027               [Page 26]
 
 Internet-Draft      Agent Accountability Composition         August 2026
 
@@ -1509,7 +1509,7 @@ Internet-Draft      Agent Accountability Composition         August 2026
 
 
 
-Mih, et al.             Expires 10 February 2027               [Page 27]
+Mih, et al.              Expires 9 February 2027               [Page 27]
 
 Internet-Draft      Agent Accountability Composition         August 2026
 
@@ -1565,7 +1565,7 @@ Internet-Draft      Agent Accountability Composition         August 2026
 
 
 
-Mih, et al.             Expires 10 February 2027               [Page 28]
+Mih, et al.              Expires 9 February 2027               [Page 28]
 
 Internet-Draft      Agent Accountability Composition         August 2026
 
@@ -1621,7 +1621,7 @@ Internet-Draft      Agent Accountability Composition         August 2026
 
 
 
-Mih, et al.             Expires 10 February 2027               [Page 29]
+Mih, et al.              Expires 9 February 2027               [Page 29]
 
 Internet-Draft      Agent Accountability Composition         August 2026
 
@@ -1677,7 +1677,7 @@ Internet-Draft      Agent Accountability Composition         August 2026
 
 
 
-Mih, et al.             Expires 10 February 2027               [Page 30]
+Mih, et al.              Expires 9 February 2027               [Page 30]
 
 Internet-Draft      Agent Accountability Composition         August 2026
 
@@ -1733,7 +1733,7 @@ Internet-Draft      Agent Accountability Composition         August 2026
 
 
 
-Mih, et al.             Expires 10 February 2027               [Page 31]
+Mih, et al.              Expires 9 February 2027               [Page 31]
 
 Internet-Draft      Agent Accountability Composition         August 2026
 
@@ -1789,7 +1789,7 @@ Internet-Draft      Agent Accountability Composition         August 2026
 
 
 
-Mih, et al.             Expires 10 February 2027               [Page 32]
+Mih, et al.              Expires 9 February 2027               [Page 32]
 
 Internet-Draft      Agent Accountability Composition         August 2026
 
@@ -1845,7 +1845,7 @@ Internet-Draft      Agent Accountability Composition         August 2026
 
 
 
-Mih, et al.             Expires 10 February 2027               [Page 33]
+Mih, et al.              Expires 9 February 2027               [Page 33]
 
 Internet-Draft      Agent Accountability Composition         August 2026
 
@@ -1901,7 +1901,7 @@ Internet-Draft      Agent Accountability Composition         August 2026
 
 
 
-Mih, et al.             Expires 10 February 2027               [Page 34]
+Mih, et al.              Expires 9 February 2027               [Page 34]
 
 Internet-Draft      Agent Accountability Composition         August 2026
 
@@ -1957,7 +1957,7 @@ Internet-Draft      Agent Accountability Composition         August 2026
 
 
 
-Mih, et al.             Expires 10 February 2027               [Page 35]
+Mih, et al.              Expires 9 February 2027               [Page 35]
 
 Internet-Draft      Agent Accountability Composition         August 2026
 
@@ -1989,11 +1989,13 @@ Internet-Draft      Agent Accountability Composition         August 2026
    positive four-slot vector, thirteen negative cases, and thirteen
    condition-removed controls, with manifests, checksums, an executable
    runner, and an external-report template — is published in the EMILIA
-   Protocol repository (pull request 521, commit 30916c80).  Per the
-   freeze rule below, that pack is a candidate, not a frozen result,
-   until a second implementation maintained by a different party
-   consumes the same published bytes and returns the completed external
-   report.
+   Protocol repository (pull request 521, commit 30916c80).  That
+   manifest pins Composition *-00*; it was not built against this *-01*
+   revision, and an -01-pinned manifest is future work, out of scope
+   here.  Per the freeze rule below, the pack is a candidate, not a
+   frozen result, until a second implementation maintained by a
+   different party consumes the same published bytes and returns the
+   completed external report.
 
 8.1.1.  Boundary
 
@@ -2008,15 +2010,43 @@ Internet-Draft      Agent Accountability Composition         August 2026
    followed by each cross-slot check.  It never collapses those results
    into one opaque trusted, authorized, executed, or verified boolean.
 
-   CAID, AEC, and AEB enter at distinct interfaces rather than becoming
-   new slot definitions:
 
 
 
-Mih, et al.             Expires 10 February 2027               [Page 36]
+Mih, et al.              Expires 9 February 2027               [Page 36]
 
 Internet-Draft      Agent Accountability Composition         August 2026
 
+
+   CAID, AEC, and AEB each have one normative home, independently
+   maintained by Iman Schrock (EMILIA Protocol, Inc.):
+
+    +===========+====================+================================+
+    | Mechanism | Normative home     | Scope                          |
+    +===========+====================+================================+
+    | CAID      | [I-D.schrock-caid] | The exact material-action      |
+    |           |                    | identifier and declared digest |
+    |           |                    | context                        |
+    +-----------+--------------------+--------------------------------+
+    | AEC       | [I-D.schrock-aec]  | Native evidence preservation   |
+    |           |                    | and relying-party requirement  |
+    |           |                    | satisfaction                   |
+    +-----------+--------------------+--------------------------------+
+    | AEB       | [I-D.schrock-aeb]  | Executor-side local            |
+    |           |                    | authorization, atomic reserve/ |
+    |           |                    | consume, invocation, and post- |
+    |           |                    | dispatch outcome handling      |
+    +-----------+--------------------+--------------------------------+
+
+                                  Table 1
+
+   Composition consumes each mechanism's named outputs at the interfaces
+   below.  It does not replace or inherit CAID, AEC, or AEB; those
+   mechanisms remain independently maintained by their own documents,
+   not by this one.
+
+   CAID, AEC, and AEB enter at distinct interfaces rather than becoming
+   new slot definitions:
 
    *  CAID supplies the declared exact-action digest context.
 
@@ -2035,6 +2065,14 @@ Internet-Draft      Agent Accountability Composition         August 2026
 8.1.2.  Bundle requirements
 
    Every bundle pins:
+
+
+
+
+Mih, et al.              Expires 9 February 2027               [Page 37]
+
+Internet-Draft      Agent Accountability Composition         August 2026
+
 
    1.  the Composition revision and digest;
 
@@ -2066,14 +2104,6 @@ Internet-Draft      Agent Accountability Composition         August 2026
 
    *  pass — evaluated and the condition held;
 
-
-
-
-Mih, et al.             Expires 10 February 2027               [Page 37]
-
-Internet-Draft      Agent Accountability Composition         August 2026
-
-
    *  fail — evaluated and the condition did not hold;
 
    *  not_evaluated — a prerequisite failed or the check was not
@@ -2092,6 +2122,13 @@ Internet-Draft      Agent Accountability Composition         August 2026
    An unknown optional binding may remain structurally readable.  It
    cannot satisfy a policy that requires understood semantics for that
    binding.
+
+
+
+Mih, et al.              Expires 9 February 2027               [Page 38]
+
+Internet-Draft      Agent Accountability Composition         August 2026
+
 
 8.1.4.  Run report
 
@@ -2120,16 +2157,6 @@ Internet-Draft      Agent Accountability Composition         August 2026
    establish an external effect, or replace a relying party's policy
    decision.
 
-
-
-
-
-
-Mih, et al.             Expires 10 February 2027               [Page 38]
-
-Internet-Draft      Agent Accountability Composition         August 2026
-
-
 8.1.5.  Positive, negative, and condition-removed vectors
 
    The first pack contains one positive four-slot vector and the
@@ -2154,34 +2181,7 @@ Internet-Draft      Agent Accountability Composition         August 2026
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Mih, et al.             Expires 10 February 2027               [Page 39]
+Mih, et al.              Expires 9 February 2027               [Page 39]
 
 Internet-Draft      Agent Accountability Composition         August 2026
 
@@ -2230,14 +2230,14 @@ Internet-Draft      Agent Accountability Composition         August 2026
     |                 | treated as accepted         |                 |
     +-----------------+-----------------------------+-----------------+
 
-                                  Table 1
+                                  Table 2
 
    The runnable pack therefore contains 27 cases: one positive, thirteen
    negatives, and thirteen condition-removed controls.
 
 
 
-Mih, et al.             Expires 10 February 2027               [Page 40]
+Mih, et al.              Expires 9 February 2027               [Page 40]
 
 Internet-Draft      Agent Accountability Composition         August 2026
 
@@ -2293,7 +2293,7 @@ Internet-Draft      Agent Accountability Composition         August 2026
 
 
 
-Mih, et al.             Expires 10 February 2027               [Page 41]
+Mih, et al.              Expires 9 February 2027               [Page 41]
 
 Internet-Draft      Agent Accountability Composition         August 2026
 
@@ -2314,9 +2314,10 @@ Internet-Draft      Agent Accountability Composition         August 2026
    composition of independently-verifiable profiles by a shared action-
    digest, a shared conformance-vector suite, and the anchored, third-
    party-verifiable assurance tier (see Assurance Tiers).  It defines no
-   new signing, transport, or transparency mechanism.  Specific
-   documents will be cited normatively and informatively in a later
-   revision.
+   new signing, transport, or transparency mechanism; the specific
+   documents for that discipline are cited normatively and informatively
+   throughout (see, e.g., Cross-Slot Conformance Mechanism for the CAID,
+   AEC, and AEB references).
 
 11.  Security Considerations
 
@@ -2348,8 +2349,7 @@ Internet-Draft      Agent Accountability Composition         August 2026
 
 
 
-
-Mih, et al.             Expires 10 February 2027               [Page 42]
+Mih, et al.              Expires 9 February 2027               [Page 42]
 
 Internet-Draft      Agent Accountability Composition         August 2026
 
@@ -2393,6 +2393,33 @@ Internet-Draft      Agent Accountability Composition         August 2026
               2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174,
               May 2017, <https://www.rfc-editor.org/rfc/rfc8174>.
 
+   [I-D.schrock-caid]
+              Schrock, I., "Canonical Action Identifier", Work in
+              Progress, Internet-Draft, draft-schrock-canonical-action-
+              identifier-02, 2026, <https://datatracker.ietf.org/doc/
+              draft-schrock-canonical-action-identifier/>.
+
+   [I-D.schrock-aec]
+              Schrock, I., "EP Authorization Evidence Chain", Work in
+              Progress, Internet-Draft, draft-schrock-ep-authorization-
+
+
+
+Mih, et al.              Expires 9 February 2027               [Page 43]
+
+Internet-Draft      Agent Accountability Composition         August 2026
+
+
+              evidence-chain-05, 2026,
+              <https://datatracker.ietf.org/doc/draft-schrock-ep-
+              authorization-evidence-chain/>.
+
+   [I-D.schrock-aeb]
+              Schrock, I., "Action Evidence Boundary", Work in Progress,
+              Internet-Draft, draft-schrock-action-evidence-boundary-03,
+              2026, <https://datatracker.ietf.org/doc/draft-schrock-
+              action-evidence-boundary/>.
+
 14.2.  Informative References
 
    [RFC9943]  Birkholz, H., Delignat-Lavaud, A., Fournet, C., Deshpande,
@@ -2400,15 +2427,6 @@ Internet-Draft      Agent Accountability Composition         August 2026
               Transparent Digital Supply Chains", RFC 9943,
               DOI 10.17487/RFC9943, June 2026,
               <https://www.rfc-editor.org/rfc/rfc9943>.
-
-
-
-
-
-Mih, et al.             Expires 10 February 2027               [Page 43]
-
-Internet-Draft      Agent Accountability Composition         August 2026
-
 
    [RFC9334]  Birkholz, H., Thaler, D., Richardson, M., Smith, N., and
               W. Pan, "Remote ATtestation procedureS (RATS)
@@ -2436,6 +2454,18 @@ Internet-Draft      Agent Accountability Composition         August 2026
               <https://datatracker.ietf.org/doc/html/draft-bates-atp-
               00>.
 
+
+
+
+
+
+
+
+Mih, et al.              Expires 9 February 2027               [Page 44]
+
+Internet-Draft      Agent Accountability Composition         August 2026
+
+
    [I-D.aylward-aiga]
               Aylward, E. R., "Artificial Intelligence Governance
               Architecture (AIGA)", Work in Progress, Internet-Draft,
@@ -2456,15 +2486,6 @@ Internet-Draft      Agent Accountability Composition         August 2026
               ep-authorization-receipts-10, 6 August 2026,
               <https://datatracker.ietf.org/doc/html/draft-schrock-ep-
               authorization-receipts-10>.
-
-
-
-
-
-Mih, et al.             Expires 10 February 2027               [Page 44]
-
-Internet-Draft      Agent Accountability Composition         August 2026
-
 
    [I-D.mih-scitt-agent-action-capsule]
               Mih, S., "An Agent Action Capsule Profile for SCITT", Work
@@ -2492,6 +2513,15 @@ Internet-Draft      Agent Accountability Composition         August 2026
               2026, <https://datatracker.ietf.org/doc/draft-bu-
               agentproto-security-principal-binding/>.
 
+
+
+
+
+Mih, et al.              Expires 9 February 2027               [Page 45]
+
+Internet-Draft      Agent Accountability Composition         August 2026
+
+
    [I-D.lee-orprg-permit-receipts]
               Lee, Y. B., "Permit Receipts for Permit-Before-Commit
               Authorization of AI-Agent and Workload External Effects",
@@ -2511,16 +2541,6 @@ Internet-Draft      Agent Accountability Composition         August 2026
               Canonicalization Scheme (JCS)", RFC 8785,
               DOI 10.17487/RFC8785, June 2020,
               <https://www.rfc-editor.org/rfc/rfc8785>.
-
-
-
-
-
-
-Mih, et al.             Expires 10 February 2027               [Page 45]
-
-Internet-Draft      Agent Accountability Composition         August 2026
-
 
    [RFC8792]  Watsen, K., Auerswald, E., Farrel, A., and Q. Wu,
               "Handling Long Lines in Content of Internet-Drafts and
@@ -2548,6 +2568,16 @@ Internet-Draft      Agent Accountability Composition         August 2026
               Tyche Institute, "MachineMandate", n.d.,
               <https://github.com/tyche-institute/machine-mandate>.
 
+
+
+
+
+
+Mih, et al.              Expires 9 February 2027               [Page 46]
+
+Internet-Draft      Agent Accountability Composition         August 2026
+
+
    [ORPRG-EVAL-V226]
               Meridian Verity Group, "v2.2.6 Public Evaluation — IETF
               126 PermitReceipt Review Packet", 10 July 2026,
@@ -2569,14 +2599,6 @@ Acknowledgments
    against.
 
 Authors' Addresses
-
-
-
-
-Mih, et al.             Expires 10 February 2027               [Page 46]
-
-Internet-Draft      Agent Accountability Composition         August 2026
-
 
    Steven Mih
    Action State Group, Inc.
@@ -2607,26 +2629,4 @@ Internet-Draft      Agent Accountability Composition         August 2026
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Mih, et al.             Expires 10 February 2027               [Page 47]
+Mih, et al.              Expires 9 February 2027               [Page 47]

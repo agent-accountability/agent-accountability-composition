@@ -33,6 +33,33 @@ author:
 normative:
   RFC2119:
   RFC8174:
+  I-D.schrock-caid:
+    title: "Canonical Action Identifier"
+    author:
+      name: Iman Schrock
+      org: EMILIA Protocol, Inc.
+    date: 2026
+    seriesinfo:
+      Internet-Draft: draft-schrock-canonical-action-identifier-02
+    target: https://datatracker.ietf.org/doc/draft-schrock-canonical-action-identifier/
+  I-D.schrock-aec:
+    title: "EP Authorization Evidence Chain"
+    author:
+      name: Iman Schrock
+      org: EMILIA Protocol, Inc.
+    date: 2026
+    seriesinfo:
+      Internet-Draft: draft-schrock-ep-authorization-evidence-chain-05
+    target: https://datatracker.ietf.org/doc/draft-schrock-ep-authorization-evidence-chain/
+  I-D.schrock-aeb:
+    title: "Action Evidence Boundary"
+    author:
+      name: Iman Schrock
+      org: EMILIA Protocol, Inc.
+    date: 2026
+    seriesinfo:
+      Internet-Draft: draft-schrock-action-evidence-boundary-03
+    target: https://datatracker.ietf.org/doc/draft-schrock-action-evidence-boundary/
 informative:
   RFC9943:
   RFC9334:
@@ -1307,10 +1334,12 @@ The cross-slot mechanism in this section was contributed by Iman Schrock (EMILIA
 Protocol, Inc.). Its first runnable pack — one positive four-slot vector, thirteen
 negative cases, and thirteen condition-removed controls, with manifests, checksums,
 an executable runner, and an external-report template — is published in the EMILIA
-Protocol repository (pull request 521, commit 30916c80). Per the freeze rule below,
-that pack is a candidate, not a frozen result, until a second implementation
-maintained by a different party consumes the same published bytes and returns the
-completed external report.
+Protocol repository (pull request 521, commit 30916c80). That manifest pins
+Composition **-00**; it was not built against this **-01** revision, and an
+-01-pinned manifest is future work, out of scope here. Per the freeze rule
+below, the pack is a candidate, not a frozen result, until a second
+implementation maintained by a different party consumes the same published
+bytes and returns the completed external report.
 
 ### Boundary
 
@@ -1323,6 +1352,19 @@ weakening, relabeling, or overwriting them.
 A run reports the CAN, WHO, WHAT, and AUDIT results separately, followed by
 each cross-slot check. It never collapses those results into one opaque
 `trusted`, `authorized`, `executed`, or `verified` boolean.
+
+CAID, AEC, and AEB each have one normative home, independently maintained by
+Iman Schrock (EMILIA Protocol, Inc.):
+
+| Mechanism | Normative home | Scope |
+|---|---|---|
+| CAID | {{I-D.schrock-caid}} | The exact material-action identifier and declared digest context |
+| AEC | {{I-D.schrock-aec}} | Native evidence preservation and relying-party requirement satisfaction |
+| AEB | {{I-D.schrock-aeb}} | Executor-side local authorization, atomic reserve/consume, invocation, and post-dispatch outcome handling |
+
+Composition consumes each mechanism's named outputs at the interfaces below.
+It does not replace or inherit CAID, AEC, or AEB; those mechanisms remain
+independently maintained by their own documents, not by this one.
 
 CAID, AEC, and AEB enter at distinct interfaces rather than becoming new slot
 definitions:
@@ -1466,8 +1508,9 @@ them.
 What this document adds is the piece those leave open: the composition of independently-verifiable
 profiles by a shared action-digest, a shared conformance-vector suite, and the anchored,
 third-party-verifiable assurance tier (see Assurance Tiers). It defines no new signing, transport, or
-transparency mechanism. Specific documents will be cited normatively and informatively in a later
-revision.
+transparency mechanism; the specific documents for that discipline are cited normatively and
+informatively throughout (see, e.g., Cross-Slot Conformance Mechanism for the CAID, AEC, and AEB
+references).
 
 # Security Considerations
 
