@@ -19,13 +19,13 @@ author:
     country: Japan
     email: tomsato@myauberge.jp
  -
-    name: Songbo Bu
-    org: Independent
-    email: bluedognull@gmail.com
- -
     name: Iman Schrock
     org: EMILIA Protocol, Inc.
     email: team@emiliaprotocol.ai
+ -
+    name: Songbo Bu
+    org: Independent
+    email: bluedognull@gmail.com
  -
     name: Anton Sokolov
     org: Tyche Institute
