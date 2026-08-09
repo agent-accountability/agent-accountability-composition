@@ -26,7 +26,13 @@ author:
     name: Iman Schrock
     org: EMILIA Protocol, Inc.
     email: team@emiliaprotocol.ai
+ -
+    name: Anton Sokolov
+    org: Tyche Institute
+    email: anton.sokolov@tyche.institute
 normative:
+  RFC2119:
+  RFC8174:
 informative:
   RFC9943:
   RFC9334:
@@ -37,6 +43,8 @@ informative:
   I-D.schrock-human-authorization-binding:
   I-D.schrock-ep-authorization-receipts:
   I-D.mih-scitt-agent-action-capsule:
+  I-D.mih-sokolov-scitt-payload-binding:
+  I-D.mih-agent-bilateral-attestation:
   I-D.bu-agentproto-security-principal-binding-03:
     title: "Security Principal Binding for Agent Protocols"
     author:
@@ -46,6 +54,7 @@ informative:
   I-D.lee-orprg-permit-receipts:
   I-D.sokolov-rats-aep-composition:
   RFC8785:
+  RFC8792:
   RFC9901:
   I-D.ietf-oauth-sd-jwt-vc-17:
   OpenID4VP:
@@ -118,8 +127,103 @@ authorization and trust decisions that rely on it.
 
 ## Terminology
 
-Slot; profile; composition vector; profile-tagged digest; trust root. [Define in a
-later revision; align with the constituent-profile terminology.]
+The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD",
+"SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and "OPTIONAL" in this
+document are to be interpreted as described in BCP 14 {{RFC2119}} {{RFC8174}}
+when, and only when, they appear in all capitals, as shown here.
+
+- **Slot**: one of the interchangeable questions (CAN, WHO, WHAT, AUDIT, and
+  any later extension) that a conforming profile answers about an action (see
+  Overview: Questions and Composition).
+- **Profile**: a concrete, independently verifiable specification that fills
+  one slot. Any conforming profile may fill a slot; the profiles cited in this
+  document are the first instances, not the definition of the slot.
+- **Composition vector**: the shared positive test vector — one action's
+  exact, frozen input bytes threaded through each populated slot — against
+  which conformance is tested (see Conformance).
+- **Profile-tagged authority-reference digest**: a digest, tagged with its
+  owning profile's label, that commits to the native evidence object or
+  statement supporting a slot's assertion (see Three Digest Roles).
+- **Trust root**: the entity or key material a verifier is configured to
+  accept as the anchor for validating a profile's evidence. Composition is by
+  shared digest, not containment: no profile is a required trust root for
+  another.
+
+# Problem Statement and Regulatory Mapping
+
+An agent acts across a trust boundary. Some time later, someone who trusts neither the
+agent nor its operator needs to answer a simple question: was this action authorized,
+and can that be shown without taking the operator's word for it. Knowing who an agent
+is, and confirming it had permission to act, doesn't tell you what it actually did.
+That's the gap: identity answers who, authorization answers may — but nothing confirms
+whether the action taken matches what was permitted, and nothing records it.
+
+This has stopped being a someday problem. Under the AI Omnibus amendment, the EU AI
+Act's Article 12 record-keeping and automatic-logging obligations for high-risk systems
+apply from December 2, 2027, and the rules governing AI embedded in regulated products
+apply from August 2, 2028. NIST's AI Agent Standards Initiative and Singapore's IMDA
+agentic-AI guidance are moving in the same direction independently. None of these
+converge on a specific format — that convergence is cited here as demand, not as a
+compliance claim this document makes on anyone's behalf — but the direction is
+consistent: regulators are going to ask deployers of agentic systems to produce records
+an outside party can check, not records the operator merely asserts.
+
+No existing layer answers this alone, and it's worth being precise about why, since
+each addresses a real and different concern. Runtime monitoring detects anomalous
+behavior as it happens — valuable, but it produces observability data, not verifiable
+evidence a skeptical third party can check independently after the fact. The individual
+identity and attestation work underway in WIMSE, RATS, and SCITT each answers a real
+piece of the picture — whose workload this is, what posture a runtime attests to, how a
+statement gets anchored — but none of them, alone or informally combined, answers the
+specific question a regulator or counterparty actually asks: was this exact action
+authorized, by whom, and is the record of what happened tamper-evident. That
+composition is the gap this work fills.
+
+Four questions decompose that gap into independently answerable, independently
+verifiable parts:
+
+- CAN — was the agent permitted to act?
+- WHO — which accountable human authorized this exact action, as distinct from which
+  agent carried it out?
+- WHAT — what did the agent actually do — a byte-stable serialization of the observed
+  action record, not a replay of the action, sufficient to judge the outcome?
+- AUDIT — did the runtime enforce correctly, in causal order, tamper-evidently?
+
+Each question is answerable by an independently-verifiable profile, and a verifier
+holding only one profile can verify it without trusting any other profile's producer.
+This document does not define new record types to carry those answers. It composes
+within the existing audit architecture — {{I-D.kuehlewind-audit-architecture}} and the
+record types it defines — rather than proposing a second architecture above it. Where
+the four questions as stated here and that architecture's record types conflict, the
+architecture governs; this section, and this draft, are written to be reconciled
+against it, not around it.
+
+An answer to any of these four questions is only useful to an outside party — someone
+who trusts neither the agent nor its operator — once it's registered: filed with a
+SCITT transparency service under a public policy, so anyone can independently confirm
+the filing happened without having to trust the agent or the operator's word for it.
+This matters specifically because the actors being audited are not static. Persistent
+memory makes agent behavior path-dependent, and agents rewrite their own scaffolding
+and spawn sub-agents — the system acting at step N is not necessarily the one that
+would be reviewed at step 0. A registered record, once anchored, stays tamper-evident
+and datable to its registration even as the actor that produced it changes underneath
+it. Self-attested records remain valid and useful as a baseline; registration is what
+makes the stronger claim reachable and testable, for any conforming profile, without
+mandating a particular format.
+
+Two limits matter here, stated plainly. First, a registered record only proves a
+signed claim existed at a given time — it doesn't prove the claim is true. Second,
+registration stops someone from tampering with a record after it's filed, but it
+doesn't guarantee every action that should have been recorded actually was, and it
+doesn't rule out a second, contradictory record existing somewhere else. Making sure
+nothing was left out is a separate problem — one for disclosure rules and monitoring,
+not something a transparency service can solve on its own, and not something claimed
+here.
+
+In short: this section explains why four separate questions are needed, and what
+registering an answer to one of them actually gives a skeptical outside verifier. How
+the profiles technically link together — the shared digest, how it's calculated — is
+resolved in the sections that follow.
 
 # Overview: Questions and Composition
 
@@ -222,7 +326,8 @@ mapping. The AAC Class-1 repository was independently replayed at commit
 byte-agreement result is claimed. Status: framework mapping reviewed; AAC reference
 suite independently replayed.
 
-[Additional cross-profile review entries in later revision.]
+Additional cross-profile review entries may be added in a later revision as
+other constituent-profile authors complete their own framework reviews.
 
 ## Worked Profile Illustration
 
@@ -301,14 +406,15 @@ prove what action occurred (WHAT), or prove that the runtime enforced correctly
 description equals the real-world effect; that binding remains an obligation of
 the relying party that performs the effect.
 
-The first-instance profile is MachineMandate: a holder-bound, short-lived
-authorization credential whose signed claims identify an agent subject, declare
-a credential type and bounded scope, and commit to a profile-defined action
-projection. The selected composition profile separately pins the credential
-format and profile version; the frozen MachineMandate `vct` string shown below
-is not itself versioned. A presentation can use SD-JWT VC and OpenID for
-Verifiable Presentations (OpenID4VP), including verifier-provided nonce and
-audience values. A relying party verifies the native credential and
+The first-instance profile is MachineMandate ({{MACHINE-MANDATE}}): a
+holder-bound, short-lived authorization credential whose signed claims
+identify an agent subject, declare a credential type and bounded scope, and
+commit to a profile-defined action projection. The selected composition
+profile separately pins the credential format and profile version; the frozen
+MachineMandate `vct` string shown below is not itself versioned. A
+presentation can use SD-JWT VC ({{I-D.ietf-oauth-sd-jwt-vc-17}}) and OpenID
+for Verifiable Presentations ({{OpenID4VP}}), including verifier-provided
+nonce and audience values. A relying party verifies the native credential and
 presentation, appraises the issuer under its authorization policy, recomputes
 the action commitment, and evaluates each declared scope dimension before
 returning ALLOW or DENY.
@@ -434,6 +540,8 @@ or cryptographically verify the CAN credential.
 
 ### Frozen IETF 126 Illustration
 
+NOTE: '\' line wrapping per {{RFC8792}}.
+
 One frozen, pre-execution MachineMandate vector uses the credential type:
 
     https://vocab.tyche.institute/vct/machine-mandate
@@ -456,12 +564,14 @@ presentation evidence.
 
 The action-commitment profile in that vector covers the 91 UTF-8 bytes of:
 
-    {"action_id":"pay-invoice/acme-corp","outcome":"eur:250:acme-corp:vienna-interop-2026-001"}
+    {"action_id":"pay-invoice/acme-corp","outcome":"eur:250:acm\
+    e-corp:vienna-interop-2026-001"}
 
 
 and carries the textual commitment:
 
-    sha256:a89fbd2bd6f95cdb1ec27b6c7253770ff2a22220937cf065f6e45ef67b37e299
+    sha256:a89fbd2bd6f95cdb1ec27b6c7253770f\
+    f2a22220937cf065f6e45ef67b37e299
 
 
 The profile declares `scope.allowed_actions`,
@@ -680,13 +790,354 @@ stale receipt; a post-hoc ratification presented as pre-execution authorization;
 reusable authorization presented under one-time semantics, or a one-time
 authorization presented as reusable; and WHO digest bytes that do not match an
 adjacent slot's digest for the same claimed action under compatible digest contexts
-(per the binding rules of the Composition Model, to be imported). [The WHO
-positive-vector classes are imported with the conformance suite in a later
-revision.]
+(per the binding rules of the Composition Model). The WHO slot's positive-vector
+classes are drawn from the shared composition vector (see Conformance); this
+document defines no WHO-specific positive vectors beyond that shared suite.
+
+For the ordering class — a post-hoc ratification presented as pre-execution
+authorization — the criterion for what closes the class is narrower than
+authentication. An ordering claim has two terms; an input closes it only if it comes
+from a source that observed both terms, or from two records whose producing boundaries
+can be related in a way that orders the two terms. An artifact produced on the
+authorizing side alone — however strongly authenticated — cannot close the class,
+because the boundary that produced it never observed the effect term. A signature
+timestamp from a trusted authority is the illustrating case: it is an authenticated
+ordering input for the signature, and still insufficient, because it observes the
+signature and not the effect. The exclusion therefore rules out a side, not an
+artifact type.
 
 ## The WHAT Slot
 
-[Profile text to be contributed by the slot's owners.]
+### Design Rule
+
+The WHAT slot answers one question: what terminal verdict did the agent system
+record for one action, and what, if anything, is known to have crossed the effect
+boundary. It is a byte-stable record of an observed outcome, not a replay of the
+action and not a re-execution of it. It does not establish that the action was
+permitted (CAN), that a named human authorized it (WHO), that an independent
+platform or observer verified the effect (AUDIT), or that the action was
+semantically correct. Two separations carry the whole slot: **a dispatched attempt
+MUST NOT be presented as a confirmed effect**, and **a record of an action MUST NOT
+be presented as an observation of its consequence**.
+
+A conforming producer emits a WHAT record for every terminal verdict, including
+blocks, denials, refusals, errors, timeouts, and other non-executing outcomes.
+Recording only successful actions is not a conforming WHAT history. Completeness of
+the history is a property of the producing boundary, not of any single record, and
+no WHAT record asserts it.
+
+The first-instance WHAT profile is the Agent Action Capsule
+({{I-D.mih-scitt-agent-action-capsule}}): the signed payload of a SCITT Signed
+Statement recording one action, its verdict-level disposition, its effect state, and
+the assurance actually supported by the record. Any record form meeting the producer
+and verifier requirements below conforms.
+
+### Subject, Native-Record, and Additional Bindings
+
+A WHAT record carries a **binding** for each construction under which it
+participates in the composition. A binding is the triple
+
+`(canonicalization algorithm, exclusion set, purpose label) -> digest`
+
+together with the complete digest context required by the Composition Model. The
+generic construction and its registry treatment are specified in
+{{I-D.mih-sokolov-scitt-payload-binding}}; this section states what a WHAT profile
+does with it. Every binding a record carries MUST lie inside the signed payload and
+be covered by the signature. A binding carried only in an unprotected header is not
+a binding.
+
+Three binding roles are distinguished, and a record MAY carry more than one binding
+in the third role.
+
+**The subject binding.** The subject digest joins independently produced slot
+records for the same action. In the exercised AAC composition profile it is the
+unprefixed lowercase hexadecimal representation of
+
+`SHA-256(JCS(action))`
+
+where `action` is the exact action object frozen by the composition vector and JCS
+is {{RFC8785}}. The profile label, covered action field set, canonicalization
+profile, hash algorithm, absence of additional domain-separation bytes, and
+lowercase-hexadecimal representation are all part of the digest context. A producer
+MUST NOT substitute `sha256:`-prefixed text, raw digest bytes, a different action
+projection, or a human-readable rendering for that value.
+
+**The native-record binding.** The WHAT record is content-addressed by its own
+identifier — in AAC, `capsule_id`, recomputed under the Capsule profile's
+JSON-DIGEST construction. The subject digest and the native-record identifier serve
+different roles: the first joins slots, the second identifies these bytes. **Equality
+between them is neither required nor implied**, and a verifier MUST NOT derive one
+from the other.
+
+**Additional composition bindings — the self-reference.** A WHAT profile MAY declare
+one or more further bindings over the same action under different constructions, so
+that a single record can participate in more than one join without either side
+re-canonicalizing the other's bytes. Each additional binding MUST carry its own
+complete digest context and its own purpose label. **A verifier MUST NOT infer
+equality, derivation, or transitive coverage between any two bindings on the same
+record merely because they cover the same action, share a hash algorithm, or appear
+in the same signed payload.** Two bindings on one record are two independent claims
+that happen to be co-signed.
+
+Purpose labels are profile-owned and namespaced; only labels used across profile
+boundaries are registered centrally. A verifier that encounters an unknown purpose
+label MUST report the binding as present and uninterpreted and MUST NOT fail the
+record on that ground. Verified-but-opaque is a result; unknown is not an error.
+
+The first defined additional binding is the **action-equivalence binding**, whose
+purpose is to answer "is this the same action" across producers and across time
+without requiring either party to disclose the action. It is computed over a
+declared action subset with its own exclusion set, and it MAY use a deterministic
+keyed derivation identified by an algorithm identifier and a key identifier, so that
+equal inputs yield equal digests within a key scope and unguessable digests outside
+it. Key management is out of scope; only the algorithm and key identifiers appear in
+the record.
+
+This construction MUST NOT be confused with the salted per-field commitments used
+for selective disclosure. Salted commitments use fresh random salt per value and
+therefore destroy equality by design, which is what makes concealment safe. A keyed
+equivalence derivation preserves equality within a scope by design. The two
+mechanisms have opposite purposes and MUST NOT share vocabulary in a profile's text
+or field names.
+
+A record MAY carry more than one equivalence binding under different purpose labels
+and key scopes — for example one scoped to a single producing operator and one
+scoped to a party pair. A single equivalence digest MUST NOT be presented as valid
+in more than one key scope.
+
+**Signature-protected preimages.** Where the bytes a binding covers are already
+fixed by a signature, the canonicalization is that signature's own byte boundary and
+re-canonicalizing is an error. A profile taking this option MUST identify the covered
+octets by citing a normative reference together with the name that referenced
+specification gives that exact byte sequence. If the container specification does not
+itself name the byte sequence, the profile MUST NOT rely on transmitted octets and
+MUST declare a canonicalization instead.
+
+**Reproducibility bounds.** A profile whose canonicalization admits numbers MUST
+state its integer magnitude bound. A canonicalization that permits integers outside
+the range representable exactly by an ECMAScript Number is not reproducible: two
+conforming verifiers may derive different digests from the same input. The exercised
+AAC profile rejects integers outside plus or minus (2^53 - 1) with a typed error and
+orders object members by UTF-16 code unit. A profile MUST also state its digest
+grammar in prose — for example, "exactly 64 characters, each in the set 0-9 and a-f"
+— and MUST NOT state it only as a regular expression. A grammar whose meaning depends
+on the reader's regular-expression engine is not a grammar.
+
+### Declared Field Basis
+
+A digest is comparable only with its digest context. **A field value is comparable
+only with its declared basis.** Any field a WHAT record exposes at the composition
+join, or that participates in a comparison, reconciliation, or aggregation across
+producers, MUST carry the basis under which its value is stated. This requirement is
+independent of the digest rules above and is not satisfied by them.
+
+At minimum:
+
+- A **quantity** MUST declare its unit of measure, from a named and versioned unit
+  vocabulary, and MUST NOT rely on a unit implied by a field name.
+- A **monetary amount** MUST declare its currency, whether the amount is stated gross
+  or net, the tax basis if any, and the rounding rule and precision applied.
+- A **time instant** MUST declare which event the instant marks — for example
+  request, dispatch, observation, or record creation — together with the time source
+  and the scale and offset. An instant with no declared referent marks nothing.
+- A **rate or ratio** MUST declare the basis of both its numerator and its
+  denominator.
+- A **coded or enumerated value** MUST declare the code list and its version.
+
+A field presented without its declared basis is not joinable. A verifier MUST report
+it as uncomparable and MUST NOT supply a local default, infer a basis from a field
+name, or convert between bases on the record's behalf. Silent unit and basis
+coercion is the failure mode this rule exists to make impossible, and it is the one
+most likely to survive every cryptographic check in this document.
+
+Where two profiles genuinely state the same quantity on different bases, they compose
+through an explicitly declared and digest-pinned mapping cited by both records, not
+through a verifier's local conversion.
+
+This document states the obligation; it does not define the vocabularies. A basis
+vocabulary — a unit list, a currency and rounding convention, a code list, or a
+declared mapping between two bases — is registered and versioned under
+{{I-D.mih-sokolov-scitt-payload-binding}}, authored by the party that owns it, on the
+same terms as any other registered artifact. A profile cites the vocabularies it uses
+rather than restating them. The division is deliberate and neither document repeats
+the other: **that a joined field must declare its basis is a composition rule; how a
+basis vocabulary is declared, versioned, and cited is registry machinery.** A profile
+that cites no vocabulary for a basis it claims to declare has not declared one.
+
+### Producer Requirements
+
+A conforming WHAT producer MUST:
+
+- identify the profile and serialization-suite versions in use;
+- identify the action, the accountable operator, the agent developer and version, the
+  timestamp with its declared referent and source, and the configuration epoch when
+  one is used;
+- carry a stable per-agent-instance identifier, distinct from the operator, the
+  developer, and the configuration epoch, on every record; where fleet composition is
+  sensitive this identifier is eligible for selective disclosure, and it is
+  informational to a composition verifier;
+- identify the tool or endpoint invoked and its version, so that a silent change in
+  a tool's behavior is reconstructable after the fact;
+- carry the subject binding and its complete digest context, and each additional
+  binding with its own context and purpose label;
+- name the **counterparty** the action was directed at — its class (agent, API,
+  human, or none), its identity, and the cross-party rung actually attained — and
+  carry the field even when the exchange was unilateral. The counterparty field is
+  informational to a composition verifier and eligible for selective disclosure; it
+  MUST NOT become a verifier-required field, because a profile MUST NOT permit
+  concealment of a field its own verifier requires;
+- carry the cross-party correlator over the request, where one exists, so that two
+  parties' records for one exchange can be related without either disclosing the
+  action;
+- record the disposition — the decision, the approver class, the human-disposition
+  value, and the verdict class — and carry any approval-scope declaration as a
+  digest, leaving evaluation of that scope above the composition layer;
+- record the effect status and the effect-assurance mode without collapsing either
+  into the verdict class;
+- emit a confirmed effect only when a response digest over the actually observed
+  response is present. **Where no response bytes were observed, the record MUST NOT
+  rise above dispatched-unconfirmed, whatever the runtime believes happened**;
+- distinguish a pre-dispatch timeout from a post-dispatch timeout through the effect
+  mode — not-applicable versus dispatched-unconfirmed — rather than through the
+  verdict;
+- carry an effect attestation whenever an effect was dispatched, and omit it when no
+  effect occurred;
+- state, for each field it exposes, whether that field is verifier-checked or
+  informational, so that an implementer never has to guess which of the two a field
+  is; and
+- preserve later resolution of an unresolved outcome as a new signed, linked record
+  rather than by mutating the original.
+
+Where a WHAT record cross-references a record in an adjacent slot, the signed payload
+MUST cover the adjacent profile's label, the referenced record's identifier, and a
+digest of the exact referenced bytes. That protected cross-reference demonstrates
+which record this one names. It does not import the adjacent slot's semantics and
+does not make a WHAT verifier a verifier of that slot.
+
+Profile-specific fields outside this document's vocabulary MUST be carried in a
+namespaced extension space rather than at the top level of the record, so that two
+independent extensions cannot collide and neither can be mistaken for core.
+
+### Verifier Requirements
+
+A conforming WHAT verifier MUST report separately:
+
+- whether the record's signature validates under the selected trust input;
+- whether the native-record identifier recomputes from the canonical record form;
+- whether the subject digest recomputes from the frozen action under the declared
+  digest context;
+- whether the signed record carries that same subject digest;
+- for each additional binding: whether it recomputes where the verifier holds the
+  inputs, and — where it does not — that the binding is present and unverified, which
+  is a distinct result from present and failed;
+- whether every joined field carries a declared basis, and which fields did not;
+- whether the confirmed-effect, verdict-and-effect, effect-attestation, and record-chain
+  invariants hold;
+- the record's native first-class verification result;
+- any manifest-dependent secondary result, without allowing it to weaken or overwrite
+  the first-class result; and
+- the relying party's acceptance result together with the policy inputs that produced
+  it.
+
+These results MUST NOT be collapsed into a single opaque `executed`, `verified`, or
+`accepted` boolean. A valid record proves that the signer made the bound WHAT
+statement. A runtime-claimed effect remains a runtime claim; it does not become an
+independent observation because the record is signed, registered, or anchored.
+
+A verifier MUST distinguish three terminal outcomes when comparing this record against
+a counterparty record for the same action: **reconciled**, where the compared fields
+agree under compatible declared bases; **divergent**, where they disagree, with the
+divergence located to a named field and quantified; and **indeterminate**, where no
+declared mapping between the two bases exists. Divergence is a reportable result
+carrying both parties' evidence, not a verification failure, and MUST NOT be rendered
+as one. An unresolvable linkage is indeterminate, not divergent.
+
+Where a verifier cannot evaluate a check at all — because an input is absent, a
+profile is unknown, or a key scope is unavailable — it MUST report that check as
+indeterminate rather than as passed or failed.
+
+### Cross-Party Rungs
+
+Where a WHAT record names a counterparty, it MUST state the rung actually attained,
+drawn from an ordered vocabulary in which no rung is confusable with another and no
+rung is inferred from the absence of evidence for a higher one.
+
+**This document does not define that vocabulary.** The rung names are established by the
+bilateral attestation work {{I-D.mih-agent-bilateral-attestation}}; a WHAT profile cites
+them rather than restating them, and a profile that cites no vocabulary has not declared
+a rung. What this document states is the structural discipline any such vocabulary must
+satisfy, which holds whatever names are chosen: the rungs are ordered; a consumer MAY
+require a minimum; a record claiming a higher rung than its carried evidence supports is
+an overclaim and MUST fail; and an unknown rung value grades down to the lowest rung and
+never up, so that a verifier which does not recognize a rung under-reads the record
+rather than over-trusting it.
+
+### Composition and Transparency Seams
+
+At the composition join, a WHAT profile exposes: the profile label and version; the
+subject digest with its complete digest context; each additional binding with its
+purpose label and context; the native-record identifier and its context; the
+disposition and verdict class; the effect status, effect mode, and effect-attestation
+grade; the counterparty class and attained rung, subject to selective disclosure; the
+declared basis for every exposed field; the native and secondary verification results;
+any protected cross-reference to adjacent slot evidence; and the relying party's final
+WHAT result with its policy inputs.
+
+If the record is registered with a SCITT Transparency Service, the receipt supplies the
+separate receipt-payload digest. The receipt proves registration of the submitted
+statement under the service policy. It does not prove that the record is complete, that
+its effect claim is true, that an authorization existed, or that the relying party
+should accept the action.
+
+### Negative Vectors
+
+In addition to the composition-level negative classes, a WHAT profile MUST include
+vectors for at least:
+
+- a subject digest recomputed from different action bytes;
+- a record whose signed subject digest differs from the composition digest;
+- a native-record identifier that does not recompute;
+- an additional binding whose purpose label is present but whose context is absent;
+- two bindings on one record treated by the verifier as equal, derived, or transitively
+  covering, without demonstration;
+- an equivalence digest presented as valid in a second key scope;
+- an equivalence digest colliding across genuinely different actions, and failing to
+  match across genuinely identical ones;
+- a joined field carrying a value with no declared basis;
+- two records compared across incompatible bases and reported as reconciled;
+- a divergence rendered as a verification failure, or an unresolvable linkage rendered
+  as a divergence;
+- a changed disposition or effect after signing;
+- a confirmed effect without a response digest over the observed response;
+- a non-dispatching verdict paired with a dispatched or confirmed effect;
+- a post-dispatch timeout presented as not-applicable;
+- a missing effect attestation when dispatch occurred, or an effect attestation present
+  when no effect occurred;
+- a broken or ambiguous supersession chain;
+- a counterparty rung claimed above the evidence carried — in particular full-bilateral
+  claimed with one signature;
+- an absent counterparty field on a directed action;
+- a protected cross-reference bound to different adjacent-slot bytes;
+- a transparency receipt bound to a different signed statement;
+- an integer outside the profile's stated magnitude bound admitted into a digest field;
+  and
+- an unknown registry value treated either as a stronger assurance grade or as an
+  automatic verification failure.
+
+Every negative vector ships with its condition-removed mutant, so that a check which
+silently stopped running is distinguishable from a check that passed.
+
+### Current Assurance Boundary
+
+The exercised first-instance vectors verify the WHAT record and the composition join.
+They do not establish that every consequential action was recorded, that a
+runtime-claimed effect occurred in the external world, or that an independent observer
+corroborated the result. An independent meter, auditor, or other observer supplies a
+separate signed claim over the same subject digest at the composition layer; it is not
+silently promoted into the WHAT record.
+
+The first-instance WHAT profile and its text are maintained by Steven Mih, Action State
+Group, as the Agent Action Capsule author.
 
 ## The AUDIT Slot
 
@@ -850,11 +1301,157 @@ A conformance vector freezes only after it has been recomputed by at least two
 independent implementations. This document specifies no implementation; each slot is
 implemented independently, and any party may verify against the vectors.
 
+## Cross-Slot Conformance Mechanism
+
+The cross-slot mechanism in this section was contributed by Iman Schrock (EMILIA
+Protocol, Inc.). Its first runnable pack — one positive four-slot vector, thirteen
+negative cases, and thirteen condition-removed controls, with manifests, checksums,
+an executable runner, and an external-report template — is published in the EMILIA
+Protocol repository (pull request 521, commit 30916c80). Per the freeze rule below,
+that pack is a candidate, not a frozen result, until a second implementation
+maintained by a different party consumes the same published bytes and returns the
+completed external report.
+
+### Boundary
+
+The mechanism tests whether an implementation preserves the declared
+boundaries and joins of the Composition Model. It does not define native
+conformance for CAN, WHO, WHAT, or AUDIT. Each slot owner maintains the rules
+and vectors for that slot. Composition imports the native reports without
+weakening, relabeling, or overwriting them.
+
+A run reports the CAN, WHO, WHAT, and AUDIT results separately, followed by
+each cross-slot check. It never collapses those results into one opaque
+`trusted`, `authorized`, `executed`, or `verified` boolean.
+
+CAID, AEC, and AEB enter at distinct interfaces rather than becoming new slot
+definitions:
+
+- CAID supplies the declared exact-action digest context.
+- AEC preserves native evidence verification and reports whether a named
+  relying-party requirement is satisfied.
+- AEB remains the executor-side authorization, reserve/consume, invocation,
+  and post-dispatch uncertainty lifecycle.
+- Agent Action Capsule supplies a candidate WHAT record under its own native
+  Class 1 and Class 2 conformance rules.
+
+The cross-slot mechanism tests those interfaces. It does not replace their
+specifications or move enforcement into an evidence record.
+
+### Bundle requirements
+
+Every bundle pins:
+
+1. the Composition revision and digest;
+2. each populated slot's profile and serialization-suite revision;
+3. the exact action bytes and complete digest context;
+4. every native record as bytes, with its native identifier and digest;
+5. each additional binding, purpose, context, and verification expectation;
+6. every protected cross-reference and the exact referenced bytes;
+7. each compared field's declared basis and any pinned mapping;
+8. the expected result of every native and join check; and
+9. the expected terminal composition report.
+
+A runner evaluates the supplied bytes. It does not substitute a reconstructed
+fixture, upgrade an unknown profile, or infer an absent mapping, field basis,
+purpose label, or digest representation.
+
+### Result vocabulary
+
+Every named check returns exactly one of:
+
+- `pass` — evaluated and the condition held;
+- `fail` — evaluated and the condition did not hold;
+- `not_evaluated` — a prerequisite failed or the check was not attempted;
+- `unsupported` — the pinned required profile or semantics are not
+  implemented; or
+- `indeterminate` — the records are readable, but the comparison cannot be
+  resolved from the declared inputs.
+
+Only `pass` is a pass. The other four values are never silently upgraded. A
+rejected prerequisite does not turn unexecuted downstream checks into extra
+failures.
+
+An unknown optional binding may remain structurally readable. It cannot
+satisfy a policy that requires understood semantics for that binding.
+
+### Run report
+
+A report contains:
+
+- implementation owner, name, version, and source revision;
+- bundle and input-artifact digests;
+- each native slot result unchanged;
+- each native slot and join's expected and actual result;
+- divergence located to a named field, including both values and bases;
+- the terminal composition result;
+- deterministic report digest computed over the report with the
+  `report_digest` member omitted; and
+- known shared dependencies that limit independence.
+
+Matching a bundle proves conformance only to those pinned vectors. It does not
+certify an agent, prove every action was recorded, establish an external
+effect, or replace a relying party's policy decision.
+
+### Positive, negative, and condition-removed vectors
+
+The first pack contains one positive four-slot vector and the following
+negative cases. Every negative has a condition-removed twin that changes only
+the tested defect and returns to `pass`.
+
+| ID | Changed condition | Required result |
+|---|---|---|
+| `COMP-BIND-01` | Different action bytes retain the positive digest | `fail` |
+| `COMP-BIND-02` | Incompatible digest context or action projection | `indeterminate` |
+| `COMP-BIND-03` | Raw bytes and lowercase hexadecimal are confused | `fail` |
+| `COMP-BIND-04` | Protected reference names different slot bytes | `fail` |
+| `COMP-BIND-05` | Additional binding omits its context | `fail` |
+| `COMP-BIND-06` | Unknown optional semantics are required by policy | `unsupported`, binding remains readable |
+| `COMP-BASIS-01` | Compared field lacks a declared basis | `indeterminate` |
+| `COMP-BASIS-02` | Incompatible bases lack a pinned mapping | `indeterminate` |
+| `COMP-RESULT-01` | Native and join results are collapsed | `fail` |
+| `COMP-RESULT-02` | Composition overwrites a native result | `fail` |
+| `COMP-JOIN-01` | Valid records identify different actions | `fail` |
+| `COMP-JOIN-02` | `not_evaluated` is relabeled as verifier failure | `fail` |
+| `COMP-UNKNOWN-01` | Unknown required profile is treated as accepted | `unsupported` |
+
+The runnable pack therefore contains 27 cases: one positive, thirteen
+negatives, and thirteen condition-removed controls.
+
+### Freeze rule
+
+A vector freezes only after two implementations maintained by different
+parties consume the same published bytes and produce reports matching every
+pinned expectation. Sharing a library, generated fixture, or expected-output
+file does not establish independent recomputation unless that dependency is
+the declared object under test.
+
+Changing an input byte, profile pin, expectation, canonicalization rule, or
+mapping creates a new bundle and restarts the independent-run requirement.
+
+### Delivered and open
+
+EMILIA delivers:
+
+- the mechanism in this document;
+- the manifest and exact four-slot input bytes;
+- the 27-case bundle and executable runner;
+- the EMILIA report and checksums; and
+- an external-report template for the second implementation.
+
+The pack is a candidate, not a frozen independent result. The remaining step
+is an external implementation run over the same bytes. Capsule Class 2 remains
+native to the Capsule implementation and requires its producer manifest and
+bound private evidence; the cross-slot harness does not manufacture those
+inputs.
+
 # Extension Points
 
 Additional question-slots compose by the same digest discipline. Belief-provenance
-("why the agent believed what it acted on") is a named extension socket. [Others as
-identified.]
+("why the agent believed what it acted on") is a named extension socket. Other
+extension slots may be named as later documents identify a further
+independently-verifiable question that composes by the same shared-digest
+discipline; naming one here is not a commitment to define it in this document.
 
 # Relationship to Existing Work
 
@@ -878,7 +1475,18 @@ The security properties are those of the composed profiles plus the binding
 rules here; no single layer suffices. The agent is not trusted. Distributed trust
 roots mean no single verifier or transparency service is assumed sufficient. This
 document does not address an adversarial party that refuses to record at its own
-boundary, nor collusion across all roles, nor model alignment. [Expand.]
+boundary, nor collusion across all roles, nor model alignment.
+
+Key management, trust-anchor distribution, and revocation are each constituent
+profile's responsibility and are out of scope here; this document only
+requires that a profile state which trust inputs a verifier needs and report
+when they are unresolved (see, e.g., each slot's own Verifier Requirements). A
+verifier MUST NOT treat digests computed under different digest contexts (see
+Digest Context and Representation) as equivalent absent a stated mapping
+between them; doing so is a composition-layer vulnerability, not a supported
+interoperability path. Each slot's own Negative Vectors and Current Assurance
+Boundary subsections state further slot-specific threats and non-goals not
+restated here.
 
 # Privacy Considerations
 
@@ -889,16 +1497,31 @@ controls. The shared join digest enables cross-slot correlation; pairwise or
 encrypted correlation identifiers SHOULD be available where correlation is not
 required. Producer context admitted to any WHAT-leg record follows the capsule
 data-admission floor defined in the Privacy Considerations of
-{{I-D.mih-scitt-agent-action-capsule}}. [Expand.]
+{{I-D.mih-scitt-agent-action-capsule}}.
+
+This document does not itself define a data-minimization or retention policy;
+each constituent profile states its own admitted fields and any
+selective-disclosure mechanism it supports. A relying party or transparency
+service operator remains subject to applicable data-protection law for any
+personal data a record carries, regardless of the assurance tier at which the
+record was produced.
 
 # IANA Considerations
 
-This document has no IANA actions. [A registry of slot identifiers / profile labels
-may be proposed in a later revision.]
+This document has no IANA actions. A registry of slot identifiers and profile
+labels may be proposed in a later revision if cross-document coordination
+needs one; this document reserves no such registry now.
 
 --- back
 
 # Acknowledgments
 {:numbered="false"}
 
-[To be completed with the constituent-profile authors and reviewers, with permission.]
+Mikhail Sergeev contributed the ordering criterion for the second-class verification
+result in the WHO slot: an input closes an ordering claim only if it comes from a
+source that observed both terms of the claim, or from two records whose producing
+boundaries can be related in a way that orders the terms (see The WHO Slot). That
+wording is his, offered as an IETF Contribution under BCP 78 and BCP 79.
+
+The authors also thank the reviewers of the -00 and -01 revision packages, whose
+byte-level review discipline this revision was built against.
