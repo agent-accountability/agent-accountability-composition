@@ -89,6 +89,15 @@ informative:
     seriesinfo:
       Internet-Draft: draft-sato-soos-gar-03
     target: https://datatracker.ietf.org/doc/html/draft-sato-soos-gar-03
+  I-D.sato-soos-gar-02:
+    title: "The Governance Audit Record (GAR) for Agentic AI Systems"
+    author:
+      name: Tom Sato
+      org: MyAuberge K.K.
+    date: 2026-06-09
+    seriesinfo:
+      Internet-Draft: draft-sato-soos-gar-02
+    target: https://datatracker.ietf.org/doc/html/draft-sato-soos-gar-02
   RFC8785:
   RFC8792:
   RFC9901:
@@ -1198,15 +1207,24 @@ The resulting profile lets a verifier check that the same outcome named by the
 action record was present in the appraised execution context. It does not make
 the AEP producer or the Attester a truth oracle.
 
-The Governance Audit Record (GAR) {{I-D.sato-soos-gar}} — a kernel-side,
-causally-ordered, hash-chained governance log — is one conforming AEP instance
-under this composition. {{I-D.sokolov-rats-aep-composition}} treats the AEP as
-an abstract role satisfying three properties: it records an action, its
-authorising principal, and its outcome; it is chained for tamper-evidence; and
-it is produced by the same software stack that performs the action. That
-document defines the platform-attestation binding for evidence meeting those
-properties, not a new record format. GAR is one such conforming producer;
-other AEP-role implementations may fill the same slot.
+An implementation of the Governance Audit Record (GAR) {{I-D.sato-soos-gar}}
+can supply the AEP role in this profile when the selected GAR artifact,
+including any referenced Event Log records, records the action, its
+authorizing principal, and its outcome; validates under a signed,
+append-only, tamper-evident chaining construction; and the
+platform-evidence profile demonstrates that the GAR-producing component and
+the action-performing component are within the measured software stack
+claimed by the appraisal. {{I-D.sokolov-rats-aep-composition}} supplies the
+platform-attestation binding for evidence meeting those conditions; it does
+not define or require a replacement record format. Other implementations may
+fill the same AEP role.
+
+The signed, append-only, chaining construction and causal-ordering
+properties referenced above are specified in {{I-D.sato-soos-gar-02}}, §6
+(Session Audit Record) and §12 (Authority Lifecycle Events).
+{{I-D.sato-soos-gar}} (-03) carries these sections forward without
+reproducing them and adds the OTel semantic convention and GAR Processor
+specification.
 
 ### Producer Requirements
 

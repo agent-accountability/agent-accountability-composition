@@ -45,15 +45,16 @@ mandated format.
     Python 3.13.7
     ConfigArgParse 1.7.5
     google-i18n-address 3.1.1
-    intervaltree 3.2.1
+    intervaltree 3.1.0
     Jinja2 3.1.6
     lxml 6.1.1
     natsort 8.4.0
-    platformdirs 4.10.0
+    platformdirs 4.5.0
     pycountry 26.2.16
     PyYAML 6.0.3
-    requests 2.34.2
+    requests 2.32.5
     wcwidth 0.8.1
+    weasyprint 68.1
 -->
 <link href="draft-mih-sato-agent-accountability-composition.xml" rel="alternate" type="application/rfc+xml">
 <link href="#copyright" rel="license">
@@ -2925,15 +2926,23 @@ fresh per-appraisal value into data covered by an attestation-key signature.
 The resulting profile lets a verifier check that the same outcome named by the
 action record was present in the appraised execution context. It does not make
 the AEP producer or the Attester a truth oracle.<a href="#section-6.4.1-2" class="pilcrow">¶</a></p>
-<p id="section-6.4.1-3">The Governance Audit Record (GAR) <span>[<a href="#I-D.sato-soos-gar" class="cite xref">I-D.sato-soos-gar</a>]</span> — a kernel-side,
-causally-ordered, hash-chained governance log — is one conforming AEP instance
-under this composition. <span>[<a href="#I-D.sokolov-rats-aep-composition" class="cite xref">I-D.sokolov-rats-aep-composition</a>]</span> treats the AEP as
-an abstract role satisfying three properties: it records an action, its
-authorising principal, and its outcome; it is chained for tamper-evidence; and
-it is produced by the same software stack that performs the action. That
-document defines the platform-attestation binding for evidence meeting those
-properties, not a new record format. GAR is one such conforming producer;
-other AEP-role implementations may fill the same slot.<a href="#section-6.4.1-3" class="pilcrow">¶</a></p>
+<p id="section-6.4.1-3">An implementation of the Governance Audit Record (GAR) <span>[<a href="#I-D.sato-soos-gar" class="cite xref">I-D.sato-soos-gar</a>]</span>
+can supply the AEP role in this profile when the selected GAR artifact,
+including any referenced Event Log records, records the action, its
+authorizing principal, and its outcome; validates under a signed,
+append-only, tamper-evident chaining construction; and the
+platform-evidence profile demonstrates that the GAR-producing component and
+the action-performing component are within the measured software stack
+claimed by the appraisal. <span>[<a href="#I-D.sokolov-rats-aep-composition" class="cite xref">I-D.sokolov-rats-aep-composition</a>]</span> supplies the
+platform-attestation binding for evidence meeting those conditions; it does
+not define or require a replacement record format. Other implementations may
+fill the same AEP role.<a href="#section-6.4.1-3" class="pilcrow">¶</a></p>
+<p id="section-6.4.1-4">The signed, append-only, chaining construction and causal-ordering
+properties referenced above are specified in <span>[<a href="#I-D.sato-soos-gar-02" class="cite xref">I-D.sato-soos-gar-02</a>]</span>, §6
+(Session Audit Record) and §12 (Authority Lifecycle Events).
+<span>[<a href="#I-D.sato-soos-gar" class="cite xref">I-D.sato-soos-gar</a>]</span> (-03) carries these sections forward without
+reproducing them and adds the OTel semantic convention and GAR Processor
+specification.<a href="#section-6.4.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="producer-requirements-2">
@@ -3737,6 +3746,10 @@ needs one; this document reserves no such registry now.<a href="#section-13-1" c
 <dt id="I-D.sato-soos-gar">[I-D.sato-soos-gar]</dt>
         <dd>
 <span class="refAuthor">Sato, T.</span>, <span class="refTitle">"The Governance Audit Record (GAR) for Agentic AI Systems"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-sato-soos-gar-03</span>, <time datetime="2026-06-28" class="refDate">28 June 2026</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-sato-soos-gar-03">https://datatracker.ietf.org/doc/html/draft-sato-soos-gar-03</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="I-D.sato-soos-gar-02">[I-D.sato-soos-gar-02]</dt>
+        <dd>
+<span class="refAuthor">Sato, T.</span>, <span class="refTitle">"The Governance Audit Record (GAR) for Agentic AI Systems"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-sato-soos-gar-02</span>, <time datetime="2026-06-09" class="refDate">9 June 2026</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-sato-soos-gar-02">https://datatracker.ietf.org/doc/html/draft-sato-soos-gar-02</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC8785">[RFC8785]</dt>
         <dd>
