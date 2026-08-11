@@ -34,7 +34,7 @@ normative:
   RFC2119:
   RFC8174:
   I-D.schrock-caid:
-    title: "Canonical Action Identifier"
+    title: "The Canonical Action Identifier (CAID)"
     author:
       name: Iman Schrock
       org: EMILIA Protocol, Inc.
@@ -43,7 +43,7 @@ normative:
       Internet-Draft: draft-schrock-canonical-action-identifier-02
     target: https://datatracker.ietf.org/doc/draft-schrock-canonical-action-identifier/
   I-D.schrock-aec:
-    title: "EP Authorization Evidence Chain"
+    title: "Authorization Evidence Chains: Composing Heterogeneous Agent-Action Evidence (EP-AEC)"
     author:
       name: Iman Schrock
       org: EMILIA Protocol, Inc.
@@ -52,7 +52,7 @@ normative:
       Internet-Draft: draft-schrock-ep-authorization-evidence-chain-05
     target: https://datatracker.ietf.org/doc/draft-schrock-ep-authorization-evidence-chain/
   I-D.schrock-aeb:
-    title: "Action Evidence Boundary"
+    title: "The Action Evidence Boundary for Consequential Agent Effects"
     author:
       name: Iman Schrock
       org: EMILIA Protocol, Inc.
@@ -80,6 +80,15 @@ informative:
     target: https://datatracker.ietf.org/doc/draft-bu-agentproto-security-principal-binding/
   I-D.lee-orprg-permit-receipts:
   I-D.sokolov-rats-aep-composition:
+  I-D.sato-soos-gar:
+    title: "The Governance Audit Record (GAR) for Agentic AI Systems"
+    author:
+      name: Tom Sato
+      org: MyAuberge K.K.
+    date: 2026-06-28
+    seriesinfo:
+      Internet-Draft: draft-sato-soos-gar-03
+    target: https://datatracker.ietf.org/doc/html/draft-sato-soos-gar-03
   RFC8785:
   RFC8792:
   RFC9901:
@@ -1188,6 +1197,16 @@ fresh per-appraisal value into data covered by an attestation-key signature.
 The resulting profile lets a verifier check that the same outcome named by the
 action record was present in the appraised execution context. It does not make
 the AEP producer or the Attester a truth oracle.
+
+The Governance Audit Record (GAR) {{I-D.sato-soos-gar}} — a kernel-side,
+causally-ordered, hash-chained governance log — is one conforming AEP instance
+under this composition. {{I-D.sokolov-rats-aep-composition}} treats the AEP as
+an abstract role satisfying three properties: it records an action, its
+authorising principal, and its outcome; it is chained for tamper-evidence; and
+it is produced by the same software stack that performs the action. That
+document defines the platform-attestation binding for evidence meeting those
+properties, not a new record format. GAR is one such conforming producer;
+other AEP-role implementations may fill the same slot.
 
 ### Producer Requirements
 
