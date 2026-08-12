@@ -1776,10 +1776,10 @@ Internet-Draft      Agent Accountability Composition         August 2026
 
    The signed, append-only, chaining construction and causal-ordering
    properties referenced above are specified in [I-D.sato-soos-gar-02],
-   §6 (Session Audit Record) and §12 (Authority Lifecycle Events).
-   [I-D.sato-soos-gar] (-03) carries these sections forward without
-   reproducing them and adds the OTel semantic convention and GAR
-   Processor specification.
+   §6 (Session Audit Record), §8 (Event Log Requirements), and §12
+   (Authority Lifecycle Events).  [I-D.sato-soos-gar] (-03) carries
+   these sections forward without reproducing them and adds the OTel
+   semantic convention and GAR Processor specification.
 
 6.4.2.  Producer Requirements
 

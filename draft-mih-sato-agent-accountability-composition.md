@@ -64,14 +64,91 @@ informative:
   RFC9943:
   RFC9334:
   I-D.kuehlewind-audit-architecture:
+    title: "An Architecture for Auditing AI Agent Delegation and Interactions"
+    author:
+      - name: Mirja Kühlewind
+        org: Ericsson
+      - name: Henk Birkholz
+        org: Fraunhofer SIT
+    date: 2026-05-18
+    seriesinfo:
+      Internet-Draft: draft-kuehlewind-audit-architecture-00
+    target: https://datatracker.ietf.org/doc/html/draft-kuehlewind-audit-architecture-00
   I-D.sharif-agent-audit-trail:
+    title: "Agent Audit Trail: A Standard Logging Format for Autonomous AI Systems"
+    author:
+      name: Raza Sharif
+      org: CyberSecAI Ltd
+    date: 2026-03-29
+    seriesinfo:
+      Internet-Draft: draft-sharif-agent-audit-trail-00
+    target: https://datatracker.ietf.org/doc/html/draft-sharif-agent-audit-trail-00
   I-D.bates-atp:
+    title: "Agent Transaction Protocol (ATP)"
+    author:
+      name: David Asher Bates
+      org: SVT Robotics
+    date: 2026-05-11
+    seriesinfo:
+      Internet-Draft: draft-bates-atp-00
+    target: https://datatracker.ietf.org/doc/html/draft-bates-atp-00
   I-D.aylward-aiga:
+    title: "Artificial Intelligence Governance Architecture (AIGA)"
+    author:
+      name: Edward Richard Aylward Jr.
+      surname: Aylward
+      initials: E. R.
+    date: 2026-01-13
+    seriesinfo:
+      Internet-Draft: draft-aylward-aiga-00
+    target: https://datatracker.ietf.org/doc/html/draft-aylward-aiga-00
   I-D.schrock-human-authorization-binding:
+    title: "Binding Named-Human Authorization Evidence into Agent-Action Records"
+    author:
+      name: Iman Schrock
+      org: EMILIA Protocol, Inc.
+    date: 2026-07-03
+    seriesinfo:
+      Internet-Draft: draft-schrock-human-authorization-binding-00
+    target: https://datatracker.ietf.org/doc/html/draft-schrock-human-authorization-binding-00
   I-D.schrock-ep-authorization-receipts:
+    title: "Authorization Receipts for High-Risk Agent Actions"
+    author:
+      name: Iman Schrock
+      org: EMILIA Protocol, Inc.
+    date: 2026-08-09
+    seriesinfo:
+      Internet-Draft: draft-schrock-ep-authorization-receipts-11
+    target: https://datatracker.ietf.org/doc/html/draft-schrock-ep-authorization-receipts-11
   I-D.mih-scitt-agent-action-capsule:
+    title: "An Agent Action Capsule Profile for SCITT"
+    author:
+      name: Steven Mih
+      org: Action State Group, Inc.
+    date: 2026-07-06
+    seriesinfo:
+      Internet-Draft: draft-mih-scitt-agent-action-capsule-02
+    target: https://datatracker.ietf.org/doc/html/draft-mih-scitt-agent-action-capsule-02
   I-D.mih-sokolov-scitt-payload-binding:
+    title: "Canonical Payload Binding: A Signed Statement Construction Profile"
+    author:
+      - name: Steven Mih
+        org: Action State Group
+      - name: Anton Sokolov
+        org: Tyche Institute
+    date: 2026-07-27
+    seriesinfo:
+      Internet-Draft: draft-mih-sokolov-scitt-payload-binding-01
+    target: https://datatracker.ietf.org/doc/html/draft-mih-sokolov-scitt-payload-binding-01
   I-D.mih-agent-bilateral-attestation:
+    title: "Bilateral Attestation of Cross-Organization Agent Actions"
+    author:
+      name: Steven Mih
+      org: Action State Group, Inc.
+    date: 2026-07-19
+    seriesinfo:
+      Internet-Draft: draft-mih-agent-bilateral-attestation-01
+    target: https://datatracker.ietf.org/doc/html/draft-mih-agent-bilateral-attestation-01
   I-D.bu-agentproto-security-principal-binding-03:
     title: "Security Principal Binding for Agent Protocols"
     author:
@@ -79,7 +156,23 @@ informative:
     date: 2026
     target: https://datatracker.ietf.org/doc/draft-bu-agentproto-security-principal-binding/
   I-D.lee-orprg-permit-receipts:
+    title: "Permit Receipts for Permit-Before-Commit Authorization of AI-Agent and Workload External Effects"
+    author:
+      name: Yong Bok Lee
+      org: Meridian Verity Group
+    date: 2026-06-04
+    seriesinfo:
+      Internet-Draft: draft-lee-orprg-permit-receipts-00
+    target: https://datatracker.ietf.org/doc/html/draft-lee-orprg-permit-receipts-00
   I-D.sokolov-rats-aep-composition:
+    title: "Composing Application-Layer Action Evidence with Remote Attestation Procedures"
+    author:
+      name: Anton Sokolov
+      org: Tyche Institute
+    date: 2026-07-18
+    seriesinfo:
+      Internet-Draft: draft-sokolov-rats-aep-composition-03
+    target: https://datatracker.ietf.org/doc/html/draft-sokolov-rats-aep-composition-03
   I-D.sato-soos-gar:
     title: "The Governance Audit Record (GAR) for Agentic AI Systems"
     author:
@@ -1221,10 +1314,10 @@ fill the same AEP role.
 
 The signed, append-only, chaining construction and causal-ordering
 properties referenced above are specified in {{I-D.sato-soos-gar-02}}, §6
-(Session Audit Record) and §12 (Authority Lifecycle Events).
-{{I-D.sato-soos-gar}} (-03) carries these sections forward without
-reproducing them and adds the OTel semantic convention and GAR Processor
-specification.
+(Session Audit Record), §8 (Event Log Requirements), and §12 (Authority
+Lifecycle Events). {{I-D.sato-soos-gar}} (-03) carries these sections
+forward without reproducing them and adds the OTel semantic convention
+and GAR Processor specification.
 
 ### Producer Requirements
 
