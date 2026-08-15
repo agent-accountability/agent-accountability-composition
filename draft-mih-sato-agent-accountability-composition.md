@@ -2,6 +2,7 @@
 title: "Agent Accountability: Composition and Conformance"
 abbrev: "Agent Accountability Composition"
 docname: draft-mih-sato-agent-accountability-composition-01
+date: 2026-08-14
 category: info
 ipr: trust200902
 area: Security
