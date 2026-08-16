@@ -5,16 +5,18 @@
 Network Working Group                                             S. Mih
 Internet-Draft                                  Action State Group, Inc.
 Intended status: Informational                                   T. Sato
-Expires: 6 January 2027                                   MyAuberge K.K.
-                                                                   S. Bu
-                                                             Independent
+Expires: 12 February 2027                                 MyAuberge K.K.
                                                               I. Schrock
                                                    EMILIA Protocol, Inc.
-                                                             5 July 2026
+                                                                   S. Bu
+                                                             Independent
+                                                              A. Sokolov
+                                                         Tyche Institute
+                                                          11 August 2026
 
 
            Agent Accountability: Composition and Conformance
-           draft-mih-sato-agent-accountability-composition-00
+           draft-mih-sato-agent-accountability-composition-01
 
 Abstract
 
@@ -51,11 +53,9 @@ Status of This Memo
 
 
 
-
-
-Mih, et al.              Expires 6 January 2027                 [Page 1]
+Mih, et al.             Expires 12 February 2027                [Page 1]
 
-Internet-Draft      Agent Accountability Composition           July 2026
+Internet-Draft      Agent Accountability Composition         August 2026
 
 
    Internet-Drafts are working documents of the Internet Engineering
@@ -68,7 +68,7 @@ Internet-Draft      Agent Accountability Composition           July 2026
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 6 January 2027.
+   This Internet-Draft will expire on 12 February 2027.
 
 Copyright Notice
 
@@ -86,32 +86,88 @@ Copyright Notice
 
 Table of Contents
 
-   1.  Introduction  . . . . . . . . . . . . . . . . . . . . . . . .   3
-     1.1.  Terminology . . . . . . . . . . . . . . . . . . . . . . .   3
-   2.  Overview: Questions and Composition . . . . . . . . . . . . .   3
-   3.  The Composition Model . . . . . . . . . . . . . . . . . . . .   4
-   4.  Trust-Root Separation . . . . . . . . . . . . . . . . . . . .   4
-   5.  Slot Profiles . . . . . . . . . . . . . . . . . . . . . . . .   5
-     5.1.  The CAN Slot  . . . . . . . . . . . . . . . . . . . . . .   5
-     5.2.  The WHO Slot: Named-Human Authorization . . . . . . . . .   5
-     5.3.  The WHAT Slot . . . . . . . . . . . . . . . . . . . . . .   7
-     5.4.  The AUDIT Slot  . . . . . . . . . . . . . . . . . . . . .   7
-   6.  Assurance Tiers . . . . . . . . . . . . . . . . . . . . . . .   7
-   7.  Conformance . . . . . . . . . . . . . . . . . . . . . . . . .   8
-   8.  Extension Points  . . . . . . . . . . . . . . . . . . . . . .   8
-   9.  Relationship to Existing Work . . . . . . . . . . . . . . . .   8
-   10. Security Considerations . . . . . . . . . . . . . . . . . . .   8
-   11. Privacy Considerations  . . . . . . . . . . . . . . . . . . .   9
-   12. IANA Considerations . . . . . . . . . . . . . . . . . . . . .   9
-   13. Informative References  . . . . . . . . . . . . . . . . . . .   9
-   Acknowledgments . . . . . . . . . . . . . . . . . . . . . . . . .  10
-   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  10
+   1.  Introduction  . . . . . . . . . . . . . . . . . . . . . . . .   4
+     1.1.  Terminology . . . . . . . . . . . . . . . . . . . . . . .   4
+   2.  Problem Statement and Regulatory Mapping  . . . . . . . . . .   5
+   3.  Overview: Questions and Composition . . . . . . . . . . . . .   7
+   4.  The Composition Model . . . . . . . . . . . . . . . . . . . .   8
+     4.1.  Three Digest Roles  . . . . . . . . . . . . . . . . . . .   8
+     4.2.  Digest Context and Representation . . . . . . . . . . . .   9
+     4.3.  Cross-Profile Reviews . . . . . . . . . . . . . . . . . .   9
+       4.3.1.  Principal-Binding Review (Bu) . . . . . . . . . . . .  10
+     4.4.  Worked Profile Illustration . . . . . . . . . . . . . . .  10
+   5.  Trust-Root Separation . . . . . . . . . . . . . . . . . . . .  11
+   6.  Slot Profiles . . . . . . . . . . . . . . . . . . . . . . . .  11
+     6.1.  The CAN Slot  . . . . . . . . . . . . . . . . . . . . . .  11
+       6.1.1.  Design Rule . . . . . . . . . . . . . . . . . . . . .  12
+       6.1.2.  Producer Requirements . . . . . . . . . . . . . . . .  12
+       6.1.3.  Verifier Requirements . . . . . . . . . . . . . . . .  13
+       6.1.4.  Separation from WHO and AUDIT . . . . . . . . . . . .  15
+       6.1.5.  Frozen IETF 126 Illustration  . . . . . . . . . . . .  15
+       6.1.6.  Composition and Transparency Seams  . . . . . . . . .  17
+       6.1.7.  Negative Vectors  . . . . . . . . . . . . . . . . . .  18
 
 
 
-Mih, et al.              Expires 6 January 2027                 [Page 2]
+Mih, et al.             Expires 12 February 2027                [Page 2]
 
-Internet-Draft      Agent Accountability Composition           July 2026
+Internet-Draft      Agent Accountability Composition         August 2026
+
+
+       6.1.8.  Current Assurance Boundary  . . . . . . . . . . . . .  19
+     6.2.  The WHO Slot: Named-Human Authorization . . . . . . . . .  20
+     6.3.  The WHAT Slot . . . . . . . . . . . . . . . . . . . . . .  22
+       6.3.1.  Design Rule . . . . . . . . . . . . . . . . . . . . .  22
+       6.3.2.  Subject, Native-Record, and Additional Bindings . . .  23
+       6.3.3.  Declared Field Basis  . . . . . . . . . . . . . . . .  25
+       6.3.4.  Producer Requirements . . . . . . . . . . . . . . . .  26
+       6.3.5.  Verifier Requirements . . . . . . . . . . . . . . . .  28
+       6.3.6.  Cross-Party Rungs . . . . . . . . . . . . . . . . . .  29
+       6.3.7.  Composition and Transparency Seams  . . . . . . . . .  29
+       6.3.8.  Negative Vectors  . . . . . . . . . . . . . . . . . .  30
+       6.3.9.  Current Assurance Boundary  . . . . . . . . . . . . .  31
+     6.4.  The AUDIT Slot  . . . . . . . . . . . . . . . . . . . . .  31
+       6.4.1.  Design Rule . . . . . . . . . . . . . . . . . . . . .  32
+       6.4.2.  Producer Requirements . . . . . . . . . . . . . . . .  32
+       6.4.3.  Exercised PCR-16 Binding  . . . . . . . . . . . . . .  33
+       6.4.4.  Verifier Requirements . . . . . . . . . . . . . . . .  33
+       6.4.5.  Composition and Transparency Seams  . . . . . . . . .  34
+       6.4.6.  Negative Vectors  . . . . . . . . . . . . . . . . . .  35
+       6.4.7.  Current Assurance Boundary  . . . . . . . . . . . . .  35
+   7.  Assurance Tiers . . . . . . . . . . . . . . . . . . . . . . .  36
+   8.  Conformance . . . . . . . . . . . . . . . . . . . . . . . . .  36
+     8.1.  Cross-Slot Conformance Mechanism  . . . . . . . . . . . .  36
+       8.1.1.  Boundary  . . . . . . . . . . . . . . . . . . . . . .  37
+       8.1.2.  Bundle requirements . . . . . . . . . . . . . . . . .  38
+       8.1.3.  Result vocabulary . . . . . . . . . . . . . . . . . .  38
+       8.1.4.  Run report  . . . . . . . . . . . . . . . . . . . . .  39
+       8.1.5.  Positive, negative, and condition-removed vectors . .  40
+       8.1.6.  Freeze rule . . . . . . . . . . . . . . . . . . . . .  42
+       8.1.7.  Delivered and open  . . . . . . . . . . . . . . . . .  42
+   9.  Extension Points  . . . . . . . . . . . . . . . . . . . . . .  42
+   10. Relationship to Existing Work . . . . . . . . . . . . . . . .  43
+   11. Security Considerations . . . . . . . . . . . . . . . . . . .  43
+   12. Privacy Considerations  . . . . . . . . . . . . . . . . . . .  44
+   13. IANA Considerations . . . . . . . . . . . . . . . . . . . . .  44
+   14. References  . . . . . . . . . . . . . . . . . . . . . . . . .  44
+     14.1.  Normative References . . . . . . . . . . . . . . . . . .  44
+     14.2.  Informative References . . . . . . . . . . . . . . . . .  45
+   Acknowledgments . . . . . . . . . . . . . . . . . . . . . . . . .  48
+   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  48
+
+
+
+
+
+
+
+
+
+
+
+Mih, et al.             Expires 12 February 2027                [Page 3]
+
+Internet-Draft      Agent Accountability Composition         August 2026
 
 
 1.  Introduction
@@ -154,21 +210,161 @@ Internet-Draft      Agent Accountability Composition           July 2026
 
 1.1.  Terminology
 
-   Slot; profile; composition vector; profile-tagged digest; trust root.
-   [Define in a later revision; align with the constituent-profile
-   terminology.]
+   The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
+   "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and
+   "OPTIONAL" in this document are to be interpreted as described in BCP
+   14 [RFC2119] [RFC8174] when, and only when, they appear in all
+   capitals, as shown here.
 
-2.  Overview: Questions and Composition
+
+
+
+
+
+Mih, et al.             Expires 12 February 2027                [Page 4]
+
+Internet-Draft      Agent Accountability Composition         August 2026
+
+
+   *  *Slot*: one of the interchangeable questions (CAN, WHO, WHAT,
+      AUDIT, and any later extension) that a conforming profile answers
+      about an action (see Overview: Questions and Composition).
+
+   *  *Profile*: a concrete, independently verifiable specification that
+      fills one slot.  Any conforming profile may fill a slot; the
+      profiles cited in this document are the first instances, not the
+      definition of the slot.
+
+   *  *Composition vector*: the shared positive test vector — one
+      action's exact, frozen input bytes threaded through each populated
+      slot — against which conformance is tested (see Conformance).
+
+   *  *Profile-tagged authority-reference digest*: a digest, tagged with
+      its owning profile's label, that commits to the native evidence
+      object or statement supporting a slot's assertion (see Three
+      Digest Roles).
+
+   *  *Trust root*: the entity or key material a verifier is configured
+      to accept as the anchor for validating a profile's evidence.
+      Composition is by shared digest, not containment: no profile is a
+      required trust root for another.
+
+2.  Problem Statement and Regulatory Mapping
+
+   An agent acts across a trust boundary.  Some time later, someone who
+   trusts neither the agent nor its operator needs to answer a simple
+   question: was this action authorized, and can that be shown without
+   taking the operator's word for it.  Knowing who an agent is, and
+   confirming it had permission to act, doesn't tell you what it
+   actually did.  That's the gap: identity answers who, authorization
+   answers may — but nothing confirms whether the action taken matches
+   what was permitted, and nothing records it.
+
+   This has stopped being a someday problem.  Under the AI Omnibus
+   amendment, the EU AI Act's Article 12 record-keeping and automatic-
+   logging obligations for high-risk systems apply from December 2,
+   2027, and the rules governing AI embedded in regulated products apply
+   from August 2, 2028.  NIST's AI Agent Standards Initiative and
+   Singapore's IMDA agentic-AI guidance are moving in the same direction
+   independently.  None of these converge on a specific format — that
+   convergence is cited here as demand, not as a compliance claim this
+   document makes on anyone's behalf — but the direction is consistent:
+   regulators are going to ask deployers of agentic systems to produce
+   records an outside party can check, not records the operator merely
+   asserts.
+
+
+
+
+
+Mih, et al.             Expires 12 February 2027                [Page 5]
+
+Internet-Draft      Agent Accountability Composition         August 2026
+
+
+   No existing layer answers this alone, and it's worth being precise
+   about why, since each addresses a real and different concern.
+   Runtime monitoring detects anomalous behavior as it happens —
+   valuable, but it produces observability data, not verifiable evidence
+   a skeptical third party can check independently after the fact.  The
+   individual identity and attestation work underway in WIMSE, RATS, and
+   SCITT each answers a real piece of the picture — whose workload this
+   is, what posture a runtime attests to, how a statement gets anchored
+   — but none of them, alone or informally combined, answers the
+   specific question a regulator or counterparty actually asks: was this
+   exact action authorized, by whom, and is the record of what happened
+   tamper-evident.  That composition is the gap this work fills.
+
+   Four questions decompose that gap into independently answerable,
+   independently verifiable parts:
+
+   *  CAN — was the agent permitted to act?
+
+   *  WHO — which accountable human authorized this exact action, as
+      distinct from which agent carried it out?
+
+   *  WHAT — what did the agent actually do — a byte-stable
+      serialization of the observed action record, not a replay of the
+      action, sufficient to judge the outcome?
+
+   *  AUDIT — did the runtime enforce correctly, in causal order,
+      tamper-evidently?
+
+   Each question is answerable by an independently-verifiable profile,
+   and a verifier holding only one profile can verify it without
+   trusting any other profile's producer.  This document does not define
+   new record types to carry those answers.  It composes within the
+   existing audit architecture — [I-D.kuehlewind-audit-architecture] and
+   the record types it defines — rather than proposing a second
+   architecture above it.  Where the four questions as stated here and
+   that architecture's record types conflict, the architecture governs;
+   this section, and this draft, are written to be reconciled against
+   it, not around it.
+
+   An answer to any of these four questions is only useful to an outside
+   party — someone who trusts neither the agent nor its operator — once
+   it's registered: filed with a SCITT transparency service under a
+   public policy, so anyone can independently confirm the filing
+   happened without having to trust the agent or the operator's word for
+   it.  This matters specifically because the actors being audited are
+   not static.  Persistent memory makes agent behavior path-dependent,
+   and agents rewrite their own scaffolding and spawn sub-agents — the
+   system acting at step N is not necessarily the one that would be
+
+
+
+Mih, et al.             Expires 12 February 2027                [Page 6]
+
+Internet-Draft      Agent Accountability Composition         August 2026
+
+
+   reviewed at step 0.  A registered record, once anchored, stays
+   tamper-evident and datable to its registration even as the actor that
+   produced it changes underneath it.  Self-attested records remain
+   valid and useful as a baseline; registration is what makes the
+   stronger claim reachable and testable, for any conforming profile,
+   without mandating a particular format.
+
+   Two limits matter here, stated plainly.  First, a registered record
+   only proves a signed claim existed at a given time — it doesn't prove
+   the claim is true.  Second, registration stops someone from tampering
+   with a record after it's filed, but it doesn't guarantee every action
+   that should have been recorded actually was, and it doesn't rule out
+   a second, contradictory record existing somewhere else.  Making sure
+   nothing was left out is a separate problem — one for disclosure rules
+   and monitoring, not something a transparency service can solve on its
+   own, and not something claimed here.
+
+   In short: this section explains why four separate questions are
+   needed, and what registering an answer to one of them actually gives
+   a skeptical outside verifier.  How the profiles technically link
+   together — the shared digest, how it's calculated — is resolved in
+   the sections that follow.
+
+3.  Overview: Questions and Composition
 
    The work centers on a set of interchangeable *slots*, each a question
    that a conforming *profile* answers:
-
-
-
-Mih, et al.              Expires 6 January 2027                 [Page 3]
-
-Internet-Draft      Agent Accountability Composition           July 2026
-
 
    *  *CAN* — the "may": was the agent permitted to act?
 
@@ -186,14 +382,100 @@ Internet-Draft      Agent Accountability Composition           July 2026
    fills the slots its trust requirement calls for; not every action
    populates every slot.  The set is extensible (see Extension Points).
 
-3.  The Composition Model
 
-   Profiles compose by reference to a shared *subject digest* over the
-   action — subject_digest = SHA-256(JCS(action)) — which is the join
-   key all slots refer to.  A profile-tagged *authority-reference
-   digest* binds a slot's evidence to the registered object it commits
-   to, and a *receipt-payload digest* binds transparency receipts.
-   Digests committing to signed bytes require deterministic encoding.
+
+
+
+
+
+
+Mih, et al.             Expires 12 February 2027                [Page 7]
+
+Internet-Draft      Agent Accountability Composition         August 2026
+
+
+4.  The Composition Model
+
+   Profiles compose either by reference to a shared *subject digest*
+   over the action — the join key the slots refer to — or through an
+   explicit, cryptographically protected cross-reference.  A profile-
+   tagged *authority-reference digest* binds a slot's evidence to the
+   registered object it commits to, and a *receipt-payload digest* binds
+   transparency receipts.  Digests committing to signed bytes require
+   deterministic encoding.  The subject-digest construction
+   (subject_digest = HASH(subject_preimage)) is defined per profile, as
+   set out in the following subsections; no single canonicalization is
+   imposed.
+
+4.1.  Three Digest Roles
+
+   Profiles compose either by reference to a shared *subject digest*
+   over the action or through an explicit, cryptographically protected
+   cross-reference between profile-native subject digests.  A subject
+   digest is:
+
+   subject_digest = HASH(subject_preimage)
+
+   where the profile defines the subject data model, the exact preimage
+   bytes, the hash algorithm, any domain-separation bytes, and the
+   digest representation.  JCS is one possible canonicalization choice;
+   it is not imposed on profiles that select another byte construction.
+
+   The composition carries three distinct digest roles:
+
+   *  The *subject digest* identifies the action or action projection to
+      which a slot's assertion applies.
+
+   *  A profile-tagged *authority-reference digest* commits to the
+      native evidence object or statement that supports the slot
+      assertion.
+
+   *  A *receipt-payload digest* commits to the exact bytes submitted to
+      a transparency service and covered by its receipt.
+
+   These digest values MAY differ.  A profile MUST state which object
+   and exact byte sequence each digest covers, and a composition
+   verifier MUST NOT infer equality or transitive coverage merely
+   because two fields use the same hash algorithm.  Where one signed
+   object links the roles, the protected portion of that object MUST
+   cover the relevant digest values and their profile labels.
+
+
+
+
+
+
+Mih, et al.             Expires 12 February 2027                [Page 8]
+
+Internet-Draft      Agent Accountability Composition         August 2026
+
+
+4.2.  Digest Context and Representation
+
+   Every digest comparison requires a *digest context* consisting at
+   least of the profile label and version, covered field set or
+   projection, canonicalization profile, hash algorithm, domain-
+   separation rule, digest encoding, and digest representation.  Profile
+   labels are protocol inputs, not display metadata.  A missing,
+   unknown, or incompatible profile label is a failed join, not
+   permission to apply a local default.
+
+   Raw digest bytes and textual encodings are different values.  In
+   particular, a 32-byte SHA-256 output, the 64 ASCII characters of its
+   lowercase hexadecimal encoding, and the ASCII string formed by
+   prepending sha256: to that encoding MUST NOT be substituted for one
+   another.  A profile MUST state which representation appears in each
+   field and which representation, if any, is included in a further
+   digest preimage.
+
+   Two profiles may use digest equality as a direct join only when their
+   complete digest contexts are compatible and the compared preimage
+   byte sequences are demonstrated to be identical, for example by a
+   shared frozen test vector.  Otherwise, they compose through an
+   explicit, cryptographically protected cross-reference that names both
+   profiles and binds both digest values.  A cross-reference proves the
+   stated association; it does not make the native digest constructions
+   identical.
 
    Digest equality is a join key: it does not, by itself, prove truth,
    authorization, sufficiency, completeness, or policy compliance.
@@ -201,11 +483,111 @@ Internet-Draft      Agent Accountability Composition           July 2026
    transparency verification, completeness and sequencing checks, and
    relying-party acceptance remain separate results.
 
-   [Full three-digest binding rules, profile-label discipline, and raw-
-   bytes-vs-ASCII -hex rules to be imported from the digest-binding
-   thread / conformance issue in a later revision.]
+4.3.  Cross-Profile Reviews
 
-4.  Trust-Root Separation
+   The following entries record the application of external review
+   frameworks to the composition model's slot mappings.  Each entry is
+   contributed by the reviewing author and records only what that
+   author's analysis found; no entry implies byte-agreement results or
+   conformance claims not explicitly stated.
+
+
+
+
+
+
+
+
+
+
+
+Mih, et al.             Expires 12 February 2027                [Page 9]
+
+Internet-Draft      Agent Accountability Composition         August 2026
+
+
+4.3.1.  Principal-Binding Review (Bu)
+
+   Principal-binding review framework (Bu): verifier-facing claim,
+   carrier, verifier, binding, accepted-result, and failure boundaries
+   from [I-D.bu-agentproto-security-principal-binding-03] were used to
+   review the WHO-slot mapping.  The AAC Class-1 repository was
+   independently replayed at commit
+   10342f504b051a24908053465927efdaea3ec2f6, but no independent
+   principal-binding byte-agreement result is claimed.  Status:
+   framework mapping reviewed; AAC reference suite independently
+   replayed.
+
+   Additional cross-profile review entries may be added in a later
+   revision as other constituent-profile authors complete their own
+   framework reviews.
+
+4.4.  Worked Profile Illustration
+
+   On the permit side, the abstract PermitReceipt architecture
+   ([I-D.lee-orprg-permit-receipts]) leaves canonicalization and action-
+   digest construction to a selected profile; it does not mandate JCS or
+   any other single canonicalization.  A verifier that cannot establish
+   canonicalization-profile compatibility is required to return DENY
+   rather than treat digest values as comparable across an unestablished
+   profile boundary.
+
+   In the frozen CP-JSON-2 public-evaluation profile ([ORPRG-EVAL-V226])
+   — one evaluation profile of that architecture, not a universal
+   construction of it — the action digest is the 64-character lowercase
+   hexadecimal encoding of SHA-256 over the exact canonical request
+   bytes.  That profile prepends no additional domain-separation bytes
+   to the action-digest preimage.
+
+   This profile-specific construction does not imply byte identity with
+   JCS-based profiles.  For a particular test vector, digest equality
+   across profiles may serve as a direct join for that vector only when
+   the complete digest contexts are compatible and the compared preimage
+   byte sequences are demonstrated to be identical.  Relevant context
+   includes the field set, digest algorithm, canonicalization profile,
+   domain-separation rule, encoding, and digest representation.
+   Otherwise, the profiles compose through an explicit,
+   cryptographically protected cross-reference.
+
+   In [ORPRG-EVAL-V226], receipt_core.action_digest is the unprefixed
+   64-character lowercase hexadecimal text, while
+   authorization_ref.action_commitment is the literal ASCII prefix
+   sha256: followed by the same 64 hexadecimal characters.  Neither
+   textual representation is the raw 32-byte digest.
+
+
+
+Mih, et al.             Expires 12 February 2027               [Page 10]
+
+Internet-Draft      Agent Accountability Composition         August 2026
+
+
+   The digest preimage is the exact byte sequence designated by the
+   selected profile or frozen vector.  Human-readable renderings,
+   pretty-printed documents, console output, and files containing added
+   line terminators are not interchangeable with that preimage unless
+   the profile explicitly designates those exact bytes.
+
+   This illustration states profile-specific implementation facts.  It
+   makes no CAN slot proposal, conformance or interoperability claim,
+   endorsement claim, production-readiness claim, joint-ownership claim,
+   or patent or license claim.
+
+   Attribution: "ORPRG profile-specific worked illustration based on
+   [I-D.lee-orprg-permit-receipts] and [ORPRG-EVAL-V226].  The permit-
+   side construction and the ORPRG-specific implementation facts
+   concerning profile compatibility and digest representation reflected
+   in this illustration were identified and documented in the permit-
+   side review and were supplied and owner-confirmed by Yong Bok (Scott)
+   Lee, Meridian Verity Group."
+
+   Acknowledgment: "The cross-profile binding discussion in this section
+   was informed by the ORPRG row of a versioned digest-binding matrix
+   and by the subsequent multi-party composition review.  The ORPRG row
+   and its supporting permit-side observations were supplied and owner-
+   confirmed by Yong Bok (Scott) Lee, Meridian Verity Group."
+
+5.  Trust-Root Separation
 
    Each slot may root in a different trust anchor (e.g. a human device
    key, a kernel attestation key ([RFC9334]), a transparency-log
@@ -213,20 +595,7 @@ Internet-Draft      Agent Accountability Composition           July 2026
    compromised or under review.  No slot is a required root of trust for
    another; profiles remain producer-agnostic.
 
-
-
-
-
-
-
-
-
-Mih, et al.              Expires 6 January 2027                 [Page 4]
-
-Internet-Draft      Agent Accountability Composition           July 2026
-
-
-5.  Slot Profiles
+6.  Slot Profiles
 
    The profiles in this section are first instances filling the slots
    named above, recorded so the composition can be tested against
@@ -234,11 +603,486 @@ Internet-Draft      Agent Accountability Composition           July 2026
    conforming profile may fill a slot (see Overview).  Each profile's
    text is contributed and maintained by its authors.
 
-5.1.  The CAN Slot
+6.1.  The CAN Slot
 
-   [Profile text to be contributed by the slot's owners.]
 
-5.2.  The WHO Slot: Named-Human Authorization
+
+
+
+
+
+
+
+Mih, et al.             Expires 12 February 2027               [Page 11]
+
+Internet-Draft      Agent Accountability Composition         August 2026
+
+
+6.1.1.  Design Rule
+
+   The CAN slot asks whether a declared authority issued a bounded grant
+   that covers the requested action at the authorization decision point,
+   before the external effect is committed, and whether the relying
+   party accepts that grant under its stated trust and policy inputs.
+   It does not identify the accountable human who authorized the action
+   (WHO), prove what action occurred (WHAT), or prove that the runtime
+   enforced correctly (AUDIT).  A CAN result also does not establish
+   that the declared action description equals the real-world effect;
+   that binding remains an obligation of the relying party that performs
+   the effect.
+
+   The first-instance profile is MachineMandate ([MACHINE-MANDATE]): a
+   holder-bound, short-lived authorization credential whose signed
+   claims identify an agent subject, declare a credential type and
+   bounded scope, and commit to a profile-defined action projection.
+   The selected composition profile separately pins the credential
+   format and profile version; the frozen MachineMandate vct string
+   shown below is not itself versioned.  A presentation can use SD-JWT
+   VC ([I-D.ietf-oauth-sd-jwt-vc-17]) and OpenID for Verifiable
+   Presentations ([OpenID4VP]), including verifier-provided nonce and
+   audience values.  A relying party verifies the native credential and
+   presentation, appraises the issuer under its authorization policy,
+   recomputes the action commitment, and evaluates each declared scope
+   dimension before returning ALLOW or DENY.
+
+   MachineMandate is one CAN instance, not the CAN slot.  Other
+   authorization formats may fill the slot if they expose equivalent
+   independently verifiable inputs and results.
+
+6.1.2.  Producer Requirements
+
+   A conforming MachineMandate CAN producer MUST state:
+
+   *  the credential-format profile, version, media type, and
+      credential-type identifier;
+
+   *  the issuer identifier, key-discovery or trust-anchor mechanism,
+      and the profile-specific role or policy under which that issuer is
+      authorized to grant the declared scope;
+
+   *  the agent subject and the proof-of-possession or holder-binding
+      mechanism;
+
+   *  the scope fields and the semantics, units, currency, comparison
+      rule, and default-deny behavior of every scope dimension;
+
+
+
+
+Mih, et al.             Expires 12 February 2027               [Page 12]
+
+Internet-Draft      Agent Accountability Composition         August 2026
+
+
+   *  the action field set or projection covered by the action
+      commitment;
+
+   *  the exact action-commitment preimage bytes, canonicalization
+      profile, digest algorithm, domain-separation rule, encoding, and
+      digest representation;
+
+   *  any authorization-relevant action dimension evaluated outside the
+      action commitment, and the separate gate that evaluates it;
+
+   *  the issued-at and expiry semantics, any not-before rule, and the
+      status or revocation mechanism, if one is used;
+
+   *  the semantics of any credential identifier or one-time-use field
+      and the state required to enforce those semantics;
+
+   *  the exact native authority object referenced by the composition,
+      including its profile-tagged authority-reference digest and byte
+      preimage;
+
+   *  when that authority-reference preimage excludes presentation-
+      specific material, the exact disclosures, holder-binding proof,
+      verifier nonce, audience, and other transcript inputs needed to
+      reproduce the native presentation appraisal, together with an
+      integrity-protected reference to those inputs; and
+
+   *  all issuer-role, policy, status, and trust inputs needed to
+      reproduce the authorization appraisal, including the policy-
+      evaluation time.
+
+   A producer MUST NOT describe a credential identifier as single-use
+   unless the selected verifier profile maintains and checks the state
+   needed to reject a second use.  It MUST NOT describe a short validity
+   window as revocation.  An absent, unknown, or incompatible profile,
+   scope unit, trust input, or action-commitment rule is a failed CAN
+   appraisal, not permission to apply a local default.
+
+6.1.3.  Verifier Requirements
+
+   A conforming MachineMandate CAN verifier MUST report separately:
+
+   *  machine_mandate_reference_bound: whether the protected composition
+      reference identifies the expected MachineMandate artifact type,
+      profile, digest algorithm, exact authority-reference preimage, and
+      digest;
+
+
+
+
+
+
+Mih, et al.             Expires 12 February 2027               [Page 13]
+
+Internet-Draft      Agent Accountability Composition         August 2026
+
+
+   *  machine_mandate_appraised: whether the native credential and
+      presentation validate under the selected credential-format
+      profile, including issuer signature, disclosure processing, proof
+      of possession or holder binding, verifier nonce and audience,
+      temporal validity, credential status when applicable, required-
+      claim presence, and issuer-role or trust-policy checks;
+
+   *  machine_mandate_action_hash: whether the verifier's recomputation
+      over the declared action projection, under the exact profile and
+      byte rules, equals the issuer-protected action commitment and,
+      when the profile carries a set of permitted action commitments,
+      whether that commitment is a member of the issuer-protected set;
+      and
+
+   *  one separately named result for every authorization-relevant scope
+      dimension, including machine_mandate_spend when the profile
+      declares a spending limit.
+
+   The verifier MUST return DENY if any required gate fails or cannot be
+   evaluated.  It MUST NOT collapse reference binding, credential
+   validation, issuer appraisal, action-commitment recomputation, and
+   scope evaluation into one opaque "authorized" boolean.
+
+   Each reported gate MUST distinguish at least PASS, DENY, and
+   NOT_EVALUATED.  When evaluation stops after an earlier rejection, a
+   later gate is NOT_EVALUATED; it is not a second rejecting gate.  A
+   run record that reports a first rejecting gate MUST preserve this
+   distinction.
+
+   When SD-JWT VC and OpenID4VP are selected, the verifier MUST apply
+   the validation rules of the pinned SD-JWT, SD-JWT VC, and OpenID4VP
+   profiles, including strict algorithm and type checks, issuer-
+   identifier-to-key binding, rejection of uncommitted or conflicting
+   disclosures, required-claim validation, and key binding.  The first-
+   instance profile described here requires holder binding even though
+   SD-JWT permits profiles in which key binding is optional.  Merely
+   decoding the JWT claims, successfully verifying one signature, or
+   observing a known credential-type string does not establish
+   machine_mandate_appraised.
+
+   The final CAN result is:
+
+   CAN = ALLOW
+       iff reference_bound
+       and native_credential_appraised
+       and action_commitment_matches
+       and every required_scope_gate_passes
+       and relying_party_policy_accepts
+
+
+
+Mih, et al.             Expires 12 February 2027               [Page 14]
+
+Internet-Draft      Agent Accountability Composition         August 2026
+
+
+   The CAN verifier evaluates the action presented to the relying party,
+   not a value supplied by the agent as an asserted hash.  The relying
+   party MUST reconstruct the profile-defined action projection from the
+   request it is about to authorize, compute the commitment itself, and
+   use the same request values for all scope gates.  It MUST bind an
+   ALLOW result to that request and MUST NOT reuse the result for a
+   changed action.  If effect commitment is delayed beyond the recorded
+   policy-evaluation time, or if a relevant credential, status, or
+   policy input can have changed, the relying party MUST re-evaluate
+   before committing the effect.
+
+6.1.4.  Separation from WHO and AUDIT
+
+   An issuer, principal, or mandate claim does not by itself answer WHO.
+   A MachineMandate CAN profile MAY carry or selectively disclose a
+   principal reference, but a named-human authorization claim belongs in
+   a separately verified WHO profile unless the MachineMandate profile
+   independently meets that profile's requirements.
+
+   Runtime attestation is likewise not a prerequisite for verifying the
+   native CAN credential.  The current MachineMandate research
+   demonstrator combines credential, issuer-role, runtime-attestation,
+   and scope gates in one end-to-end verdict.  In this composition, the
+   credential, issuer-role, action-commitment, and scope results map to
+   CAN; RATS/TPM freshness and platform appraisal map to AUDIT.  The
+   composition MAY require both results for a relying-party decision,
+   but a failed or absent AUDIT result MUST NOT be mislabeled as failure
+   to parse or cryptographically verify the CAN credential.
+
+6.1.5.  Frozen IETF 126 Illustration
+
+   NOTE: '' line wrapping per [RFC8792].
+
+   One frozen, pre-execution MachineMandate vector uses the credential
+   type:
+
+   https://vocab.tyche.institute/vct/machine-mandate
+
+   Its composition reference commits to the exact 1190-byte issuer-
+   signed JWT component of the SD-JWT presentation.  That component has
+   SHA-256:
+
+   5df4d32df57650f27b6a65df041b708de80d69c0ca82a1044334f5e2edef5ce2
+
+   The authority-reference field carries that digest as unprefixed
+   lowercase hexadecimal text under an explicitly declared SHA-256
+   digest context.  It is distinct from the prefixed textual action
+   commitment below.  Because this stable reference covers only the
+
+
+
+Mih, et al.             Expires 12 February 2027               [Page 15]
+
+Internet-Draft      Agent Accountability Composition         August 2026
+
+
+   issuer-signed component, it does not by itself commit to the selected
+   disclosures, Key Binding JWT, verifier nonce, or audience of a
+   particular presentation.  A record claiming machine_mandate_appraised
+   MUST preserve and integrity-protect that separate presentation
+   evidence.
+
+   The action-commitment profile in that vector covers the 91 UTF-8
+   bytes of:
+
+   {"action_id":"pay-invoice/acme-corp","outcome":"eur:250:acm\
+   e-corp:vienna-interop-2026-001"}
+
+   and carries the textual commitment:
+
+   sha256:a89fbd2bd6f95cdb1ec27b6c7253770f\
+   f2a22220937cf065f6e45ef67b37e299
+
+   The profile declares scope.allowed_actions, scope.action_commitments,
+   and scope.max_spend, with spending values fixed by the vector's
+   mapping profile to EUR minor units.  The requested amount is not part
+   of this vector's action-commitment preimage; it is evaluated
+   independently by machine_mandate_spend.  Therefore, the action
+   commitment alone MUST NOT be described as committing to the payment
+   amount.  The combined CAN decision binds the declared action
+   projection and separately applies the amount limit.
+
+   The public MachineMandate repository contains another action profile
+   used by the paper/demo path, where the action projection is {tool,
+   amount_eur, to}. That digest context is not compatible with this
+   frozen vector's {action_id, outcome} projection.  A draft or test
+   vector MUST identify which profile it uses and MUST NOT compare,
+   substitute, or make transitive claims across the two action
+   commitments merely because both use SHA-256 and a JSON
+   canonicalization rule.
+
+   The text eur:250:acme-corp:vienna-interop-2026-001 in the frozen
+   vector is an opaque outcome descriptor.  A verifier MUST NOT infer
+   amount or currency semantics from that string; those semantics are
+   supplied only by the separately declared amount, currency, unit, and
+   mapping-profile inputs.
+
+
+
+
+
+
+
+
+
+
+
+Mih, et al.             Expires 12 February 2027               [Page 16]
+
+Internet-Draft      Agent Accountability Composition         August 2026
+
+
+   The frozen credential was issued at 2026-07-18T13:37:15Z and expires
+   at 2026-07-24T23:59:59Z.  In its credential self-check record, the
+   positive case requests 25000 EUR minor units and expects all
+   MachineMandate gates to pass.  The frozen over-limit case requests
+   75000 against scope.max_spend = 50000; it expects the reference,
+   native appraisal, and action-commitment gates to pass, and
+   machine_mandate_spend to be the sole rejecting MachineMandate gate.
+   These are frozen vector expectations and credential self-check
+   inputs, not a completed interoperability result.
+
+   The frozen PermitReceipt and MachineMandate action constructions use
+   different preimages.  Their relationship is therefore an explicit
+   protected cross-reference, not digest equality.  The frozen proposed
+   composition profile specifies a signed Agent Action Capsule payload
+   that co-binds the typed PermitReceipt reference and the typed
+   MachineMandate reference.  This does not absorb PermitReceipt into
+   MachineMandate, make either format the CAN slot, or cause one native
+   appraisal to imply the other.
+
+6.1.6.  Composition and Transparency Seams
+
+   At the composition join, a MachineMandate CAN profile exposes:
+
+   *  its profile and credential-type identifiers;
+
+   *  the subject digest and complete digest context for the action
+      projection;
+
+   *  the profile-tagged authority-reference digest for the exact native
+      credential object;
+
+   *  an integrity-protected reference to the exact presentation
+      evidence when it is not included in the authority-reference
+      preimage;
+
+   *  the protected scope fields or their disclosure-aware commitments;
+
+   *  the separately named native-appraisal, action-commitment, and
+      scope-gate results; and
+
+   *  the relying party's final CAN result and policy inputs.
+
+   If a MachineMandate statement or a detached digest of it is
+   registered with a SCITT transparency service, the SCITT receipt
+   supplies the separate receipt-payload digest.  The receipt proves
+   registration under the service policy.  It does not establish issuer
+   authority, credential validity, action coverage, scope sufficiency,
+   or CAN acceptance.
+
+
+
+Mih, et al.             Expires 12 February 2027               [Page 17]
+
+Internet-Draft      Agent Accountability Composition         August 2026
+
+
+6.1.7.  Negative Vectors
+
+   In addition to the composition-level negative classes, a
+   MachineMandate CAN profile MUST include vectors for at least:
+
+   *  a protected reference to the wrong credential bytes;
+
+   *  an unsupported or mislabeled credential profile, credential type,
+      media type, or signature algorithm;
+
+   *  an invalid issuer signature;
+
+   *  a disclosure not committed by the issuer-signed SD-JWT;
+
+   *  duplicate or conflicting disclosures for one claim name;
+
+   *  a required claim that is missing, selectively hidden when the
+      profile requires disclosure, or present under an unexpected type;
+
+   *  invalid proof of possession or holder binding;
+
+   *  a valid issuer-signed component paired with a presentation
+      transcript, disclosure set, or Key Binding JWT different from the
+      one appraised;
+
+   *  a mismatched verifier nonce or audience;
+
+   *  an expired or not-yet-valid credential;
+
+   *  a revoked or suspended credential when the selected profile claims
+      status enforcement;
+
+   *  an issuer key that verifies cryptographically but is not accepted
+      for the required authorization role;
+
+   *  a changed action field after issuance;
+
+   *  a canonicalization, profile-label, or digest-representation
+      mismatch;
+
+   *  a requested action outside allowed_actions;
+
+   *  a missing required action commitment;
+
+   *  an amount above max_spend;
+
+   *  a currency or unit mismatch;
+
+
+
+
+Mih, et al.             Expires 12 February 2027               [Page 18]
+
+Internet-Draft      Agent Accountability Composition         August 2026
+
+
+   *  a second use when the selected profile claims one-time semantics;
+
+   *  a scope field omitted and then supplied from an undeclared local
+      default;
+
+   *  a later scope gate skipped after an earlier rejection but
+      incorrectly reported as an independently evaluated DENY; and
+
+   *  a transparency receipt bound to a different payload.
+
+6.1.8.  Current Assurance Boundary
+
+   The public MachineMandate repository and paper are research
+   artifacts.  The current issuer key, holder key, qtsp://issuer
+   identifier, and trust-list inputs used by the frozen composition
+   credential are synthetic, run-specific inputs.  They do not establish
+   a real qualified trust-service provider, national trust framework,
+   production issuer authorization, or production status service.  In
+   particular, the demonstrator's synthetic AgentRuntimeEndorser trust-
+   list role is not evidence that the same issuer is authorized by a
+   production ecosystem to issue machine mandates.
+
+   The repository's credential code is an implementation used to
+   exercise the construction; this text does not claim that the
+   implementation has been tested for conformance to [RFC8785],
+   [RFC9901], draft-ietf-oauth-sd-jwt-vc-17, or OpenID4VP.  The
+   repository describes its JSON canonicalization as an RFC 8785 subset
+   and its credential implementation as simplified; the exact frozen
+   bytes and profile identifiers, rather than a generic conformance
+   assumption, control the vectors.  The artifact does not implement a
+   production revocation service or a persistent single-use replay
+   cache.  Its short validity window and credential identifier MUST NOT
+   be promoted into either claim.
+
+   At the initial 2026-07-23 hostile-review point, vocab.tyche.institute
+   did not resolve in DNS.  Later that day, Tyche published minimal Type
+   Metadata at the exact frozen vct URL; the endpoint returns HTTP 200
+   and application/json.  The metadata identifies and displays the
+   research credential type.  It does not define a production issuer
+   trust framework, establish implementation conformance, or version the
+   profile.  The frozen credential does not carry vct#integrity, so a
+   consumer cannot infer a content-pinned metadata version from that
+   credential.  A deployment whose policy requires Type Metadata MUST
+   still reject when it cannot retrieve or fully process the metadata
+   through a trusted, profile-defined method.
+
+
+
+
+
+
+Mih, et al.             Expires 12 February 2027               [Page 19]
+
+Internet-Draft      Agent Accountability Composition         August 2026
+
+
+   The action commitment proves equality to a declared action projection
+   under a named byte profile.  It does not prove that the relying party
+   executed that description faithfully or that the real-world effect
+   was semantically correct.  The MachineMandate repository's embedded
+   runtime-attestation fixtures use swtpm; the separate PCR-16 AAC/AEP
+   composition instance uses a vTPM.  Neither is a manufacturer-
+   provisioned physical TPM claim.  The formal three-owner IETF 126
+   evidence-generating run did not produce a valid result at the
+   proposed 2026-07-23 coordinate because its complete pre-run freeze
+   was not issued.  Credential self-checks and engineering rehearsals
+   remain separately classified; no successful composition result is
+   claimed here.
+
+   The first-instance MachineMandate CAN profile seed text was
+   contributed by Anton Sokolov, Tyche Institute.
+
+6.2.  The WHO Slot: Named-Human Authorization
 
    The WHO slot answers a single question: which named, accountable
    human — or quorum of distinct humans — authorized this exact action
@@ -270,17 +1114,18 @@ Internet-Draft      Agent Accountability Composition           July 2026
    canonicalization rule (if any), the digest algorithm and version, and
    the domain-separation context; the binding between the subject digest
    and the receipt signature(s) — the signed payload MUST cover the
+
+
+
+Mih, et al.             Expires 12 February 2027               [Page 20]
+
+Internet-Draft      Agent Accountability Composition         August 2026
+
+
    digest; the validity window and any freshness or one-time-use
    semantics; and the failure behavior when a required binding input,
    signer, or quorum member is absent — fail closed: absence of
    authorization is not authorization.
-
-
-
-Mih, et al.              Expires 6 January 2027                 [Page 5]
-
-Internet-Draft      Agent Accountability Composition           July 2026
-
 
    A conforming WHO verifier MUST be able to produce a result that
    states: whether each signature validates under the profile rules; the
@@ -325,38 +1170,799 @@ Internet-Draft      Agent Accountability Composition           July 2026
    Conformance), a WHO profile MUST reject each of the following, and
    the verifier MUST report which check failed: semantically similar
    action input with different canonical bytes; a changed subject; a
+
+
+
+Mih, et al.             Expires 12 February 2027               [Page 21]
+
+Internet-Draft      Agent Accountability Composition         August 2026
+
+
    changed authorizing-principal reference; replay of the receipt under
    a different action (a different subject digest); a quorum satisfied
    by a non-distinct principal filling two slots; an ordered quorum
    satisfied out of order; a threshold not met; a mismatched or absent
    receipt signature; a signature that verifies but whose signed payload
-
-
-
-Mih, et al.              Expires 6 January 2027                 [Page 6]
-
-Internet-Draft      Agent Accountability Composition           July 2026
-
-
    does not cover the subject digest (an unbound signature); a stale
    receipt; a post-hoc ratification presented as pre-execution
    authorization; a reusable authorization presented under one-time
    semantics, or a one-time authorization presented as reusable; and WHO
    digest bytes that do not match an adjacent slot's digest for the same
    claimed action under compatible digest contexts (per the binding
-   rules of the Composition Model, to be imported).  [The WHO positive-
-   vector classes are imported with the conformance suite in a later
-   revision.]
+   rules of the Composition Model).  The WHO slot's positive-vector
+   classes are drawn from the shared composition vector (see
+   Conformance); this document defines no WHO-specific positive vectors
+   beyond that shared suite.
 
-5.3.  The WHAT Slot
+   For the ordering class — a post-hoc ratification presented as pre-
+   execution authorization — the criterion for what closes the class is
+   narrower than authentication.  An ordering claim has two terms; an
+   input closes it only if it comes from a source that observed both
+   terms, or from two records whose producing boundaries can be related
+   in a way that orders the two terms.  An artifact produced on the
+   authorizing side alone — however strongly authenticated — cannot
+   close the class, because the boundary that produced it never observed
+   the effect term.  A signature timestamp from a trusted authority is
+   the illustrating case: it is an authenticated ordering input for the
+   signature, and still insufficient, because it observes the signature
+   and not the effect.  The exclusion therefore rules out a side, not an
+   artifact type.
 
-   [Profile text to be contributed by the slot's owners.]
+6.3.  The WHAT Slot
 
-5.4.  The AUDIT Slot
+6.3.1.  Design Rule
 
-   [Profile text to be contributed by the slot's owners.]
+   The WHAT slot answers one question: what terminal verdict did the
+   agent system record for one action, and what, if anything, is known
+   to have crossed the effect boundary.  It is a byte-stable record of
+   an observed outcome, not a replay of the action and not a re-
+   execution of it.  It does not establish that the action was permitted
+   (CAN), that a named human authorized it (WHO), that an independent
+   platform or observer verified the effect (AUDIT), or that the action
+   was semantically correct.  Two separations carry the whole slot: *a
+   dispatched attempt MUST NOT be presented as a confirmed effect*, and
+   *a record of an action MUST NOT be presented as an observation of its
+   consequence*.
 
-6.  Assurance Tiers
+
+
+
+
+
+Mih, et al.             Expires 12 February 2027               [Page 22]
+
+Internet-Draft      Agent Accountability Composition         August 2026
+
+
+   A conforming producer emits a WHAT record for every terminal verdict,
+   including blocks, denials, refusals, errors, timeouts, and other non-
+   executing outcomes.  Recording only successful actions is not a
+   conforming WHAT history.  Completeness of the history is a property
+   of the producing boundary, not of any single record, and no WHAT
+   record asserts it.
+
+   The first-instance WHAT profile is the Agent Action Capsule
+   ([I-D.mih-scitt-agent-action-capsule]): the signed payload of a SCITT
+   Signed Statement recording one action, its verdict-level disposition,
+   its effect state, and the assurance actually supported by the record.
+   Any record form meeting the producer and verifier requirements below
+   conforms.
+
+6.3.2.  Subject, Native-Record, and Additional Bindings
+
+   A WHAT record carries a *binding* for each construction under which
+   it participates in the composition.  A binding is the triple
+
+   (canonicalization algorithm, exclusion set, purpose label) -> digest
+
+   together with the complete digest context required by the Composition
+   Model.  The generic construction and its registry treatment are
+   specified in [I-D.mih-sokolov-scitt-payload-binding]; this section
+   states what a WHAT profile does with it.  Every binding a record
+   carries MUST lie inside the signed payload and be covered by the
+   signature.  A binding carried only in an unprotected header is not a
+   binding.
+
+   Three binding roles are distinguished, and a record MAY carry more
+   than one binding in the third role.
+
+   *The subject binding.* The subject digest joins independently
+   produced slot records for the same action.  In the exercised AAC
+   composition profile it is the unprefixed lowercase hexadecimal
+   representation of
+
+   SHA-256(JCS(action))
+
+   where action is the exact action object frozen by the composition
+   vector and JCS is [RFC8785].  The profile label, covered action field
+   set, canonicalization profile, hash algorithm, absence of additional
+   domain-separation bytes, and lowercase-hexadecimal representation are
+   all part of the digest context.  A producer MUST NOT substitute
+   sha256:-prefixed text, raw digest bytes, a different action
+   projection, or a human-readable rendering for that value.
+
+
+
+
+
+Mih, et al.             Expires 12 February 2027               [Page 23]
+
+Internet-Draft      Agent Accountability Composition         August 2026
+
+
+   *The native-record binding.* The WHAT record is content-addressed by
+   its own identifier — in AAC, capsule_id, recomputed under the Capsule
+   profile's JSON-DIGEST construction.  The subject digest and the
+   native-record identifier serve different roles: the first joins
+   slots, the second identifies these bytes. *Equality between them is
+   neither required nor implied*, and a verifier MUST NOT derive one
+   from the other.
+
+   *Additional composition bindings — the self-reference.* A WHAT
+   profile MAY declare one or more further bindings over the same action
+   under different constructions, so that a single record can
+   participate in more than one join without either side re-
+   canonicalizing the other's bytes.  Each additional binding MUST carry
+   its own complete digest context and its own purpose label. *A
+   verifier MUST NOT infer equality, derivation, or transitive coverage
+   between any two bindings on the same record merely because they cover
+   the same action, share a hash algorithm, or appear in the same signed
+   payload.* Two bindings on one record are two independent claims that
+   happen to be co-signed.
+
+   Purpose labels are profile-owned and namespaced; only labels used
+   across profile boundaries are registered centrally.  A verifier that
+   encounters an unknown purpose label MUST report the binding as
+   present and uninterpreted and MUST NOT fail the record on that
+   ground.  Verified-but-opaque is a result; unknown is not an error.
+
+   The first defined additional binding is the *action-equivalence
+   binding*, whose purpose is to answer "is this the same action" across
+   producers and across time without requiring either party to disclose
+   the action.  It is computed over a declared action subset with its
+   own exclusion set, and it MAY use a deterministic keyed derivation
+   identified by an algorithm identifier and a key identifier, so that
+   equal inputs yield equal digests within a key scope and unguessable
+   digests outside it.  Key management is out of scope; only the
+   algorithm and key identifiers appear in the record.
+
+   This construction MUST NOT be confused with the salted per-field
+   commitments used for selective disclosure.  Salted commitments use
+   fresh random salt per value and therefore destroy equality by design,
+   which is what makes concealment safe.  A keyed equivalence derivation
+   preserves equality within a scope by design.  The two mechanisms have
+   opposite purposes and MUST NOT share vocabulary in a profile's text
+   or field names.
+
+
+
+
+
+
+
+
+Mih, et al.             Expires 12 February 2027               [Page 24]
+
+Internet-Draft      Agent Accountability Composition         August 2026
+
+
+   A record MAY carry more than one equivalence binding under different
+   purpose labels and key scopes — for example one scoped to a single
+   producing operator and one scoped to a party pair.  A single
+   equivalence digest MUST NOT be presented as valid in more than one
+   key scope.
+
+   *Signature-protected preimages.* Where the bytes a binding covers are
+   already fixed by a signature, the canonicalization is that
+   signature's own byte boundary and re-canonicalizing is an error.  A
+   profile taking this option MUST identify the covered octets by citing
+   a normative reference together with the name that referenced
+   specification gives that exact byte sequence.  If the container
+   specification does not itself name the byte sequence, the profile
+   MUST NOT rely on transmitted octets and MUST declare a
+   canonicalization instead.
+
+   *Reproducibility bounds.* A profile whose canonicalization admits
+   numbers MUST state its integer magnitude bound.  A canonicalization
+   that permits integers outside the range representable exactly by an
+   ECMAScript Number is not reproducible: two conforming verifiers may
+   derive different digests from the same input.  The exercised AAC
+   profile rejects integers outside plus or minus (2^53 - 1) with a
+   typed error and orders object members by UTF-16 code unit.  A profile
+   MUST also state its digest grammar in prose — for example, "exactly
+   64 characters, each in the set 0-9 and a-f" — and MUST NOT state it
+   only as a regular expression.  A grammar whose meaning depends on the
+   reader's regular-expression engine is not a grammar.
+
+6.3.3.  Declared Field Basis
+
+   A digest is comparable only with its digest context. *A field value
+   is comparable only with its declared basis.* Any field a WHAT record
+   exposes at the composition join, or that participates in a
+   comparison, reconciliation, or aggregation across producers, MUST
+   carry the basis under which its value is stated.  This requirement is
+   independent of the digest rules above and is not satisfied by them.
+
+   At minimum:
+
+   *  A *quantity* MUST declare its unit of measure, from a named and
+      versioned unit vocabulary, and MUST NOT rely on a unit implied by
+      a field name.
+
+   *  A *monetary amount* MUST declare its currency, whether the amount
+      is stated gross or net, the tax basis if any, and the rounding
+      rule and precision applied.
+
+
+
+
+
+Mih, et al.             Expires 12 February 2027               [Page 25]
+
+Internet-Draft      Agent Accountability Composition         August 2026
+
+
+   *  A *time instant* MUST declare which event the instant marks — for
+      example request, dispatch, observation, or record creation —
+      together with the time source and the scale and offset.  An
+      instant with no declared referent marks nothing.
+
+   *  A *rate or ratio* MUST declare the basis of both its numerator and
+      its denominator.
+
+   *  A *coded or enumerated value* MUST declare the code list and its
+      version.
+
+   A field presented without its declared basis is not joinable.  A
+   verifier MUST report it as uncomparable and MUST NOT supply a local
+   default, infer a basis from a field name, or convert between bases on
+   the record's behalf.  Silent unit and basis coercion is the failure
+   mode this rule exists to make impossible, and it is the one most
+   likely to survive every cryptographic check in this document.
+
+   Where two profiles genuinely state the same quantity on different
+   bases, they compose through an explicitly declared and digest-pinned
+   mapping cited by both records, not through a verifier's local
+   conversion.
+
+   This document states the obligation; it does not define the
+   vocabularies.  A basis vocabulary — a unit list, a currency and
+   rounding convention, a code list, or a declared mapping between two
+   bases — is registered and versioned under
+   [I-D.mih-sokolov-scitt-payload-binding], authored by the party that
+   owns it, on the same terms as any other registered artifact.  A
+   profile cites the vocabularies it uses rather than restating them.
+   The division is deliberate and neither document repeats the other:
+   *that a joined field must declare its basis is a composition rule;
+   how a basis vocabulary is declared, versioned, and cited is registry
+   machinery.* A profile that cites no vocabulary for a basis it claims
+   to declare has not declared one.
+
+6.3.4.  Producer Requirements
+
+   A conforming WHAT producer MUST:
+
+   *  identify the profile and serialization-suite versions in use;
+
+   *  identify the action, the accountable operator, the agent developer
+      and version, the timestamp with its declared referent and source,
+      and the configuration epoch when one is used;
+
+
+
+
+
+
+Mih, et al.             Expires 12 February 2027               [Page 26]
+
+Internet-Draft      Agent Accountability Composition         August 2026
+
+
+   *  carry a stable per-agent-instance identifier, distinct from the
+      operator, the developer, and the configuration epoch, on every
+      record; where fleet composition is sensitive this identifier is
+      eligible for selective disclosure, and it is informational to a
+      composition verifier;
+
+   *  identify the tool or endpoint invoked and its version, so that a
+      silent change in a tool's behavior is reconstructable after the
+      fact;
+
+   *  carry the subject binding and its complete digest context, and
+      each additional binding with its own context and purpose label;
+
+   *  name the *counterparty* the action was directed at — its class
+      (agent, API, human, or none), its identity, and the cross-party
+      rung actually attained — and carry the field even when the
+      exchange was unilateral.  The counterparty field is informational
+      to a composition verifier and eligible for selective disclosure;
+      it MUST NOT become a verifier-required field, because a profile
+      MUST NOT permit concealment of a field its own verifier requires;
+
+   *  carry the cross-party correlator over the request, where one
+      exists, so that two parties' records for one exchange can be
+      related without either disclosing the action;
+
+   *  record the disposition — the decision, the approver class, the
+      human-disposition value, and the verdict class — and carry any
+      approval-scope declaration as a digest, leaving evaluation of that
+      scope above the composition layer;
+
+   *  record the effect status and the effect-assurance mode without
+      collapsing either into the verdict class;
+
+   *  emit a confirmed effect only when a response digest over the
+      actually observed response is present. *Where no response bytes
+      were observed, the record MUST NOT rise above dispatched-
+      unconfirmed, whatever the runtime believes happened*;
+
+   *  distinguish a pre-dispatch timeout from a post-dispatch timeout
+      through the effect mode — not-applicable versus dispatched-
+      unconfirmed — rather than through the verdict;
+
+   *  carry an effect attestation whenever an effect was dispatched, and
+      omit it when no effect occurred;
+
+   *  state, for each field it exposes, whether that field is verifier-
+      checked or informational, so that an implementer never has to
+      guess which of the two a field is; and
+
+
+
+Mih, et al.             Expires 12 February 2027               [Page 27]
+
+Internet-Draft      Agent Accountability Composition         August 2026
+
+
+   *  preserve later resolution of an unresolved outcome as a new
+      signed, linked record rather than by mutating the original.
+
+   Where a WHAT record cross-references a record in an adjacent slot,
+   the signed payload MUST cover the adjacent profile's label, the
+   referenced record's identifier, and a digest of the exact referenced
+   bytes.  That protected cross-reference demonstrates which record this
+   one names.  It does not import the adjacent slot's semantics and does
+   not make a WHAT verifier a verifier of that slot.
+
+   Profile-specific fields outside this document's vocabulary MUST be
+   carried in a namespaced extension space rather than at the top level
+   of the record, so that two independent extensions cannot collide and
+   neither can be mistaken for core.
+
+6.3.5.  Verifier Requirements
+
+   A conforming WHAT verifier MUST report separately:
+
+   *  whether the record's signature validates under the selected trust
+      input;
+
+   *  whether the native-record identifier recomputes from the canonical
+      record form;
+
+   *  whether the subject digest recomputes from the frozen action under
+      the declared digest context;
+
+   *  whether the signed record carries that same subject digest;
+
+   *  for each additional binding: whether it recomputes where the
+      verifier holds the inputs, and — where it does not — that the
+      binding is present and unverified, which is a distinct result from
+      present and failed;
+
+   *  whether every joined field carries a declared basis, and which
+      fields did not;
+
+   *  whether the confirmed-effect, verdict-and-effect, effect-
+      attestation, and record-chain invariants hold;
+
+   *  the record's native first-class verification result;
+
+   *  any manifest-dependent secondary result, without allowing it to
+      weaken or overwrite the first-class result; and
+
+   *  the relying party's acceptance result together with the policy
+      inputs that produced it.
+
+
+
+Mih, et al.             Expires 12 February 2027               [Page 28]
+
+Internet-Draft      Agent Accountability Composition         August 2026
+
+
+   These results MUST NOT be collapsed into a single opaque executed,
+   verified, or accepted boolean.  A valid record proves that the signer
+   made the bound WHAT statement.  A runtime-claimed effect remains a
+   runtime claim; it does not become an independent observation because
+   the record is signed, registered, or anchored.
+
+   A verifier MUST distinguish three terminal outcomes when comparing
+   this record against a counterparty record for the same action:
+   *reconciled*, where the compared fields agree under compatible
+   declared bases; *divergent*, where they disagree, with the divergence
+   located to a named field and quantified; and *indeterminate*, where
+   no declared mapping between the two bases exists.  Divergence is a
+   reportable result carrying both parties' evidence, not a verification
+   failure, and MUST NOT be rendered as one.  An unresolvable linkage is
+   indeterminate, not divergent.
+
+   Where a verifier cannot evaluate a check at all — because an input is
+   absent, a profile is unknown, or a key scope is unavailable — it MUST
+   report that check as indeterminate rather than as passed or failed.
+
+6.3.6.  Cross-Party Rungs
+
+   Where a WHAT record names a counterparty, it MUST state the rung
+   actually attained, drawn from an ordered vocabulary in which no rung
+   is confusable with another and no rung is inferred from the absence
+   of evidence for a higher one.
+
+   *This document does not define that vocabulary.* The rung names are
+   established by the bilateral attestation work
+   [I-D.mih-agent-bilateral-attestation]; a WHAT profile cites them
+   rather than restating them, and a profile that cites no vocabulary
+   has not declared a rung.  What this document states is the structural
+   discipline any such vocabulary must satisfy, which holds whatever
+   names are chosen: the rungs are ordered; a consumer MAY require a
+   minimum; a record claiming a higher rung than its carried evidence
+   supports is an overclaim and MUST fail; and an unknown rung value
+   grades down to the lowest rung and never up, so that a verifier which
+   does not recognize a rung under-reads the record rather than over-
+   trusting it.
+
+6.3.7.  Composition and Transparency Seams
+
+   At the composition join, a WHAT profile exposes: the profile label
+   and version; the subject digest with its complete digest context;
+   each additional binding with its purpose label and context; the
+   native-record identifier and its context; the disposition and verdict
+   class; the effect status, effect mode, and effect-attestation grade;
+   the counterparty class and attained rung, subject to selective
+
+
+
+Mih, et al.             Expires 12 February 2027               [Page 29]
+
+Internet-Draft      Agent Accountability Composition         August 2026
+
+
+   disclosure; the declared basis for every exposed field; the native
+   and secondary verification results; any protected cross-reference to
+   adjacent slot evidence; and the relying party's final WHAT result
+   with its policy inputs.
+
+   If the record is registered with a SCITT Transparency Service, the
+   receipt supplies the separate receipt-payload digest.  The receipt
+   proves registration of the submitted statement under the service
+   policy.  It does not prove that the record is complete, that its
+   effect claim is true, that an authorization existed, or that the
+   relying party should accept the action.
+
+6.3.8.  Negative Vectors
+
+   In addition to the composition-level negative classes, a WHAT profile
+   MUST include vectors for at least:
+
+   *  a subject digest recomputed from different action bytes;
+
+   *  a record whose signed subject digest differs from the composition
+      digest;
+
+   *  a native-record identifier that does not recompute;
+
+   *  an additional binding whose purpose label is present but whose
+      context is absent;
+
+   *  two bindings on one record treated by the verifier as equal,
+      derived, or transitively covering, without demonstration;
+
+   *  an equivalence digest presented as valid in a second key scope;
+
+   *  an equivalence digest colliding across genuinely different
+      actions, and failing to match across genuinely identical ones;
+
+   *  a joined field carrying a value with no declared basis;
+
+   *  two records compared across incompatible bases and reported as
+      reconciled;
+
+   *  a divergence rendered as a verification failure, or an
+      unresolvable linkage rendered as a divergence;
+
+   *  a changed disposition or effect after signing;
+
+   *  a confirmed effect without a response digest over the observed
+      response;
+
+
+
+
+Mih, et al.             Expires 12 February 2027               [Page 30]
+
+Internet-Draft      Agent Accountability Composition         August 2026
+
+
+   *  a non-dispatching verdict paired with a dispatched or confirmed
+      effect;
+
+   *  a post-dispatch timeout presented as not-applicable;
+
+   *  a missing effect attestation when dispatch occurred, or an effect
+      attestation present when no effect occurred;
+
+   *  a broken or ambiguous supersession chain;
+
+   *  a counterparty rung claimed above the evidence carried — in
+      particular full-bilateral claimed with one signature;
+
+   *  an absent counterparty field on a directed action;
+
+   *  a protected cross-reference bound to different adjacent-slot
+      bytes;
+
+   *  a transparency receipt bound to a different signed statement;
+
+   *  an integer outside the profile's stated magnitude bound admitted
+      into a digest field; and
+
+   *  an unknown registry value treated either as a stronger assurance
+      grade or as an automatic verification failure.
+
+   Every negative vector ships with its condition-removed mutant, so
+   that a check which silently stopped running is distinguishable from a
+   check that passed.
+
+6.3.9.  Current Assurance Boundary
+
+   The exercised first-instance vectors verify the WHAT record and the
+   composition join.  They do not establish that every consequential
+   action was recorded, that a runtime-claimed effect occurred in the
+   external world, or that an independent observer corroborated the
+   result.  An independent meter, auditor, or other observer supplies a
+   separate signed claim over the same subject digest at the composition
+   layer; it is not silently promoted into the WHAT record.
+
+   The first-instance WHAT profile and its text are maintained by Steven
+   Mih, Action State Group, as the Agent Action Capsule author.
+
+6.4.  The AUDIT Slot
+
+
+
+
+
+
+
+Mih, et al.             Expires 12 February 2027               [Page 31]
+
+Internet-Draft      Agent Accountability Composition         August 2026
+
+
+6.4.1.  Design Rule
+
+   The AUDIT slot asks whether the runtime produced independently
+   appraisable evidence that its declared enforcement path was applied
+   to this action, in the claimed causal order, without undetected
+   alteration.  It does not establish that the policy was sufficient,
+   that every relevant event was recorded, or that the action was
+   semantically correct.  Those are separate completeness and relying-
+   party judgments.  Platform attestation also does not, by itself,
+   prove the truth of an application-layer record; the binding between
+   the two is the load-bearing claim.
+
+   The first-instance AUDIT profile composes an application-layer action
+   evidence package (AEP) with RATS Evidence and an Attestation Result
+   ([I-D.sokolov-rats-aep-composition], using the roles and trust model
+   of [RFC9334]).  The AEP is a signed, append-only record of the
+   action, its authority, and its outcome.  Platform Evidence binds an
+   AEP outcome digest and a fresh per-appraisal value into data covered
+   by an attestation-key signature.  The resulting profile lets a
+   verifier check that the same outcome named by the action record was
+   present in the appraised execution context.  It does not make the AEP
+   producer or the Attester a truth oracle.
+
+   An implementation of the Governance Audit Record (GAR)
+   [I-D.sato-soos-gar] can supply the AEP role in this profile when the
+   selected GAR artifact, including any referenced Event Log records,
+   records the action, its authorizing principal, and its outcome;
+   validates under a signed, append-only, tamper-evident chaining
+   construction; and the platform-evidence profile demonstrates that the
+   GAR-producing component and the action-performing component are
+   within the measured software stack claimed by the appraisal.
+   [I-D.sokolov-rats-aep-composition] supplies the platform-attestation
+   binding for evidence meeting those conditions; it does not define or
+   require a replacement record format.  Other implementations may fill
+   the same AEP role.
+
+   The signed, append-only, chaining construction and causal-ordering
+   properties referenced above are specified in [I-D.sato-soos-gar-02],
+   §6 (Session Audit Record), §8 (Event Log Requirements), and §12
+   (Authority Lifecycle Events).  [I-D.sato-soos-gar] (-03) carries
+   these sections forward without reproducing them and adds the OTel
+   semantic convention and GAR Processor specification.
+
+6.4.2.  Producer Requirements
+
+   A conforming AUDIT producer MUST state:
+
+   *  the covered action and outcome fields;
+
+
+
+Mih, et al.             Expires 12 February 2027               [Page 32]
+
+Internet-Draft      Agent Accountability Composition         August 2026
+
+
+   *  the subject-digest context defined in the Composition Model;
+
+   *  the AEP signature and chaining construction;
+
+   *  the predecessor or sequence value that establishes the claimed
+      causal order;
+
+   *  the platform Evidence format and selected measurements;
+
+   *  the exact transformation that binds the outcome digest into those
+      measurements;
+
+   *  the attestation key and its trust-chain inputs;
+
+   *  the freshness value and where it appears in signed Evidence;
+
+   *  the Verifier and appraisal scheme; and
+
+   *  any Reference Values, Endorsements, or policy inputs needed to
+      reproduce the appraisal.
+
+6.4.3.  Exercised PCR-16 Binding
+
+   One exercised AEP/AAC binding folds the raw 32-byte action-response
+   digest from an Agent Action Capsule
+   ([I-D.mih-scitt-agent-action-capsule]) into TPM PCR 16, starting from
+   the all-zero PCR value, and places the action capsule identifier in
+   the TPM quote's extraData.  For SHA-256 this yields:
+
+   PCR16 = SHA-256(0x00 * 32 || response_digest)
+
+   The PCR selection is an instance parameter: this AEP/AAC interop
+   vector uses PCR 16, while the separate Project Veraison exercise
+   documented in [I-D.sokolov-rats-aep-composition] uses PCR 4.
+
+   The quote's signed pcrDigest then commits to the selected PCR value.
+   A profile using this construction MUST distinguish the raw response-
+   digest bytes from their 64-character hexadecimal display form,
+   identify the PCR selection, and state whether extraData carries a
+   fresh challenge, a unique action identifier, or another binding
+   value.  An identifier provides freshness only when the relying-party
+   policy ensures that it is fresh for the appraisal.
+
+6.4.4.  Verifier Requirements
+
+   A conforming AUDIT verifier MUST report separately:
+
+
+
+
+
+Mih, et al.             Expires 12 February 2027               [Page 33]
+
+Internet-Draft      Agent Accountability Composition         August 2026
+
+
+   *  whether the AEP signature and hash chain validate, including
+      predecessor and sequence checks;
+
+   *  the subject and outcome digest bytes it recomputed, with their
+      digest contexts;
+
+   *  whether the attestation signature validates under the supplied
+      attestation key and whether that key is accepted under the relying
+      party's trust policy;
+
+   *  whether the quoted PCR digest matches the selected PCR values and
+      whether the declared outcome-to-PCR transformation recomputes;
+
+   *  whether the outcome digest extracted from the action record equals
+      the digest bound into the signed platform Evidence under
+      compatible contexts;
+
+   *  the Verifier's native appraisal result;
+
+   *  whether freshness was actually enforced by comparing the value
+      recovered from the raw signed Evidence with the expected per-
+      appraisal value; and
+
+   *  the relying party's final acceptance result and policy inputs.
+
+   These checks MUST NOT be collapsed into one opaque "audited" boolean.
+   In particular, an affirming Attestation Result is not evidence of
+   freshness unless the selected appraisal scheme checked the relevant
+   nonce or the relying party performed and reported that comparison
+   separately.  Re-deriving freshness from the raw TPM quote bytes is
+   therefore a distinct check when the Attestation Result does not
+   expose or enforce the quote's signed extraData.
+
+6.4.5.  Composition and Transparency Seams
+
+   At the composition join, the AUDIT slot exposes the subject digest
+   and context, the profile label, the authority-reference digest for
+   the native AEP/RATS evidence, the appraised outcome digest, the
+   freshness result, and the native appraisal result.  If the evidence
+   or a detached digest of it is registered with a SCITT transparency
+   service, its receipt supplies the separate receipt-payload digest.
+   The receipt proves registration under the service's policy; it does
+   not prove that the runtime enforced correctly, that the attestation
+   was fresh, or that the relying party should accept it.
+
+
+
+
+
+
+
+Mih, et al.             Expires 12 February 2027               [Page 34]
+
+Internet-Draft      Agent Accountability Composition         August 2026
+
+
+6.4.6.  Negative Vectors
+
+   In addition to the composition-level negative classes, an AUDIT
+   profile MUST include vectors for at least:
+
+   *  a changed action or outcome after signing;
+
+   *  a broken or reordered AEP chain;
+
+   *  ASCII hexadecimal text substituted for raw digest bytes;
+
+   *  a changed PCR selection;
+
+   *  a PCR value inconsistent with the declared extension;
+
+   *  a quote signature that does not validate;
+
+   *  a quoted outcome different from the action record's outcome;
+
+   *  a replayed quote whose signed freshness value differs from the
+      expected value;
+
+   *  an affirming Attestation Result paired with the wrong action
+      evidence; and
+
+   *  a transparency receipt bound to a different payload.
+
+6.4.7.  Current Assurance Boundary
+
+   The exercised first-instance vectors use a virtual TPM (vTPM),
+   including appraisal by a locally operated Project Veraison instance.
+   They exercise genuine TPM 2.0 quote structures, attestation-key
+   signatures, digest binding, appraisal, and negative cases.  The
+   evidence bundle does not establish a manufacturer-provisioned
+   physical TPM root for that vTPM and therefore does not establish a
+   hardware-rooted guarantee, production readiness, conformance by the
+   Veraison project, or endorsement by it.  A hardware-backed profile
+   would additionally need to establish its attestation-key provenance,
+   Endorsements, Reference Values, measured workload coverage, and
+   deployment-specific trust policy.
+
+   The swtpm-based exercise validates the verifier logic and evidence
+   plumbing; it is not evidence of a hardware root of trust.
+
+   The first-instance AEP/RATS AUDIT profile and this slot text were
+   contributed by Anton Sokolov, Tyche Institute.
+
+
+
+
+
+Mih, et al.             Expires 12 February 2027               [Page 35]
+
+Internet-Draft      Agent Accountability Composition         August 2026
+
+
+7.  Assurance Tiers
 
    A record answering these questions may be produced at different
    assurance levels, and the distinction is the crux for a relying party
@@ -382,19 +1988,7 @@ Internet-Draft      Agent Accountability Composition           July 2026
    is a property profiles can converge on, not a single format they must
    adopt.
 
-
-
-
-
-
-
-
-Mih, et al.              Expires 6 January 2027                 [Page 7]
-
-Internet-Draft      Agent Accountability Composition           July 2026
-
-
-7.  Conformance
+8.  Conformance
 
    Conformance is expressed as a shared vector suite: a positive
    composition vector (one action threaded through the populated slots)
@@ -407,13 +2001,360 @@ Internet-Draft      Agent Accountability Composition           July 2026
    implementation; each slot is implemented independently, and any party
    may verify against the vectors.
 
-8.  Extension Points
+8.1.  Cross-Slot Conformance Mechanism
+
+   The cross-slot mechanism in this section was contributed by Iman
+   Schrock (EMILIA Protocol, Inc.).  Its first runnable pack — one
+   positive four-slot vector, thirteen negative cases, and thirteen
+   condition-removed controls, with manifests, checksums, an executable
+   runner, and an external-report template — is published in the EMILIA
+   Protocol repository (pull request 521, commit 30916c80).  That
+   manifest pins Composition *-00*; it was not built against this *-01*
+
+
+
+Mih, et al.             Expires 12 February 2027               [Page 36]
+
+Internet-Draft      Agent Accountability Composition         August 2026
+
+
+   revision, and an -01-pinned manifest is future work, out of scope
+   here.  Per the freeze rule below, the pack is a candidate, not a
+   frozen result, until a second implementation maintained by a
+   different party consumes the same published bytes and returns the
+   completed external report.
+
+8.1.1.  Boundary
+
+   The mechanism tests whether an implementation preserves the declared
+   boundaries and joins of the Composition Model.  It does not define
+   native conformance for CAN, WHO, WHAT, or AUDIT.  Each slot owner
+   maintains the rules and vectors for that slot.  Composition imports
+   the native reports without weakening, relabeling, or overwriting
+   them.
+
+   A run reports the CAN, WHO, WHAT, and AUDIT results separately,
+   followed by each cross-slot check.  It never collapses those results
+   into one opaque trusted, authorized, executed, or verified boolean.
+
+   CAID, AEC, and AEB each have one normative home, independently
+   maintained by Iman Schrock (EMILIA Protocol, Inc.):
+
+    +===========+====================+================================+
+    | Mechanism | Normative home     | Scope                          |
+    +===========+====================+================================+
+    | CAID      | [I-D.schrock-caid] | The exact material-action      |
+    |           |                    | identifier and declared digest |
+    |           |                    | context                        |
+    +-----------+--------------------+--------------------------------+
+    | AEC       | [I-D.schrock-aec]  | Native evidence preservation   |
+    |           |                    | and relying-party requirement  |
+    |           |                    | satisfaction                   |
+    +-----------+--------------------+--------------------------------+
+    | AEB       | [I-D.schrock-aeb]  | Executor-side local            |
+    |           |                    | authorization, atomic reserve/ |
+    |           |                    | consume, invocation, and post- |
+    |           |                    | dispatch outcome handling      |
+    +-----------+--------------------+--------------------------------+
+
+                                  Table 1
+
+   Composition consumes each mechanism's named outputs at the interfaces
+   below.  It does not replace or inherit CAID, AEC, or AEB; those
+   mechanisms remain independently maintained by their own documents,
+   not by this one.
+
+   CAID, AEC, and AEB enter at distinct interfaces rather than becoming
+   new slot definitions:
+
+
+
+Mih, et al.             Expires 12 February 2027               [Page 37]
+
+Internet-Draft      Agent Accountability Composition         August 2026
+
+
+   *  CAID supplies the declared exact-action digest context.
+
+   *  AEC preserves native evidence verification and reports whether a
+      named relying-party requirement is satisfied.
+
+   *  AEB remains the executor-side authorization, reserve/consume,
+      invocation, and post-dispatch uncertainty lifecycle.
+
+   *  Agent Action Capsule supplies a candidate WHAT record under its
+      own native Class 1 and Class 2 conformance rules.
+
+   The cross-slot mechanism tests those interfaces.  It does not replace
+   their specifications or move enforcement into an evidence record.
+
+8.1.2.  Bundle requirements
+
+   Every bundle pins:
+
+   1.  the Composition revision and digest;
+
+   2.  each populated slot's profile and serialization-suite revision;
+
+   3.  the exact action bytes and complete digest context;
+
+   4.  every native record as bytes, with its native identifier and
+       digest;
+
+   5.  each additional binding, purpose, context, and verification
+       expectation;
+
+   6.  every protected cross-reference and the exact referenced bytes;
+
+   7.  each compared field's declared basis and any pinned mapping;
+
+   8.  the expected result of every native and join check; and
+
+   9.  the expected terminal composition report.
+
+   A runner evaluates the supplied bytes.  It does not substitute a
+   reconstructed fixture, upgrade an unknown profile, or infer an absent
+   mapping, field basis, purpose label, or digest representation.
+
+8.1.3.  Result vocabulary
+
+   Every named check returns exactly one of:
+
+   *  pass — evaluated and the condition held;
+
+
+
+
+Mih, et al.             Expires 12 February 2027               [Page 38]
+
+Internet-Draft      Agent Accountability Composition         August 2026
+
+
+   *  fail — evaluated and the condition did not hold;
+
+   *  not_evaluated — a prerequisite failed or the check was not
+      attempted;
+
+   *  unsupported — the pinned required profile or semantics are not
+      implemented; or
+
+   *  indeterminate — the records are readable, but the comparison
+      cannot be resolved from the declared inputs.
+
+   Only pass is a pass.  The other four values are never silently
+   upgraded.  A rejected prerequisite does not turn unexecuted
+   downstream checks into extra failures.
+
+   An unknown optional binding may remain structurally readable.  It
+   cannot satisfy a policy that requires understood semantics for that
+   binding.
+
+8.1.4.  Run report
+
+   A report contains:
+
+   *  implementation owner, name, version, and source revision;
+
+   *  bundle and input-artifact digests;
+
+   *  each native slot result unchanged;
+
+   *  each native slot and join's expected and actual result;
+
+   *  divergence located to a named field, including both values and
+      bases;
+
+   *  the terminal composition result;
+
+   *  deterministic report digest computed over the report with the
+      report_digest member omitted; and
+
+   *  known shared dependencies that limit independence.
+
+   Matching a bundle proves conformance only to those pinned vectors.
+   It does not certify an agent, prove every action was recorded,
+   establish an external effect, or replace a relying party's policy
+   decision.
+
+
+
+
+
+
+Mih, et al.             Expires 12 February 2027               [Page 39]
+
+Internet-Draft      Agent Accountability Composition         August 2026
+
+
+8.1.5.  Positive, negative, and condition-removed vectors
+
+   The first pack contains one positive four-slot vector and the
+   following negative cases.  Every negative has a condition-removed
+   twin that changes only the tested defect and returns to pass.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Mih, et al.             Expires 12 February 2027               [Page 40]
+
+Internet-Draft      Agent Accountability Composition         August 2026
+
+
+    +=================+=============================+=================+
+    | ID              | Changed condition           | Required result |
+    +=================+=============================+=================+
+    | COMP-BIND-01    | Different action bytes      | fail            |
+    |                 | retain the positive digest  |                 |
+    +-----------------+-----------------------------+-----------------+
+    | COMP-BIND-02    | Incompatible digest context | indeterminate   |
+    |                 | or action projection        |                 |
+    +-----------------+-----------------------------+-----------------+
+    | COMP-BIND-03    | Raw bytes and lowercase     | fail            |
+    |                 | hexadecimal are confused    |                 |
+    +-----------------+-----------------------------+-----------------+
+    | COMP-BIND-04    | Protected reference names   | fail            |
+    |                 | different slot bytes        |                 |
+    +-----------------+-----------------------------+-----------------+
+    | COMP-BIND-05    | Additional binding omits    | fail            |
+    |                 | its context                 |                 |
+    +-----------------+-----------------------------+-----------------+
+    | COMP-BIND-06    | Unknown optional semantics  | unsupported,    |
+    |                 | are required by policy      | binding remains |
+    |                 |                             | readable        |
+    +-----------------+-----------------------------+-----------------+
+    | COMP-BASIS-01   | Compared field lacks a      | indeterminate   |
+    |                 | declared basis              |                 |
+    +-----------------+-----------------------------+-----------------+
+    | COMP-BASIS-02   | Incompatible bases lack a   | indeterminate   |
+    |                 | pinned mapping              |                 |
+    +-----------------+-----------------------------+-----------------+
+    | COMP-RESULT-01  | Native and join results are | fail            |
+    |                 | collapsed                   |                 |
+    +-----------------+-----------------------------+-----------------+
+    | COMP-RESULT-02  | Composition overwrites a    | fail            |
+    |                 | native result               |                 |
+    +-----------------+-----------------------------+-----------------+
+    | COMP-JOIN-01    | Valid records identify      | fail            |
+    |                 | different actions           |                 |
+    +-----------------+-----------------------------+-----------------+
+    | COMP-JOIN-02    | not_evaluated is relabeled  | fail            |
+    |                 | as verifier failure         |                 |
+    +-----------------+-----------------------------+-----------------+
+    | COMP-UNKNOWN-01 | Unknown required profile is | unsupported     |
+    |                 | treated as accepted         |                 |
+    +-----------------+-----------------------------+-----------------+
+
+                                  Table 2
+
+   The runnable pack therefore contains 27 cases: one positive, thirteen
+   negatives, and thirteen condition-removed controls.
+
+
+
+Mih, et al.             Expires 12 February 2027               [Page 41]
+
+Internet-Draft      Agent Accountability Composition         August 2026
+
+
+8.1.6.  Freeze rule
+
+   A vector freezes only after two implementations maintained by
+   different parties consume the same published bytes and produce
+   reports matching every pinned expectation.  Sharing a library,
+   generated fixture, or expected-output file does not establish
+   independent recomputation unless that dependency is the declared
+   object under test.
+
+   Changing an input byte, profile pin, expectation, canonicalization
+   rule, or mapping creates a new bundle and restarts the independent-
+   run requirement.
+
+8.1.7.  Delivered and open
+
+   EMILIA delivers:
+
+   *  the mechanism in this document;
+
+   *  the manifest and exact four-slot input bytes;
+
+   *  the 27-case bundle and executable runner;
+
+   *  the EMILIA report and checksums; and
+
+   *  an external-report template for the second implementation.
+
+   The pack is a candidate, not a frozen independent result.  The
+   remaining step is an external implementation run over the same bytes.
+   Capsule Class 2 remains native to the Capsule implementation and
+   requires its producer manifest and bound private evidence; the cross-
+   slot harness does not manufacture those inputs.
+
+9.  Extension Points
 
    Additional question-slots compose by the same digest discipline.
    Belief-provenance ("why the agent believed what it acted on") is a
-   named extension socket.  [Others as identified.]
+   named extension socket.  Other extension slots may be named as later
+   documents identify a further independently-verifiable question that
+   composes by the same shared-digest discipline; naming one here is not
+   a commitment to define it in this document.
 
-9.  Relationship to Existing Work
+
+
+
+
+
+
+
+
+
+Mih, et al.             Expires 12 February 2027               [Page 42]
+
+Internet-Draft      Agent Accountability Composition         August 2026
+
+
+10.  Relationship to Existing Work
 
    This document complements, rather than replaces, existing efforts.
    An architecture for auditing agent delegation and interactions is
@@ -429,11 +2370,12 @@ Internet-Draft      Agent Accountability Composition           July 2026
    composition of independently-verifiable profiles by a shared action-
    digest, a shared conformance-vector suite, and the anchored, third-
    party-verifiable assurance tier (see Assurance Tiers).  It defines no
-   new signing, transport, or transparency mechanism.  Specific
-   documents will be cited normatively and informatively in a later
-   revision.
+   new signing, transport, or transparency mechanism; the specific
+   documents for that discipline are cited normatively and informatively
+   throughout (see, e.g., Cross-Slot Conformance Mechanism for the CAID,
+   AEC, and AEB references).
 
-10.  Security Considerations
+11.  Security Considerations
 
    The security properties are those of the composed profiles plus the
    binding rules here; no single layer suffices.  The agent is not
@@ -441,16 +2383,34 @@ Internet-Draft      Agent Accountability Composition           July 2026
    transparency service is assumed sufficient.  This document does not
    address an adversarial party that refuses to record at its own
    boundary, nor collusion across all roles, nor model alignment.
-   [Expand.]
+
+   Key management, trust-anchor distribution, and revocation are each
+   constituent profile's responsibility and are out of scope here; this
+   document only requires that a profile state which trust inputs a
+   verifier needs and report when they are unresolved (see, e.g., each
+   slot's own Verifier Requirements).  A verifier MUST NOT treat digests
+   computed under different digest contexts (see Digest Context and
+   Representation) as equivalent absent a stated mapping between them;
+   doing so is a composition-layer vulnerability, not a supported
+   interoperability path.  Each slot's own Negative Vectors and Current
+   Assurance Boundary subsections state further slot-specific threats
+   and non-goals not restated here.
 
 
 
-Mih, et al.              Expires 6 January 2027                 [Page 8]
+
+
+
+
+
+
+
+Mih, et al.             Expires 12 February 2027               [Page 43]
 
-Internet-Draft      Agent Accountability Composition           July 2026
+Internet-Draft      Agent Accountability Composition         August 2026
 
 
-11.  Privacy Considerations
+12.  Privacy Considerations
 
    Records may be rich in information about users and the data an agent
    processed.  Profiles SHOULD support content-private, hash-only
@@ -458,14 +2418,70 @@ Internet-Draft      Agent Accountability Composition           July 2026
    digest, with content held under deployment controls.  The shared join
    digest enables cross-slot correlation; pairwise or encrypted
    correlation identifiers SHOULD be available where correlation is not
-   required.  [Expand.]
+   required.  Producer context admitted to any WHAT-leg record follows
+   the capsule data-admission floor defined in the Privacy
+   Considerations of [I-D.mih-scitt-agent-action-capsule].
 
-12.  IANA Considerations
+   This document does not itself define a data-minimization or retention
+   policy; each constituent profile states its own admitted fields and
+   any selective-disclosure mechanism it supports.  A relying party or
+   transparency service operator remains subject to applicable data-
+   protection law for any personal data a record carries, regardless of
+   the assurance tier at which the record was produced.
 
-   This document has no IANA actions.  [A registry of slot identifiers /
-   profile labels may be proposed in a later revision.]
+13.  IANA Considerations
 
-13.  Informative References
+   This document has no IANA actions.  A registry of slot identifiers
+   and profile labels may be proposed in a later revision if cross-
+   document coordination needs one; this document reserves no such
+   registry now.
+
+14.  References
+
+14.1.  Normative References
+
+   [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
+              Requirement Levels", BCP 14, RFC 2119,
+              DOI 10.17487/RFC2119, March 1997,
+              <https://www.rfc-editor.org/rfc/rfc2119>.
+
+   [RFC8174]  Leiba, B., "Ambiguity of Uppercase vs Lowercase in RFC
+              2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174,
+              May 2017, <https://www.rfc-editor.org/rfc/rfc8174>.
+
+   [I-D.schrock-caid]
+              Schrock, I., "The Canonical Action Identifier (CAID)",
+              Work in Progress, Internet-Draft, draft-schrock-canonical-
+              action-identifier-02, 2026,
+              <https://datatracker.ietf.org/doc/draft-schrock-canonical-
+              action-identifier/>.
+
+
+
+
+
+
+Mih, et al.             Expires 12 February 2027               [Page 44]
+
+Internet-Draft      Agent Accountability Composition         August 2026
+
+
+   [I-D.schrock-aec]
+              Schrock, I., "Authorization Evidence Chains: Composing
+              Heterogeneous Agent-Action Evidence (EP-AEC)", Work in
+              Progress, Internet-Draft, draft-schrock-ep-authorization-
+              evidence-chain-05, 2026,
+              <https://datatracker.ietf.org/doc/draft-schrock-ep-
+              authorization-evidence-chain/>.
+
+   [I-D.schrock-aeb]
+              Schrock, I., "The Action Evidence Boundary for
+              Consequential Agent Effects", Work in Progress, Internet-
+              Draft, draft-schrock-action-evidence-boundary-03, 2026,
+              <https://datatracker.ietf.org/doc/draft-schrock-action-
+              evidence-boundary/>.
+
+14.2.  Informative References
 
    [RFC9943]  Birkholz, H., Delignat-Lavaud, A., Fournet, C., Deshpande,
               Y., and S. Lasker, "An Architecture for Trustworthy and
@@ -501,9 +2517,9 @@ Internet-Draft      Agent Accountability Composition           July 2026
 
 
 
-Mih, et al.              Expires 6 January 2027                 [Page 9]
+Mih, et al.             Expires 12 February 2027               [Page 45]
 
-Internet-Draft      Agent Accountability Composition           July 2026
+Internet-Draft      Agent Accountability Composition         August 2026
 
 
    [I-D.aylward-aiga]
@@ -523,14 +2539,136 @@ Internet-Draft      Agent Accountability Composition           July 2026
    [I-D.schrock-ep-authorization-receipts]
               Schrock, I., "Authorization Receipts for High-Risk Agent
               Actions", Work in Progress, Internet-Draft, draft-schrock-
-              ep-authorization-receipts-05, 3 July 2026,
+              ep-authorization-receipts-11, 9 August 2026,
               <https://datatracker.ietf.org/doc/html/draft-schrock-ep-
-              authorization-receipts-05>.
+              authorization-receipts-11>.
+
+   [I-D.mih-scitt-agent-action-capsule]
+              Mih, S., "An Agent Action Capsule Profile for SCITT", Work
+              in Progress, Internet-Draft, draft-mih-scitt-agent-action-
+              capsule-02, 6 July 2026,
+              <https://datatracker.ietf.org/doc/html/draft-mih-scitt-
+              agent-action-capsule-02>.
+
+   [I-D.mih-sokolov-scitt-payload-binding]
+              Mih, S. and A. Sokolov, "Canonical Payload Binding: A
+              Signed Statement Construction Profile", Work in Progress,
+              Internet-Draft, draft-mih-sokolov-scitt-payload-binding-
+              01, 27 July 2026, <https://datatracker.ietf.org/doc/html/
+              draft-mih-sokolov-scitt-payload-binding-01>.
+
+   [I-D.mih-agent-bilateral-attestation]
+              Mih, S., "Bilateral Attestation of Cross-Organization
+              Agent Actions", Work in Progress, Internet-Draft, draft-
+              mih-agent-bilateral-attestation-01, 19 July 2026,
+              <https://datatracker.ietf.org/doc/html/draft-mih-agent-
+              bilateral-attestation-01>.
+
+   [I-D.bu-agentproto-security-principal-binding-03]
+              Bu, S., "Security Principal Binding for Agent Protocols",
+              2026, <https://datatracker.ietf.org/doc/draft-bu-
+              agentproto-security-principal-binding/>.
+
+
+
+
+
+Mih, et al.             Expires 12 February 2027               [Page 46]
+
+Internet-Draft      Agent Accountability Composition         August 2026
+
+
+   [I-D.lee-orprg-permit-receipts]
+              Lee, Y. B., "Permit Receipts for Permit-Before-Commit
+              Authorization of AI-Agent and Workload External Effects",
+              Work in Progress, Internet-Draft, draft-lee-orprg-permit-
+              receipts-00, 4 June 2026,
+              <https://datatracker.ietf.org/doc/html/draft-lee-orprg-
+              permit-receipts-00>.
+
+   [I-D.sokolov-rats-aep-composition]
+              Sokolov, A., "Composing Application-Layer Action Evidence
+              with Remote Attestation Procedures", Work in Progress,
+              Internet-Draft, draft-sokolov-rats-aep-composition-03, 18
+              July 2026, <https://datatracker.ietf.org/doc/html/draft-
+              sokolov-rats-aep-composition-03>.
+
+   [I-D.sato-soos-gar]
+              Sato, T., "The Governance Audit Record (GAR) for Agentic
+              AI Systems", Work in Progress, Internet-Draft, draft-sato-
+              soos-gar-03, 28 June 2026,
+              <https://datatracker.ietf.org/doc/html/draft-sato-soos-
+              gar-03>.
+
+   [I-D.sato-soos-gar-02]
+              Sato, T., "The Governance Audit Record (GAR) for Agentic
+              AI Systems", Work in Progress, Internet-Draft, draft-sato-
+              soos-gar-02, 9 June 2026,
+              <https://datatracker.ietf.org/doc/html/draft-sato-soos-
+              gar-02>.
+
+   [RFC8785]  Rundgren, A., Jordan, B., and S. Erdtman, "JSON
+              Canonicalization Scheme (JCS)", RFC 8785,
+              DOI 10.17487/RFC8785, June 2020,
+              <https://www.rfc-editor.org/rfc/rfc8785>.
+
+   [RFC8792]  Watsen, K., Auerswald, E., Farrel, A., and Q. Wu,
+              "Handling Long Lines in Content of Internet-Drafts and
+              RFCs", RFC 8792, DOI 10.17487/RFC8792, June 2020,
+              <https://www.rfc-editor.org/rfc/rfc8792>.
+
+   [RFC9901]  Fett, D., Yasuda, K., and B. Campbell, "Selective
+              Disclosure for JSON Web Tokens", RFC 9901,
+              DOI 10.17487/RFC9901, November 2025,
+              <https://www.rfc-editor.org/rfc/rfc9901>.
+
+
+
+
+
+
+
+
+Mih, et al.             Expires 12 February 2027               [Page 47]
+
+Internet-Draft      Agent Accountability Composition         August 2026
+
+
+   [I-D.ietf-oauth-sd-jwt-vc-17]
+              Terbu, O., Fett, D., and B. Campbell, "SD-JWT-based
+              Verifiable Digital Credentials (SD-JWT VC)", Work in
+              Progress, Internet-Draft, draft-ietf-oauth-sd-jwt-vc-17, 6
+              July 2026, <https://datatracker.ietf.org/doc/html/draft-
+              ietf-oauth-sd-jwt-vc-17>.
+
+   [OpenID4VP]
+              "OpenID for Verifiable Presentations 1.0", n.d.,
+              <https://openid.net/specs/openid-4-verifiable-
+              presentations-1_0-final.html>.
+
+   [MACHINE-MANDATE]
+              Tyche Institute, "MachineMandate", n.d.,
+              <https://github.com/tyche-institute/machine-mandate>.
+
+   [ORPRG-EVAL-V226]
+              Meridian Verity Group, "v2.2.6 Public Evaluation — IETF
+              126 PermitReceipt Review Packet", 10 July 2026,
+              <https://github.com/meridianverity/permit-
+              receipt/releases/tag/v2.2.6-public-eval>.
 
 Acknowledgments
 
-   [To be completed with the constituent-profile authors and reviewers,
-   with permission.]
+   Mikhail Sergeev contributed the ordering criterion for the second-
+   class verification result in the WHO slot: an input closes an
+   ordering claim only if it comes from a source that observed both
+   terms of the claim, or from two records whose producing boundaries
+   can be related in a way that orders the terms (see The WHO Slot).
+   That wording is his, offered as an IETF Contribution under BCP 78 and
+   BCP 79.
+
+   The authors also thank the reviewers of the -00 and -01 revision
+   packages, whose byte-level review discipline this revision was built
+   against.
 
 Authors' Addresses
 
@@ -545,9 +2683,11 @@ Authors' Addresses
    Email: tomsato@myauberge.jp
 
 
-   Songbo Bu
-   Independent
-   Email: bluedognull@gmail.com
+
+
+Mih, et al.             Expires 12 February 2027               [Page 48]
+
+Internet-Draft      Agent Accountability Composition         August 2026
 
 
    Iman Schrock
@@ -555,6 +2695,50 @@ Authors' Addresses
    Email: team@emiliaprotocol.ai
 
 
+   Songbo Bu
+   Independent
+   Email: bluedognull@gmail.com
 
 
-Mih, et al.              Expires 6 January 2027                [Page 10]
+   Anton Sokolov
+   Tyche Institute
+   Email: anton.sokolov@tyche.institute
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Mih, et al.             Expires 12 February 2027               [Page 49]
