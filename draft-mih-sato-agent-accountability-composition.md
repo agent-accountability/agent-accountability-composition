@@ -75,6 +75,16 @@ informative:
     seriesinfo:
       Internet-Draft: draft-kuehlewind-audit-architecture-00
     target: https://datatracker.ietf.org/doc/html/draft-kuehlewind-audit-architecture-00
+  I-D.etcheverry-action-ref:
+    title: "Action Reference: A Deterministic Identifier for Agent Actions"
+    author:
+      - name: P. Etcheverry
+        org: Rama
+      - name: K. Ives
+    date: 2026-08-15
+    seriesinfo:
+      Internet-Draft: draft-etcheverry-action-ref-03
+    target: https://datatracker.ietf.org/doc/html/draft-etcheverry-action-ref-03
   I-D.sharif-agent-audit-trail:
     title: "Agent Audit Trail: A Standard Logging Format for Autonomous AI Systems"
     author:
@@ -1635,6 +1645,10 @@ and action-lineage protocols are defined in adjacent documents (e.g.,
 {{I-D.sharif-agent-audit-trail}}, {{I-D.bates-atp}}, {{I-D.aylward-aiga}} — cited as live adjacent
 work, not positioned). The four questions here map onto those record types rather than redefining
 them.
+
+A deterministic action-identifier construction for the WHAT question is specified independently in
+{{I-D.etcheverry-action-ref}}. It is an adjacent instantiation of the WHAT slot — cited as live
+adjacent work, not positioned; the WHAT profile exercised here remains the one named in that slot.
 
 What this document adds is the piece those leave open: the composition of independently-verifiable
 profiles by a shared action-digest, a shared conformance-vector suite, and the anchored,
