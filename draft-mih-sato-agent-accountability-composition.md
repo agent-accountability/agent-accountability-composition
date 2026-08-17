@@ -8,6 +8,7 @@ area: Security
 keyword: [agent, accountability, audit, SCITT, composition, conformance, attestation]
 stand_alone: yes
 submissiontype: IETF
+date: 2026-08-16
 author:
  -
     name: Steven Mih
