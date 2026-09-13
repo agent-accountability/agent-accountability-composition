@@ -2366,6 +2366,12 @@ Internet-Draft      Agent Accountability Composition         August 2026
    not positioned).  The four questions here map onto those record types
    rather than redefining them.
 
+   A deterministic action-identifier construction for the WHAT question
+   is specified independently in [I-D.etcheverry-action-ref].  It is an
+   adjacent instantiation of the WHAT slot — cited as live adjacent
+   work, not positioned; the WHAT profile exercised here remains the one
+   named in that slot.
+
    What this document adds is the piece those leave open: the
    composition of independently-verifiable profiles by a shared action-
    digest, a shared conformance-vector suite, and the anchored, third-
@@ -2395,12 +2401,6 @@ Internet-Draft      Agent Accountability Composition         August 2026
    interoperability path.  Each slot's own Negative Vectors and Current
    Assurance Boundary subsections state further slot-specific threats
    and non-goals not restated here.
-
-
-
-
-
-
 
 
 
@@ -2502,6 +2502,26 @@ Internet-Draft      Agent Accountability Composition         August 2026
               <https://datatracker.ietf.org/doc/html/draft-kuehlewind-
               audit-architecture-00>.
 
+   [I-D.etcheverry-action-ref]
+              Etcheverry, P. and K. Ives, "Action Reference: A
+              Deterministic Identifier for Agent Actions", Work in
+              Progress, Internet-Draft, draft-etcheverry-action-ref-03,
+              15 August 2026, <https://datatracker.ietf.org/doc/html/
+              draft-etcheverry-action-ref-03>.
+
+
+
+
+
+
+
+
+
+Mih, et al.             Expires 17 February 2027               [Page 45]
+
+Internet-Draft      Agent Accountability Composition         August 2026
+
+
    [I-D.sharif-agent-audit-trail]
               Sharif, R., "Agent Audit Trail: A Standard Logging Format
               for Autonomous AI Systems", Work in Progress, Internet-
@@ -2514,13 +2534,6 @@ Internet-Draft      Agent Accountability Composition         August 2026
               Progress, Internet-Draft, draft-bates-atp-00, 11 May 2026,
               <https://datatracker.ietf.org/doc/html/draft-bates-atp-
               00>.
-
-
-
-Mih, et al.             Expires 17 February 2027               [Page 45]
-
-Internet-Draft      Agent Accountability Composition         August 2026
-
 
    [I-D.aylward-aiga]
               Aylward, E. R., "Artificial Intelligence Governance
@@ -2557,6 +2570,14 @@ Internet-Draft      Agent Accountability Composition         August 2026
               01, 27 July 2026, <https://datatracker.ietf.org/doc/html/
               draft-mih-sokolov-scitt-payload-binding-01>.
 
+
+
+
+Mih, et al.             Expires 17 February 2027               [Page 46]
+
+Internet-Draft      Agent Accountability Composition         August 2026
+
+
    [I-D.mih-agent-bilateral-attestation]
               Mih, S., "Bilateral Attestation of Cross-Organization
               Agent Actions", Work in Progress, Internet-Draft, draft-
@@ -2568,15 +2589,6 @@ Internet-Draft      Agent Accountability Composition         August 2026
               Bu, S., "Security Principal Binding for Agent Protocols",
               2026, <https://datatracker.ietf.org/doc/draft-bu-
               agentproto-security-principal-binding/>.
-
-
-
-
-
-Mih, et al.             Expires 17 February 2027               [Page 46]
-
-Internet-Draft      Agent Accountability Composition         August 2026
-
 
    [I-D.lee-orprg-permit-receipts]
               Lee, Y. B., "Permit Receipts for Permit-Before-Commit
@@ -2612,18 +2624,6 @@ Internet-Draft      Agent Accountability Composition         August 2026
               DOI 10.17487/RFC8785, June 2020,
               <https://www.rfc-editor.org/rfc/rfc8785>.
 
-   [RFC8792]  Watsen, K., Auerswald, E., Farrel, A., and Q. Wu,
-              "Handling Long Lines in Content of Internet-Drafts and
-              RFCs", RFC 8792, DOI 10.17487/RFC8792, June 2020,
-              <https://www.rfc-editor.org/rfc/rfc8792>.
-
-   [RFC9901]  Fett, D., Yasuda, K., and B. Campbell, "Selective
-              Disclosure for JSON Web Tokens", RFC 9901,
-              DOI 10.17487/RFC9901, November 2025,
-              <https://www.rfc-editor.org/rfc/rfc9901>.
-
-
-
 
 
 
@@ -2633,6 +2633,16 @@ Mih, et al.             Expires 17 February 2027               [Page 47]
 
 Internet-Draft      Agent Accountability Composition         August 2026
 
+
+   [RFC8792]  Watsen, K., Auerswald, E., Farrel, A., and Q. Wu,
+              "Handling Long Lines in Content of Internet-Drafts and
+              RFCs", RFC 8792, DOI 10.17487/RFC8792, June 2020,
+              <https://www.rfc-editor.org/rfc/rfc8792>.
+
+   [RFC9901]  Fett, D., Yasuda, K., and B. Campbell, "Selective
+              Disclosure for JSON Web Tokens", RFC 9901,
+              DOI 10.17487/RFC9901, November 2025,
+              <https://www.rfc-editor.org/rfc/rfc9901>.
 
    [I-D.ietf-oauth-sd-jwt-vc-17]
               Terbu, O., Fett, D., and B. Campbell, "SD-JWT-based
@@ -2672,6 +2682,14 @@ Acknowledgments
 
 Authors' Addresses
 
+
+
+
+Mih, et al.             Expires 17 February 2027               [Page 48]
+
+Internet-Draft      Agent Accountability Composition         August 2026
+
+
    Steven Mih
    Action State Group, Inc.
    Email: steven@actionstate.ai
@@ -2681,13 +2699,6 @@ Authors' Addresses
    MyAuberge K.K.
    Japan
    Email: tomsato@myauberge.jp
-
-
-
-
-Mih, et al.             Expires 17 February 2027               [Page 48]
-
-Internet-Draft      Agent Accountability Composition         August 2026
 
 
    Iman Schrock
@@ -2703,17 +2714,6 @@ Internet-Draft      Agent Accountability Composition         August 2026
    Anton Sokolov
    Tyche Institute
    Email: anton.sokolov@tyche.institute
-
-
-
-
-
-
-
-
-
-
-
 
 
 

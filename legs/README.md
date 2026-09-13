@@ -10,7 +10,7 @@ working document for one slot; the final slot text lives in the main draft.
 | Slot             | File in legs/            | Status |
 |------------------|--------------------------|--------|
 | Problem Statement | `problem-statement.md`  | Document present (Tom Sato; -00 seed text, content folded into -01 §2) |
-| WHO              | `who.md`                 | Document present (Iman Bu; -00 seed text, content folded into -01 §6) |
+| WHO              | `who.md`                 | Document present (Iman Schrock; -00 seed text, content folded into -01 §6) |
 | CAN              | —                        | No standalone seed document; slot text is in the main draft (§5) |
 | WHAT             | —                        | No standalone seed document; slot text is in the main draft (§7) |
 | AUDIT            | —                        | No standalone seed document; slot text is in the main draft (§8) |
