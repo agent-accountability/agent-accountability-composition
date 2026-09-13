@@ -13,9 +13,10 @@ drawn. Claims never outrun the linked artifact.
 - `reference suite replayed` — an independent replay of a published reference suite;
   subject to the caveats stated in the row.
 
-Status key: `pending confirmation` = row drafted from public record, counterparty
-confirmation not yet received; `confirmed` = counterparty confirmed row text; `reviewed` =
-framework review completed as stated.
+Status key: `pending confirmation` = a recorded run — row drafted from public record,
+counterparty confirmation not yet received; `confirmed (<name>, <date>)` = confirmed by
+the named counterparty on the stated date; `reviewed` = framework review completed as
+stated.
 
 ---
 
@@ -78,8 +79,8 @@ framework review completed as stated.
 | Type | framework-review |
 | Evidence coordinates | `draft-bu-agentproto-security-principal-binding-03`; AAC Class-1 repository commit `10342f504b051a24908053465927efdaea3ec2f6` |
 | Digest context | n/a (framework review, not byte-agreement) |
-| Status | **pending Songbo Bu confirmation** |
-| Notes | **Must not say "ran and verified."** Verifier-facing claim, carrier, verifier, binding, accepted-result, and failure boundaries from `draft-bu-agentproto-security-principal-binding-03` were used to review the WHO-slot mapping. The AAC Class-1 repository was independently replayed at the stated commit, but no independent principal-binding byte-agreement result is claimed. Status: framework mapping reviewed; AAC reference suite independently replayed. Songbo Bu confirmation required before freeze. |
+| Status | **confirmed (Songbo Bu, 2026-08-18)** |
+| Notes | **Must not say "ran and verified."** Verifier-facing claim, carrier, verifier, binding, accepted-result, and failure boundaries from `draft-bu-agentproto-security-principal-binding-03` were used to review the WHO-slot mapping. The AAC Class-1 repository was independently replayed at the stated commit, but no independent principal-binding byte-agreement result is claimed. Status: framework mapping reviewed; AAC reference suite independently replayed. |
 
 ---
 

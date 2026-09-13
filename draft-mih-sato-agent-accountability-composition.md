@@ -1,14 +1,14 @@
 ---
 title: "Agent Accountability: Composition and Conformance"
 abbrev: "Agent Accountability Composition"
-docname: draft-mih-sato-agent-accountability-composition-01
+docname: draft-mih-sato-agent-accountability-composition-02
 category: info
 ipr: trust200902
 area: Security
 keyword: [agent, accountability, audit, SCITT, composition, conformance, attestation]
 stand_alone: yes
 submissiontype: IETF
-date: 2026-08-16
+date: 2026-09-15
 author:
  -
     name: Steven Mih
@@ -474,6 +474,11 @@ mapping. The AAC Class-1 repository was independently replayed at commit
 10342f504b051a24908053465927efdaea3ec2f6, but no independent principal-binding
 byte-agreement result is claimed. Status: framework mapping reviewed; AAC reference
 suite independently replayed.
+
+This review was performed against the -03 revision of
+{{I-D.bu-agentproto-security-principal-binding-03}} (historical input, 2026-08); a
+later -06 revision of that framework was not re-evaluated for this revision of this
+document.
 
 Additional cross-profile review entries may be added in a later revision as
 other constituent-profile authors complete their own framework reviews.
@@ -1528,8 +1533,8 @@ Protocol, Inc.). Its first runnable pack — one positive four-slot vector, thir
 negative cases, and thirteen condition-removed controls, with manifests, checksums,
 an executable runner, and an external-report template — is published in the EMILIA
 Protocol repository (pull request 521, commit 30916c80). That manifest pins
-Composition **-00**; it was not built against this **-01** revision, and an
--01-pinned manifest is future work, out of scope here. Per the freeze rule
+Composition **-00**; it was not built against this **-02** revision, and an
+-02-pinned manifest is future work, out of scope here. Per the freeze rule
 below, the pack is a candidate, not a frozen result, until a second
 implementation maintained by a different party consumes the same published
 bytes and returns the completed external report.
@@ -1674,11 +1679,12 @@ EMILIA delivers:
 - the EMILIA report and checksums; and
 - an external-report template for the second implementation.
 
-The pack is a candidate, not a frozen independent result. The remaining step
-is an external implementation run over the same bytes. Capsule Class 2 remains
-native to the Capsule implementation and requires its producer manifest and
-bound private evidence; the cross-slot harness does not manufacture those
-inputs.
+The pack is Composition-00-pinned candidate evidence, not a frozen independent
+result, until an independently maintained second implementation reports against
+the same bytes. The remaining step is an external implementation run over the
+same bytes. Capsule Class 2 remains native to the Capsule implementation and
+requires its producer manifest and bound private evidence; the cross-slot
+harness does not manufacture those inputs.
 
 # Extension Points
 
@@ -1753,6 +1759,54 @@ labels may be proposed in a later revision if cross-document coordination
 needs one; this document reserves no such registry now.
 
 --- back
+
+# Changes from -01
+{:numbered="false"}
+
+This -02 revision consolidates the fold list assembled 2026-09-12 from the co-author
+thread (Songbo Bu, Iman Schrock, Anton Sokolov, Tom Sato) and the 2026-08-17 AUDIT
+thread (Henri, Anton Sokolov, Joel). Landed in this revision:
+
+* AUDIT mechanism-neutral split (Henri, 2026-08-17; Anton Sokolov, 2026-08-17 and
+  2026-08-20): §6.4.2/§6.4.4 restate the Producer/Verifier Requirements as a
+  profile-neutral general obligation; the original ten-item Producer Requirements
+  and eight-item Verifier Requirements lists move unchanged under a new "AUDIT
+  Profile: Platform Attestation (first named profile)" subsection; §6.4.6 Negative
+  Vectors labels the six attestation-specific classes as that profile's.
+* Digest-coverage rule (Joel, 2026-08-20; accepted by Anton Sokolov): the general
+  obligation's digest reaches every value the named profile obliges the declaring
+  party to supply or name, in the order the profile enumerates them.
+* Principal-binding citation (Songbo Bu, 2026-08-18, 2026-09-01, 2026-09-10): the
+  Cross-Profile Reviews entry now states the review was performed against -03
+  (historical input, 2026-08) and that a later -06 revision of that framework was
+  not re-evaluated for this revision. The bibliography entry remains pinned to -03.
+* INTEROP.md PB row (Songbo Bu, 2026-09-01; Iman Schrock, 2026-09-10): Status
+  changed to confirmed (Songbo Bu, 2026-08-18), with the no-byte-agreement
+  limitation kept verbatim. The evidence-ladder Status key now distinguishes a
+  recorded run from confirmation by a named counterparty.
+* Change-sheet correction (Iman Schrock, 2026-09-01): §8.1 (Cross-Slot Conformance
+  Mechanism) is already normative as of -01; it is not a "promote to normative"
+  item, and its evidence boundary (Delivered and open) stands unchanged.
+* V1 27-case pack status (Iman Schrock, 2026-09-01): described as
+  Composition-00-pinned candidate evidence until an independently maintained
+  second implementation reports against the same bytes.
+* idnits (Songbo Bu, 2026-09-01, 2026-09-10): stale document date corrected; the
+  reported "OpenID4VP and MACHINE-MANDATE unused" warning does not reproduce
+  against this revision's build — both are cited in body text (see the idnits
+  log accompanying this revision).
+* Editorial: revision bumped from -01 to -02; document date pinned to the cut
+  date; the -00-manifest self-reference in Cross-Slot Conformance Mechanism now
+  names this -02 revision instead of -01.
+
+Not landed in this revision:
+
+* EAR/EAT terminology (Songbo Bu, 2026-08-19; underlined by Anton Sokolov,
+  2026-09-03): no sentence in this revision cites a second AUDIT discharge path
+  for the correction to attach to. It was not in the 2026-08-31 cut for the same
+  reason: not deferred, no referent yet.
+* The regulatory-motivation paragraph (Songbo Bu, 2026-09-01) is prepared as a
+  separate commit pending Tom Sato's confirmation of his own section text (see
+  the co-author thread).
 
 # Acknowledgments
 {:numbered="false"}
