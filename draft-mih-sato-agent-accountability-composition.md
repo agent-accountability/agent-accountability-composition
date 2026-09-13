@@ -8,7 +8,6 @@ area: Security
 keyword: [agent, accountability, audit, SCITT, composition, conformance, attestation]
 stand_alone: yes
 submissiontype: IETF
-date: 2026-09-15
 author:
  -
     name: Steven Mih
@@ -260,8 +259,9 @@ prompt injection, fabricated tool results, action outside scope — occur in the
 what was authorized and what was actually done. Holding a consequential agent action
 accountable therefore requires answering several questions, each answerable by an
 independently-verifiable profile: whether the agent was permitted to act (CAN), which
-accountable human authorized the specific action (WHO), what the agent actually did (WHAT),
-and whether the runtime enforced correctly (AUDIT).
+accountable human authorized the specific action (WHO), what outcome the agent system
+recorded, and what is known to have crossed the effect boundary (WHAT), and whether the
+runtime enforced correctly (AUDIT).
 
 This document does not define a new audit architecture; it complements the existing architecture
 and record-format work in this space (see Relationship to Existing Work) and specifies the piece
@@ -334,8 +334,10 @@ verifiable parts:
 - CAN — was the agent permitted to act?
 - WHO — which accountable human authorized this exact action, as distinct from which
   agent carried it out?
-- WHAT — what did the agent actually do — a byte-stable serialization of the observed
-  action record, not a replay of the action, sufficient to judge the outcome?
+- WHAT — what outcome did the agent system record, and what is known to have crossed
+  the effect boundary — a byte-stable serialization of a producer-observed or
+  producer-recorded action record, not a replay of the action, sufficient to judge
+  the outcome?
 - AUDIT — did the runtime enforce correctly, in causal order, tamper-evidently?
 
 Each question is answerable by an independently-verifiable profile, and a verifier
@@ -476,9 +478,23 @@ byte-agreement result is claimed. Status: framework mapping reviewed; AAC refere
 suite independently replayed.
 
 This review was performed against the -03 revision of
-{{I-D.bu-agentproto-security-principal-binding-03}} (historical input, 2026-08); a
-later -06 revision of that framework was not re-evaluated for this revision of this
-document.
+{{I-D.bu-agentproto-security-principal-binding-03}} (historical input, 2026-08). The
+later -06 revision of that framework has since been evaluated for this revision of
+this document, by direct comparison of both revisions' published text: the
+terminology this review relies on — carrier, verifier, binding, accepted result, and
+failure behavior — is textually unchanged between -03 and -06, and the C-002
+("Human or organizational authority") row used to review the WHO-slot mapping is
+unchanged as well. -06 adds a formally named six-state verifier-outcome vocabulary
+(`satisfied`, `unsatisfied`, `indeterminate`, `unsupported`, `not-evaluated`,
+`not-applicable`) that -03 stated only in prose; a new dependency-closure and
+composition-invariants mechanism (its Section 17) for aggregating multiple claim
+rows under that framework's own composition verifier; and a new claim class,
+C-014 ("Scoped human continuity"), which that framework states explicitly is not a
+human-authority claim and does not overlap C-002. None of these additions touch the
+row this review mapped against or its stated boundary. The review's finding
+therefore stands unchanged against -06: framework mapping reviewed, AAC reference
+suite independently replayed at the commit above, no independent principal-binding
+byte-agreement result claimed.
 
 Additional cross-profile review entries may be added in a later revision as
 other constituent-profile authors complete their own framework reviews.
@@ -966,11 +982,11 @@ artifact type.
 
 The WHAT slot answers one question: what terminal verdict did the agent system
 record for one action, and what, if anything, is known to have crossed the effect
-boundary. It is a byte-stable record of an observed outcome, not a replay of the
-action and not a re-execution of it. It does not establish that the action was
-permitted (CAN), that a named human authorized it (WHO), that an independent
-platform or observer verified the effect (AUDIT), or that the action was
-semantically correct. Two separations carry the whole slot: **a dispatched attempt
+boundary. It is a byte-stable record of a producer-observed or producer-recorded
+outcome, not a replay of the action and not a re-execution of it. It does not
+establish that the action was permitted (CAN), that a named human authorized it
+(WHO), that an independent platform or observer verified the effect (AUDIT), or
+that the action was semantically correct. Two separations carry the whole slot: **a dispatched attempt
 MUST NOT be presented as a confirmed effect**, and **a record of an action MUST NOT
 be presented as an observation of its consequence**.
 
@@ -1206,9 +1222,18 @@ declared mapping between the two bases exists. Divergence is a reportable result
 carrying both parties' evidence, not a verification failure, and MUST NOT be rendered
 as one. An unresolvable linkage is indeterminate, not divergent.
 
-Where a verifier cannot evaluate a check at all — because an input is absent, a
-profile is unknown, or a key scope is unavailable — it MUST report that check as
-indeterminate rather than as passed or failed.
+Where a verifier cannot produce pass or fail, it MUST report the applicable
+non-binary result (see Result vocabulary) and MUST NOT collapse distinct causes. A
+check that was not attempted because a prerequisite or required input was
+unavailable is `not_evaluated`; a required profile or semantic rule the
+implementation does not support is `unsupported`; and a comparison over readable
+declared inputs that cannot be resolved is `indeterminate`. Key-scope
+unavailability — a verifier that is not party to the key scope an equivalence or
+comparison value was produced under — is a required-input case: it MUST be reported
+as `not_evaluated`, not `indeterminate`. This document states that classification
+directly, rather than leaving it to each profile to decide, precisely because a
+per-profile choice would let independent implementations classify the same vector
+differently.
 
 ### Cross-Party Rungs
 
@@ -1656,7 +1681,31 @@ the tested defect and returns to `pass`.
 | `COMP-UNKNOWN-01` | Unknown required profile is treated as accepted | `unsupported` |
 
 The runnable pack therefore contains 27 cases: one positive, thirteen
-negatives, and thirteen condition-removed controls.
+negatives, and thirteen condition-removed controls. This is the EMILIA-delivered,
+Composition-00-pinned pack described under Delivered and open; it is not rebuilt
+here (see below).
+
+**New for this revision, not yet in the delivered -00 bundle.** Verifier
+Requirements draws a three-way discrimination between `not_evaluated`,
+`unsupported`, and `indeterminate`. Checking the delivered pack against that
+discrimination: `COMP-UNKNOWN-01` already exercises `unsupported` (an
+unrecognized required profile), and `COMP-BASIS-01`/`COMP-BASIS-02` already
+exercise `indeterminate` (readable declared inputs whose comparison cannot be
+resolved). No delivered case exercises producing `not_evaluated` from an
+actually-missing required input — `COMP-JOIN-02` only forbids mislabeling
+`not_evaluated` as failure, it does not test the case that produces it. This
+revision therefore specifies one additional vector to close that gap, to be
+picked up by the future -02-pinned manifest along with the rest of the pack:
+
+| ID | Changed condition | Required result |
+|---|---|---|
+| `COMP-JOIN-03` | Required input for a check is absent from the bundle | `not_evaluated` |
+
+`COMP-JOIN-03` is two-sided: its condition-removed twin supplies the missing
+input and returns the check to `pass`, changing only the tested defect, matching
+every other row's discipline. When the -02-pinned manifest is built, the
+runnable pack becomes 29 cases: one positive, fourteen negatives, and fourteen
+condition-removed controls.
 
 ### Freeze rule
 
