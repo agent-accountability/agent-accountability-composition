@@ -282,6 +282,18 @@ Mih, et al.               Expires 17 March 2027                 [Page 5]
 Internet-Draft      Agent Accountability Composition      September 2026
 
 
+   Two of these efforts began close together but not, as sometimes
+   stated, in the same month: Singapore's IMDA opened its agentic-AI
+   guidance work in January 2026, and NIST's AI Agent Standards
+   Initiative launched independently the following month, in February
+   2026.  IMDA's guidance has since moved to version 1.5, published May
+   20, 2026 and updated June 5, 2026.  On the EU side, the obligations
+   described above are now enacted as Regulation (EU) 2026/1744, not
+   merely proposed.  None of these bodies coordinate on a specific
+   record format; each independently converges on the same demand — that
+   deployers of agentic systems produce records an outside party can
+   check.
+
    No existing layer answers this alone, and it's worth being precise
    about why, since each addresses a real and different concern.
    Runtime monitoring detects anomalous behavior as it happens —
@@ -318,6 +330,14 @@ Internet-Draft      Agent Accountability Composition      September 2026
    existing audit architecture — [I-D.kuehlewind-audit-architecture] and
    the record types it defines — rather than proposing a second
    architecture above it.  Where the four questions as stated here and
+
+
+
+Mih, et al.               Expires 17 March 2027                 [Page 6]
+
+Internet-Draft      Agent Accountability Composition      September 2026
+
+
    that architecture's record types conflict, the architecture governs;
    this section, and this draft, are written to be reconciled against
    it, not around it.
@@ -330,14 +350,6 @@ Internet-Draft      Agent Accountability Composition      September 2026
    it.  This matters specifically because the actors being audited are
    not static.  Persistent memory makes agent behavior path-dependent,
    and agents rewrite their own scaffolding and spawn sub-agents — the
-
-
-
-Mih, et al.               Expires 17 March 2027                 [Page 6]
-
-Internet-Draft      Agent Accountability Composition      September 2026
-
-
    system acting at step N is not necessarily the one that would be
    reviewed at step 0.  A registered record, once anchored, stays
    tamper-evident and datable to its registration even as the actor that
@@ -375,6 +387,13 @@ Internet-Draft      Agent Accountability Composition      September 2026
       complete; a byte-stable serialization of the observed record, not
       a replay)?
 
+
+
+Mih, et al.               Expires 17 March 2027                 [Page 7]
+
+Internet-Draft      Agent Accountability Composition      September 2026
+
+
    *  *AUDIT* — did the runtime enforce correctly, in causal order,
       tamper-evidently?
 
@@ -382,17 +401,6 @@ Internet-Draft      Agent Accountability Composition      September 2026
    document are the first instances, not the definition.  An action
    fills the slots its trust requirement calls for; not every action
    populates every slot.  The set is extensible (see Extension Points).
-
-
-
-
-
-
-
-Mih, et al.               Expires 17 March 2027                 [Page 7]
-
-Internet-Draft      Agent Accountability Composition      September 2026
-
 
 4.  The Composition Model
 
@@ -433,14 +441,6 @@ Internet-Draft      Agent Accountability Composition      September 2026
    *  A *receipt-payload digest* commits to the exact bytes submitted to
       a transparency service and covered by its receipt.
 
-   These digest values MAY differ.  A profile MUST state which object
-   and exact byte sequence each digest covers, and a composition
-   verifier MUST NOT infer equality or transitive coverage merely
-   because two fields use the same hash algorithm.  Where one signed
-   object links the roles, the protected portion of that object MUST
-   cover the relevant digest values and their profile labels.
-
-
 
 
 
@@ -449,6 +449,13 @@ Mih, et al.               Expires 17 March 2027                 [Page 8]
 
 Internet-Draft      Agent Accountability Composition      September 2026
 
+
+   These digest values MAY differ.  A profile MUST state which object
+   and exact byte sequence each digest covers, and a composition
+   verifier MUST NOT infer equality or transitive coverage merely
+   because two fields use the same hash algorithm.  Where one signed
+   object links the roles, the protected portion of that object MUST
+   cover the relevant digest values and their profile labels.
 
 4.2.  Digest Context and Representation
 
@@ -490,13 +497,6 @@ Internet-Draft      Agent Accountability Composition      September 2026
    contributed by the reviewing author and records only what that
    author's analysis found; no entry implies byte-agreement results or
    conformance claims not explicitly stated.
-
-
-
-
-
-
-
 
 
 

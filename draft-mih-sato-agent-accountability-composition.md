@@ -317,6 +317,16 @@ compliance claim this document makes on anyone's behalf — but the direction is
 consistent: regulators are going to ask deployers of agentic systems to produce records
 an outside party can check, not records the operator merely asserts.
 
+Two of these efforts began close together but not, as sometimes stated, in the same
+month: Singapore's IMDA opened its agentic-AI guidance work in January 2026, and
+NIST's AI Agent Standards Initiative launched independently the following month, in
+February 2026. IMDA's guidance has since moved to version 1.5, published May 20,
+2026 and updated June 5, 2026. On the EU side, the obligations described above are
+now enacted as Regulation (EU) 2026/1744, not merely proposed. None of these bodies
+coordinate on a specific record format; each independently converges on the same
+demand — that deployers of agentic systems produce records an outside party can
+check.
+
 No existing layer answers this alone, and it's worth being precise about why, since
 each addresses a real and different concern. Runtime monitoring detects anomalous
 behavior as it happens — valuable, but it produces observability data, not verifiable
