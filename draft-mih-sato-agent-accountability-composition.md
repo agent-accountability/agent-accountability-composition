@@ -1338,14 +1338,17 @@ A conforming AUDIT producer MUST state:
 - the subject-digest context defined in the Composition Model;
 - the AEP signature and chaining construction;
 - the predecessor or sequence value that establishes the claimed causal order;
-- the platform Evidence format and selected measurements;
-- the exact transformation that binds the outcome digest into those
-  measurements;
-- the attestation key and its trust-chain inputs;
-- the freshness value and where it appears in signed Evidence;
-- the Verifier and appraisal scheme; and
-- any Reference Values, Endorsements, or policy inputs needed to reproduce the
-  appraisal.
+  and
+- the general obligation: the exact transformation that binds the outcome
+  digest into the named profile's execution-context evidence, stated
+  precisely enough that a third party can recompute that binding without
+  additional information from the producer.
+
+The general obligation's digest reaches every value the named profile
+obliges the declaring party to supply or name, in the order the profile
+enumerates them. A producer MUST NOT satisfy the general obligation by
+naming a profile without enumerating the values that profile's own
+Producer Requirements requires (see "AUDIT Profile: Platform Attestation").
 
 ### Exercised PCR-16 Binding
 
@@ -1374,24 +1377,15 @@ A conforming AUDIT verifier MUST report separately:
 - whether the AEP signature and hash chain validate, including predecessor and
   sequence checks;
 - the subject and outcome digest bytes it recomputed, with their digest
-  contexts;
-- whether the attestation signature validates under the supplied attestation
-  key and whether that key is accepted under the relying party's trust policy;
-- whether the quoted PCR digest matches the selected PCR values and whether the
-  declared outcome-to-PCR transformation recomputes;
-- whether the outcome digest extracted from the action record equals the digest
-  bound into the signed platform Evidence under compatible contexts;
-- the Verifier's native appraisal result;
-- whether freshness was actually enforced by comparing the value recovered
-  from the raw signed Evidence with the expected per-appraisal value; and
-- the relying party's final acceptance result and policy inputs.
+  contexts; and
+- whether it can recompute the named profile's binding between the outcome
+  digest and that profile's execution-context evidence, using only the values
+  the profile's Producer Requirements obliges the producer to supply.
 
-These checks MUST NOT be collapsed into one opaque "audited" boolean. In
-particular, an affirming Attestation Result is not evidence of freshness unless
-the selected appraisal scheme checked the relevant nonce or the relying party
-performed and reported that comparison separately. Re-deriving freshness from
-the raw TPM quote bytes is therefore a distinct check when the Attestation
-Result does not expose or enforce the quote's signed `extraData`.
+These checks MUST NOT be collapsed into one opaque "audited" boolean. A
+profile's own verifier reports (see "AUDIT Profile: Platform Attestation")
+state what recomputing that profile's binding requires; the general
+obligation above does not substitute for those reports.
 
 ### Composition and Transparency Seams
 
@@ -1411,15 +1405,23 @@ include vectors for at least:
 
 - a changed action or outcome after signing;
 - a broken or reordered AEP chain;
-- ASCII hexadecimal text substituted for raw digest bytes;
-- a changed PCR selection;
-- a PCR value inconsistent with the declared extension;
-- a quote signature that does not validate;
-- a quoted outcome different from the action record's outcome;
-- a replayed quote whose signed freshness value differs from the expected
-  value;
-- an affirming Attestation Result paired with the wrong action evidence; and
+- ASCII hexadecimal text substituted for raw digest bytes; and
 - a transparency receipt bound to a different payload.
+
+The following are specific to the AUDIT Profile: Platform Attestation (see
+below) and MUST be included by any profile using its platform-Evidence
+construction:
+
+- a changed PCR selection (Platform Attestation profile);
+- a PCR value inconsistent with the declared extension (Platform Attestation
+  profile);
+- a quote signature that does not validate (Platform Attestation profile);
+- a quoted outcome different from the action record's outcome (Platform
+  Attestation profile);
+- a replayed quote whose signed freshness value differs from the expected
+  value (Platform Attestation profile); and
+- an affirming Attestation Result paired with the wrong action evidence
+  (Platform Attestation profile).
 
 ### Current Assurance Boundary
 
@@ -1438,6 +1440,56 @@ The swtpm-based exercise validates the verifier logic and evidence plumbing; it 
 
 The first-instance AEP/RATS AUDIT profile and this slot text were contributed by
 Anton Sokolov, Tyche Institute.
+
+### AUDIT Profile: Platform Attestation (first named profile)
+
+This is the first profile named against the AUDIT slot's general obligation
+above. It composes an application-layer action evidence package (AEP) with
+RATS Evidence and an Attestation Result, per the Design Rule and Exercised
+PCR-16 Binding described earlier in this section.
+
+#### Producer Requirements
+
+A conforming Platform Attestation AUDIT producer MUST state:
+
+- the covered action and outcome fields;
+- the subject-digest context defined in the Composition Model;
+- the AEP signature and chaining construction;
+- the predecessor or sequence value that establishes the claimed causal order;
+- the platform Evidence format and selected measurements;
+- the exact transformation that binds the outcome digest into those
+  measurements;
+- the attestation key and its trust-chain inputs;
+- the freshness value and where it appears in signed Evidence;
+- the Verifier and appraisal scheme; and
+- any Reference Values, Endorsements, or policy inputs needed to reproduce the
+  appraisal.
+
+#### Verifier Requirements
+
+A conforming Platform Attestation AUDIT verifier MUST report separately:
+
+- whether the AEP signature and hash chain validate, including predecessor and
+  sequence checks;
+- the subject and outcome digest bytes it recomputed, with their digest
+  contexts;
+- whether the attestation signature validates under the supplied attestation
+  key and whether that key is accepted under the relying party's trust policy;
+- whether the quoted PCR digest matches the selected PCR values and whether the
+  declared outcome-to-PCR transformation recomputes;
+- whether the outcome digest extracted from the action record equals the digest
+  bound into the signed platform Evidence under compatible contexts;
+- the Verifier's native appraisal result;
+- whether freshness was actually enforced by comparing the value recovered
+  from the raw signed Evidence with the expected per-appraisal value; and
+- the relying party's final acceptance result and policy inputs.
+
+These checks MUST NOT be collapsed into one opaque "audited" boolean. In
+particular, an affirming Attestation Result is not evidence of freshness unless
+the selected appraisal scheme checked the relevant nonce or the relying party
+performed and reported that comparison separately. Re-deriving freshness from
+the raw TPM quote bytes is therefore a distinct check when the Attestation
+Result does not expose or enforce the quote's signed `extraData`.
 
 # Assurance Tiers
 
