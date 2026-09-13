@@ -1,0 +1,127 @@
+*** warning: explicit settings completely override canned bibxml in reference I-D.schrock-caid
+*** warning: explicit settings completely override canned bibxml in reference I-D.schrock-aec
+*** warning: explicit settings completely override canned bibxml in reference I-D.schrock-aeb
+*** warning: explicit settings completely override canned bibxml in reference I-D.kuehlewind-audit-architecture
+*** warning: explicit settings completely override canned bibxml in reference I-D.etcheverry-action-ref
+*** warning: explicit settings completely override canned bibxml in reference I-D.sharif-agent-audit-trail
+*** warning: explicit settings completely override canned bibxml in reference I-D.bates-atp
+*** warning: explicit settings completely override canned bibxml in reference I-D.aylward-aiga
+*** warning: explicit settings completely override canned bibxml in reference I-D.schrock-human-authorization-binding
+*** warning: explicit settings completely override canned bibxml in reference I-D.schrock-ep-authorization-receipts
+*** warning: explicit settings completely override canned bibxml in reference I-D.mih-scitt-agent-action-capsule
+*** warning: explicit settings completely override canned bibxml in reference I-D.mih-sokolov-scitt-payload-binding
+*** warning: explicit settings completely override canned bibxml in reference I-D.mih-agent-bilateral-attestation
+*** warning: explicit settings completely override canned bibxml in reference I-D.bu-agentproto-security-principal-binding-03
+*** warning: explicit settings completely override canned bibxml in reference I-D.lee-orprg-permit-receipts
+*** warning: explicit settings completely override canned bibxml in reference I-D.sokolov-rats-aep-composition
+*** warning: explicit settings completely override canned bibxml in reference I-D.sato-soos-gar
+*** warning: explicit settings completely override canned bibxml in reference I-D.sato-soos-gar-02
+ Created file draft-mih-sato-agent-accountability-composition.txt
+
+*** problem running idnits -- falling back to remote idnits processing
+idnits 2.17.1 
+
+draft-mih-sato-agent-accountability-composition.txt:
+-(30): Line appears to be too long, but this could be caused by non-ascii characters in UTF-8 encoding
+-(41): Line appears to be too long, but this could be caused by non-ascii characters in UTF-8 encoding
+-(145): Line appears to be too long, but this could be caused by non-ascii characters in UTF-8 encoding
+-(169): Line appears to be too long, but this could be caused by non-ascii characters in UTF-8 encoding
+-(171): Line appears to be too long, but this could be caused by non-ascii characters in UTF-8 encoding
+-(230): Line appears to be too long, but this could be caused by non-ascii characters in UTF-8 encoding
+-(243): Line appears to be too long, but this could be caused by non-ascii characters in UTF-8 encoding
+-(253): Line appears to be too long, but this could be caused by non-ascii characters in UTF-8 encoding
+-(268): Line appears to be too long, but this could be caused by non-ascii characters in UTF-8 encoding
+-(269): Line appears to be too long, but this could be caused by non-ascii characters in UTF-8 encoding
+-(280): Line appears to be too long, but this could be caused by non-ascii characters in UTF-8 encoding
+-(288): Line appears to be too long, but this could be caused by non-ascii characters in UTF-8 encoding
+-(304): Line appears to be too long, but this could be caused by non-ascii characters in UTF-8 encoding
+-(309): Line appears to be too long, but this could be caused by non-ascii characters in UTF-8 encoding
+-(316): Line appears to be too long, but this could be caused by non-ascii characters in UTF-8 encoding
+-(444): Line appears to be too long, but this could be caused by non-ascii characters in UTF-8 encoding
+-(477): Line appears to be too long, but this could be caused by non-ascii characters in UTF-8 encoding
+-(933): Line appears to be too long, but this could be caused by non-ascii characters in UTF-8 encoding
+-(949): Line appears to be too long, but this could be caused by non-ascii characters in UTF-8 encoding
+-(955): Line appears to be too long, but this could be caused by non-ascii characters in UTF-8 encoding
+-(974): Line appears to be too long, but this could be caused by non-ascii characters in UTF-8 encoding
+-(1027): Line appears to be too long, but this could be caused by non-ascii characters in UTF-8 encoding
+-(1104): Line appears to be too long, but this could be caused by non-ascii characters in UTF-8 encoding
+-(1194): Line appears to be too long, but this could be caused by non-ascii characters in UTF-8 encoding
+-(1750): Line appears to be too long, but this could be caused by non-ascii characters in UTF-8 encoding
+-(1759): Line appears to be too long, but this could be caused by non-ascii characters in UTF-8 encoding
+-(1782): Line appears to be too long, but this could be caused by non-ascii characters in UTF-8 encoding
+-(1993): Line appears to be too long, but this could be caused by non-ascii characters in UTF-8 encoding
+
+  Checking boilerplate required by RFC 5378 and the IETF Trust (see
+  https://trustee.ietf.org/license-info):
+  ----------------------------------------------------------------------------
+
+     No issues found here.
+
+  Checking nits according to https://www.ietf.org/id-info/1id-guidelines.txt:
+  ----------------------------------------------------------------------------
+
+  == Mismatching filename: the document gives the document name as
+     'draft-mih-sato-agent-accountability-composition-02', but the file name
+     used is 'draft-mih-sato-agent-accountability-composition'
+
+  == There are 95 instances of lines with non-ascii characters in the
+     document.
+
+
+  Checking nits according to https://www.ietf.org/id-info/checklist :
+  ----------------------------------------------------------------------------
+
+  == There are 1 instance of lines with non-RFC2606-compliant FQDNs in the
+     document.
+
+
+  Miscellaneous warnings:
+  ----------------------------------------------------------------------------
+
+     No issues found here.
+
+  Checking references for intended status: Informational
+  ----------------------------------------------------------------------------
+
+  == Outdated reference: A later version (-06) exists of
+     draft-schrock-ep-authorization-evidence-chain-05
+
+  == Outdated reference: A later version (-05) exists of
+     draft-schrock-action-evidence-boundary-03
+
+  == Outdated reference: A later version (-01) exists of
+     draft-kuehlewind-audit-architecture-00
+
+  == Outdated reference: A later version (-03) exists of
+     draft-sharif-agent-audit-trail-00
+
+  == Outdated reference: A later version (-13) exists of
+     draft-schrock-ep-authorization-receipts-11
+
+  == Outdated reference: A later version (-04) exists of
+     draft-mih-scitt-agent-action-capsule-02
+
+  == Outdated reference: A later version (-05) exists of
+     draft-mih-sokolov-scitt-payload-binding-01
+
+  == Outdated reference: A later version (-06) exists of
+     draft-sokolov-rats-aep-composition-03
+
+  == Outdated reference: A later version (-08) exists of
+     draft-sato-soos-gar-03
+
+  == Outdated reference: A later version (-08) exists of
+     draft-sato-soos-gar-02
+
+  -- Duplicate reference: draft-sato-soos-gar, mentioned in
+     'I-D.sato-soos-gar-02', was also mentioned in 'I-D.sato-soos-gar'.
+
+  == Outdated reference: A later version (-19) exists of
+     draft-ietf-oauth-sd-jwt-vc-17
+
+
+     Summary: 0 errors (**), 0 flaws (~~), 14 warnings (==), 1 comment (--).
+
+     Run idnits with the --verbose option for more detailed information about
+     the items above.
+

@@ -1,0 +1,26 @@
+# SHA-256 checksums — composition -02 candidate
+
+Supersedes the SHA sheet circulated against commit 32bc714 (that sheet is retired;
+this recut folds Turner's review, the vocabulary-boundary vector, the completed
+Principal Binding comparison, and the regulatory-paragraph draft on top of it).
+
+Computed with `shasum -a 256` against the committed working-tree files at the
+head of this recut (commit 1de23e2 and everything before it on `compose-02`).
+
+9eb56e5db62078322c75437bf0be7a48ee1c131271ea5232b4d39495154cafff  draft-mih-sato-agent-accountability-composition.md
+52901fa341b2a3456f37da61eb8bb42261a502c817505ca644ef91e385cc16df  draft-mih-sato-agent-accountability-composition.xml
+5b09761b9a8d639b1fa0d746f70cd3cb16dc149212bccb503362a6b19d012016  draft-mih-sato-agent-accountability-composition.txt
+
+## Note on the date field
+
+The top-level `date:` key was removed from the Markdown front matter (see the
+front-matter fix in this commit): with no explicit date, kramdown-rfc/xml2rfc
+stamp the render date, so the `.txt`/`.xml` above are frozen at build time
+2026-09-13. A rebuild on a later day reproduces the text unchanged but stamps
+a different date/expiry in the front matter and page footers, which changes
+these checksums. This is intentional — it is what keeps `DOC_DATE_IN_PAST`
+from recurring while no one has picked the actual posting date yet — but it
+means these checksums authenticate *this recut's* committed files, not
+"whatever `make` produces on any given day." When Steven sets the actual
+posting date, the final pre-submission commit re-pins `date:` explicitly
+(the same pattern commit 69422af used for -01) and gets its own fresh sheet.

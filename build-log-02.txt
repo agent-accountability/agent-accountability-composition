@@ -1,0 +1,27 @@
+Build log — composition -02 candidate
+Toolchain: kramdown-rfc2629 1.7.43 (Ruby 4.0.5), xml2rfc 3.34.1 (Python 3.13)
+Commands: kramdown-rfc2629 draft-....md > draft-....xml
+          xml2rfc draft-....xml --text --out draft-....txt
+
+=== kramdown-rfc2629 stderr (18 lines, all the same class of warning) ===
+Every I-D reference in this document pins explicit bibxml fields (title,
+author, date, target) rather than relying on the network-fetched canned
+bibxml entry for that draft name. kramdown-rfc reports that as an
+"explicit settings completely override canned bibxml" notice per
+reference. This is expected and pre-existing (same 18 references, same
+warning, on the -01 build already in this repo's history) — it is not a
+build error.
+
+=== xml2rfc stdout/stderr ===
+ Created file /tmp/rebuild.txt
+
+=== reproducibility check: committed .txt vs a fresh same-day rebuild ===
+IDENTICAL (0 lines diff)
+
+=== idnits summary (full log: idnits-02.txt) ===
+
+     Summary: 0 errors (**), 0 flaws (~~), 14 warnings (==), 1 comment (--).
+
+     Run idnits with the --verbose option for more detailed information about
+     the items above.
+
