@@ -233,6 +233,18 @@ informative:
   RFC8792:
   RFC9901:
   I-D.ietf-oauth-sd-jwt-vc-17:
+    title: "SD-JWT-based Verifiable Digital Credentials (SD-JWT VC)"
+    author:
+      - name: Oliver Terbu
+        org: MATTR
+      - name: Daniel Fett
+        org: Authlete Inc.
+      - name: Brian Campbell
+        org: Ping Identity
+    date: 2026-07-06
+    seriesinfo:
+      Internet-Draft: draft-ietf-oauth-sd-jwt-vc-17
+    target: https://datatracker.ietf.org/doc/html/draft-ietf-oauth-sd-jwt-vc-17
   OpenID4VP:
     title: "OpenID for Verifiable Presentations 1.0"
     target: https://openid.net/specs/openid-4-verifiable-presentations-1_0-final.html
