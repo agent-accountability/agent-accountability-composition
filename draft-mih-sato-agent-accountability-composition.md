@@ -1071,7 +1071,7 @@ projection, or a human-readable rendering for that value.
 
 **The native-record binding.** The WHAT record is content-addressed by its own
 identifier — in AAC, `capsule_id`, recomputed under the Capsule profile's
-JSON-DIGEST construction. The subject digest and the native-record identifier serve
+`capsule_id` derivation. The subject digest and the native-record identifier serve
 different roles: the first joins slots, the second identifies these bytes. **Equality
 between them is neither required nor implied**, and a verifier MUST NOT derive one
 from the other.
@@ -1163,12 +1163,12 @@ through a verifier's local conversion.
 
 This document states the obligation; it does not define the vocabularies. A basis
 vocabulary — a unit list, a currency and rounding convention, a code list, or a
-declared mapping between two bases — is registered and versioned under
-{{I-D.mih-sokolov-scitt-payload-binding}}, authored by the party that owns it, on the
-same terms as any other registered artifact. A profile cites the vocabularies it uses
+declared mapping between two bases — is declared and versioned by the party that
+owns it and identified by a stable normative reference, as
+{{I-D.mih-sokolov-scitt-payload-binding}} treats artifact-type declarations. A profile cites the vocabularies it uses
 rather than restating them. The division is deliberate and neither document repeats
 the other: **that a joined field must declare its basis is a composition rule; how a
-basis vocabulary is declared, versioned, and cited is registry machinery.** A profile
+basis vocabulary is declared, versioned, and cited is declaration machinery.** A profile
 that cites no vocabulary for a basis it claims to declare has not declared one.
 
 ### Producer Requirements
@@ -1278,9 +1278,10 @@ Where a WHAT record names a counterparty, it MUST state the rung actually attain
 drawn from an ordered vocabulary in which no rung is confusable with another and no
 rung is inferred from the absence of evidence for a higher one.
 
-**This document does not define that vocabulary.** The rung names are established by the
-bilateral attestation work {{I-D.mih-agent-bilateral-attestation}}; a WHAT profile cites
-them rather than restating them, and a profile that cites no vocabulary has not declared
+**This document does not define that vocabulary.** The bilateral attestation work
+{{I-D.mih-agent-bilateral-attestation}} establishes the base distinction between a
+fully-bilateral record and a reduced-assurance one; a WHAT profile cites the vocabulary
+it uses rather than restating it, and a profile that cites no vocabulary has not declared
 a rung. What this document states is the structural discipline any such vocabulary must
 satisfy, which holds whatever names are chosen: the rungs are ordered; a consumer MAY
 require a minimum; a record claiming a higher rung than its carried evidence supports is
@@ -1862,8 +1863,8 @@ Profiles SHOULD support content-private, hash-only (detached-payload) records so
 registered statement carries only a digest, with content held under deployment
 controls. The shared join digest enables cross-slot correlation; pairwise or
 encrypted correlation identifiers SHOULD be available where correlation is not
-required. Producer context admitted to any WHAT-leg record follows the capsule
-data-admission floor defined in the Privacy Considerations of
+required. Producer context admitted to any WHAT-leg record follows the
+data-admission tiers defined in the Privacy Considerations of
 {{I-D.mih-scitt-agent-action-capsule}}.
 
 This document does not itself define a data-minimization or retention policy;
@@ -1893,7 +1894,8 @@ thread (Henri, Anton Sokolov, Joel). Landed in this revision:
   profile-neutral general obligation; the original ten-item Producer Requirements
   and eight-item Verifier Requirements lists move unchanged under a new "AUDIT
   Profile: Platform Attestation (first named profile)" subsection; §6.4.6 Negative
-  Vectors labels the six attestation-specific classes as that profile's.
+  Vectors labels the six attestation-specific classes as that profile's. The
+  Verifier Requirements split was refined on 2026-10-04 (below).
 * Digest-coverage rule (Joel, 2026-08-20; accepted by Anton Sokolov): the general
   obligation's digest reaches every value the named profile obliges the declaring
   party to supply or name, in the order the profile enumerates them.
@@ -1920,6 +1922,21 @@ thread (Henri, Anton Sokolov, Joel). Landed in this revision:
   nevertheless reports unused-reference diagnostics for both; those
   diagnostics remain in the matching lint record for maintainer review,
   rather than being represented as a clean lint result.
+* AUDIT verifier reports stated once (Anton Sokolov, 2026-10-04): the two
+  mechanism-neutral checks (AEP signature and chain; recomputed subject and outcome
+  digests) are stated only in §6.4.4, whose last sentence now says a profile's verifier
+  reports add to these and do not replace them; §6.4.8.2 opens "In addition to the
+  reports required in §6.4.4" and lists only the profile's own reports. No check is
+  required of fewer verifiers.
+* References and reference accuracy: Agent Action Capsule -02 to -06, payload binding
+  -01 to -06 (now titled "Canonicalization Declaration for SCITT Signed Statements"),
+  bilateral attestation -01 to -03. Four sentences describing those documents were
+  corrected to match the cited revisions: basis vocabularies are declared and versioned
+  by their owners (payload binding -06 defines no artifact-type registry); the bilateral
+  work establishes the fully-bilateral / reduced-assurance distinction rather than rung
+  names; the native-record binding names the Capsule profile's `capsule_id` derivation
+  instead of a "JSON-DIGEST construction"; the privacy cross-reference names the Capsule
+  profile's data-admission tiers instead of a "floor".
 * Editorial: revision bumped from -01 to -02; document date pinned to the cut
   date; the -00-manifest self-reference in Cross-Slot Conformance Mechanism now
   names this -02 revision instead of -01.
