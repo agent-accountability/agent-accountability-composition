@@ -1437,7 +1437,7 @@ state whether `extraData` carries a fresh challenge, a unique action identifier,
 or another binding value. An identifier provides freshness only when the
 relying-party policy ensures that it is fresh for the appraisal.
 
-### Verifier Requirements
+### Verifier Requirements {#audit-verifier-requirements}
 
 A conforming AUDIT verifier MUST report separately:
 
@@ -1450,9 +1450,7 @@ A conforming AUDIT verifier MUST report separately:
   the profile's Producer Requirements obliges the producer to supply.
 
 These checks MUST NOT be collapsed into one opaque "audited" boolean. A
-profile's own verifier reports (see "AUDIT Profile: Platform Attestation")
-state what recomputing that profile's binding requires; the general
-obligation above does not substitute for those reports.
+profile's verifier reports add to these reports and do not replace them.
 
 ### Composition and Transparency Seams
 
@@ -1532,14 +1530,11 @@ A conforming Platform Attestation AUDIT producer MUST state:
 - any Reference Values, Endorsements, or policy inputs needed to reproduce the
   appraisal.
 
-#### Verifier Requirements
+#### Verifier Requirements {#platform-attestation-verifier-requirements}
 
-A conforming Platform Attestation AUDIT verifier MUST report separately:
+In addition to the reports required in {{audit-verifier-requirements}}, a
+conforming Platform Attestation AUDIT verifier MUST report separately:
 
-- whether the AEP signature and hash chain validate, including predecessor and
-  sequence checks;
-- the subject and outcome digest bytes it recomputed, with their digest
-  contexts;
 - whether the attestation signature validates under the supplied attestation
   key and whether that key is accepted under the relying party's trust policy;
 - whether the quoted PCR digest matches the selected PCR values and whether the

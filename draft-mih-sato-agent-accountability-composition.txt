@@ -136,11 +136,11 @@ Internet-Draft      Agent Accountability Composition        October 2026
        6.4.7.  Current Assurance Boundary  . . . . . . . . . . . . .  36
        6.4.8.  AUDIT Profile: Platform Attestation (first named
                profile)  . . . . . . . . . . . . . . . . . . . . . .  36
-   7.  Assurance Tiers . . . . . . . . . . . . . . . . . . . . . . .  38
+   7.  Assurance Tiers . . . . . . . . . . . . . . . . . . . . . . .  37
    8.  Conformance . . . . . . . . . . . . . . . . . . . . . . . . .  38
      8.1.  Cross-Slot Conformance Mechanism  . . . . . . . . . . . .  38
        8.1.1.  Boundary  . . . . . . . . . . . . . . . . . . . . . .  39
-       8.1.2.  Bundle requirements . . . . . . . . . . . . . . . . .  41
+       8.1.2.  Bundle requirements . . . . . . . . . . . . . . . . .  40
        8.1.3.  Result vocabulary . . . . . . . . . . . . . . . . . .  41
        8.1.4.  Run report  . . . . . . . . . . . . . . . . . . . . .  42
        8.1.5.  Positive, negative, and condition-removed vectors . .  42
@@ -1888,9 +1888,9 @@ Internet-Draft      Agent Accountability Composition        October 2026
       the producer to supply.
 
    These checks MUST NOT be collapsed into one opaque "audited" boolean.
-   A profile's own verifier reports (see "AUDIT Profile: Platform
-   Attestation") state what recomputing that profile's binding requires;
-   the general obligation above does not substitute for those reports.
+   A profile's verifier reports add to these reports and do not replace
+   them.
+
 
 
 
@@ -2027,14 +2027,8 @@ Internet-Draft      Agent Accountability Composition        October 2026
 
 6.4.8.2.  Verifier Requirements
 
-   A conforming Platform Attestation AUDIT verifier MUST report
-   separately:
-
-   *  whether the AEP signature and hash chain validate, including
-      predecessor and sequence checks;
-
-   *  the subject and outcome digest bytes it recomputed, with their
-      digest contexts;
+   In addition to the reports required in Section 6.4.4, a conforming
+   Platform Attestation AUDIT verifier MUST report separately:
 
    *  whether the attestation signature validates under the supplied
       attestation key and whether that key is accepted under the relying
@@ -2063,6 +2057,12 @@ Internet-Draft      Agent Accountability Composition        October 2026
    therefore a distinct check when the Attestation Result does not
    expose or enforce the quote's signed extraData.
 
+7.  Assurance Tiers
+
+   A record answering these questions may be produced at different
+   assurance levels, and the distinction is the crux for a relying party
+   who does not trust the operator:
+
 
 
 
@@ -2073,12 +2073,6 @@ Mih, et al.               Expires 6 April 2027                 [Page 37]
 
 Internet-Draft      Agent Accountability Composition        October 2026
 
-
-7.  Assurance Tiers
-
-   A record answering these questions may be produced at different
-   assurance levels, and the distinction is the crux for a relying party
-   who does not trust the operator:
 
    *  *Self-attested (baseline).* The record is signed by the agent or
       its operator and held by an interested party.  This is useful
@@ -2122,6 +2116,12 @@ Internet-Draft      Agent Accountability Composition        October 2026
    runner, and an external-report template — is published in the EMILIA
    Protocol repository (pull request 521, commit 30916c80).  That
    manifest pins Composition *-00*; it was not built against this *-02*
+   revision, and an -02-pinned manifest is future work, out of scope
+   here.  Per the freeze rule below, the pack is a candidate, not a
+   frozen result, until a second implementation maintained by a
+   different party consumes the same published bytes and returns the
+   completed external report.
+
 
 
 
@@ -2129,12 +2129,6 @@ Mih, et al.               Expires 6 April 2027                 [Page 38]
 
 Internet-Draft      Agent Accountability Composition        October 2026
 
-
-   revision, and an -02-pinned manifest is future work, out of scope
-   here.  Per the freeze rule below, the pack is a candidate, not a
-   frozen result, until a second implementation maintained by a
-   different party consumes the same published bytes and returns the
-   completed external report.
 
 8.1.1.  Boundary
 
@@ -2179,17 +2173,18 @@ Internet-Draft      Agent Accountability Composition        October 2026
    CAID, AEC, and AEB enter at distinct interfaces rather than becoming
    new slot definitions:
 
+   *  CAID supplies the declared exact-action digest context.
+
+   *  AEC preserves native evidence verification and reports whether a
+      named relying-party requirement is satisfied.
+
+
 
 
 Mih, et al.               Expires 6 April 2027                 [Page 39]
 
 Internet-Draft      Agent Accountability Composition        October 2026
 
-
-   *  CAID supplies the declared exact-action digest context.
-
-   *  AEC preserves native evidence verification and reports whether a
-      named relying-party requirement is satisfied.
 
    *  AEB remains the executor-side authorization, reserve/consume,
       invocation, and post-dispatch uncertainty lifecycle.
@@ -2235,16 +2230,17 @@ Internet-Draft      Agent Accountability Composition        October 2026
    comparison, and no native mechanism conformance is claimed by the
    candidate runner.
 
+8.1.2.  Bundle requirements
+
+   Every bundle pins:
+
+
 
 
 Mih, et al.               Expires 6 April 2027                 [Page 40]
 
 Internet-Draft      Agent Accountability Composition        October 2026
 
-
-8.1.2.  Bundle requirements
-
-   Every bundle pins:
 
    1.  the Composition revision and digest;
 
@@ -2291,16 +2287,16 @@ Internet-Draft      Agent Accountability Composition        October 2026
    upgraded.  A rejected prerequisite does not turn unexecuted
    downstream checks into extra failures.
 
+   An unknown optional binding may remain structurally readable.  It
+   cannot satisfy a policy that requires understood semantics for that
+   binding.
+
 
 
 Mih, et al.               Expires 6 April 2027                 [Page 41]
 
 Internet-Draft      Agent Accountability Composition        October 2026
 
-
-   An unknown optional binding may remain structurally readable.  It
-   cannot satisfy a policy that requires understood semantics for that
-   binding.
 
 8.1.4.  Run report
 
@@ -2334,6 +2330,10 @@ Internet-Draft      Agent Accountability Composition        October 2026
    The first pack contains one positive four-slot vector and the
    following negative cases.  Every negative has a condition-removed
    twin that changes only the tested defect and returns to pass.
+
+
+
+
 
 
 
