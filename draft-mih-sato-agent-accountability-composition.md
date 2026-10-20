@@ -2,6 +2,7 @@
 title: "Agent Accountability: Composition and Conformance"
 abbrev: "Agent Accountability Composition"
 docname: draft-mih-sato-agent-accountability-composition-02
+date: 2026-10-03
 category: info
 ipr: trust200902
 area: Security
@@ -61,6 +62,33 @@ normative:
       Internet-Draft: draft-schrock-action-evidence-boundary-03
     target: https://datatracker.ietf.org/doc/draft-schrock-action-evidence-boundary/
 informative:
+  I-D.schrock-caid-current:
+    title: "The Canonical Action Identifier (CAID)"
+    author:
+      name: Iman Schrock
+      org: EMILIA Protocol, Inc.
+    date: 2026-09-28
+    seriesinfo:
+      Internet-Draft: draft-schrock-canonical-action-identifier-04
+    target: https://www.ietf.org/archive/id/draft-schrock-canonical-action-identifier-04.txt
+  I-D.schrock-aec-current:
+    title: "Authorization Evidence Chains: Composing Heterogeneous Agent-Action Evidence (EP-AEC)"
+    author:
+      name: Iman Schrock
+      org: EMILIA Protocol, Inc.
+    date: 2026-09-28
+    seriesinfo:
+      Internet-Draft: draft-schrock-ep-authorization-evidence-chain-07
+    target: https://www.ietf.org/archive/id/draft-schrock-ep-authorization-evidence-chain-07.txt
+  I-D.schrock-aeb-current:
+    title: "The Action Evidence Boundary for Consequential Agent Effects"
+    author:
+      name: Iman Schrock
+      org: EMILIA Protocol, Inc.
+    date: 2026-09-25
+    seriesinfo:
+      Internet-Draft: draft-schrock-action-evidence-boundary-07
+    target: https://www.ietf.org/archive/id/draft-schrock-action-evidence-boundary-07.txt
   RFC9943:
   RFC9334:
   I-D.kuehlewind-audit-architecture:
@@ -226,8 +254,9 @@ actions across administrative and trust domains. Holding such an action
 accountable — to a regulator, auditor, or counterparty who does not trust the
 operator — requires answering several questions, each answerable by an
 independently-verifiable profile: whether the agent was permitted to act (CAN),
-which accountable human authorized the specific action (WHO), what the agent
-actually did (WHAT), and whether the runtime enforced correctly (AUDIT).
+which accountable human authorized the specific action (WHO), what outcome the
+agent system recorded and what is known to have crossed the effect boundary
+(WHAT), and whether the runtime enforced correctly (AUDIT).
 
 This document specifies, in Informational terms, how such profiles compose — by a
 shared action-digest, each verifying independently — and defines a shared
@@ -303,9 +332,10 @@ when, and only when, they appear in all capitals, as shown here.
 An agent acts across a trust boundary. Some time later, someone who trusts neither the
 agent nor its operator needs to answer a simple question: was this action authorized,
 and can that be shown without taking the operator's word for it. Knowing who an agent
-is, and confirming it had permission to act, doesn't tell you what it actually did.
-That's the gap: identity answers who, authorization answers may — but nothing confirms
-whether the action taken matches what was permitted, and nothing records it.
+is, and confirming it had permission to act, does not establish what outcome the
+agent system recorded or whether a claimed effect crossed the effect boundary.
+Identity answers who and authorization answers may; neither supplies the recorded
+outcome or independent evidence of an external effect.
 
 This has stopped being a someday problem. Under the AI Omnibus amendment, the EU AI
 Act's Article 12 record-keeping and automatic-logging obligations for high-risk systems
@@ -393,7 +423,7 @@ conforming **profile** answers:
 
 - **CAN** — the "may": was the agent permitted to act?
 - **WHO** — which accountable human authorized this exact action?
-- **WHAT** — the "did": what did the agent actually do (verdict-complete; a byte-stable serialization of the observed record, not a replay)?
+- **WHAT** — what outcome did the agent system record, and what is known to have crossed the effect boundary (verdict-complete; a byte-stable serialization of the producer-recorded outcome, not a replay)?
 - **AUDIT** — did the runtime enforce correctly, in causal order, tamper-evidently?
 
 Any conforming profile may fill a slot; the profiles cited in this document are the
@@ -487,24 +517,20 @@ mapping. The AAC Class-1 repository was independently replayed at commit
 byte-agreement result is claimed. Status: framework mapping reviewed; AAC reference
 suite independently replayed.
 
-This review was performed against the -03 revision of
-{{I-D.bu-agentproto-security-principal-binding-03}} (historical input, 2026-08). The
-later -06 revision of that framework has since been evaluated for this revision of
-this document, by direct comparison of both revisions' published text: the
-terminology this review relies on — carrier, verifier, binding, accepted result, and
-failure behavior — is textually unchanged between -03 and -06, and the C-002
-("Human or organizational authority") row used to review the WHO-slot mapping is
-unchanged as well. -06 adds a formally named six-state verifier-outcome vocabulary
-(`satisfied`, `unsatisfied`, `indeterminate`, `unsupported`, `not-evaluated`,
-`not-applicable`) that -03 stated only in prose; a new dependency-closure and
-composition-invariants mechanism (its Section 17) for aggregating multiple claim
-rows under that framework's own composition verifier; and a new claim class,
-C-014 ("Scoped human continuity"), which that framework states explicitly is not a
-human-authority claim and does not overlap C-002. None of these additions touch the
-row this review mapped against or its stated boundary. The review's finding
-therefore stands unchanged against -06: framework mapping reviewed, AAC reference
-suite independently replayed at the commit above, no independent principal-binding
-byte-agreement result claimed.
+The historical review used revision -03 of
+{{I-D.bu-agentproto-security-principal-binding-03}}. A comparison with the published
+-06 text confirms that the five terminology definitions cited above and the
+C-002 registry definition are unchanged. This does not imply that all review
+requirements are unchanged. Compared with -03, -06 explicitly defines six row
+outcomes in Section 16, adds dependency-closure rules in Section 17 and scoped
+human continuity as C-014, and adds claim-grounding and relying-party-decision
+fields. Section 26 also gives C-002-specific negative cases requiring evidence
+of pre-effect authorization ordering and of the binding between an attester and
+the named principal. The review retains its bounded WHO-attribution finding and
+the recorded reference-suite replay. It does not infer pre-execution authority
+from attribution, claim a complete evaluation against the -06 framework, or
+establish independent principal-binding byte agreement. A stronger mapping claim
+requires the additional applicable rows and evidence to be reviewed explicitly.
 
 Additional cross-profile review entries may be added in a later revision as
 other constituent-profile authors complete their own framework reviews.
@@ -995,8 +1021,9 @@ record for one action, and what, if anything, is known to have crossed the effec
 boundary. It is a byte-stable record of a producer-observed or producer-recorded
 outcome, not a replay of the action and not a re-execution of it. It does not
 establish that the action was permitted (CAN), that a named human authorized it
-(WHO), that an independent platform or observer verified the effect (AUDIT), or
-that the action was semantically correct. Two separations carry the whole slot: **a dispatched attempt
+(WHO), that the runtime enforcement claim held (AUDIT), that an independent
+external observer confirmed the effect, or that the action was semantically correct.
+Two separations carry the whole slot: **a dispatched attempt
 MUST NOT be presented as a confirmed effect**, and **a record of an action MUST NOT
 be presented as an observation of its consequence**.
 
@@ -1611,7 +1638,36 @@ definitions:
   Class 1 and Class 2 conformance rules.
 
 The cross-slot mechanism tests those interfaces. It does not replace their
-specifications or move enforcement into an evidence record.
+specifications or move enforcement into an evidence record. An AEB result remains
+bounded by its selected native source and trust assumptions; runtime-enforcement
+evidence is not automatically independent evidence that an external effect occurred.
+
+Mechanism references and run pins serve different purposes. Each native report
+retains its exact specification, verifier, adapter, trust-input and result-artifact
+pins, and its original result meanings. Equal status labels across revisions MUST
+NOT be treated as equal evidence claims. A change to a selected native interface
+requires new manifest expectations and the applicable native-profile review before
+the corresponding run can be frozen.
+
+The current CAID -04 {{I-D.schrock-caid-current}}, AEC -07
+{{I-D.schrock-aec-current}}, and AEB -07 {{I-D.schrock-aeb-current}} are informative
+reference-transition targets, not a jointly frozen suite adopted here. CAID -04
+adds input-admission and definition/snapshot rules; AEC -07 separates cryptographic
+VERIFIED from relying-party ACCEPTED and changes its replay contract. A historical
+combined verification result does not retrospectively supply those separate results.
+AEB -07 makes CAID conditional on a cross-format join and AEC conditional on a
+multi-leg requirement, and adds native authorization-handoff, replay-identity and
+same-action-fence requirements. Those executor requirements are not established by
+an offline composition join.
+
+The older normative pins above remain unchanged pending selection of the consuming
+contracts and review of their dependency closure. AEB -07 itself pins CAID -02 and
+AEC -06 normatively; replacing all three top-level references with the latest
+revisions would not establish a compatible native adapter. The transition review
+must select exact definitions, snapshots, suites, mapping profiles, result schemas
+and replay contracts, and retain the corresponding native verification evidence.
+No historical run is upgraded by this informative comparison, and no native
+mechanism conformance is claimed by the candidate runner.
 
 ### Bundle requirements
 
@@ -1741,7 +1797,18 @@ EMILIA delivers:
 The pack is Composition-00-pinned candidate evidence, not a frozen independent
 result, until an independently maintained second implementation reports against
 the same bytes. The remaining step is an external implementation run over the
-same bytes. Capsule Class 2 remains native to the Capsule implementation and
+same bytes.
+
+The author baseline capture reported on 27 September 2026 has no retained
+raw output or environment record that can substantiate it. It is not used
+as independent run evidence. The 26 September 2026 null rerun remains
+email-confirmed without retained raw logs. Neither email reconstructs an
+execution artifact or satisfies the independent-implementation freeze rule.
+An EP three-computation cross-implementation row is omitted from the
+interoperability evidence: no pinned implementation, input, command and
+result coordinates currently substantiate that row. This omission does
+not change the composition mechanism; a future row requires its own
+reproducible run and owner confirmation. Capsule Class 2 remains native to the Capsule implementation and
 requires its producer manifest and bound private evidence; the cross-slot
 harness does not manufacture those inputs.
 
@@ -1835,10 +1902,13 @@ thread (Henri, Anton Sokolov, Joel). Landed in this revision:
 * Digest-coverage rule (Joel, 2026-08-20; accepted by Anton Sokolov): the general
   obligation's digest reaches every value the named profile obliges the declaring
   party to supply or name, in the order the profile enumerates them.
-* Principal-binding citation (Songbo Bu, 2026-08-18, 2026-09-01, 2026-09-10): the
-  Cross-Profile Reviews entry now states the review was performed against -03
-  (historical input, 2026-08) and that a later -06 revision of that framework was
-  not re-evaluated for this revision. The bibliography entry remains pinned to -03.
+* Principal-binding review (Songbo Bu, 2026-08-18, 2026-09-01, 2026-09-10): the
+  Cross-Profile Reviews entry preserves -03 as the historical review input and
+  records the scoped comparison against the published -06 revision, including
+  its additional claim-grounding, outcome, dependency, and C-002 evidence
+  requirements. The historical finding and no-byte-agreement boundary remain;
+  see Principal-Binding Review (Bu). The bibliography remains pinned to -03 for
+  that historical input.
 * INTEROP.md PB row (Songbo Bu, 2026-09-01; Iman Schrock, 2026-09-10): Status
   changed to confirmed (Songbo Bu, 2026-08-18), with the no-byte-agreement
   limitation kept verbatim. The evidence-ladder Status key now distinguishes a
@@ -1849,10 +1919,12 @@ thread (Henri, Anton Sokolov, Joel). Landed in this revision:
 * V1 27-case pack status (Iman Schrock, 2026-09-01): described as
   Composition-00-pinned candidate evidence until an independently maintained
   second implementation reports against the same bytes.
-* idnits (Songbo Bu, 2026-09-01, 2026-09-10): stale document date corrected; the
-  reported "OpenID4VP and MACHINE-MANDATE unused" warning does not reproduce
-  against this revision's build — both are cited in body text (see the idnits
-  log accompanying this revision).
+* idnits (Songbo Bu, 2026-09-01, 2026-09-10): the earlier document-date
+  correction is retained. OpenID4VP and MACHINE-MANDATE are cited in body
+  text. Fresh offline lint on the 3 October 2026 local review candidate
+  nevertheless reports unused-reference diagnostics for both; those
+  diagnostics remain in the matching lint record for maintainer review,
+  rather than being represented as a clean lint result.
 * Editorial: revision bumped from -01 to -02; document date pinned to the cut
   date; the -00-manifest self-reference in Cross-Slot Conformance Mechanism now
   names this -02 revision instead of -01.

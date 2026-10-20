@@ -41,10 +41,10 @@ stated.
 | ID | APS |
 | Description | Agent Passport System bidirectional AUDIT-prep run; both run pins recorded |
 | Type | cross-implementation |
-| Evidence coordinates | AUDIT-prep issue #9; both runs' artifact pins as recorded in that issue |
-| Digest context | per run pins in issue #9 |
-| Status | **pending Iman Schrock confirmation** |
-| Notes | Row drawn from public record (issue #9 comment thread). Counterparty confirmation required before freeze. |
+| Evidence coordinates | [AUDIT-prep issue #9, pinned run exchange](https://github.com/mirjak/audit-bof-preparation/issues/9#issuecomment-5028863240): APS corpus `4b9dbb0`, AAC runner `43b6eba`; ASG vectors `529515b`, APS verifier `139c78a` |
+| Digest context | As recorded for each linked run; profile-boundary differences are not silently treated as failures |
+| Status | **pending Tymofii Pidlisnyi (aeoess) confirmation of this row** |
+| Notes | The linked exchange records both run directions. It is not confirmation of this final Composition row; obtain the named counterparty's review before freeze. |
 
 ### GAR — GAR Session Block Seal
 
@@ -58,17 +58,6 @@ stated.
 | Status | **pending Tom Sato confirmation** |
 | Notes | Row drawn from public record. Tom Sato confirmation required before freeze. |
 
-### EP — EMILIA Protocol Three-Computation Row
-
-| Field | Value |
-|---|---|
-| ID | EP |
-| Description | EMILIA Protocol three-computation evidence row at commit 8cf0c36e |
-| Type | cross-implementation |
-| Evidence coordinates | EP repository commit `8cf0c36e` |
-| Digest context | per commit 8cf0c36e |
-| Status | **pending Iman Schrock confirmation** |
-| Notes | Row drawn from public record. Iman Schrock author consent and row confirmation required before freeze. |
 
 ### PB — Principal-Binding Review (Bu)
 

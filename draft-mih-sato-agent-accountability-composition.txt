@@ -5,14 +5,14 @@
 Network Working Group                                             S. Mih
 Internet-Draft                                  Action State Group, Inc.
 Intended status: Informational                                   T. Sato
-Expires: 17 March 2027                                    MyAuberge K.K.
+Expires: 6 April 2027                                     MyAuberge K.K.
                                                               I. Schrock
                                                    EMILIA Protocol, Inc.
                                                                    S. Bu
                                                              Independent
                                                               A. Sokolov
                                                          Tyche Institute
-                                                       13 September 2026
+                                                          3 October 2026
 
 
            Agent Accountability: Composition and Conformance
@@ -26,8 +26,9 @@ Abstract
    counterparty who does not trust the operator — requires answering
    several questions, each answerable by an independently-verifiable
    profile: whether the agent was permitted to act (CAN), which
-   accountable human authorized the specific action (WHO), what the
-   agent actually did (WHAT), and whether the runtime enforced correctly
+   accountable human authorized the specific action (WHO), what outcome
+   the agent system recorded and what is known to have crossed the
+   effect boundary (WHAT), and whether the runtime enforced correctly
    (AUDIT).
 
    This document specifies, in Informational terms, how such profiles
@@ -52,10 +53,9 @@ Status of This Memo
 
 
 
-
-Mih, et al.               Expires 17 March 2027                 [Page 1]
+Mih, et al.               Expires 6 April 2027                  [Page 1]
 
-Internet-Draft      Agent Accountability Composition      September 2026
+Internet-Draft      Agent Accountability Composition        October 2026
 
 
    Internet-Drafts are working documents of the Internet Engineering
@@ -68,7 +68,7 @@ Internet-Draft      Agent Accountability Composition      September 2026
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 17 March 2027.
+   This Internet-Draft will expire on 6 April 2027.
 
 Copyright Notice
 
@@ -93,9 +93,9 @@ Table of Contents
    4.  The Composition Model . . . . . . . . . . . . . . . . . . . .   8
      4.1.  Three Digest Roles  . . . . . . . . . . . . . . . . . . .   8
      4.2.  Digest Context and Representation . . . . . . . . . . . .   9
-     4.3.  Cross-Profile Reviews . . . . . . . . . . . . . . . . . .   9
+     4.3.  Cross-Profile Reviews . . . . . . . . . . . . . . . . . .  10
        4.3.1.  Principal-Binding Review (Bu) . . . . . . . . . . . .  10
-     4.4.  Worked Profile Illustration . . . . . . . . . . . . . . .  10
+     4.4.  Worked Profile Illustration . . . . . . . . . . . . . . .  11
    5.  Trust-Root Separation . . . . . . . . . . . . . . . . . . . .  12
    6.  Slot Profiles . . . . . . . . . . . . . . . . . . . . . . . .  12
      6.1.  The CAN Slot  . . . . . . . . . . . . . . . . . . . . . .  12
@@ -109,54 +109,54 @@ Table of Contents
 
 
 
-Mih, et al.               Expires 17 March 2027                 [Page 2]
+Mih, et al.               Expires 6 April 2027                  [Page 2]
 
-Internet-Draft      Agent Accountability Composition      September 2026
+Internet-Draft      Agent Accountability Composition        October 2026
 
 
        6.1.8.  Current Assurance Boundary  . . . . . . . . . . . . .  19
      6.2.  The WHO Slot: Named-Human Authorization . . . . . . . . .  20
-     6.3.  The WHAT Slot . . . . . . . . . . . . . . . . . . . . . .  22
-       6.3.1.  Design Rule . . . . . . . . . . . . . . . . . . . . .  22
+     6.3.  The WHAT Slot . . . . . . . . . . . . . . . . . . . . . .  23
+       6.3.1.  Design Rule . . . . . . . . . . . . . . . . . . . . .  23
        6.3.2.  Subject, Native-Record, and Additional Bindings . . .  23
-       6.3.3.  Declared Field Basis  . . . . . . . . . . . . . . . .  25
-       6.3.4.  Producer Requirements . . . . . . . . . . . . . . . .  26
+       6.3.3.  Declared Field Basis  . . . . . . . . . . . . . . . .  26
+       6.3.4.  Producer Requirements . . . . . . . . . . . . . . . .  27
        6.3.5.  Verifier Requirements . . . . . . . . . . . . . . . .  28
-       6.3.6.  Cross-Party Rungs . . . . . . . . . . . . . . . . . .  29
+       6.3.6.  Cross-Party Rungs . . . . . . . . . . . . . . . . . .  30
        6.3.7.  Composition and Transparency Seams  . . . . . . . . .  30
        6.3.8.  Negative Vectors  . . . . . . . . . . . . . . . . . .  30
        6.3.9.  Current Assurance Boundary  . . . . . . . . . . . . .  32
      6.4.  The AUDIT Slot  . . . . . . . . . . . . . . . . . . . . .  32
        6.4.1.  Design Rule . . . . . . . . . . . . . . . . . . . . .  32
        6.4.2.  Producer Requirements . . . . . . . . . . . . . . . .  33
-       6.4.3.  Exercised PCR-16 Binding  . . . . . . . . . . . . . .  33
+       6.4.3.  Exercised PCR-16 Binding  . . . . . . . . . . . . . .  34
        6.4.4.  Verifier Requirements . . . . . . . . . . . . . . . .  34
-       6.4.5.  Composition and Transparency Seams  . . . . . . . . .  34
-       6.4.6.  Negative Vectors  . . . . . . . . . . . . . . . . . .  34
-       6.4.7.  Current Assurance Boundary  . . . . . . . . . . . . .  35
+       6.4.5.  Composition and Transparency Seams  . . . . . . . . .  35
+       6.4.6.  Negative Vectors  . . . . . . . . . . . . . . . . . .  35
+       6.4.7.  Current Assurance Boundary  . . . . . . . . . . . . .  36
        6.4.8.  AUDIT Profile: Platform Attestation (first named
                profile)  . . . . . . . . . . . . . . . . . . . . . .  36
-   7.  Assurance Tiers . . . . . . . . . . . . . . . . . . . . . . .  37
+   7.  Assurance Tiers . . . . . . . . . . . . . . . . . . . . . . .  38
    8.  Conformance . . . . . . . . . . . . . . . . . . . . . . . . .  38
      8.1.  Cross-Slot Conformance Mechanism  . . . . . . . . . . . .  38
-       8.1.1.  Boundary  . . . . . . . . . . . . . . . . . . . . . .  38
-       8.1.2.  Bundle requirements . . . . . . . . . . . . . . . . .  39
-       8.1.3.  Result vocabulary . . . . . . . . . . . . . . . . . .  40
-       8.1.4.  Run report  . . . . . . . . . . . . . . . . . . . . .  41
-       8.1.5.  Positive, negative, and condition-removed vectors . .  41
-       8.1.6.  Freeze rule . . . . . . . . . . . . . . . . . . . . .  43
-       8.1.7.  Delivered and open  . . . . . . . . . . . . . . . . .  44
-   9.  Extension Points  . . . . . . . . . . . . . . . . . . . . . .  44
-   10. Relationship to Existing Work . . . . . . . . . . . . . . . .  44
-   11. Security Considerations . . . . . . . . . . . . . . . . . . .  45
-   12. Privacy Considerations  . . . . . . . . . . . . . . . . . . .  45
-   13. IANA Considerations . . . . . . . . . . . . . . . . . . . . .  46
-   14. References  . . . . . . . . . . . . . . . . . . . . . . . . .  46
-     14.1.  Normative References . . . . . . . . . . . . . . . . . .  46
-     14.2.  Informative References . . . . . . . . . . . . . . . . .  46
-   Changes from -01  . . . . . . . . . . . . . . . . . . . . . . . .  50
-   Acknowledgments . . . . . . . . . . . . . . . . . . . . . . . . .  51
-   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  51
+       8.1.1.  Boundary  . . . . . . . . . . . . . . . . . . . . . .  39
+       8.1.2.  Bundle requirements . . . . . . . . . . . . . . . . .  41
+       8.1.3.  Result vocabulary . . . . . . . . . . . . . . . . . .  41
+       8.1.4.  Run report  . . . . . . . . . . . . . . . . . . . . .  42
+       8.1.5.  Positive, negative, and condition-removed vectors . .  42
+       8.1.6.  Freeze rule . . . . . . . . . . . . . . . . . . . . .  44
+       8.1.7.  Delivered and open  . . . . . . . . . . . . . . . . .  45
+   9.  Extension Points  . . . . . . . . . . . . . . . . . . . . . .  45
+   10. Relationship to Existing Work . . . . . . . . . . . . . . . .  46
+   11. Security Considerations . . . . . . . . . . . . . . . . . . .  46
+   12. Privacy Considerations  . . . . . . . . . . . . . . . . . . .  47
+   13. IANA Considerations . . . . . . . . . . . . . . . . . . . . .  47
+   14. References  . . . . . . . . . . . . . . . . . . . . . . . . .  47
+     14.1.  Normative References . . . . . . . . . . . . . . . . . .  47
+     14.2.  Informative References . . . . . . . . . . . . . . . . .  48
+   Changes from -01  . . . . . . . . . . . . . . . . . . . . . . . .  52
+   Acknowledgments . . . . . . . . . . . . . . . . . . . . . . . . .  53
+   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  53
 
 
 
@@ -165,9 +165,9 @@ Internet-Draft      Agent Accountability Composition      September 2026
 
 
 
-Mih, et al.               Expires 17 March 2027                 [Page 3]
+Mih, et al.               Expires 6 April 2027                  [Page 3]
 
-Internet-Draft      Agent Accountability Composition      September 2026
+Internet-Draft      Agent Accountability Composition        October 2026
 
 
 1.  Introduction
@@ -221,9 +221,9 @@ Internet-Draft      Agent Accountability Composition      September 2026
 
 
 
-Mih, et al.               Expires 17 March 2027                 [Page 4]
+Mih, et al.               Expires 6 April 2027                  [Page 4]
 
-Internet-Draft      Agent Accountability Composition      September 2026
+Internet-Draft      Agent Accountability Composition        October 2026
 
 
    *  *Slot*: one of the interchangeable questions (CAN, WHO, WHAT,
@@ -255,10 +255,11 @@ Internet-Draft      Agent Accountability Composition      September 2026
    trusts neither the agent nor its operator needs to answer a simple
    question: was this action authorized, and can that be shown without
    taking the operator's word for it.  Knowing who an agent is, and
-   confirming it had permission to act, doesn't tell you what it
-   actually did.  That's the gap: identity answers who, authorization
-   answers may — but nothing confirms whether the action taken matches
-   what was permitted, and nothing records it.
+   confirming it had permission to act, does not establish what outcome
+   the agent system recorded or whether a claimed effect crossed the
+   effect boundary.  Identity answers who and authorization answers may;
+   neither supplies the recorded outcome or independent evidence of an
+   external effect.
 
    This has stopped being a someday problem.  Under the AI Omnibus
    amendment, the EU AI Act's Article 12 record-keeping and automatic-
@@ -276,10 +277,9 @@ Internet-Draft      Agent Accountability Composition      September 2026
 
 
 
-
-Mih, et al.               Expires 17 March 2027                 [Page 5]
+Mih, et al.               Expires 6 April 2027                  [Page 5]
 
-Internet-Draft      Agent Accountability Composition      September 2026
+Internet-Draft      Agent Accountability Composition        October 2026
 
 
    Two of these efforts began close together but not, as sometimes
@@ -333,9 +333,9 @@ Internet-Draft      Agent Accountability Composition      September 2026
 
 
 
-Mih, et al.               Expires 17 March 2027                 [Page 6]
+Mih, et al.               Expires 6 April 2027                  [Page 6]
 
-Internet-Draft      Agent Accountability Composition      September 2026
+Internet-Draft      Agent Accountability Composition        October 2026
 
 
    that architecture's record types conflict, the architecture governs;
@@ -383,16 +383,21 @@ Internet-Draft      Agent Accountability Composition      September 2026
 
    *  *WHO* — which accountable human authorized this exact action?
 
-   *  *WHAT* — the "did": what did the agent actually do (verdict-
-      complete; a byte-stable serialization of the observed record, not
-      a replay)?
 
 
 
-Mih, et al.               Expires 17 March 2027                 [Page 7]
+
+
+
+Mih, et al.               Expires 6 April 2027                  [Page 7]
 
-Internet-Draft      Agent Accountability Composition      September 2026
+Internet-Draft      Agent Accountability Composition        October 2026
 
+
+   *  *WHAT* — what outcome did the agent system record, and what is
+      known to have crossed the effect boundary (verdict-complete; a
+      byte-stable serialization of the producer-recorded outcome, not a
+      replay)?
 
    *  *AUDIT* — did the runtime enforce correctly, in causal order,
       tamper-evidently?
@@ -438,17 +443,15 @@ Internet-Draft      Agent Accountability Composition      September 2026
       native evidence object or statement that supports the slot
       assertion.
 
+
+
+Mih, et al.               Expires 6 April 2027                  [Page 8]
+
+Internet-Draft      Agent Accountability Composition        October 2026
+
+
    *  A *receipt-payload digest* commits to the exact bytes submitted to
       a transparency service and covered by its receipt.
-
-
-
-
-
-Mih, et al.               Expires 17 March 2027                 [Page 8]
-
-Internet-Draft      Agent Accountability Composition      September 2026
-
 
    These digest values MAY differ.  A profile MUST state which object
    and exact byte sequence each digest covers, and a composition
@@ -490,6 +493,19 @@ Internet-Draft      Agent Accountability Composition      September 2026
    transparency verification, completeness and sequencing checks, and
    relying-party acceptance remain separate results.
 
+
+
+
+
+
+
+
+
+Mih, et al.               Expires 6 April 2027                  [Page 9]
+
+Internet-Draft      Agent Accountability Composition        October 2026
+
+
 4.3.  Cross-Profile Reviews
 
    The following entries record the application of external review
@@ -497,14 +513,6 @@ Internet-Draft      Agent Accountability Composition      September 2026
    contributed by the reviewing author and records only what that
    author's analysis found; no entry implies byte-agreement results or
    conformance claims not explicitly stated.
-
-
-
-
-Mih, et al.               Expires 17 March 2027                 [Page 9]
-
-Internet-Draft      Agent Accountability Composition      September 2026
-
 
 4.3.1.  Principal-Binding Review (Bu)
 
@@ -518,31 +526,41 @@ Internet-Draft      Agent Accountability Composition      September 2026
    framework mapping reviewed; AAC reference suite independently
    replayed.
 
-   This review was performed against the -03 revision of
-   [I-D.bu-agentproto-security-principal-binding-03] (historical input,
-   2026-08).  The later -06 revision of that framework has since been
-   evaluated for this revision of this document, by direct comparison of
-   both revisions' published text: the terminology this review relies on
-   — carrier, verifier, binding, accepted result, and failure behavior —
-   is textually unchanged between -03 and -06, and the C-002 ("Human or
-   organizational authority") row used to review the WHO-slot mapping is
-   unchanged as well. -06 adds a formally named six-state verifier-
-   outcome vocabulary (satisfied, unsatisfied, indeterminate,
-   unsupported, not-evaluated, not-applicable) that -03 stated only in
-   prose; a new dependency-closure and composition-invariants mechanism
-   (its Section 17) for aggregating multiple claim rows under that
-   framework's own composition verifier; and a new claim class, C-014
-   ("Scoped human continuity"), which that framework states explicitly
-   is not a human-authority claim and does not overlap C-002.  None of
-   these additions touch the row this review mapped against or its
-   stated boundary.  The review's finding therefore stands unchanged
-   against -06: framework mapping reviewed, AAC reference suite
-   independently replayed at the commit above, no independent principal-
-   binding byte-agreement result claimed.
+   The historical review used revision -03 of
+   [I-D.bu-agentproto-security-principal-binding-03].  A comparison with
+   the published -06 text confirms that the five terminology definitions
+   cited above and the C-002 registry definition are unchanged.  This
+   does not imply that all review requirements are unchanged.  Compared
+   with -03, -06 explicitly defines six row outcomes in Section 16, adds
+   dependency-closure rules in Section 17 and scoped human continuity as
+   C-014, and adds claim-grounding and relying-party-decision fields.
+   Section 26 also gives C-002-specific negative cases requiring
+   evidence of pre-effect authorization ordering and of the binding
+   between an attester and the named principal.  The review retains its
+   bounded WHO-attribution finding and the recorded reference-suite
+   replay.  It does not infer pre-execution authority from attribution,
+   claim a complete evaluation against the -06 framework, or establish
+   independent principal-binding byte agreement.  A stronger mapping
+   claim requires the additional applicable rows and evidence to be
+   reviewed explicitly.
 
    Additional cross-profile review entries may be added in a later
    revision as other constituent-profile authors complete their own
    framework reviews.
+
+
+
+
+
+
+
+
+
+
+Mih, et al.               Expires 6 April 2027                 [Page 10]
+
+Internet-Draft      Agent Accountability Composition        October 2026
+
 
 4.4.  Worked Profile Illustration
 
@@ -553,14 +571,6 @@ Internet-Draft      Agent Accountability Composition      September 2026
    canonicalization-profile compatibility is required to return DENY
    rather than treat digest values as comparable across an unestablished
    profile boundary.
-
-
-
-
-Mih, et al.               Expires 17 March 2027                [Page 10]
-
-Internet-Draft      Agent Accountability Composition      September 2026
-
 
    In the frozen CP-JSON-2 public-evaluation profile ([ORPRG-EVAL-V226])
    — one evaluation profile of that architecture, not a universal
@@ -600,6 +610,14 @@ Internet-Draft      Agent Accountability Composition      September 2026
    [I-D.lee-orprg-permit-receipts] and [ORPRG-EVAL-V226].  The permit-
    side construction and the ORPRG-specific implementation facts
    concerning profile compatibility and digest representation reflected
+
+
+
+Mih, et al.               Expires 6 April 2027                 [Page 11]
+
+Internet-Draft      Agent Accountability Composition        October 2026
+
+
    in this illustration were identified and documented in the permit-
    side review and were supplied and owner-confirmed by Yong Bok (Scott)
    Lee, Meridian Verity Group."
@@ -609,14 +627,6 @@ Internet-Draft      Agent Accountability Composition      September 2026
    and by the subsequent multi-party composition review.  The ORPRG row
    and its supporting permit-side observations were supplied and owner-
    confirmed by Yong Bok (Scott) Lee, Meridian Verity Group."
-
-
-
-
-Mih, et al.               Expires 17 March 2027                [Page 11]
-
-Internet-Draft      Agent Accountability Composition      September 2026
-
 
 5.  Trust-Root Separation
 
@@ -656,6 +666,14 @@ Internet-Draft      Agent Accountability Composition      September 2026
    The selected composition profile separately pins the credential
    format and profile version; the frozen MachineMandate vct string
    shown below is not itself versioned.  A presentation can use SD-JWT
+
+
+
+Mih, et al.               Expires 6 April 2027                 [Page 12]
+
+Internet-Draft      Agent Accountability Composition        October 2026
+
+
    VC ([I-D.ietf-oauth-sd-jwt-vc-17]) and OpenID for Verifiable
    Presentations ([OpenID4VP]), including verifier-provided nonce and
    audience values.  A relying party verifies the native credential and
@@ -666,13 +684,6 @@ Internet-Draft      Agent Accountability Composition      September 2026
    MachineMandate is one CAN instance, not the CAN slot.  Other
    authorization formats may fill the slot if they expose equivalent
    independently verifiable inputs and results.
-
-
-
-Mih, et al.               Expires 17 March 2027                [Page 12]
-
-Internet-Draft      Agent Accountability Composition      September 2026
-
 
 6.1.2.  Producer Requirements
 
@@ -711,6 +722,14 @@ Internet-Draft      Agent Accountability Composition      September 2026
       including its profile-tagged authority-reference digest and byte
       preimage;
 
+
+
+
+Mih, et al.               Expires 6 April 2027                 [Page 13]
+
+Internet-Draft      Agent Accountability Composition        October 2026
+
+
    *  when that authority-reference preimage excludes presentation-
       specific material, the exact disclosures, holder-binding proof,
       verifier nonce, audience, and other transcript inputs needed to
@@ -720,15 +739,6 @@ Internet-Draft      Agent Accountability Composition      September 2026
    *  all issuer-role, policy, status, and trust inputs needed to
       reproduce the authorization appraisal, including the policy-
       evaluation time.
-
-
-
-
-
-Mih, et al.               Expires 17 March 2027                [Page 13]
-
-Internet-Draft      Agent Accountability Composition      September 2026
-
 
    A producer MUST NOT describe a credential identifier as single-use
    unless the selected verifier profile maintains and checks the state
@@ -769,6 +779,13 @@ Internet-Draft      Agent Accountability Composition      September 2026
    validation, issuer appraisal, action-commitment recomputation, and
    scope evaluation into one opaque "authorized" boolean.
 
+
+
+Mih, et al.               Expires 6 April 2027                 [Page 14]
+
+Internet-Draft      Agent Accountability Composition        October 2026
+
+
    Each reported gate MUST distinguish at least PASS, DENY, and
    NOT_EVALUATED.  When evaluation stops after an earlier rejection, a
    later gate is NOT_EVALUATED; it is not a second rejecting gate.  A
@@ -778,14 +795,6 @@ Internet-Draft      Agent Accountability Composition      September 2026
    When SD-JWT VC and OpenID4VP are selected, the verifier MUST apply
    the validation rules of the pinned SD-JWT, SD-JWT VC, and OpenID4VP
    profiles, including strict algorithm and type checks, issuer-
-
-
-
-Mih, et al.               Expires 17 March 2027                [Page 14]
-
-Internet-Draft      Agent Accountability Composition      September 2026
-
-
    identifier-to-key binding, rejection of uncommitted or conflicting
    disclosures, required-claim validation, and key binding.  The first-
    instance profile described here requires holder binding even though
@@ -825,22 +834,20 @@ Internet-Draft      Agent Accountability Composition      September 2026
    Runtime attestation is likewise not a prerequisite for verifying the
    native CAN credential.  The current MachineMandate research
    demonstrator combines credential, issuer-role, runtime-attestation,
+
+
+
+Mih, et al.               Expires 6 April 2027                 [Page 15]
+
+Internet-Draft      Agent Accountability Composition        October 2026
+
+
    and scope gates in one end-to-end verdict.  In this composition, the
    credential, issuer-role, action-commitment, and scope results map to
    CAN; RATS/TPM freshness and platform appraisal map to AUDIT.  The
    composition MAY require both results for a relying-party decision,
    but a failed or absent AUDIT result MUST NOT be mislabeled as failure
    to parse or cryptographically verify the CAN credential.
-
-
-
-
-
-
-Mih, et al.               Expires 17 March 2027                [Page 15]
-
-Internet-Draft      Agent Accountability Composition      September 2026
-
 
 6.1.5.  Frozen IETF 126 Illustration
 
@@ -883,6 +890,14 @@ Internet-Draft      Agent Accountability Composition      September 2026
    mapping profile to EUR minor units.  The requested amount is not part
    of this vector's action-commitment preimage; it is evaluated
    independently by machine_mandate_spend.  Therefore, the action
+
+
+
+Mih, et al.               Expires 6 April 2027                 [Page 16]
+
+Internet-Draft      Agent Accountability Composition        October 2026
+
+
    commitment alone MUST NOT be described as committing to the payment
    amount.  The combined CAN decision binds the declared action
    projection and separately applies the amount limit.
@@ -890,14 +905,6 @@ Internet-Draft      Agent Accountability Composition      September 2026
    The public MachineMandate repository contains another action profile
    used by the paper/demo path, where the action projection is {tool,
    amount_eur, to}. That digest context is not compatible with this
-
-
-
-Mih, et al.               Expires 17 March 2027                [Page 16]
-
-Internet-Draft      Agent Accountability Composition      September 2026
-
-
    frozen vector's {action_id, outcome} projection.  A draft or test
    vector MUST identify which profile it uses and MUST NOT compare,
    substitute, or make transitive claims across the two action
@@ -938,6 +945,15 @@ Internet-Draft      Agent Accountability Composition      September 2026
    *  the subject digest and complete digest context for the action
       projection;
 
+
+
+
+
+Mih, et al.               Expires 6 April 2027                 [Page 17]
+
+Internet-Draft      Agent Accountability Composition        October 2026
+
+
    *  the profile-tagged authority-reference digest for the exact native
       credential object;
 
@@ -946,13 +962,6 @@ Internet-Draft      Agent Accountability Composition      September 2026
       preimage;
 
    *  the protected scope fields or their disclosure-aware commitments;
-
-
-
-Mih, et al.               Expires 17 March 2027                [Page 17]
-
-Internet-Draft      Agent Accountability Composition      September 2026
-
 
    *  the separately named native-appraisal, action-commitment, and
       scope-gate results; and
@@ -993,6 +1002,14 @@ Internet-Draft      Agent Accountability Composition      September 2026
 
    *  a mismatched verifier nonce or audience;
 
+
+
+
+Mih, et al.               Expires 6 April 2027                 [Page 18]
+
+Internet-Draft      Agent Accountability Composition        October 2026
+
+
    *  an expired or not-yet-valid credential;
 
    *  a revoked or suspended credential when the selected profile claims
@@ -1002,13 +1019,6 @@ Internet-Draft      Agent Accountability Composition      September 2026
       for the required authorization role;
 
    *  a changed action field after issuance;
-
-
-
-Mih, et al.               Expires 17 March 2027                [Page 18]
-
-Internet-Draft      Agent Accountability Composition      September 2026
-
 
    *  a canonicalization, profile-label, or digest-representation
       mismatch;
@@ -1048,6 +1058,14 @@ Internet-Draft      Agent Accountability Composition      September 2026
    implementation has been tested for conformance to [RFC8785],
    [RFC9901], draft-ietf-oauth-sd-jwt-vc-17, or OpenID4VP.  The
    repository describes its JSON canonicalization as an RFC 8785 subset
+
+
+
+Mih, et al.               Expires 6 April 2027                 [Page 19]
+
+Internet-Draft      Agent Accountability Composition        October 2026
+
+
    and its credential implementation as simplified; the exact frozen
    bytes and profile identifiers, rather than a generic conformance
    assumption, control the vectors.  The artifact does not implement a
@@ -1058,14 +1076,6 @@ Internet-Draft      Agent Accountability Composition      September 2026
    At the initial 2026-07-23 hostile-review point, vocab.tyche.institute
    did not resolve in DNS.  Later that day, Tyche published minimal Type
    Metadata at the exact frozen vct URL; the endpoint returns HTTP 200
-
-
-
-Mih, et al.               Expires 17 March 2027                [Page 19]
-
-Internet-Draft      Agent Accountability Composition      September 2026
-
-
    and application/json.  The metadata identifies and displays the
    research credential type.  It does not define a production issuer
    trust framework, establish implementation conformance, or version the
@@ -1104,6 +1114,14 @@ Internet-Draft      Agent Accountability Composition      September 2026
    composition's shared action digest — the subject digest of the
    Composition Model — and exposes the binding metadata a composition
    verifier needs, and nothing more.  Digest equality itself neither
+
+
+
+Mih, et al.               Expires 6 April 2027                 [Page 20]
+
+Internet-Draft      Agent Accountability Composition        October 2026
+
+
    authorizes the action nor proves completeness.
 
    In the first-instance profile
@@ -1114,13 +1132,6 @@ Internet-Draft      Agent Accountability Composition      September 2026
    action, verifiable offline against the signer's public key.  Any
    record form meeting the producer and verifier requirements below
    conforms.
-
-
-
-Mih, et al.               Expires 17 March 2027                [Page 20]
-
-Internet-Draft      Agent Accountability Composition      September 2026
-
 
    A conforming WHO producer MUST state: the authorizing principal
    identifier(s) — the named human(s), not the agent; for a quorum, the
@@ -1159,6 +1170,14 @@ Internet-Draft      Agent Accountability Composition      September 2026
    ACCEPTED, and neither implies the authorization was sufficient for
    the action.
 
+
+
+
+Mih, et al.               Expires 6 April 2027                 [Page 21]
+
+Internet-Draft      Agent Accountability Composition        October 2026
+
+
    At the composition join, the WHO slot exposes a minimal, disclosure-
    aware reference: the subject digest and its declared digest context;
    the authorizing principal identifier(s) — or, under selective
@@ -1170,14 +1189,6 @@ Internet-Draft      Agent Accountability Composition      September 2026
    Where a WHO record is also registered to a transparency service (see
    Assurance Tiers), the transparency receipt proves registration of the
    submitted statement under the service policy; it does not prove that
-
-
-
-Mih, et al.               Expires 17 March 2027                [Page 21]
-
-Internet-Draft      Agent Accountability Composition      September 2026
-
-
    a named human authorized the action.  A WHO verifier MUST keep native
    signature validation, digest recomputation, and transparency-receipt
    validation as separate results.
@@ -1216,6 +1227,13 @@ Internet-Draft      Agent Accountability Composition      September 2026
    and not the effect.  The exclusion therefore rules out a side, not an
    artifact type.
 
+
+
+Mih, et al.               Expires 6 April 2027                 [Page 22]
+
+Internet-Draft      Agent Accountability Composition        October 2026
+
+
 6.3.  The WHAT Slot
 
 6.3.1.  Design Rule
@@ -1226,19 +1244,12 @@ Internet-Draft      Agent Accountability Composition      September 2026
    producer-observed or producer-recorded outcome, not a replay of the
    action and not a re-execution of it.  It does not establish that the
    action was permitted (CAN), that a named human authorized it (WHO),
-
-
-
-Mih, et al.               Expires 17 March 2027                [Page 22]
-
-Internet-Draft      Agent Accountability Composition      September 2026
-
-
-   that an independent platform or observer verified the effect (AUDIT),
-   or that the action was semantically correct.  Two separations carry
-   the whole slot: *a dispatched attempt MUST NOT be presented as a
-   confirmed effect*, and *a record of an action MUST NOT be presented
-   as an observation of its consequence*.
+   that the runtime enforcement claim held (AUDIT), that an independent
+   external observer confirmed the effect, or that the action was
+   semantically correct.  Two separations carry the whole slot: *a
+   dispatched attempt MUST NOT be presented as a confirmed effect*, and
+   *a record of an action MUST NOT be presented as an observation of its
+   consequence*.
 
    A conforming producer emits a WHAT record for every terminal verdict,
    including blocks, denials, refusals, errors, timeouts, and other non-
@@ -1272,6 +1283,13 @@ Internet-Draft      Agent Accountability Composition      September 2026
    Three binding roles are distinguished, and a record MAY carry more
    than one binding in the third role.
 
+
+
+Mih, et al.               Expires 6 April 2027                 [Page 23]
+
+Internet-Draft      Agent Accountability Composition        October 2026
+
+
    *The subject binding.* The subject digest joins independently
    produced slot records for the same action.  In the exercised AAC
    composition profile it is the unprefixed lowercase hexadecimal
@@ -1282,14 +1300,6 @@ Internet-Draft      Agent Accountability Composition      September 2026
    where action is the exact action object frozen by the composition
    vector and JCS is [RFC8785].  The profile label, covered action field
    set, canonicalization profile, hash algorithm, absence of additional
-
-
-
-Mih, et al.               Expires 17 March 2027                [Page 23]
-
-Internet-Draft      Agent Accountability Composition      September 2026
-
-
    domain-separation bytes, and lowercase-hexadecimal representation are
    all part of the digest context.  A producer MUST NOT substitute
    sha256:-prefixed text, raw digest bytes, a different action
@@ -1321,6 +1331,21 @@ Internet-Draft      Agent Accountability Composition      September 2026
    present and uninterpreted and MUST NOT fail the record on that
    ground.  Verified-but-opaque is a result; unknown is not an error.
 
+
+
+
+
+
+
+
+
+
+
+Mih, et al.               Expires 6 April 2027                 [Page 24]
+
+Internet-Draft      Agent Accountability Composition        October 2026
+
+
    The first defined additional binding is the *action-equivalence
    binding*, whose purpose is to answer "is this the same action" across
    producers and across time without requiring either party to disclose
@@ -1338,13 +1363,6 @@ Internet-Draft      Agent Accountability Composition      September 2026
    preserves equality within a scope by design.  The two mechanisms have
    opposite purposes and MUST NOT share vocabulary in a profile's text
    or field names.
-
-
-
-Mih, et al.               Expires 17 March 2027                [Page 24]
-
-Internet-Draft      Agent Accountability Composition      September 2026
-
 
    A record MAY carry more than one equivalence binding under different
    purpose labels and key scopes — for example one scoped to a single
@@ -1374,6 +1392,16 @@ Internet-Draft      Agent Accountability Composition      September 2026
    only as a regular expression.  A grammar whose meaning depends on the
    reader's regular-expression engine is not a grammar.
 
+
+
+
+
+
+Mih, et al.               Expires 6 April 2027                 [Page 25]
+
+Internet-Draft      Agent Accountability Composition        October 2026
+
+
 6.3.3.  Declared Field Basis
 
    A digest is comparable only with its digest context. *A field value
@@ -1392,15 +1420,6 @@ Internet-Draft      Agent Accountability Composition      September 2026
    *  A *monetary amount* MUST declare its currency, whether the amount
       is stated gross or net, the tax basis if any, and the rounding
       rule and precision applied.
-
-
-
-
-
-Mih, et al.               Expires 17 March 2027                [Page 25]
-
-Internet-Draft      Agent Accountability Composition      September 2026
-
 
    *  A *time instant* MUST declare which event the instant marks — for
       example request, dispatch, observation, or record creation —
@@ -1431,6 +1450,14 @@ Internet-Draft      Agent Accountability Composition      September 2026
    bases — is registered and versioned under
    [I-D.mih-sokolov-scitt-payload-binding], authored by the party that
    owns it, on the same terms as any other registered artifact.  A
+
+
+
+Mih, et al.               Expires 6 April 2027                 [Page 26]
+
+Internet-Draft      Agent Accountability Composition        October 2026
+
+
    profile cites the vocabularies it uses rather than restating them.
    The division is deliberate and neither document repeats the other:
    *that a joined field must declare its basis is a composition rule;
@@ -1447,16 +1474,6 @@ Internet-Draft      Agent Accountability Composition      September 2026
    *  identify the action, the accountable operator, the agent developer
       and version, the timestamp with its declared referent and source,
       and the configuration epoch when one is used;
-
-
-
-
-
-
-Mih, et al.               Expires 17 March 2027                [Page 26]
-
-Internet-Draft      Agent Accountability Composition      September 2026
-
 
    *  carry a stable per-agent-instance identifier, distinct from the
       operator, the developer, and the configuration epoch, on every
@@ -1488,6 +1505,15 @@ Internet-Draft      Agent Accountability Composition      September 2026
       approval-scope declaration as a digest, leaving evaluation of that
       scope above the composition layer;
 
+
+
+
+
+Mih, et al.               Expires 6 April 2027                 [Page 27]
+
+Internet-Draft      Agent Accountability Composition        October 2026
+
+
    *  record the effect status and the effect-assurance mode without
       collapsing either into the verdict class;
 
@@ -1506,13 +1532,6 @@ Internet-Draft      Agent Accountability Composition      September 2026
    *  state, for each field it exposes, whether that field is verifier-
       checked or informational, so that an implementer never has to
       guess which of the two a field is; and
-
-
-
-Mih, et al.               Expires 17 March 2027                [Page 27]
-
-Internet-Draft      Agent Accountability Composition      September 2026
-
 
    *  preserve later resolution of an unresolved outcome as a new
       signed, linked record rather than by mutating the original.
@@ -1544,6 +1563,13 @@ Internet-Draft      Agent Accountability Composition      September 2026
 
    *  whether the signed record carries that same subject digest;
 
+
+
+Mih, et al.               Expires 6 April 2027                 [Page 28]
+
+Internet-Draft      Agent Accountability Composition        October 2026
+
+
    *  for each additional binding: whether it recomputes where the
       verifier holds the inputs, and — where it does not — that the
       binding is present and unverified, which is a distinct result from
@@ -1562,13 +1588,6 @@ Internet-Draft      Agent Accountability Composition      September 2026
 
    *  the relying party's acceptance result together with the policy
       inputs that produced it.
-
-
-
-Mih, et al.               Expires 17 March 2027                [Page 28]
-
-Internet-Draft      Agent Accountability Composition      September 2026
-
 
    These results MUST NOT be collapsed into a single opaque executed,
    verified, or accepted boolean.  A valid record proves that the signer
@@ -1600,31 +1619,19 @@ Internet-Draft      Agent Accountability Composition      September 2026
    profile to decide, precisely because a per-profile choice would let
    independent implementations classify the same vector differently.
 
+
+
+Mih, et al.               Expires 6 April 2027                 [Page 29]
+
+Internet-Draft      Agent Accountability Composition        October 2026
+
+
 6.3.6.  Cross-Party Rungs
 
    Where a WHAT record names a counterparty, it MUST state the rung
    actually attained, drawn from an ordered vocabulary in which no rung
    is confusable with another and no rung is inferred from the absence
    of evidence for a higher one.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Mih, et al.               Expires 17 March 2027                [Page 29]
-
-Internet-Draft      Agent Accountability Composition      September 2026
-
 
    *This document does not define that vocabulary.* The rung names are
    established by the bilateral attestation work
@@ -1666,6 +1673,15 @@ Internet-Draft      Agent Accountability Composition      September 2026
 
    *  a subject digest recomputed from different action bytes;
 
+
+
+
+
+Mih, et al.               Expires 6 April 2027                 [Page 30]
+
+Internet-Draft      Agent Accountability Composition        October 2026
+
+
    *  a record whose signed subject digest differs from the composition
       digest;
 
@@ -1673,14 +1689,6 @@ Internet-Draft      Agent Accountability Composition      September 2026
 
    *  an additional binding whose purpose label is present but whose
       context is absent;
-
-
-
-
-Mih, et al.               Expires 17 March 2027                [Page 30]
-
-Internet-Draft      Agent Accountability Composition      September 2026
-
 
    *  two bindings on one record treated by the verifier as equal,
       derived, or transitively covering, without demonstration;
@@ -1723,20 +1731,18 @@ Internet-Draft      Agent Accountability Composition      September 2026
 
    *  a transparency receipt bound to a different signed statement;
 
+
+
+Mih, et al.               Expires 6 April 2027                 [Page 31]
+
+Internet-Draft      Agent Accountability Composition        October 2026
+
+
    *  an integer outside the profile's stated magnitude bound admitted
       into a digest field; and
 
    *  an unknown registry value treated either as a stronger assurance
       grade or as an automatic verification failure.
-
-
-
-
-
-Mih, et al.               Expires 17 March 2027                [Page 31]
-
-Internet-Draft      Agent Accountability Composition      September 2026
-
 
    Every negative vector ships with its condition-removed mutant, so
    that a check which silently stopped running is distinguishable from a
@@ -1780,20 +1786,20 @@ Internet-Draft      Agent Accountability Composition      September 2026
    present in the appraised execution context.  It does not make the AEP
    producer or the Attester a truth oracle.
 
+
+
+
+Mih, et al.               Expires 6 April 2027                 [Page 32]
+
+Internet-Draft      Agent Accountability Composition        October 2026
+
+
    An implementation of the Governance Audit Record (GAR)
    [I-D.sato-soos-gar] can supply the AEP role in this profile when the
    selected GAR artifact, including any referenced Event Log records,
    records the action, its authorizing principal, and its outcome;
    validates under a signed, append-only, tamper-evident chaining
    construction; and the platform-evidence profile demonstrates that the
-
-
-
-Mih, et al.               Expires 17 March 2027                [Page 32]
-
-Internet-Draft      Agent Accountability Composition      September 2026
-
-
    GAR-producing component and the action-performing component are
    within the measured software stack claimed by the appraisal.
    [I-D.sokolov-rats-aep-composition] supplies the platform-attestation
@@ -1833,6 +1839,17 @@ Internet-Draft      Agent Accountability Composition      September 2026
    profile's own Producer Requirements requires (see "AUDIT Profile:
    Platform Attestation").
 
+
+
+
+
+
+
+Mih, et al.               Expires 6 April 2027                 [Page 33]
+
+Internet-Draft      Agent Accountability Composition        October 2026
+
+
 6.4.3.  Exercised PCR-16 Binding
 
    One exercised AEP/AAC binding folds the raw 32-byte action-response
@@ -1842,13 +1859,6 @@ Internet-Draft      Agent Accountability Composition      September 2026
    the TPM quote's extraData.  For SHA-256 this yields:
 
    PCR16 = SHA-256(0x00 * 32 || response_digest)
-
-
-
-Mih, et al.               Expires 17 March 2027                [Page 33]
-
-Internet-Draft      Agent Accountability Composition      September 2026
-
 
    The PCR selection is an instance parameter: this AEP/AAC interop
    vector uses PCR 16, while the separate Project Veraison exercise
@@ -1882,6 +1892,20 @@ Internet-Draft      Agent Accountability Composition      September 2026
    Attestation") state what recomputing that profile's binding requires;
    the general obligation above does not substitute for those reports.
 
+
+
+
+
+
+
+
+
+
+Mih, et al.               Expires 6 April 2027                 [Page 34]
+
+Internet-Draft      Agent Accountability Composition        October 2026
+
+
 6.4.5.  Composition and Transparency Seams
 
    At the composition join, the AUDIT slot exposes the subject digest
@@ -1898,13 +1922,6 @@ Internet-Draft      Agent Accountability Composition      September 2026
 
    In addition to the composition-level negative classes, an AUDIT
    profile MUST include vectors for at least:
-
-
-
-Mih, et al.               Expires 17 March 2027                [Page 34]
-
-Internet-Draft      Agent Accountability Composition      September 2026
-
 
    *  a changed action or outcome after signing;
 
@@ -1935,6 +1952,16 @@ Internet-Draft      Agent Accountability Composition      September 2026
    *  an affirming Attestation Result paired with the wrong action
       evidence (Platform Attestation profile).
 
+
+
+
+
+
+Mih, et al.               Expires 6 April 2027                 [Page 35]
+
+Internet-Draft      Agent Accountability Composition        October 2026
+
+
 6.4.7.  Current Assurance Boundary
 
    The exercised first-instance vectors use a virtual TPM (vTPM),
@@ -1954,13 +1981,6 @@ Internet-Draft      Agent Accountability Composition      September 2026
 
    The first-instance AEP/RATS AUDIT profile and this slot text were
    contributed by Anton Sokolov, Tyche Institute.
-
-
-
-Mih, et al.               Expires 17 March 2027                [Page 35]
-
-Internet-Draft      Agent Accountability Composition      September 2026
-
 
 6.4.8.  AUDIT Profile: Platform Attestation (first named profile)
 
@@ -1990,6 +2010,14 @@ Internet-Draft      Agent Accountability Composition      September 2026
 
    *  the attestation key and its trust-chain inputs;
 
+
+
+
+Mih, et al.               Expires 6 April 2027                 [Page 36]
+
+Internet-Draft      Agent Accountability Composition        October 2026
+
+
    *  the freshness value and where it appears in signed Evidence;
 
    *  the Verifier and appraisal scheme; and
@@ -2007,16 +2035,6 @@ Internet-Draft      Agent Accountability Composition      September 2026
 
    *  the subject and outcome digest bytes it recomputed, with their
       digest contexts;
-
-
-
-
-
-
-Mih, et al.               Expires 17 March 2027                [Page 36]
-
-Internet-Draft      Agent Accountability Composition      September 2026
-
 
    *  whether the attestation signature validates under the supplied
       attestation key and whether that key is accepted under the relying
@@ -2045,6 +2063,17 @@ Internet-Draft      Agent Accountability Composition      September 2026
    therefore a distinct check when the Attestation Result does not
    expose or enforce the quote's signed extraData.
 
+
+
+
+
+
+
+Mih, et al.               Expires 6 April 2027                 [Page 37]
+
+Internet-Draft      Agent Accountability Composition        October 2026
+
+
 7.  Assurance Tiers
 
    A record answering these questions may be produced at different
@@ -2063,16 +2092,6 @@ Internet-Draft      Agent Accountability Composition      September 2026
       neither the agent nor the operator verify the record's existence,
       its content at registration time, and non-equivocation,
       independent of any single producer's infrastructure.
-
-
-
-
-
-
-Mih, et al.               Expires 17 March 2027                [Page 37]
-
-Internet-Draft      Agent Accountability Composition      September 2026
-
 
    This document does not mandate the anchored tier; self-attestation
    remains valid.  It specifies how any conforming profile MAY reach the
@@ -2103,6 +2122,14 @@ Internet-Draft      Agent Accountability Composition      September 2026
    runner, and an external-report template — is published in the EMILIA
    Protocol repository (pull request 521, commit 30916c80).  That
    manifest pins Composition *-00*; it was not built against this *-02*
+
+
+
+Mih, et al.               Expires 6 April 2027                 [Page 38]
+
+Internet-Draft      Agent Accountability Composition        October 2026
+
+
    revision, and an -02-pinned manifest is future work, out of scope
    here.  Per the freeze rule below, the pack is a candidate, not a
    frozen result, until a second implementation maintained by a
@@ -2121,14 +2148,6 @@ Internet-Draft      Agent Accountability Composition      September 2026
    A run reports the CAN, WHO, WHAT, and AUDIT results separately,
    followed by each cross-slot check.  It never collapses those results
    into one opaque trusted, authorized, executed, or verified boolean.
-
-
-
-
-Mih, et al.               Expires 17 March 2027                [Page 38]
-
-Internet-Draft      Agent Accountability Composition      September 2026
-
 
    CAID, AEC, and AEB each have one normative home, independently
    maintained by Iman Schrock (EMILIA Protocol, Inc.):
@@ -2160,6 +2179,13 @@ Internet-Draft      Agent Accountability Composition      September 2026
    CAID, AEC, and AEB enter at distinct interfaces rather than becoming
    new slot definitions:
 
+
+
+Mih, et al.               Expires 6 April 2027                 [Page 39]
+
+Internet-Draft      Agent Accountability Composition        October 2026
+
+
    *  CAID supplies the declared exact-action digest context.
 
    *  AEC preserves native evidence verification and reports whether a
@@ -2172,19 +2198,53 @@ Internet-Draft      Agent Accountability Composition      September 2026
       own native Class 1 and Class 2 conformance rules.
 
    The cross-slot mechanism tests those interfaces.  It does not replace
-   their specifications or move enforcement into an evidence record.
+   their specifications or move enforcement into an evidence record.  An
+   AEB result remains bounded by its selected native source and trust
+   assumptions; runtime-enforcement evidence is not automatically
+   independent evidence that an external effect occurred.
+
+   Mechanism references and run pins serve different purposes.  Each
+   native report retains its exact specification, verifier, adapter,
+   trust-input and result-artifact pins, and its original result
+   meanings.  Equal status labels across revisions MUST NOT be treated
+   as equal evidence claims.  A change to a selected native interface
+   requires new manifest expectations and the applicable native-profile
+   review before the corresponding run can be frozen.
+
+   The current CAID -04 [I-D.schrock-caid-current], AEC -07
+   [I-D.schrock-aec-current], and AEB -07 [I-D.schrock-aeb-current] are
+   informative reference-transition targets, not a jointly frozen suite
+   adopted here.  CAID -04 adds input-admission and definition/snapshot
+   rules; AEC -07 separates cryptographic VERIFIED from relying-party
+   ACCEPTED and changes its replay contract.  A historical combined
+   verification result does not retrospectively supply those separate
+   results.  AEB -07 makes CAID conditional on a cross-format join and
+   AEC conditional on a multi-leg requirement, and adds native
+   authorization-handoff, replay-identity and same-action-fence
+   requirements.  Those executor requirements are not established by an
+   offline composition join.
+
+   The older normative pins above remain unchanged pending selection of
+   the consuming contracts and review of their dependency closure.  AEB
+   -07 itself pins CAID -02 and AEC -06 normatively; replacing all three
+   top-level references with the latest revisions would not establish a
+   compatible native adapter.  The transition review must select exact
+   definitions, snapshots, suites, mapping profiles, result schemas and
+   replay contracts, and retain the corresponding native verification
+   evidence.  No historical run is upgraded by this informative
+   comparison, and no native mechanism conformance is claimed by the
+   candidate runner.
+
+
+
+Mih, et al.               Expires 6 April 2027                 [Page 40]
+
+Internet-Draft      Agent Accountability Composition        October 2026
+
 
 8.1.2.  Bundle requirements
 
    Every bundle pins:
-
-
-
-
-Mih, et al.               Expires 17 March 2027                [Page 39]
-
-Internet-Draft      Agent Accountability Composition      September 2026
-
 
    1.  the Composition revision and digest;
 
@@ -2231,16 +2291,16 @@ Internet-Draft      Agent Accountability Composition      September 2026
    upgraded.  A rejected prerequisite does not turn unexecuted
    downstream checks into extra failures.
 
+
+
+Mih, et al.               Expires 6 April 2027                 [Page 41]
+
+Internet-Draft      Agent Accountability Composition        October 2026
+
+
    An unknown optional binding may remain structurally readable.  It
    cannot satisfy a policy that requires understood semantics for that
    binding.
-
-
-
-Mih, et al.               Expires 17 March 2027                [Page 40]
-
-Internet-Draft      Agent Accountability Composition      September 2026
-
 
 8.1.4.  Run report
 
@@ -2289,13 +2349,9 @@ Internet-Draft      Agent Accountability Composition      September 2026
 
 
 
-
-
-
-
-Mih, et al.               Expires 17 March 2027                [Page 41]
+Mih, et al.               Expires 6 April 2027                 [Page 42]
 
-Internet-Draft      Agent Accountability Composition      September 2026
+Internet-Draft      Agent Accountability Composition        October 2026
 
 
     +=================+=============================+=================+
@@ -2349,9 +2405,9 @@ Internet-Draft      Agent Accountability Composition      September 2026
 
 
 
-Mih, et al.               Expires 17 March 2027                [Page 42]
+Mih, et al.               Expires 6 April 2027                 [Page 43]
 
-Internet-Draft      Agent Accountability Composition      September 2026
+Internet-Draft      Agent Accountability Composition        October 2026
 
 
    The runnable pack therefore contains 27 cases: one positive, thirteen
@@ -2405,9 +2461,9 @@ Internet-Draft      Agent Accountability Composition      September 2026
 
 
 
-Mih, et al.               Expires 17 March 2027                [Page 43]
+Mih, et al.               Expires 6 April 2027                 [Page 44]
 
-Internet-Draft      Agent Accountability Composition      September 2026
+Internet-Draft      Agent Accountability Composition        October 2026
 
 
 8.1.7.  Delivered and open
@@ -2427,10 +2483,22 @@ Internet-Draft      Agent Accountability Composition      September 2026
    The pack is Composition-00-pinned candidate evidence, not a frozen
    independent result, until an independently maintained second
    implementation reports against the same bytes.  The remaining step is
-   an external implementation run over the same bytes.  Capsule Class 2
-   remains native to the Capsule implementation and requires its
-   producer manifest and bound private evidence; the cross-slot harness
-   does not manufacture those inputs.
+   an external implementation run over the same bytes.
+
+   The author baseline capture reported on 27 September 2026 has no
+   retained raw output or environment record that can substantiate it.
+   It is not used as independent run evidence.  The 26 September 2026
+   null rerun remains email-confirmed without retained raw logs.
+   Neither email reconstructs an execution artifact or satisfies the
+   independent-implementation freeze rule.  An EP three-computation
+   cross-implementation row is omitted from the interoperability
+   evidence: no pinned implementation, input, command and result
+   coordinates currently substantiate that row.  This omission does not
+   change the composition mechanism; a future row requires its own
+   reproducible run and owner confirmation.  Capsule Class 2 remains
+   native to the Capsule implementation and requires its producer
+   manifest and bound private evidence; the cross-slot harness does not
+   manufacture those inputs.
 
 9.  Extension Points
 
@@ -2440,6 +2508,19 @@ Internet-Draft      Agent Accountability Composition      September 2026
    documents identify a further independently-verifiable question that
    composes by the same shared-digest discipline; naming one here is not
    a commitment to define it in this document.
+
+
+
+
+
+
+
+
+
+Mih, et al.               Expires 6 April 2027                 [Page 45]
+
+Internet-Draft      Agent Accountability Composition        October 2026
+
 
 10.  Relationship to Existing Work
 
@@ -2458,13 +2539,6 @@ Internet-Draft      Agent Accountability Composition      September 2026
    adjacent instantiation of the WHAT slot — cited as live adjacent
    work, not positioned; the WHAT profile exercised here remains the one
    named in that slot.
-
-
-
-Mih, et al.               Expires 17 March 2027                [Page 44]
-
-Internet-Draft      Agent Accountability Composition      September 2026
-
 
    What this document adds is the piece those leave open: the
    composition of independently-verifiable profiles by a shared action-
@@ -2496,6 +2570,14 @@ Internet-Draft      Agent Accountability Composition      September 2026
    Assurance Boundary subsections state further slot-specific threats
    and non-goals not restated here.
 
+
+
+
+Mih, et al.               Expires 6 April 2027                 [Page 46]
+
+Internet-Draft      Agent Accountability Composition        October 2026
+
+
 12.  Privacy Considerations
 
    Records may be rich in information about users and the data an agent
@@ -2514,13 +2596,6 @@ Internet-Draft      Agent Accountability Composition      September 2026
    transparency service operator remains subject to applicable data-
    protection law for any personal data a record carries, regardless of
    the assurance tier at which the record was produced.
-
-
-
-Mih, et al.               Expires 17 March 2027                [Page 45]
-
-Internet-Draft      Agent Accountability Composition      September 2026
-
 
 13.  IANA Considerations
 
@@ -2549,6 +2624,16 @@ Internet-Draft      Agent Accountability Composition      September 2026
               <https://datatracker.ietf.org/doc/draft-schrock-canonical-
               action-identifier/>.
 
+
+
+
+
+
+Mih, et al.               Expires 6 April 2027                 [Page 47]
+
+Internet-Draft      Agent Accountability Composition        October 2026
+
+
    [I-D.schrock-aec]
               Schrock, I., "Authorization Evidence Chains: Composing
               Heterogeneous Agent-Action Evidence (EP-AEC)", Work in
@@ -2566,23 +2651,44 @@ Internet-Draft      Agent Accountability Composition      September 2026
 
 14.2.  Informative References
 
+   [I-D.schrock-caid-current]
+              Schrock, I., "The Canonical Action Identifier (CAID)",
+              Work in Progress, Internet-Draft, draft-schrock-canonical-
+              action-identifier-04, 28 September 2026,
+              <https://www.ietf.org/archive/id/draft-schrock-canonical-
+              action-identifier-04.txt>.
 
+   [I-D.schrock-aec-current]
+              Schrock, I., "Authorization Evidence Chains: Composing
+              Heterogeneous Agent-Action Evidence (EP-AEC)", Work in
+              Progress, Internet-Draft, draft-schrock-ep-authorization-
+              evidence-chain-07, 28 September 2026,
+              <https://www.ietf.org/archive/id/draft-schrock-ep-
+              authorization-evidence-chain-07.txt>.
 
-
-
-
-
-
-Mih, et al.               Expires 17 March 2027                [Page 46]
-
-Internet-Draft      Agent Accountability Composition      September 2026
-
+   [I-D.schrock-aeb-current]
+              Schrock, I., "The Action Evidence Boundary for
+              Consequential Agent Effects", Work in Progress, Internet-
+              Draft, draft-schrock-action-evidence-boundary-07, 25
+              September 2026, <https://www.ietf.org/archive/id/draft-
+              schrock-action-evidence-boundary-07.txt>.
 
    [RFC9943]  Birkholz, H., Delignat-Lavaud, A., Fournet, C., Deshpande,
               Y., and S. Lasker, "An Architecture for Trustworthy and
               Transparent Digital Supply Chains", RFC 9943,
               DOI 10.17487/RFC9943, June 2026,
               <https://www.rfc-editor.org/rfc/rfc9943>.
+
+
+
+
+
+
+
+Mih, et al.               Expires 6 April 2027                 [Page 48]
+
+Internet-Draft      Agent Accountability Composition        October 2026
+
 
    [RFC9334]  Birkholz, H., Thaler, D., Richardson, M., Smith, N., and
               W. Pan, "Remote ATtestation procedureS (RATS)
@@ -2624,22 +2730,21 @@ Internet-Draft      Agent Accountability Composition      September 2026
               <https://datatracker.ietf.org/doc/html/draft-aylward-aiga-
               00>.
 
-
-
-
-
-
-Mih, et al.               Expires 17 March 2027                [Page 47]
-
-Internet-Draft      Agent Accountability Composition      September 2026
-
-
    [I-D.schrock-human-authorization-binding]
               Schrock, I., "Binding Named-Human Authorization Evidence
               into Agent-Action Records", Work in Progress, Internet-
               Draft, draft-schrock-human-authorization-binding-00, 3
               July 2026, <https://datatracker.ietf.org/doc/html/draft-
               schrock-human-authorization-binding-00>.
+
+
+
+
+
+Mih, et al.               Expires 6 April 2027                 [Page 49]
+
+Internet-Draft      Agent Accountability Composition        October 2026
+
 
    [I-D.schrock-ep-authorization-receipts]
               Schrock, I., "Authorization Receipts for High-Risk Agent
@@ -2682,20 +2787,20 @@ Internet-Draft      Agent Accountability Composition      September 2026
               <https://datatracker.ietf.org/doc/html/draft-lee-orprg-
               permit-receipts-00>.
 
-
-
-
-Mih, et al.               Expires 17 March 2027                [Page 48]
-
-Internet-Draft      Agent Accountability Composition      September 2026
-
-
    [I-D.sokolov-rats-aep-composition]
               Sokolov, A., "Composing Application-Layer Action Evidence
               with Remote Attestation Procedures", Work in Progress,
               Internet-Draft, draft-sokolov-rats-aep-composition-03, 18
               July 2026, <https://datatracker.ietf.org/doc/html/draft-
               sokolov-rats-aep-composition-03>.
+
+
+
+
+Mih, et al.               Expires 6 April 2027                 [Page 50]
+
+Internet-Draft      Agent Accountability Composition        October 2026
+
 
    [I-D.sato-soos-gar]
               Sato, T., "The Governance Audit Record (GAR) for Agentic
@@ -2738,17 +2843,20 @@ Internet-Draft      Agent Accountability Composition      September 2026
               <https://openid.net/specs/openid-4-verifiable-
               presentations-1_0-final.html>.
 
-
-
-
-Mih, et al.               Expires 17 March 2027                [Page 49]
-
-Internet-Draft      Agent Accountability Composition      September 2026
-
-
    [MACHINE-MANDATE]
               Tyche Institute, "MachineMandate", n.d.,
               <https://github.com/tyche-institute/machine-mandate>.
+
+
+
+
+
+
+
+Mih, et al.               Expires 6 April 2027                 [Page 51]
+
+Internet-Draft      Agent Accountability Composition        October 2026
+
 
    [ORPRG-EVAL-V226]
               Meridian Verity Group, "v2.2.6 Public Evaluation — IETF
@@ -2777,11 +2885,14 @@ Changes from -01
       named profile obliges the declaring party to supply or name, in
       the order the profile enumerates them.
 
-   *  Principal-binding citation (Songbo Bu, 2026-08-18, 2026-09-01,
-      2026-09-10): the Cross-Profile Reviews entry now states the review
-      was performed against -03 (historical input, 2026-08) and that a
-      later -06 revision of that framework was not re-evaluated for this
-      revision.  The bibliography entry remains pinned to -03.
+   *  Principal-binding review (Songbo Bu, 2026-08-18, 2026-09-01,
+      2026-09-10): the Cross-Profile Reviews entry preserves -03 as the
+      historical review input and records the scoped comparison against
+      the published -06 revision, including its additional claim-
+      grounding, outcome, dependency, and C-002 evidence requirements.
+      The historical finding and no-byte-agreement boundary remain; see
+      Principal-Binding Review (Bu).  The bibliography remains pinned to
+      -03 for that historical input.
 
    *  INTEROP.md PB row (Songbo Bu, 2026-09-01; Iman Schrock,
       2026-09-10): Status changed to confirmed (Songbo Bu, 2026-08-18),
@@ -2797,20 +2908,23 @@ Changes from -01
 
 
 
-Mih, et al.               Expires 17 March 2027                [Page 50]
+
+Mih, et al.               Expires 6 April 2027                 [Page 52]
 
-Internet-Draft      Agent Accountability Composition      September 2026
+Internet-Draft      Agent Accountability Composition        October 2026
 
 
    *  V1 27-case pack status (Iman Schrock, 2026-09-01): described as
       Composition-00-pinned candidate evidence until an independently
       maintained second implementation reports against the same bytes.
 
-   *  idnits (Songbo Bu, 2026-09-01, 2026-09-10): stale document date
-      corrected; the reported "OpenID4VP and MACHINE-MANDATE unused"
-      warning does not reproduce against this revision's build — both
-      are cited in body text (see the idnits log accompanying this
-      revision).
+   *  idnits (Songbo Bu, 2026-09-01, 2026-09-10): the earlier document-
+      date correction is retained.  OpenID4VP and MACHINE-MANDATE are
+      cited in body text.  Fresh offline lint on the 3 October 2026
+      local review candidate nevertheless reports unused-reference
+      diagnostics for both; those diagnostics remain in the matching
+      lint record for maintainer review, rather than being represented
+      as a clean lint result.
 
    *  Editorial: revision bumped from -01 to -02; document date pinned
       to the cut date; the -00-manifest self-reference in Cross-Slot
@@ -2851,11 +2965,9 @@ Authors' Addresses
 
 
 
-
-
-Mih, et al.               Expires 17 March 2027                [Page 51]
+Mih, et al.               Expires 6 April 2027                 [Page 53]
 
-Internet-Draft      Agent Accountability Composition      September 2026
+Internet-Draft      Agent Accountability Composition        October 2026
 
 
    Tom Sato
@@ -2909,4 +3021,4 @@ Internet-Draft      Agent Accountability Composition      September 2026
 
 
 
-Mih, et al.               Expires 17 March 2027                [Page 52]
+Mih, et al.               Expires 6 April 2027                 [Page 54]
