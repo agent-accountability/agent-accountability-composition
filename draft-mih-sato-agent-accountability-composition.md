@@ -2,7 +2,7 @@
 title: "Agent Accountability: Composition and Conformance"
 abbrev: "Agent Accountability Composition"
 docname: draft-mih-sato-agent-accountability-composition-02
-date: 2026-10-03
+date: 2026-10-29
 category: info
 ipr: trust200902
 area: Security
@@ -163,30 +163,30 @@ informative:
     author:
       name: Steven Mih
       org: Action State Group, Inc.
-    date: 2026-07-06
+    date: 2026
     seriesinfo:
-      Internet-Draft: draft-mih-scitt-agent-action-capsule-02
-    target: https://datatracker.ietf.org/doc/html/draft-mih-scitt-agent-action-capsule-02
+      Internet-Draft: draft-mih-scitt-agent-action-capsule-06
+    target: https://datatracker.ietf.org/doc/html/draft-mih-scitt-agent-action-capsule-06
   I-D.mih-sokolov-scitt-payload-binding:
-    title: "Canonical Payload Binding: A Signed Statement Construction Profile"
+    title: "Canonicalization Declaration for SCITT Signed Statements"
     author:
       - name: Steven Mih
         org: Action State Group
       - name: Anton Sokolov
         org: Tyche Institute
-    date: 2026-07-27
+    date: 2026
     seriesinfo:
-      Internet-Draft: draft-mih-sokolov-scitt-payload-binding-01
-    target: https://datatracker.ietf.org/doc/html/draft-mih-sokolov-scitt-payload-binding-01
+      Internet-Draft: draft-mih-sokolov-scitt-payload-binding-06
+    target: https://datatracker.ietf.org/doc/html/draft-mih-sokolov-scitt-payload-binding-06
   I-D.mih-agent-bilateral-attestation:
     title: "Bilateral Attestation of Cross-Organization Agent Actions"
     author:
       name: Steven Mih
       org: Action State Group, Inc.
-    date: 2026-07-19
+    date: 2026
     seriesinfo:
-      Internet-Draft: draft-mih-agent-bilateral-attestation-01
-    target: https://datatracker.ietf.org/doc/html/draft-mih-agent-bilateral-attestation-01
+      Internet-Draft: draft-mih-agent-bilateral-attestation-03
+    target: https://datatracker.ietf.org/doc/html/draft-mih-agent-bilateral-attestation-03
   I-D.bu-agentproto-security-principal-binding-03:
     title: "Security Principal Binding for Agent Protocols"
     author:
