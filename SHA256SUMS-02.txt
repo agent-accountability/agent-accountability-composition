@@ -1,26 +1,24 @@
 # SHA-256 checksums — composition -02 candidate
 
-Supersedes the SHA sheet circulated against commit 32bc714 (that sheet is retired;
-this recut folds Turner's review, the vocabulary-boundary vector, the completed
-Principal Binding comparison, and the regulatory-paragraph draft on top of it).
+Supersedes the sheet at 45bd421 (computed at 1de23e2). This candidate is
+45bd421 plus, in order:
 
-Computed with `shasum -a 256` against the committed working-tree files at the
-head of this recut (commit 1de23e2 and everything before it on `compose-02`).
+  6a484d1  Songbo Bu's 2026-10-03 evidence-coordinate review patch, applied as
+           sent (patch sha256 ed64bac0d86381f4bc4bf0d8ad6264e238c40a64b307c78e7000f5f843c325e2;
+           the resulting .md and INTEROP.md match his SHA256SUMS.txt)
+  c17cb1d  Anton Sokolov's 2026-10-04 AUDIT verifier-report wording
+  d655aaa  date pinned to 2026-10-29; AAC -06 / CPB -06 / bilateral -03 references
+  3826d65  four reference-accuracy sentence fixes; Changes from -01 entries
+  e3f6648  Changes from -01 entry for the 2026-10-03 evidence-coordinate changes
+  19ade2a  SD-JWT VC reference fields pinned (idnits 3 TABS_NOT_ALLOWED)
 
-9eb56e5db62078322c75437bf0be7a48ee1c131271ea5232b4d39495154cafff  draft-mih-sato-agent-accountability-composition.md
-52901fa341b2a3456f37da61eb8bb42261a502c817505ca644ef91e385cc16df  draft-mih-sato-agent-accountability-composition.xml
-5b09761b9a8d639b1fa0d746f70cd3cb16dc149212bccb503362a6b19d012016  draft-mih-sato-agent-accountability-composition.txt
+The date is pinned, so a rebuild on any day reproduces these bytes: the
+committed .xml and .txt are identical to a fresh kramdown-rfc2629 1.7.43 +
+xml2rfc 3.34.1 build of the committed .md (build-log-02.txt).
 
-## Note on the date field
+Computed with sha256sum over the committed files at 19ade2a316ac87e11d3e16fd21fe6b6c2cbf9597.
 
-The top-level `date:` key was removed from the Markdown front matter (see the
-front-matter fix in this commit): with no explicit date, kramdown-rfc/xml2rfc
-stamp the render date, so the `.txt`/`.xml` above are frozen at build time
-2026-09-13. A rebuild on a later day reproduces the text unchanged but stamps
-a different date/expiry in the front matter and page footers, which changes
-these checksums. This is intentional — it is what keeps `DOC_DATE_IN_PAST`
-from recurring while no one has picked the actual posting date yet — but it
-means these checksums authenticate *this recut's* committed files, not
-"whatever `make` produces on any given day." When Steven sets the actual
-posting date, the final pre-submission commit re-pins `date:` explicitly
-(the same pattern commit 69422af used for -01) and gets its own fresh sheet.
+5801e4490b697a8447a1e6866a14ee1a597f7e409e02631880589375903c34a8  draft-mih-sato-agent-accountability-composition.md
+b1aa73d2ef100caa3d17606a66357a8a5840c55cc0184f117913da7efca9339a  draft-mih-sato-agent-accountability-composition.xml
+20bedf2bb65e1d4cb841e461d261d332ca24cd79395dfea97be164644357b5c5  draft-mih-sato-agent-accountability-composition.txt
+eb140751febed07f7c15f6ab3e001ce13560466057e95923c95935533eedf625  INTEROP.md
