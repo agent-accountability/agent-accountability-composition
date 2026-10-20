@@ -1916,6 +1916,16 @@ thread (Henri, Anton Sokolov, Joel). Landed in this revision:
 * V1 27-case pack status (Iman Schrock, 2026-09-01): described as
   Composition-00-pinned candidate evidence until an independently maintained
   second implementation reports against the same bytes.
+* Evidence coordinates (Songbo Bu, 2026-10-03; Iman Schrock, 2026-10-02): the EP
+  three-computation row is removed from INTEROP.md and from the interoperability
+  evidence, since its commit coordinate does not resolve; the 27 September 2026
+  baseline capture is not used as independent run evidence, and the 26 September
+  2026 null rerun is recorded as email-confirmed without retained raw logs; CAID -04,
+  AEC -07 and AEB -07 are added as informative transition references while CAID -02,
+  AEC -05 and AEB -03 remain the normative pins; the WHAT question is restated as
+  the outcome the agent system recorded and what is known to have crossed the effect
+  boundary; the APS INTEROP row carries pinned run coordinates and names its pending
+  counterparty.
 * idnits (Songbo Bu, 2026-09-01, 2026-09-10): the earlier document-date
   correction is retained. OpenID4VP and MACHINE-MANDATE are cited in body
   text. Fresh offline lint on the 3 October 2026 local review candidate
