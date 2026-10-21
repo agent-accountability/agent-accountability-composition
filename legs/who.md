@@ -167,6 +167,11 @@ check failed:
 
 - Reference vs commitment: should the seam carry the authorizing-principal
   identifier directly, or a commitment that supports selective disclosure?
+  **Resolved** in repository issue 10 (Blake Morrison, Iman Schrock), folded into
+  the -02 candidate, The WHO Slot: the WHO reference at the seam SHOULD carry a commitment
+  to the authorizing principal identifier and not the identifier itself; the
+  selected WHO profile defines the hiding commitment construction; the rule covers
+  a principal reference in any slot.
 - Should the quorum distinctness assertion be verifier-recomputable from the
   receipt set, or a producer claim the verifier only checks for internal
   consistency?

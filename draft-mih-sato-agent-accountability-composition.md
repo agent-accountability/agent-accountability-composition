@@ -745,7 +745,8 @@ An issuer, principal, or mandate claim does not by itself answer WHO. A
 MachineMandate CAN profile MAY carry or selectively disclose a principal
 reference, but a named-human authorization claim belongs in a separately
 verified WHO profile unless the MachineMandate profile independently meets
-that profile's requirements.
+that profile's requirements. A principal reference a CAN record exposes at the
+seam follows the commitment rule of {{who-slot}}.
 
 Runtime attestation is likewise not a prerequisite for verifying the native CAN
 credential. The current MachineMandate research demonstrator combines
@@ -932,7 +933,7 @@ no successful composition result is claimed here.
 The first-instance MachineMandate CAN profile seed text was contributed by
 Anton Sokolov, Tyche Institute.
 
-## The WHO Slot: Named-Human Authorization
+## The WHO Slot: Named-Human Authorization {#who-slot}
 
 The WHO slot answers a single question: which named, accountable human — or quorum
 of distinct humans — authorized this exact action before it ran. It is deliberately
@@ -989,6 +990,14 @@ principal identifier(s) — or, under selective disclosure, a commitment to them
 quorum descriptor, if any, with a distinctness assertion; and the binding assertion
 that the signature(s) cover the subject digest. The reference carries no agent
 identity, no policy verdict, and no sufficiency claim.
+
+The WHO reference at the seam SHOULD carry a commitment to the authorizing principal
+identifier and not the identifier itself. The selected WHO profile MUST define a
+hiding commitment construction, its scope, its binding to the verified WHO record,
+and how an authorized verifier obtains any required disclosure. A plain deterministic
+hash of a principal identifier is not sufficient for concealment. Different
+commitments MUST NOT by themselves establish distinct humans. This commitment rule
+covers a principal reference in any slot, not only WHO.
 
 Where a WHO record is also registered to a transparency service (see Assurance
 Tiers), the transparency receipt proves registration of the submitted statement
@@ -1401,7 +1410,9 @@ the action-performing component are within the measured software stack
 claimed by the appraisal. {{I-D.sokolov-rats-aep-composition}} supplies the
 platform-attestation binding for evidence meeting those conditions; it does
 not define or require a replacement record format. Other implementations may
-fill the same AEP role.
+fill the same AEP role. Where the authorizing principal a GAR artifact records
+appears at the seam, it is a principal reference and follows the commitment rule
+of {{who-slot}}.
 
 The signed, append-only, chaining construction and causal-ordering
 properties referenced above are specified in {{I-D.sato-soos-gar-02}}, §6
@@ -1879,6 +1890,12 @@ required. Producer context admitted to any WHAT-leg record follows the
 data-admission tiers defined in the Privacy Considerations of
 {{I-D.mih-scitt-agent-action-capsule}}.
 
+Profiles MUST distinguish native evidence provided to authorized verifiers from the
+public registration projection, and define the public fields, disclosure policy,
+correlation scope, and integrity-protected binding between them. Hash-only
+registration also needs review of public headers and correlators; it does not by
+itself establish unlinkability.
+
 This document does not itself define a data-minimization or retention policy;
 each constituent profile states its own admitted fields and any
 selective-disclosure mechanism it supports. A relying party or transparency
@@ -1959,6 +1976,16 @@ thread (Henri, Anton Sokolov, Joel). Landed in this revision:
   names; the native-record binding names the Capsule profile's `capsule_id` derivation
   instead of a "JSON-DIGEST construction"; the privacy cross-reference names the Capsule
   profile's data-admission tiers instead of a "floor".
+* Principal references at the seam (Blake Morrison, Iman Schrock; repository issue
+  10): the WHO reference at the seam SHOULD carry a commitment to the authorizing
+  principal identifier rather than the identifier; the selected WHO profile MUST
+  define the hiding commitment construction; a plain deterministic hash is not
+  sufficient for concealment; different commitments do not by themselves establish
+  distinct humans. The rule covers a principal reference in any slot, and the CAN
+  and AUDIT (GAR principal) text cites it. Privacy Considerations now requires
+  profiles to separate native evidence for authorized verifiers from the public
+  registration projection, and notes that hash-only registration does not by
+  itself establish unlinkability.
 * Editorial: revision bumped from -01 to -02; document date pinned to the cut
   date; the -00-manifest self-reference in Cross-Slot Conformance Mechanism now
   names this -02 revision instead of -01.
@@ -1981,6 +2008,10 @@ result in the WHO slot: an input closes an ordering claim only if it comes from 
 source that observed both terms of the claim, or from two records whose producing
 boundaries can be related in a way that orders the terms (see The WHO Slot). That
 wording is his, offered as an IETF Contribution under BCP 78 and BCP 79.
+
+Blake Morrison proposed the commitment-first WHO reference at the seam and its
+extension to principal references in every slot, and reviewed the fields each slot
+places at the seam for linkability (repository issue 10).
 
 The authors also thank the reviewers of the -00 and -01 revision packages, whose
 byte-level review discipline this revision was built against.
