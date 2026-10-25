@@ -62,28 +62,28 @@
 < Internet-Draft      Agent Accountability Composition         August 2026
 ---
 > Internet-Draft      Agent Accountability Composition        October 2026
-119,120c119,120
+119,123c119,123
 <      6.3.  The WHAT Slot . . . . . . . . . . . . . . . . . . . . . .  22
 <        6.3.1.  Design Rule . . . . . . . . . . . . . . . . . . . . .  22
----
->      6.3.  The WHAT Slot . . . . . . . . . . . . . . . . . . . . . .  23
->        6.3.1.  Design Rule . . . . . . . . . . . . . . . . . . . . .  23
-122,123c122,123
+<        6.3.2.  Subject, Native-Record, and Additional Bindings . . .  23
 <        6.3.3.  Declared Field Basis  . . . . . . . . . . . . . . . .  25
 <        6.3.4.  Producer Requirements . . . . . . . . . . . . . . . .  26
 ---
+>      6.3.  The WHAT Slot . . . . . . . . . . . . . . . . . . . . . .  23
+>        6.3.1.  Design Rule . . . . . . . . . . . . . . . . . . . . .  23
+>        6.3.2.  Subject, Native-Record, and Additional Bindings . . .  24
 >        6.3.3.  Declared Field Basis  . . . . . . . . . . . . . . . .  26
 >        6.3.4.  Producer Requirements . . . . . . . . . . . . . . . .  27
-125,126c125,126
+125,129c125,129
 <        6.3.6.  Cross-Party Rungs . . . . . . . . . . . . . . . . . .  29
 <        6.3.7.  Composition and Transparency Seams  . . . . . . . . .  29
----
->        6.3.6.  Cross-Party Rungs . . . . . . . . . . . . . . . . . .  30
->        6.3.7.  Composition and Transparency Seams  . . . . . . . . .  30
-128,129c128,129
+<        6.3.8.  Negative Vectors  . . . . . . . . . . . . . . . . . .  30
 <        6.3.9.  Current Assurance Boundary  . . . . . . . . . . . . .  31
 <      6.4.  The AUDIT Slot  . . . . . . . . . . . . . . . . . . . . .  31
 ---
+>        6.3.6.  Cross-Party Rungs . . . . . . . . . . . . . . . . . .  30
+>        6.3.7.  Composition and Transparency Seams  . . . . . . . . .  30
+>        6.3.8.  Negative Vectors  . . . . . . . . . . . . . . . . . .  31
 >        6.3.9.  Current Assurance Boundary  . . . . . . . . . . . . .  32
 >      6.4.  The AUDIT Slot  . . . . . . . . . . . . . . . . . . . . .  32
 131,134c131,134
@@ -124,11 +124,11 @@
 >        6.4.7.  Current Assurance Boundary  . . . . . . . . . . . . .  36
 >        6.4.8.  AUDIT Profile: Platform Attestation (first named
 >                profile)  . . . . . . . . . . . . . . . . . . . . . .  36
->    7.  Assurance Tiers . . . . . . . . . . . . . . . . . . . . . . .  37
+>    7.  Assurance Tiers . . . . . . . . . . . . . . . . . . . . . . .  38
 >    8.  Conformance . . . . . . . . . . . . . . . . . . . . . . . . .  38
 >      8.1.  Cross-Slot Conformance Mechanism  . . . . . . . . . . . .  38
 >        8.1.1.  Boundary  . . . . . . . . . . . . . . . . . . . . . .  39
->        8.1.2.  Bundle requirements . . . . . . . . . . . . . . . . .  40
+>        8.1.2.  Bundle requirements . . . . . . . . . . . . . . . . .  41
 >        8.1.3.  Result vocabulary . . . . . . . . . . . . . . . . . .  41
 >        8.1.4.  Run report  . . . . . . . . . . . . . . . . . . . . .  42
 >        8.1.5.  Positive, negative, and condition-removed vectors . .  42
@@ -143,8 +143,8 @@
 >      14.1.  Normative References . . . . . . . . . . . . . . . . . .  47
 >      14.2.  Informative References . . . . . . . . . . . . . . . . .  48
 >    Changes from -01  . . . . . . . . . . . . . . . . . . . . . . . .  52
->    Acknowledgments . . . . . . . . . . . . . . . . . . . . . . . . .  54
->    Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  54
+>    Acknowledgments . . . . . . . . . . . . . . . . . . . . . . . . .  55
+>    Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  55
 167,168c168
 < 
 < Mih, et al.             Expires 17 February 2027                [Page 3]
@@ -426,7 +426,14 @@
 < Internet-Draft      Agent Accountability Composition         August 2026
 < 
 < 
-810a837,844
+806c832,843
+<    independently meets that profile's requirements.
+---
+>    independently meets that profile's requirements.  A principal
+>    reference a CAN record exposes at the seam follows the commitment
+>    rule of Section 6.2.
+> 
+> 
 > 
 > 
 > 
@@ -434,8 +441,7 @@
 > 
 > Internet-Draft      Agent Accountability Composition        October 2026
 > 
-> 
-837,844d870
+837,844d873
 < 
 < 
 < 
@@ -444,7 +450,9 @@
 < Internet-Draft      Agent Accountability Composition         August 2026
 < 
 < 
-866a893,900
+861a891,900
+> 
+> 
 > 
 > 
 > 
@@ -453,7 +461,7 @@
 > Internet-Draft      Agent Accountability Composition        October 2026
 > 
 > 
-886,900d919
+886,900d924
 < 
 < 
 < 
@@ -469,9 +477,7 @@
 < Internet-Draft      Agent Accountability Composition         August 2026
 < 
 < 
-928a948,956
-> 
-> 
+925a950,956
 > 
 > 
 > Mih, et al.                Expires 2 May 2027                  [Page 17]
@@ -479,7 +485,7 @@
 > Internet-Draft      Agent Accountability Composition        October 2026
 > 
 > 
-950,956d977
+950,956d980
 < 
 < 
 < Mih, et al.             Expires 17 February 2027               [Page 17]
@@ -487,8 +493,7 @@
 < Internet-Draft      Agent Accountability Composition         August 2026
 < 
 < 
-983a1005,1012
-> 
+981a1006,1012
 > 
 > 
 > Mih, et al.                Expires 2 May 2027                  [Page 18]
@@ -496,7 +501,7 @@
 > Internet-Draft      Agent Accountability Composition        October 2026
 > 
 > 
-1005,1012d1033
+1005,1012d1035
 < 
 < 
 < 
@@ -505,7 +510,7 @@
 < Internet-Draft      Agent Accountability Composition         August 2026
 < 
 < 
-1039a1061,1068
+1037a1061,1068
 > 
 > 
 > 
@@ -514,7 +519,7 @@
 > Internet-Draft      Agent Accountability Composition        October 2026
 > 
 > 
-1059,1068d1087
+1059,1068d1089
 < 
 < 
 < 
@@ -525,7 +530,7 @@
 < Internet-Draft      Agent Accountability Composition         August 2026
 < 
 < 
-1097a1117,1124
+1095a1117,1124
 > 
 > 
 > 
@@ -534,7 +539,7 @@
 > Internet-Draft      Agent Accountability Composition        October 2026
 > 
 > 
-1117,1124d1143
+1117,1124d1145
 < 
 < 
 < 
@@ -543,7 +548,15 @@
 < Internet-Draft      Agent Accountability Composition         August 2026
 < 
 < 
-1153a1173,1180
+1143a1165,1180
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> 
 > 
 > 
 > 
@@ -552,7 +565,18 @@
 > Internet-Draft      Agent Accountability Composition        October 2026
 > 
 > 
-1173,1180d1199
+1161a1199,1208
+>    The WHO reference at the seam SHOULD carry a commitment to the
+>    authorizing principal identifier and not the identifier itself.  The
+>    selected WHO profile MUST define a hiding commitment construction,
+>    its scope, its binding to the verified WHO record, and how an
+>    authorized verifier obtains any required disclosure.  A plain
+>    deterministic hash of a principal identifier is not sufficient for
+>    concealment.  Different commitments MUST NOT by themselves establish
+>    distinct humans.  This commitment rule covers a principal reference
+>    in any slot, not only WHO.
+> 
+1173,1180d1219
 < 
 < 
 < 
@@ -561,7 +585,8 @@
 < Internet-Draft      Agent Accountability Composition         August 2026
 < 
 < 
-1210a1230,1236
+1189a1229,1236
+> 
 > 
 > 
 > Mih, et al.                Expires 2 May 2027                  [Page 22]
@@ -569,7 +594,7 @@
 > Internet-Draft      Agent Accountability Composition        October 2026
 > 
 > 
-1217,1222c1243,1249
+1217,1222c1264,1270
 <    to have crossed the effect boundary.  It is a byte-stable record of
 <    an observed outcome, not a replay of the action and not a re-
 <    execution of it.  It does not establish that the action was permitted
@@ -584,7 +609,7 @@
 >    that the runtime enforcement claim held (AUDIT), that an independent
 >    external observer confirmed the effect, or that the action was
 >    semantically correct.  Two separations carry the whole slot: *a
-1227,1236d1253
+1227,1236d1274
 < 
 < 
 < 
@@ -595,7 +620,8 @@
 < Internet-Draft      Agent Accountability Composition         August 2026
 < 
 < 
-1268a1286,1292
+1246a1285,1292
+> 
 > 
 > 
 > Mih, et al.                Expires 2 May 2027                  [Page 23]
@@ -603,45 +629,39 @@
 > Internet-Draft      Agent Accountability Composition        October 2026
 > 
 > 
-1284,1292d1307
-< 
-< 
-< 
-< 
-< Mih, et al.             Expires 17 February 2027               [Page 23]
-< 
-< Internet-Draft      Agent Accountability Composition         August 2026
-< 
-< 
-1295,1299c1310,1314
-<    profile's JSON-DIGEST construction.  The subject digest and the
-<    native-record identifier serve different roles: the first joins
-<    slots, the second identifies these bytes. *Equality between them is
-<    neither required nor implied*, and a verifier MUST NOT derive one
-<    from the other.
----
+1283a1330,1336
+>    *The native-record binding.* The WHAT record is content-addressed by
+>    its own identifier — in AAC, capsule_id, recomputed under the Capsule
 >    profile's capsule_id derivation.  The subject digest and the native-
 >    record identifier serve different roles: the first joins slots, the
 >    second identifies these bytes. *Equality between them is neither
 >    required nor implied*, and a verifier MUST NOT derive one from the
 >    other.
-1318a1334,1348
-> 
-> 
-> 
-> 
-> 
-> 
-> 
-> 
-> 
-> 
+1284a1338,1340
+>    *Additional composition bindings — the self-reference.* A WHAT
+>    profile MAY declare one or more further bindings over the same action
+>    under different constructions, so that a single record can
+1288c1344
+< Mih, et al.             Expires 17 February 2027               [Page 23]
+---
 > Mih, et al.                Expires 2 May 2027                  [Page 24]
-> 
+1290c1346
+< Internet-Draft      Agent Accountability Composition         August 2026
+---
 > Internet-Draft      Agent Accountability Composition        October 2026
-> 
-> 
-1337,1348d1366
+1293,1303d1348
+<    *The native-record binding.* The WHAT record is content-addressed by
+<    its own identifier — in AAC, capsule_id, recomputed under the Capsule
+<    profile's JSON-DIGEST construction.  The subject digest and the
+<    native-record identifier serve different roles: the first joins
+<    slots, the second identifies these bytes. *Equality between them is
+<    neither required nor implied*, and a verifier MUST NOT derive one
+<    from the other.
+< 
+<    *Additional composition bindings — the self-reference.* A WHAT
+<    profile MAY declare one or more further bindings over the same action
+<    under different constructions, so that a single record can
+1337,1348d1381
 < 
 < 
 < 
@@ -654,10 +674,7 @@
 < Internet-Draft      Agent Accountability Composition         August 2026
 < 
 < 
-1376a1395,1404
-> 
-> 
-> 
+1364a1398,1404
 > 
 > 
 > Mih, et al.                Expires 2 May 2027                  [Page 25]
@@ -665,7 +682,7 @@
 > Internet-Draft      Agent Accountability Composition        October 2026
 > 
 > 
-1396,1404d1423
+1396,1404d1435
 < 
 < 
 < 
@@ -675,7 +692,15 @@
 < Internet-Draft      Agent Accountability Composition         August 2026
 < 
 < 
-1431,1439c1450,1466
+1422a1454,1460
+> 
+> 
+> Mih, et al.                Expires 2 May 2027                  [Page 26]
+> 
+> Internet-Draft      Agent Accountability Composition        October 2026
+> 
+> 
+1431,1439c1469,1477
 <    bases — is registered and versioned under
 <    [I-D.mih-sokolov-scitt-payload-binding], authored by the party that
 <    owns it, on the same terms as any other registered artifact.  A
@@ -689,21 +714,13 @@
 >    bases — is declared and versioned by the party that owns it and
 >    identified by a stable normative reference, as
 >    [I-D.mih-sokolov-scitt-payload-binding] treats artifact-type
-> 
-> 
-> 
-> Mih, et al.                Expires 2 May 2027                  [Page 26]
-> 
-> Internet-Draft      Agent Accountability Composition        October 2026
-> 
-> 
 >    declarations.  A profile cites the vocabularies it uses rather than
 >    restating them.  The division is deliberate and neither document
 >    repeats the other: *that a joined field must declare its basis is a
 >    composition rule; how a basis vocabulary is declared, versioned, and
 >    cited is declaration machinery.* A profile that cites no vocabulary
 >    for a basis it claims to declare has not declared one.
-1451,1460d1477
+1451,1460d1488
 < 
 < 
 < 
@@ -714,9 +731,7 @@
 < Internet-Draft      Agent Accountability Composition         August 2026
 < 
 < 
-1490a1508,1516
-> 
-> 
+1481a1510,1516
 > 
 > 
 > Mih, et al.                Expires 2 May 2027                  [Page 27]
@@ -724,7 +739,7 @@
 > Internet-Draft      Agent Accountability Composition        October 2026
 > 
 > 
-1510,1516d1535
+1510,1516d1544
 < 
 < 
 < Mih, et al.             Expires 17 February 2027               [Page 27]
@@ -732,7 +747,9 @@
 < Internet-Draft      Agent Accountability Composition         August 2026
 < 
 < 
-1546a1566,1572
+1535a1564,1572
+> 
+> 
 > 
 > 
 > Mih, et al.                Expires 2 May 2027                  [Page 28]
@@ -740,7 +757,7 @@
 > Internet-Draft      Agent Accountability Composition        October 2026
 > 
 > 
-1566,1572d1591
+1566,1572d1602
 < 
 < 
 < Mih, et al.             Expires 17 February 2027               [Page 28]
@@ -748,11 +765,21 @@
 < Internet-Draft      Agent Accountability Composition         August 2026
 < 
 < 
-1589,1591c1608,1627
+1589,1591c1619,1641
 <    Where a verifier cannot evaluate a check at all — because an input is
 <    absent, a profile is unknown, or a key scope is unavailable — it MUST
 <    report that check as indeterminate rather than as passed or failed.
 ---
+> 
+> 
+> 
+> 
+> 
+> Mih, et al.                Expires 2 May 2027                  [Page 29]
+> 
+> Internet-Draft      Agent Accountability Composition        October 2026
+> 
+> 
 >    Where a verifier cannot produce pass or fail, it MUST report the
 >    applicable non-binary result (see Result vocabulary) and MUST NOT
 >    collapse distinct causes.  A check that was not attempted because a
@@ -766,14 +793,7 @@
 >    states that classification directly, rather than leaving it to each
 >    profile to decide, precisely because a per-profile choice would let
 >    independent implementations classify the same vector differently.
-> 
-> 
-> 
-> Mih, et al.                Expires 2 May 2027                  [Page 29]
-> 
-> Internet-Draft      Agent Accountability Composition        October 2026
-> 
-1600,1604c1636,1641
+1600,1604c1650,1655
 <    *This document does not define that vocabulary.* The rung names are
 <    established by the bilateral attestation work
 <    [I-D.mih-agent-bilateral-attestation]; a WHAT profile cites them
@@ -786,42 +806,43 @@
 >    assurance one; a WHAT profile cites the vocabulary it uses rather
 >    than restating it, and a profile that cites no vocabulary has not
 >    declared a rung.  What this document states is the structural
-1621,1628d1657
-< 
-< 
-< 
+1620a1672,1675
+>    disclosure; the declared basis for every exposed field; the native
+>    and secondary verification results; any protected cross-reference to
+>    adjacent slot evidence; and the relying party's final WHAT result
+>    with its policy inputs.
+1624,1626d1678
 < Mih, et al.             Expires 17 February 2027               [Page 29]
 < 
 < Internet-Draft      Agent Accountability Composition         August 2026
-< 
-< 
-1647a1677,1684
-> 
-> 
-> 
+1627a1680,1682
 > Mih, et al.                Expires 2 May 2027                  [Page 30]
 > 
 > Internet-Draft      Agent Accountability Composition        October 2026
-> 
-> 
-1677,1684d1713
-< 
-< 
-< 
+1629,1632d1683
+<    disclosure; the declared basis for every exposed field; the native
+<    and secondary verification results; any protected cross-reference to
+<    adjacent slot evidence; and the relying party's final WHAT result
+<    with its policy inputs.
+1676a1728,1729
+>    *  a non-dispatching verdict paired with a dispatched or confirmed
+>       effect;
+1677a1731
+>    *  a post-dispatch timeout presented as not-applicable;
+1680,1682d1733
 < Mih, et al.             Expires 17 February 2027               [Page 30]
 < 
 < Internet-Draft      Agent Accountability Composition         August 2026
-< 
-< 
-1704a1734,1740
-> 
-> 
+1685,1686c1736,1738
+<    *  a non-dispatching verdict paired with a dispatched or confirmed
+<       effect;
+---
 > Mih, et al.                Expires 2 May 2027                  [Page 31]
 > 
 > Internet-Draft      Agent Accountability Composition        October 2026
-> 
-> 
-1730,1740d1765
+1688d1739
+<    *  a post-dispatch timeout presented as not-applicable;
+1730,1740d1780
 < 
 < 
 < 
@@ -833,7 +854,7 @@
 < Internet-Draft      Agent Accountability Composition         August 2026
 < 
 < 
-1763a1789,1796
+1748a1789,1796
 > 
 > 
 > 
@@ -842,100 +863,100 @@
 > Internet-Draft      Agent Accountability Composition        October 2026
 > 
 > 
-1789a1823
->    *  the subject-digest context defined in the Composition Model;
-1790a1825
->    *  the AEP signature and chaining construction;
-1792,1794c1827,1828
+1775c1823,1825
+<    the same AEP role.
+---
+>    the same AEP role.  Where the authorizing principal a GAR artifact
+>    records appears at the seam, it is a principal reference and follows
+>    the commitment rule of Section 6.2.
+1790,1796d1839
+< 
+< 
 < Mih, et al.             Expires 17 February 2027               [Page 32]
 < 
 < Internet-Draft      Agent Accountability Composition         August 2026
+< 
+< 
+1801,1802d1843
+<    *  the predecessor or sequence value that establishes the claimed
+<       causal order;
+1804d1844
+<    *  the platform Evidence format and selected measurements;
+1806,1807d1845
+<    *  the exact transformation that binds the outcome digest into those
+<       measurements;
+1809d1846
+<    *  the attestation key and its trust-chain inputs;
+1811c1848,1850
+<    *  the freshness value and where it appears in signed Evidence;
+---
+> Mih, et al.                Expires 2 May 2027                  [Page 33]
+> 
+> Internet-Draft      Agent Accountability Composition        October 2026
+1813d1851
+<    *  the Verifier and appraisal scheme; and
+1815,1816c1853,1866
+<    *  any Reference Values, Endorsements, or policy inputs needed to
+<       reproduce the appraisal.
 ---
 >    *  the predecessor or sequence value that establishes the claimed
 >       causal order; and
-1795a1830,1833
+> 
 >    *  the general obligation: the exact transformation that binds the
 >       outcome digest into the named profile's execution-context
 >       evidence, stated precisely enough that a third party can recompute
 >       that binding without additional information from the producer.
-1797c1835,1840
-<    *  the subject-digest context defined in the Composition Model;
----
+> 
 >    The general obligation's digest reaches every value the named profile
 >    obliges the declaring party to supply or name, in the order the
 >    profile enumerates them.  A producer MUST NOT satisfy the general
 >    obligation by naming a profile without enumerating the values that
 >    profile's own Producer Requirements requires (see "AUDIT Profile:
 >    Platform Attestation").
-1799d1841
-<    *  the AEP signature and chaining construction;
-1801,1802d1842
-<    *  the predecessor or sequence value that establishes the claimed
-<       causal order;
-1804d1843
-<    *  the platform Evidence format and selected measurements;
-1806,1807d1844
-<    *  the exact transformation that binds the outcome digest into those
-<       measurements;
-1809d1845
-<    *  the attestation key and its trust-chain inputs;
-1811d1846
-<    *  the freshness value and where it appears in signed Evidence;
-1813c1848,1850
-<    *  the Verifier and appraisal scheme; and
+1844,1852d1893
+< 
+< 
+< 
+< 
+< Mih, et al.             Expires 17 February 2027               [Page 33]
+< 
+< Internet-Draft      Agent Accountability Composition         August 2026
+< 
+< 
+1857c1898
+<       digest contexts;
 ---
-> Mih, et al.                Expires 2 May 2027                  [Page 33]
+>       digest contexts; and
+1859,1861d1899
+<    *  whether the attestation signature validates under the supplied
+<       attestation key and whether that key is accepted under the relying
+<       party's trust policy;
+1863,1864d1900
+<    *  whether the quoted PCR digest matches the selected PCR values and
+<       whether the declared outcome-to-PCR transformation recomputes;
+1866,1868d1901
+<    *  whether the outcome digest extracted from the action record equals
+<       the digest bound into the signed platform Evidence under
+<       compatible contexts;
+1870d1902
+<    *  the Verifier's native appraisal result;
+1872,1874c1904,1906
+<    *  whether freshness was actually enforced by comparing the value
+<       recovered from the raw signed Evidence with the expected per-
+<       appraisal value; and
+---
+> Mih, et al.                Expires 2 May 2027                  [Page 34]
 > 
 > Internet-Draft      Agent Accountability Composition        October 2026
-1815,1816d1851
-<    *  any Reference Values, Endorsements, or policy inputs needed to
-<       reproduce the appraisal.
-1843a1879,1880
->    *  whether the AEP signature and hash chain validate, including
->       predecessor and sequence checks;
-1844a1882,1883
->    *  the subject and outcome digest bytes it recomputed, with their
->       digest contexts; and
-1845a1885,1888
+1876c1908,1912
+<    *  the relying party's final acceptance result and policy inputs.
+---
+> 
 >    *  whether it can recompute the named profile's binding between the
 >       outcome digest and that profile's execution-context evidence,
 >       using only the values the profile's Producer Requirements obliges
 >       the producer to supply.
-1846a1890,1892
->    These checks MUST NOT be collapsed into one opaque "audited" boolean.
->    A profile's verifier reports add to these reports and do not replace
->    them.
-1848,1850d1893
-< Mih, et al.             Expires 17 February 2027               [Page 33]
-< 
-< Internet-Draft      Agent Accountability Composition         August 2026
-1853,1854d1895
-<    *  whether the AEP signature and hash chain validate, including
-<       predecessor and sequence checks;
-1856,1857d1896
-<    *  the subject and outcome digest bytes it recomputed, with their
-<       digest contexts;
-1859,1861d1897
-<    *  whether the attestation signature validates under the supplied
-<       attestation key and whether that key is accepted under the relying
-<       party's trust policy;
-1863,1864d1898
-<    *  whether the quoted PCR digest matches the selected PCR values and
-<       whether the declared outcome-to-PCR transformation recomputes;
-1866,1868d1899
-<    *  whether the outcome digest extracted from the action record equals
-<       the digest bound into the signed platform Evidence under
-<       compatible contexts;
-1870d1900
-<    *  the Verifier's native appraisal result;
-1872,1874d1901
-<    *  whether freshness was actually enforced by comparing the value
-<       recovered from the raw signed Evidence with the expected per-
-<       appraisal value; and
-1876d1902
-<    *  the relying party's final acceptance result and policy inputs.
-1878,1884c1904,1907
-<    These checks MUST NOT be collapsed into one opaque "audited" boolean.
+1879,1884c1915,1916
 <    In particular, an affirming Attestation Result is not evidence of
 <    freshness unless the selected appraisal scheme checked the relevant
 <    nonce or the relying party performed and reported that comparison
@@ -943,80 +964,75 @@
 <    therefore a distinct check when the Attestation Result does not
 <    expose or enforce the quote's signed extraData.
 ---
-> Mih, et al.                Expires 2 May 2027                  [Page 34]
-> 
-> Internet-Draft      Agent Accountability Composition        October 2026
-> 
-1897a1921
+>    A profile's verifier reports add to these reports and do not replace
+>    them.
+1897a1930
 > 6.4.6.  Negative Vectors
-1898a1923,1924
+1898a1932,1933
 >    In addition to the composition-level negative classes, an AUDIT
 >    profile MUST include vectors for at least:
-1899a1926
+1899a1935
 >    *  a changed action or outcome after signing;
-1900a1928
+1900a1937
 >    *  a broken or reordered AEP chain;
-1901a1930
+1901a1939
 >    *  ASCII hexadecimal text substituted for raw digest bytes; and
-1902a1932
+1902a1941
 >    *  a transparency receipt bound to a different payload.
-1904,1906c1934,1936
+1904,1909c1943,1945
 < Mih, et al.             Expires 17 February 2027               [Page 34]
 < 
 < Internet-Draft      Agent Accountability Composition         August 2026
+< 
+< 
+< 6.4.6.  Negative Vectors
 ---
 >    The following are specific to the AUDIT Profile: Platform Attestation
 >    (see below) and MUST be included by any profile using its platform-
 >    Evidence construction:
-1907a1938
->    *  a changed PCR selection (Platform Attestation profile);
-1909c1940,1941
-< 6.4.6.  Negative Vectors
----
->    *  a PCR value inconsistent with the declared extension (Platform
->       Attestation profile);
-1911,1912c1943,1944
+1911,1912c1947
 <    In addition to the composition-level negative classes, an AUDIT
 <    profile MUST include vectors for at least:
 ---
+>    *  a changed PCR selection (Platform Attestation profile);
+1914c1949,1950
+<    *  a changed action or outcome after signing;
+---
+>    *  a PCR value inconsistent with the declared extension (Platform
+>       Attestation profile);
+1916c1952,1953
+<    *  a broken or reordered AEP chain;
+---
 >    *  a quote signature that does not validate (Platform Attestation
 >       profile);
-1914c1946,1947
-<    *  a changed action or outcome after signing;
+1918c1955,1956
+<    *  ASCII hexadecimal text substituted for raw digest bytes;
 ---
 >    *  a quoted outcome different from the action record's outcome
 >       (Platform Attestation profile);
-1916c1949,1950
-<    *  a broken or reordered AEP chain;
----
->    *  a replayed quote whose signed freshness value differs from the
->       expected value (Platform Attestation profile); and
-1918c1952,1953
-<    *  ASCII hexadecimal text substituted for raw digest bytes;
----
->    *  an affirming Attestation Result paired with the wrong action
->       evidence (Platform Attestation profile).
-1920d1954
+1920d1957
 <    *  a changed PCR selection;
-1922d1955
+1922d1958
 <    *  a PCR value inconsistent with the declared extension;
-1924d1956
+1924c1960,1962
 <    *  a quote signature that does not validate;
-1926d1957
-<    *  a quoted outcome different from the action record's outcome;
-1928,1929d1958
-<    *  a replayed quote whose signed freshness value differs from the
-<       expected value;
-1931,1932c1960,1962
-<    *  an affirming Attestation Result paired with the wrong action
-<       evidence; and
 ---
 > Mih, et al.                Expires 2 May 2027                  [Page 35]
 > 
 > Internet-Draft      Agent Accountability Composition        October 2026
-1934d1963
+1926d1963
+<    *  a quoted outcome different from the action record's outcome;
+1929c1966
+<       expected value;
+---
+>       expected value (Platform Attestation profile); and
+1932,1934c1969
+<       evidence; and
+< 
 <    *  a transparency receipt bound to a different payload.
-1955a1985,2004
+---
+>       evidence (Platform Attestation profile).
+1955a1991,2010
 > 6.4.8.  AUDIT Profile: Platform Attestation (first named profile)
 > 
 >    This is the first profile named against the AUDIT slot's general
@@ -1037,25 +1053,22 @@
 > 
 >    *  the predecessor or sequence value that establishes the claimed
 >       causal order;
-1956a2006
+1956a2012
 >    *  the platform Evidence format and selected measurements;
-1957a2008,2009
->    *  the exact transformation that binds the outcome digest into those
->       measurements;
-1958a2011
->    *  the attestation key and its trust-chain inputs;
-1960c2013,2016
+1960c2016
 < Mih, et al.             Expires 17 February 2027               [Page 35]
 ---
-> 
-> 
-> 
 > Mih, et al.                Expires 2 May 2027                  [Page 36]
-1962c2018,2044
+1962c2018,2074
 < Internet-Draft      Agent Accountability Composition         August 2026
 ---
 > Internet-Draft      Agent Accountability Composition        October 2026
 > 
+> 
+>    *  the exact transformation that binds the outcome digest into those
+>       measurements;
+> 
+>    *  the attestation key and its trust-chain inputs;
 > 
 >    *  the freshness value and where it appears in signed Evidence;
 > 
@@ -1081,7 +1094,7 @@
 >       compatible contexts;
 > 
 >    *  the Verifier's native appraisal result;
-1963a2046,2058
+> 
 >    *  whether freshness was actually enforced by comparing the value
 >       recovered from the raw signed Evidence with the expected per-
 >       appraisal value; and
@@ -1095,7 +1108,8 @@
 >    separately.  Re-deriving freshness from the raw TPM quote bytes is
 >    therefore a distinct check when the Attestation Result does not
 >    expose or enforce the quote's signed extraData.
-1970a2066,2076
+> 
+> 
 > 
 > 
 > 
@@ -1105,51 +1119,31 @@
 > Mih, et al.                Expires 2 May 2027                  [Page 37]
 > 
 > Internet-Draft      Agent Accountability Composition        October 2026
-> 
-> 
-2012c2118,2123
+2012c2124
 <    manifest pins Composition *-00*; it was not built against this *-01*
 ---
 >    manifest pins Composition *-00*; it was not built against this *-02*
->    revision, and an -02-pinned manifest is future work, out of scope
->    here.  Per the freeze rule below, the pack is a candidate, not a
->    frozen result, until a second implementation maintained by a
->    different party consumes the same published bytes and returns the
->    completed external report.
-2016,2018d2126
+2016c2128
 < Mih, et al.             Expires 17 February 2027               [Page 36]
-< 
-< Internet-Draft      Agent Accountability Composition         August 2026
-2019a2128,2130
+---
 > Mih, et al.                Expires 2 May 2027                  [Page 38]
-> 
-> Internet-Draft      Agent Accountability Composition        October 2026
-2021,2025d2131
-<    revision, and an -01-pinned manifest is future work, out of scope
-<    here.  Per the freeze rule below, the pack is a candidate, not a
-<    frozen result, until a second implementation maintained by a
-<    different party consumes the same published bytes and returns the
-<    completed external report.
-2069a2176
->    *  CAID supplies the declared exact-action digest context.
-2070a2178,2179
->    *  AEC preserves native evidence verification and reports whether a
->       named relying-party requirement is satisfied.
-2072,2074d2180
-< Mih, et al.             Expires 17 February 2027               [Page 37]
-< 
+2018c2130
 < Internet-Draft      Agent Accountability Composition         August 2026
-2077d2182
-<    *  CAID supplies the declared exact-action digest context.
-2079,2080c2184,2187
-<    *  AEC preserves native evidence verification and reports whether a
-<       named relying-party requirement is satisfied.
+---
+> Internet-Draft      Agent Accountability Composition        October 2026
+2021c2133
+<    revision, and an -01-pinned manifest is future work, out of scope
+---
+>    revision, and an -02-pinned manifest is future work, out of scope
+2072c2184
+< Mih, et al.             Expires 17 February 2027               [Page 37]
 ---
 > Mih, et al.                Expires 2 May 2027                  [Page 39]
-> 
+2074c2186
+< Internet-Draft      Agent Accountability Composition         August 2026
+---
 > Internet-Draft      Agent Accountability Composition        October 2026
-> 
-2089c2196,2231
+2089c2201,2243
 <    their specifications or move enforcement into an evidence record.
 ---
 >    their specifications or move enforcement into an evidence record.  An
@@ -1188,7 +1182,6 @@
 >    evidence.  No historical run is upgraded by this informative
 >    comparison, and no native mechanism conformance is claimed by the
 >    candidate runner.
-2094a2237,2244
 > 
 > 
 > 
@@ -1196,8 +1189,7 @@
 > 
 > Internet-Draft      Agent Accountability Composition        October 2026
 > 
-> 
-2125,2132d2274
+2125,2132d2278
 < 
 < 
 < 
@@ -1206,7 +1198,7 @@
 < Internet-Draft      Agent Accountability Composition         August 2026
 < 
 < 
-2151a2294,2300
+2147a2294,2300
 > 
 > 
 > Mih, et al.                Expires 2 May 2027                  [Page 41]
@@ -1214,7 +1206,7 @@
 > Internet-Draft      Agent Accountability Composition        October 2026
 > 
 > 
-2179,2188d2327
+2179,2188d2331
 < 
 < 
 < 
@@ -1225,7 +1217,11 @@
 < Internet-Draft      Agent Accountability Composition         August 2026
 < 
 < 
-2213,2240c2352
+2209,2240c2352
+< 
+< 
+< 
+< 
 < 
 < 
 < 
@@ -1374,21 +1370,44 @@
 < Internet-Draft      Agent Accountability Composition         August 2026
 ---
 > Internet-Draft      Agent Accountability Composition        October 2026
-2422,2423c2590,2591
+2422,2423c2590,2598
 <    the capsule data-admission floor defined in the Privacy
 <    Considerations of [I-D.mih-scitt-agent-action-capsule].
 ---
 >    the data-admission tiers defined in the Privacy Considerations of
 >    [I-D.mih-scitt-agent-action-capsule].
+> 
+>    Profiles MUST distinguish native evidence provided to authorized
+>    verifiers from the public registration projection, and define the
+>    public fields, disclosure policy, correlation scope, and integrity-
+>    protected binding between them.  Hash-only registration also needs
+>    review of public headers and correlators; it does not by itself
+>    establish unlinkability.
+2452,2458d2626
+<    [I-D.schrock-caid]
+<               Schrock, I., "The Canonical Action Identifier (CAID)",
+<               Work in Progress, Internet-Draft, draft-schrock-canonical-
+<               action-identifier-02, 2026,
+<               <https://datatracker.ietf.org/doc/draft-schrock-canonical-
+<               action-identifier/>.
+< 
 2464c2632
 < Mih, et al.             Expires 17 February 2027               [Page 44]
 ---
 > Mih, et al.                Expires 2 May 2027                  [Page 47]
-2466c2634
+2466c2634,2635
 < Internet-Draft      Agent Accountability Composition         August 2026
 ---
 > Internet-Draft      Agent Accountability Composition        October 2026
-2485a2654,2675
+> 
+2467a2637,2642
+>    [I-D.schrock-caid]
+>               Schrock, I., "The Canonical Action Identifier (CAID)",
+>               Work in Progress, Internet-Draft, draft-schrock-canonical-
+>               action-identifier-02, 2026,
+>               <https://datatracker.ietf.org/doc/draft-schrock-canonical-
+>               action-identifier/>.
+2485a2661,2692
 >    [I-D.schrock-caid-current]
 >               Schrock, I., "The Canonical Action Identifier (CAID)",
 >               Work in Progress, Internet-Draft, draft-schrock-canonical-
@@ -1411,8 +1430,6 @@
 >               September 2026, <https://www.ietf.org/archive/id/draft-
 >               schrock-action-evidence-boundary-07.txt>.
 > 
-2491a2682,2692
-> 
 > 
 > 
 > 
@@ -1423,7 +1440,7 @@
 > Internet-Draft      Agent Accountability Composition        October 2026
 > 
 > 
-2504a2706,2712
+2504a2712,2718
 >    [I-D.etcheverry-action-ref]
 >               Etcheverry, P. and K. Ives, "Action Reference: A
 >               Deterministic Identifier for Agent Actions", Work in
@@ -1431,7 +1448,7 @@
 >               15 August 2026, <https://datatracker.ietf.org/doc/html/
 >               draft-etcheverry-action-ref-03>.
 > 
-2518,2524d2725
+2518,2524d2731
 < 
 < 
 < Mih, et al.             Expires 17 February 2027               [Page 45]
@@ -1439,7 +1456,8 @@
 < Internet-Draft      Agent Accountability Composition         August 2026
 < 
 < 
-2538a2740,2748
+2531a2739,2748
+> 
 > 
 > 
 > 
@@ -1449,14 +1467,15 @@
 > Internet-Draft      Agent Accountability Composition        October 2026
 > 
 > 
-2549,2551c2759,2760
+2549c2766
 <               capsule-02, 6 July 2026,
-<               <https://datatracker.ietf.org/doc/html/draft-mih-scitt-
+---
+>               capsule-05, 26 September 2026,
+2551c2768
 <               agent-action-capsule-02>.
 ---
->               capsule-06, 2026, <https://datatracker.ietf.org/doc/html/
->               draft-mih-scitt-agent-action-capsule-06>.
-2554,2558c2763,2767
+>               agent-action-capsule-05>.
+2554,2558c2771,2775
 <               Mih, S. and A. Sokolov, "Canonical Payload Binding: A
 <               Signed Statement Construction Profile", Work in Progress,
 <               Internet-Draft, draft-mih-sokolov-scitt-payload-binding-
@@ -1465,18 +1484,18 @@
 ---
 >               Mih, S. and A. Sokolov, "Canonicalization Declaration for
 >               SCITT Signed Statements", Work in Progress, Internet-
->               Draft, draft-mih-sokolov-scitt-payload-binding-06, 2026,
->               <https://datatracker.ietf.org/doc/html/draft-mih-sokolov-
->               scitt-payload-binding-06>.
-2563c2772
+>               Draft, draft-mih-sokolov-scitt-payload-binding-05, 11
+>               September 2026, <https://datatracker.ietf.org/doc/html/
+>               draft-mih-sokolov-scitt-payload-binding-05>.
+2563c2780
 <               mih-agent-bilateral-attestation-01, 19 July 2026,
 ---
 >               mih-agent-bilateral-attestation-03, 2026,
-2565c2774
+2565c2782
 <               bilateral-attestation-01>.
 ---
 >               bilateral-attestation-03>.
-2572,2580d2780
+2572,2580d2788
 < 
 < 
 < 
@@ -1486,8 +1505,7 @@
 < Internet-Draft      Agent Accountability Composition         August 2026
 < 
 < 
-2595a2796,2804
-> 
+2588a2797,2804
 > 
 > 
 > 
@@ -1496,7 +1514,7 @@
 > Internet-Draft      Agent Accountability Composition        October 2026
 > 
 > 
-2625,2636d2833
+2625,2636d2840
 < 
 < 
 < 
@@ -1509,10 +1527,7 @@
 < Internet-Draft      Agent Accountability Composition         August 2026
 < 
 < 
-2652a2850,2860
-> 
-> 
-> 
+2648a2853,2860
 > 
 > 
 > 
@@ -1521,14 +1536,28 @@
 > Internet-Draft      Agent Accountability Composition        October 2026
 > 
 > 
-2658a2867,2988
+2659c2871
+< Acknowledgments
+---
 > Changes from -01
-> 
+2661,2667c2873,2876
+<    Mikhail Sergeev contributed the ordering criterion for the second-
+<    class verification result in the WHO slot: an input closes an
+<    ordering claim only if it comes from a source that observed both
+<    terms of the claim, or from two records whose producing boundaries
+<    can be related in a way that orders the terms (see The WHO Slot).
+<    That wording is his, offered as an IETF Contribution under BCP 78 and
+<    BCP 79.
+---
 >    This -02 revision consolidates the fold list assembled 2026-09-12
 >    from the co-author thread (Songbo Bu, Iman Schrock, Anton Sokolov,
 >    Tom Sato) and the 2026-08-17 AUDIT thread (Henri, Anton Sokolov,
 >    Joel).  Landed in this revision:
-> 
+2669,2671c2878,2886
+<    The authors also thank the reviewers of the -00 and -01 revision
+<    packages, whose byte-level review discipline this revision was built
+<    against.
+---
 >    *  AUDIT mechanism-neutral split (Henri, 2026-08-17; Anton Sokolov,
 >       2026-08-17 and 2026-08-20): §6.4.2/§6.4.4 restate the Producer/
 >       Verifier Requirements as a profile-neutral general obligation; the
@@ -1538,12 +1567,18 @@
 >       Negative Vectors labels the six attestation-specific classes as
 >       that profile's.  The Verifier Requirements split was refined on
 >       2026-10-04 (below).
-> 
+2673c2888,2891
+< Authors' Addresses
+---
 >    *  Digest-coverage rule (Joel, 2026-08-20; accepted by Anton
 >       Sokolov): the general obligation's digest reaches every value the
 >       named profile obliges the declaring party to supply or name, in
 >       the order the profile enumerates them.
-> 
+2675,2677c2893,2900
+<    Steven Mih
+<    Action State Group, Inc.
+<    Email: steven@actionstate.ai
+---
 >    *  Principal-binding review (Songbo Bu, 2026-08-18, 2026-09-01,
 >       2026-09-10): the Cross-Profile Reviews entry preserves -03 as the
 >       historical review input and records the scoped comparison against
@@ -1552,30 +1587,43 @@
 >       The historical finding and no-byte-agreement boundary remain; see
 >       Principal-Binding Review (Bu).  The bibliography remains pinned to
 >       -03 for that historical input.
-> 
+2678a2902,2906
 >    *  INTEROP.md PB row (Songbo Bu, 2026-09-01; Iman Schrock,
 >       2026-09-10): Status changed to confirmed (Songbo Bu, 2026-08-18),
 >       with the no-byte-agreement limitation kept verbatim.  The
 >       evidence-ladder Status key now distinguishes a recorded run from
 >       confirmation by a named counterparty.
-> 
+2680,2683d2907
+<    Tom Sato
+<    MyAuberge K.K.
+<    Japan
+<    Email: tomsato@myauberge.jp
+2688c2912
+< Mih, et al.             Expires 17 February 2027               [Page 48]
+---
+> Mih, et al.                Expires 2 May 2027                  [Page 52]
+2690c2914
+< Internet-Draft      Agent Accountability Composition         August 2026
+---
+> Internet-Draft      Agent Accountability Composition        October 2026
+2693,2695c2917,2920
+<    Iman Schrock
+<    EMILIA Protocol, Inc.
+<    Email: team@emiliaprotocol.ai
+---
 >    *  Change-sheet correction (Iman Schrock, 2026-09-01): §8.1 (Cross-
 >       Slot Conformance Mechanism) is already normative as of -01; it is
 >       not a "promote to normative" item, and its evidence boundary
 >       (Delivered and open) stands unchanged.
-> 
-> 
-> 
-> 
-> Mih, et al.                Expires 2 May 2027                  [Page 52]
-> 
-> Internet-Draft      Agent Accountability Composition        October 2026
-> 
-> 
+2696a2922,2924
 >    *  V1 27-case pack status (Iman Schrock, 2026-09-01): described as
 >       Composition-00-pinned candidate evidence until an independently
 >       maintained second implementation reports against the same bytes.
-> 
+2698,2700c2926,2937
+<    Songbo Bu
+<    Independent
+<    Email: bluedognull@gmail.com
+---
 >    *  Evidence coordinates (Songbo Bu, 2026-10-03; Iman Schrock,
 >       2026-10-02): the EP three-computation row is removed from
 >       INTEROP.md and from the interoperability evidence, since its
@@ -1588,7 +1636,7 @@
 >       the outcome the agent system recorded and what is known to have
 >       crossed the effect boundary; the APS INTEROP row carries pinned
 >       run coordinates and names its pending counterparty.
-> 
+2701a2939,2945
 >    *  idnits (Songbo Bu, 2026-09-01, 2026-09-10): the earlier document-
 >       date correction is retained.  OpenID4VP and MACHINE-MANDATE are
 >       cited in body text.  Fresh offline lint on the 3 October 2026
@@ -1596,7 +1644,11 @@
 >       diagnostics for both; those diagnostics remain in the matching
 >       lint record for maintainer review, rather than being represented
 >       as a clean lint result.
-> 
+2703,2705c2947,2953
+<    Anton Sokolov
+<    Tyche Institute
+<    Email: anton.sokolov@tyche.institute
+---
 >    *  AUDIT verifier reports stated once (Anton Sokolov, 2026-10-04):
 >       the two mechanism-neutral checks (AEP signature and chain;
 >       recomputed subject and outcome digests) are stated only in §6.4.4,
@@ -1604,13 +1656,18 @@
 >       these and do not replace them; §6.4.8.2 opens "In addition to the
 >       reports required in §6.4.4" and lists only the profile's own
 >       reports.  No check is required of fewer verifiers.
+2719a2968,3016
+> Mih, et al.                Expires 2 May 2027                  [Page 53]
+> 
+> Internet-Draft      Agent Accountability Composition        October 2026
+> 
 > 
 >    *  References and reference accuracy: Agent Action Capsule -02 to
->       -06, payload binding -01 to -06 (now titled "Canonicalization
+>       -05, payload binding -01 to -05 (now titled "Canonicalization
 >       Declaration for SCITT Signed Statements"), bilateral attestation
 >       -01 to -03.  Four sentences describing those documents were
 >       corrected to match the cited revisions: basis vocabularies are
->       declared and versioned by their owners (payload binding -06
+>       declared and versioned by their owners (payload binding -05
 >       defines no artifact-type registry); the bilateral work establishes
 >       the fully-bilateral / reduced-assurance distinction rather than
 >       rung names; the native-record binding names the Capsule profile's
@@ -1618,15 +1675,18 @@
 >       privacy cross-reference names the Capsule profile's data-admission
 >       tiers instead of a "floor".
 > 
-> 
-> 
-> 
-> 
-> 
-> Mih, et al.                Expires 2 May 2027                  [Page 53]
-> 
-> Internet-Draft      Agent Accountability Composition        October 2026
-> 
+>    *  Principal references at the seam (Blake Morrison, Iman Schrock;
+>       repository issue 10): the WHO reference at the seam SHOULD carry a
+>       commitment to the authorizing principal identifier rather than the
+>       identifier; the selected WHO profile MUST define the hiding
+>       commitment construction; a plain deterministic hash is not
+>       sufficient for concealment; different commitments do not by
+>       themselves establish distinct humans.  The rule covers a principal
+>       reference in any slot, and the CAN and AUDIT (GAR principal) text
+>       cites it.  Privacy Considerations now requires profiles to
+>       separate native evidence for authorized verifiers from the public
+>       registration projection, and notes that hash-only registration
+>       does not by itself establish unlinkability.
 > 
 >    *  Editorial: revision bumped from -01 to -02; document date pinned
 >       to the cut date; the -00-manifest self-reference in Cross-Slot
@@ -1644,29 +1704,56 @@
 >       prepared as a separate commit pending Tom Sato's confirmation of
 >       his own section text (see the co-author thread).
 > 
-2685a3016,3018
->    Iman Schrock
->    EMILIA Protocol, Inc.
->    Email: team@emiliaprotocol.ai
-2688,2690d3020
-< Mih, et al.             Expires 17 February 2027               [Page 48]
-< 
-< Internet-Draft      Agent Accountability Composition         August 2026
-2693,2695c3023,3026
-<    Iman Schrock
-<    EMILIA Protocol, Inc.
-<    Email: team@emiliaprotocol.ai
----
 > 
+> 
+2726a3024,3042
 > Mih, et al.                Expires 2 May 2027                  [Page 54]
 > 
 > Internet-Draft      Agent Accountability Composition        October 2026
-2744c3075,3080
+> 
+> 
+> Acknowledgments
+> 
+>    Mikhail Sergeev contributed the ordering criterion for the second-
+>    class verification result in the WHO slot: an input closes an
+>    ordering claim only if it comes from a source that observed both
+>    terms of the claim, or from two records whose producing boundaries
+>    can be related in a way that orders the terms (see The WHO Slot).
+>    That wording is his, offered as an IETF Contribution under BCP 78 and
+>    BCP 79.
+> 
+>    Blake Morrison proposed the commitment-first WHO reference at the
+>    seam and its extension to principal references in every slot, and
+>    reviewed the fields each slot places at the seam for linkability
+>    (repository issue 10).
+2727a3044,3046
+>    The authors also thank the reviewers of the -00 and -01 revision
+>    packages, whose byte-level review discipline this revision was built
+>    against.
+2728a3048
+> Authors' Addresses
+2729a3050,3052
+>    Steven Mih
+>    Action State Group, Inc.
+>    Email: steven@actionstate.ai
+2731a3055,3058
+>    Tom Sato
+>    MyAuberge K.K.
+>    Japan
+>    Email: tomsato@myauberge.jp
+2733a3061,3063
+>    Iman Schrock
+>    EMILIA Protocol, Inc.
+>    Email: team@emiliaprotocol.ai
+2735a3066,3068
+>    Songbo Bu
+>    Independent
+>    Email: bluedognull@gmail.com
+2737a3071,3073
+>    Anton Sokolov
+>    Tyche Institute
+>    Email: anton.sokolov@tyche.institute
+2744c3080
 < Mih, et al.             Expires 17 February 2027               [Page 49]
 ---
-> 
-> 
-> 
-> 
-> 
 > Mih, et al.                Expires 2 May 2027                  [Page 55]

@@ -1,5 +1,5 @@
-# idnits 3.1.0 — composition -02 candidate at 19ade2a316ac87e11d3e16fd21fe6b6c2cbf9597
-# Six runs on the committed .xml/.txt (copies named ...-02.*): --offline (normal mode, as in Songbo Bu's 2026-10-03 review), online normal mode, and -m submission.
+# idnits 3.1.0 — composition -02 at 5113d2176758230d73ea32da49124d4c4168a333
+# Six runs on the committed .xml/.txt (copies named ...-02.*): --offline (normal mode), online normal mode, and -m submission.
 # Disposition of every code: build-log-02.txt.
 
 ===== xml · offline
@@ -43,146 +43,146 @@ FAIL - Document draft-mih-sato-agent-accountability-composition-02.xml has nits.
 [36] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST" should be enclosed in <bcp14></bcp14> tags.
 [37] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST NOT" should be enclosed in <bcp14></bcp14> tags.
 [38] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST" should be enclosed in <bcp14></bcp14> tags.
-[39] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST" should be enclosed in <bcp14></bcp14> tags.
+[39] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "SHOULD" should be enclosed in <bcp14></bcp14> tags.
 [40] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST" should be enclosed in <bcp14></bcp14> tags.
-[41] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST" should be enclosed in <bcp14></bcp14> tags.
-[42] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST NOT" should be enclosed in <bcp14></bcp14> tags.
-[43] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST NOT" should be enclosed in <bcp14></bcp14> tags.
+[41] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST NOT" should be enclosed in <bcp14></bcp14> tags.
+[42] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST" should be enclosed in <bcp14></bcp14> tags.
+[43] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST" should be enclosed in <bcp14></bcp14> tags.
 [44] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST" should be enclosed in <bcp14></bcp14> tags.
-[45] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MAY" should be enclosed in <bcp14></bcp14> tags.
+[45] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST NOT" should be enclosed in <bcp14></bcp14> tags.
 [46] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST NOT" should be enclosed in <bcp14></bcp14> tags.
-[47] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST NOT" should be enclosed in <bcp14></bcp14> tags.
-[48] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST NOT" should be enclosed in <bcp14></bcp14> tags.
-[49] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MAY" should be enclosed in <bcp14></bcp14> tags.
-[50] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST" should be enclosed in <bcp14></bcp14> tags.
-[51] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST" should be enclosed in <bcp14></bcp14> tags.
-[52] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST NOT" should be enclosed in <bcp14></bcp14> tags.
-[53] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MAY" should be enclosed in <bcp14></bcp14> tags.
-[54] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST NOT" should be enclosed in <bcp14></bcp14> tags.
+[47] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST" should be enclosed in <bcp14></bcp14> tags.
+[48] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MAY" should be enclosed in <bcp14></bcp14> tags.
+[49] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST NOT" should be enclosed in <bcp14></bcp14> tags.
+[50] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST NOT" should be enclosed in <bcp14></bcp14> tags.
+[51] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST NOT" should be enclosed in <bcp14></bcp14> tags.
+[52] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MAY" should be enclosed in <bcp14></bcp14> tags.
+[53] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST" should be enclosed in <bcp14></bcp14> tags.
+[54] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST" should be enclosed in <bcp14></bcp14> tags.
 [55] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST NOT" should be enclosed in <bcp14></bcp14> tags.
 [56] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MAY" should be enclosed in <bcp14></bcp14> tags.
 [57] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST NOT" should be enclosed in <bcp14></bcp14> tags.
-[58] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST" should be enclosed in <bcp14></bcp14> tags.
-[59] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST NOT" should be enclosed in <bcp14></bcp14> tags.
-[60] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST" should be enclosed in <bcp14></bcp14> tags.
+[58] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST NOT" should be enclosed in <bcp14></bcp14> tags.
+[59] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MAY" should be enclosed in <bcp14></bcp14> tags.
+[60] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST NOT" should be enclosed in <bcp14></bcp14> tags.
 [61] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST" should be enclosed in <bcp14></bcp14> tags.
-[62] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST" should be enclosed in <bcp14></bcp14> tags.
-[63] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST NOT" should be enclosed in <bcp14></bcp14> tags.
+[62] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST NOT" should be enclosed in <bcp14></bcp14> tags.
+[63] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST" should be enclosed in <bcp14></bcp14> tags.
 [64] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST" should be enclosed in <bcp14></bcp14> tags.
-[65] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST NOT" should be enclosed in <bcp14></bcp14> tags.
-[66] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST" should be enclosed in <bcp14></bcp14> tags.
-[67] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST NOT" should be enclosed in <bcp14></bcp14> tags.
-[68] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST" should be enclosed in <bcp14></bcp14> tags.
-[69] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST NOT" should be enclosed in <bcp14></bcp14> tags.
+[65] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST" should be enclosed in <bcp14></bcp14> tags.
+[66] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST NOT" should be enclosed in <bcp14></bcp14> tags.
+[67] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST" should be enclosed in <bcp14></bcp14> tags.
+[68] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST NOT" should be enclosed in <bcp14></bcp14> tags.
+[69] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST" should be enclosed in <bcp14></bcp14> tags.
 [70] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST NOT" should be enclosed in <bcp14></bcp14> tags.
 [71] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST" should be enclosed in <bcp14></bcp14> tags.
-[72] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST" should be enclosed in <bcp14></bcp14> tags.
-[73] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST" should be enclosed in <bcp14></bcp14> tags.
-[74] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST NOT" should be enclosed in <bcp14></bcp14> tags.
+[72] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST NOT" should be enclosed in <bcp14></bcp14> tags.
+[73] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST NOT" should be enclosed in <bcp14></bcp14> tags.
+[74] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST" should be enclosed in <bcp14></bcp14> tags.
 [75] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST" should be enclosed in <bcp14></bcp14> tags.
-[76] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST NOT" should be enclosed in <bcp14></bcp14> tags.
-[77] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST" should be enclosed in <bcp14></bcp14> tags.
-[78] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST NOT" should be enclosed in <bcp14></bcp14> tags.
-[79] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST" should be enclosed in <bcp14></bcp14> tags.
+[76] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST" should be enclosed in <bcp14></bcp14> tags.
+[77] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST NOT" should be enclosed in <bcp14></bcp14> tags.
+[78] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST" should be enclosed in <bcp14></bcp14> tags.
+[79] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST NOT" should be enclosed in <bcp14></bcp14> tags.
 [80] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST" should be enclosed in <bcp14></bcp14> tags.
-[81] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MAY" should be enclosed in <bcp14></bcp14> tags.
+[81] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST NOT" should be enclosed in <bcp14></bcp14> tags.
 [82] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST" should be enclosed in <bcp14></bcp14> tags.
 [83] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST" should be enclosed in <bcp14></bcp14> tags.
-[84] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST" should be enclosed in <bcp14></bcp14> tags.
-[85] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST NOT" should be enclosed in <bcp14></bcp14> tags.
+[84] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MAY" should be enclosed in <bcp14></bcp14> tags.
+[85] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST" should be enclosed in <bcp14></bcp14> tags.
 [86] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST" should be enclosed in <bcp14></bcp14> tags.
 [87] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST" should be enclosed in <bcp14></bcp14> tags.
 [88] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST NOT" should be enclosed in <bcp14></bcp14> tags.
 [89] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST" should be enclosed in <bcp14></bcp14> tags.
 [90] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST" should be enclosed in <bcp14></bcp14> tags.
-[91] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST" should be enclosed in <bcp14></bcp14> tags.
+[91] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST NOT" should be enclosed in <bcp14></bcp14> tags.
 [92] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST" should be enclosed in <bcp14></bcp14> tags.
-[93] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST NOT" should be enclosed in <bcp14></bcp14> tags.
-[94] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MAY" should be enclosed in <bcp14></bcp14> tags.
+[93] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST" should be enclosed in <bcp14></bcp14> tags.
+[94] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST" should be enclosed in <bcp14></bcp14> tags.
 [95] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST" should be enclosed in <bcp14></bcp14> tags.
 [96] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST NOT" should be enclosed in <bcp14></bcp14> tags.
-[97] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST NOT" should be enclosed in <bcp14></bcp14> tags.
-[98] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "SHOULD" should be enclosed in <bcp14></bcp14> tags.
-[99] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "SHOULD" should be enclosed in <bcp14></bcp14> tags.
-[100] Error | MISSING_REQLEVEL_REF | A BCP14 boilerplate is present but no reference to BCP14 was found.
-[101] Warning | DOC_DATE_IN_FUTURE | The document date is 8 days in the future. Is this intentional?
-[102] Warning | DEPRECATED_ELEMENT | The <list> element is deprecated. Instead, use <dl> for list/@style "hanging"; <ul> for list/@style "empty" or "symbols"; and <ol> for list/@style "letters", "numbers", "counter", or "format".
-[103] Warning | DEPRECATED_ELEMENT | The <list> element is deprecated. Instead, use <dl> for list/@style "hanging"; <ul> for list/@style "empty" or "symbols"; and <ol> for list/@style "letters", "numbers", "counter", or "format".
-[104] Warning | DEPRECATED_ELEMENT | The <list> element is deprecated. Instead, use <dl> for list/@style "hanging"; <ul> for list/@style "empty" or "symbols"; and <ol> for list/@style "letters", "numbers", "counter", or "format".
-[105] Warning | DEPRECATED_ELEMENT | The <spanx> element is deprecated. Instead of <spanx style="emph">, use <em>; instead of <spanx style="strong">, use <strong>; instead of <spanx style="verb">, use <tt>.
-[106] Warning | DEPRECATED_ELEMENT | The <spanx> element is deprecated. Instead of <spanx style="emph">, use <em>; instead of <spanx style="strong">, use <strong>; instead of <spanx style="verb">, use <tt>.
-[107] Warning | DEPRECATED_ELEMENT | The <list> element is deprecated. Instead, use <dl> for list/@style "hanging"; <ul> for list/@style "empty" or "symbols"; and <ol> for list/@style "letters", "numbers", "counter", or "format".
-[108] Warning | DEPRECATED_ELEMENT | The <spanx> element is deprecated. Instead of <spanx style="emph">, use <em>; instead of <spanx style="strong">, use <strong>; instead of <spanx style="verb">, use <tt>.
-[109] Warning | DEPRECATED_ELEMENT | The <spanx> element is deprecated. Instead of <spanx style="emph">, use <em>; instead of <spanx style="strong">, use <strong>; instead of <spanx style="verb">, use <tt>.
-[110] Warning | DEPRECATED_ELEMENT | The <spanx> element is deprecated. Instead of <spanx style="emph">, use <em>; instead of <spanx style="strong">, use <strong>; instead of <spanx style="verb">, use <tt>.
-[111] Warning | DEPRECATED_ELEMENT | The <list> element is deprecated. Instead, use <dl> for list/@style "hanging"; <ul> for list/@style "empty" or "symbols"; and <ol> for list/@style "letters", "numbers", "counter", or "format".
-[112] Warning | DEPRECATED_ELEMENT | The <list> element is deprecated. Instead, use <dl> for list/@style "hanging"; <ul> for list/@style "empty" or "symbols"; and <ol> for list/@style "letters", "numbers", "counter", or "format".
-[113] Warning | DEPRECATED_ELEMENT | The <spanx> element is deprecated. Instead of <spanx style="emph">, use <em>; instead of <spanx style="strong">, use <strong>; instead of <spanx style="verb">, use <tt>.
+[97] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MAY" should be enclosed in <bcp14></bcp14> tags.
+[98] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST" should be enclosed in <bcp14></bcp14> tags.
+[99] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST NOT" should be enclosed in <bcp14></bcp14> tags.
+[100] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST NOT" should be enclosed in <bcp14></bcp14> tags.
+[101] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "SHOULD" should be enclosed in <bcp14></bcp14> tags.
+[102] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "SHOULD" should be enclosed in <bcp14></bcp14> tags.
+[103] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST" should be enclosed in <bcp14></bcp14> tags.
+[104] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "SHOULD" should be enclosed in <bcp14></bcp14> tags.
+[105] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST" should be enclosed in <bcp14></bcp14> tags.
+[106] Error | MISSING_REQLEVEL_REF | A BCP14 boilerplate is present but no reference to BCP14 was found.
+[107] Warning | DOC_DATE_IN_FUTURE | The document date is 4 days in the future. Is this intentional?
+[108] Warning | DEPRECATED_ELEMENT | The <list> element is deprecated. Instead, use <dl> for list/@style "hanging"; <ul> for list/@style "empty" or "symbols"; and <ol> for list/@style "letters", "numbers", "counter", or "format".
+[109] Warning | DEPRECATED_ELEMENT | The <list> element is deprecated. Instead, use <dl> for list/@style "hanging"; <ul> for list/@style "empty" or "symbols"; and <ol> for list/@style "letters", "numbers", "counter", or "format".
+[110] Warning | DEPRECATED_ELEMENT | The <list> element is deprecated. Instead, use <dl> for list/@style "hanging"; <ul> for list/@style "empty" or "symbols"; and <ol> for list/@style "letters", "numbers", "counter", or "format".
+[111] Warning | DEPRECATED_ELEMENT | The <spanx> element is deprecated. Instead of <spanx style="emph">, use <em>; instead of <spanx style="strong">, use <strong>; instead of <spanx style="verb">, use <tt>.
+[112] Warning | DEPRECATED_ELEMENT | The <spanx> element is deprecated. Instead of <spanx style="emph">, use <em>; instead of <spanx style="strong">, use <strong>; instead of <spanx style="verb">, use <tt>.
+[113] Warning | DEPRECATED_ELEMENT | The <list> element is deprecated. Instead, use <dl> for list/@style "hanging"; <ul> for list/@style "empty" or "symbols"; and <ol> for list/@style "letters", "numbers", "counter", or "format".
 [114] Warning | DEPRECATED_ELEMENT | The <spanx> element is deprecated. Instead of <spanx style="emph">, use <em>; instead of <spanx style="strong">, use <strong>; instead of <spanx style="verb">, use <tt>.
 [115] Warning | DEPRECATED_ELEMENT | The <spanx> element is deprecated. Instead of <spanx style="emph">, use <em>; instead of <spanx style="strong">, use <strong>; instead of <spanx style="verb">, use <tt>.
 [116] Warning | DEPRECATED_ELEMENT | The <spanx> element is deprecated. Instead of <spanx style="emph">, use <em>; instead of <spanx style="strong">, use <strong>; instead of <spanx style="verb">, use <tt>.
-[117] Warning | DEPRECATED_ELEMENT | The <spanx> element is deprecated. Instead of <spanx style="emph">, use <em>; instead of <spanx style="strong">, use <strong>; instead of <spanx style="verb">, use <tt>.
-[118] Warning | DEPRECATED_ELEMENT | The <spanx> element is deprecated. Instead of <spanx style="emph">, use <em>; instead of <spanx style="strong">, use <strong>; instead of <spanx style="verb">, use <tt>.
+[117] Warning | DEPRECATED_ELEMENT | The <list> element is deprecated. Instead, use <dl> for list/@style "hanging"; <ul> for list/@style "empty" or "symbols"; and <ol> for list/@style "letters", "numbers", "counter", or "format".
+[118] Warning | DEPRECATED_ELEMENT | The <list> element is deprecated. Instead, use <dl> for list/@style "hanging"; <ul> for list/@style "empty" or "symbols"; and <ol> for list/@style "letters", "numbers", "counter", or "format".
 [119] Warning | DEPRECATED_ELEMENT | The <spanx> element is deprecated. Instead of <spanx style="emph">, use <em>; instead of <spanx style="strong">, use <strong>; instead of <spanx style="verb">, use <tt>.
 [120] Warning | DEPRECATED_ELEMENT | The <spanx> element is deprecated. Instead of <spanx style="emph">, use <em>; instead of <spanx style="strong">, use <strong>; instead of <spanx style="verb">, use <tt>.
 [121] Warning | DEPRECATED_ELEMENT | The <spanx> element is deprecated. Instead of <spanx style="emph">, use <em>; instead of <spanx style="strong">, use <strong>; instead of <spanx style="verb">, use <tt>.
 [122] Warning | DEPRECATED_ELEMENT | The <spanx> element is deprecated. Instead of <spanx style="emph">, use <em>; instead of <spanx style="strong">, use <strong>; instead of <spanx style="verb">, use <tt>.
-[123] Warning | DEPRECATED_ELEMENT | The <list> element is deprecated. Instead, use <dl> for list/@style "hanging"; <ul> for list/@style "empty" or "symbols"; and <ol> for list/@style "letters", "numbers", "counter", or "format".
-[124] Warning | DEPRECATED_ELEMENT | The <list> element is deprecated. Instead, use <dl> for list/@style "hanging"; <ul> for list/@style "empty" or "symbols"; and <ol> for list/@style "letters", "numbers", "counter", or "format".
+[123] Warning | DEPRECATED_ELEMENT | The <spanx> element is deprecated. Instead of <spanx style="emph">, use <em>; instead of <spanx style="strong">, use <strong>; instead of <spanx style="verb">, use <tt>.
+[124] Warning | DEPRECATED_ELEMENT | The <spanx> element is deprecated. Instead of <spanx style="emph">, use <em>; instead of <spanx style="strong">, use <strong>; instead of <spanx style="verb">, use <tt>.
 [125] Warning | DEPRECATED_ELEMENT | The <spanx> element is deprecated. Instead of <spanx style="emph">, use <em>; instead of <spanx style="strong">, use <strong>; instead of <spanx style="verb">, use <tt>.
 [126] Warning | DEPRECATED_ELEMENT | The <spanx> element is deprecated. Instead of <spanx style="emph">, use <em>; instead of <spanx style="strong">, use <strong>; instead of <spanx style="verb">, use <tt>.
 [127] Warning | DEPRECATED_ELEMENT | The <spanx> element is deprecated. Instead of <spanx style="emph">, use <em>; instead of <spanx style="strong">, use <strong>; instead of <spanx style="verb">, use <tt>.
 [128] Warning | DEPRECATED_ELEMENT | The <spanx> element is deprecated. Instead of <spanx style="emph">, use <em>; instead of <spanx style="strong">, use <strong>; instead of <spanx style="verb">, use <tt>.
-[129] Warning | DEPRECATED_ELEMENT | The <spanx> element is deprecated. Instead of <spanx style="emph">, use <em>; instead of <spanx style="strong">, use <strong>; instead of <spanx style="verb">, use <tt>.
-[130] Warning | DEPRECATED_ELEMENT | The <spanx> element is deprecated. Instead of <spanx style="emph">, use <em>; instead of <spanx style="strong">, use <strong>; instead of <spanx style="verb">, use <tt>.
+[129] Warning | DEPRECATED_ELEMENT | The <list> element is deprecated. Instead, use <dl> for list/@style "hanging"; <ul> for list/@style "empty" or "symbols"; and <ol> for list/@style "letters", "numbers", "counter", or "format".
+[130] Warning | DEPRECATED_ELEMENT | The <list> element is deprecated. Instead, use <dl> for list/@style "hanging"; <ul> for list/@style "empty" or "symbols"; and <ol> for list/@style "letters", "numbers", "counter", or "format".
 [131] Warning | DEPRECATED_ELEMENT | The <spanx> element is deprecated. Instead of <spanx style="emph">, use <em>; instead of <spanx style="strong">, use <strong>; instead of <spanx style="verb">, use <tt>.
 [132] Warning | DEPRECATED_ELEMENT | The <spanx> element is deprecated. Instead of <spanx style="emph">, use <em>; instead of <spanx style="strong">, use <strong>; instead of <spanx style="verb">, use <tt>.
 [133] Warning | DEPRECATED_ELEMENT | The <spanx> element is deprecated. Instead of <spanx style="emph">, use <em>; instead of <spanx style="strong">, use <strong>; instead of <spanx style="verb">, use <tt>.
 [134] Warning | DEPRECATED_ELEMENT | The <spanx> element is deprecated. Instead of <spanx style="emph">, use <em>; instead of <spanx style="strong">, use <strong>; instead of <spanx style="verb">, use <tt>.
-[135] Warning | DEPRECATED_ELEMENT | The <list> element is deprecated. Instead, use <dl> for list/@style "hanging"; <ul> for list/@style "empty" or "symbols"; and <ol> for list/@style "letters", "numbers", "counter", or "format".
-[136] Warning | DEPRECATED_ELEMENT | The <list> element is deprecated. Instead, use <dl> for list/@style "hanging"; <ul> for list/@style "empty" or "symbols"; and <ol> for list/@style "letters", "numbers", "counter", or "format".
-[137] Warning | DEPRECATED_ELEMENT | The <list> element is deprecated. Instead, use <dl> for list/@style "hanging"; <ul> for list/@style "empty" or "symbols"; and <ol> for list/@style "letters", "numbers", "counter", or "format".
+[135] Warning | DEPRECATED_ELEMENT | The <spanx> element is deprecated. Instead of <spanx style="emph">, use <em>; instead of <spanx style="strong">, use <strong>; instead of <spanx style="verb">, use <tt>.
+[136] Warning | DEPRECATED_ELEMENT | The <spanx> element is deprecated. Instead of <spanx style="emph">, use <em>; instead of <spanx style="strong">, use <strong>; instead of <spanx style="verb">, use <tt>.
+[137] Warning | DEPRECATED_ELEMENT | The <spanx> element is deprecated. Instead of <spanx style="emph">, use <em>; instead of <spanx style="strong">, use <strong>; instead of <spanx style="verb">, use <tt>.
 [138] Warning | DEPRECATED_ELEMENT | The <spanx> element is deprecated. Instead of <spanx style="emph">, use <em>; instead of <spanx style="strong">, use <strong>; instead of <spanx style="verb">, use <tt>.
 [139] Warning | DEPRECATED_ELEMENT | The <spanx> element is deprecated. Instead of <spanx style="emph">, use <em>; instead of <spanx style="strong">, use <strong>; instead of <spanx style="verb">, use <tt>.
-[140] Warning | DEPRECATED_ELEMENT | The <list> element is deprecated. Instead, use <dl> for list/@style "hanging"; <ul> for list/@style "empty" or "symbols"; and <ol> for list/@style "letters", "numbers", "counter", or "format".
+[140] Warning | DEPRECATED_ELEMENT | The <spanx> element is deprecated. Instead of <spanx style="emph">, use <em>; instead of <spanx style="strong">, use <strong>; instead of <spanx style="verb">, use <tt>.
 [141] Warning | DEPRECATED_ELEMENT | The <list> element is deprecated. Instead, use <dl> for list/@style "hanging"; <ul> for list/@style "empty" or "symbols"; and <ol> for list/@style "letters", "numbers", "counter", or "format".
-[142] Warning | DEPRECATED_ELEMENT | The <spanx> element is deprecated. Instead of <spanx style="emph">, use <em>; instead of <spanx style="strong">, use <strong>; instead of <spanx style="verb">, use <tt>.
-[143] Warning | DEPRECATED_ELEMENT | The <spanx> element is deprecated. Instead of <spanx style="emph">, use <em>; instead of <spanx style="strong">, use <strong>; instead of <spanx style="verb">, use <tt>.
+[142] Warning | DEPRECATED_ELEMENT | The <list> element is deprecated. Instead, use <dl> for list/@style "hanging"; <ul> for list/@style "empty" or "symbols"; and <ol> for list/@style "letters", "numbers", "counter", or "format".
+[143] Warning | DEPRECATED_ELEMENT | The <list> element is deprecated. Instead, use <dl> for list/@style "hanging"; <ul> for list/@style "empty" or "symbols"; and <ol> for list/@style "letters", "numbers", "counter", or "format".
 [144] Warning | DEPRECATED_ELEMENT | The <spanx> element is deprecated. Instead of <spanx style="emph">, use <em>; instead of <spanx style="strong">, use <strong>; instead of <spanx style="verb">, use <tt>.
-[145] Warning | DEPRECATED_ELEMENT | The <list> element is deprecated. Instead, use <dl> for list/@style "hanging"; <ul> for list/@style "empty" or "symbols"; and <ol> for list/@style "letters", "numbers", "counter", or "format".
+[145] Warning | DEPRECATED_ELEMENT | The <spanx> element is deprecated. Instead of <spanx style="emph">, use <em>; instead of <spanx style="strong">, use <strong>; instead of <spanx style="verb">, use <tt>.
 [146] Warning | DEPRECATED_ELEMENT | The <list> element is deprecated. Instead, use <dl> for list/@style "hanging"; <ul> for list/@style "empty" or "symbols"; and <ol> for list/@style "letters", "numbers", "counter", or "format".
 [147] Warning | DEPRECATED_ELEMENT | The <list> element is deprecated. Instead, use <dl> for list/@style "hanging"; <ul> for list/@style "empty" or "symbols"; and <ol> for list/@style "letters", "numbers", "counter", or "format".
-[148] Warning | DEPRECATED_ELEMENT | The <list> element is deprecated. Instead, use <dl> for list/@style "hanging"; <ul> for list/@style "empty" or "symbols"; and <ol> for list/@style "letters", "numbers", "counter", or "format".
-[149] Warning | DEPRECATED_ELEMENT | The <list> element is deprecated. Instead, use <dl> for list/@style "hanging"; <ul> for list/@style "empty" or "symbols"; and <ol> for list/@style "letters", "numbers", "counter", or "format".
+[148] Warning | DEPRECATED_ELEMENT | The <spanx> element is deprecated. Instead of <spanx style="emph">, use <em>; instead of <spanx style="strong">, use <strong>; instead of <spanx style="verb">, use <tt>.
+[149] Warning | DEPRECATED_ELEMENT | The <spanx> element is deprecated. Instead of <spanx style="emph">, use <em>; instead of <spanx style="strong">, use <strong>; instead of <spanx style="verb">, use <tt>.
 [150] Warning | DEPRECATED_ELEMENT | The <spanx> element is deprecated. Instead of <spanx style="emph">, use <em>; instead of <spanx style="strong">, use <strong>; instead of <spanx style="verb">, use <tt>.
 [151] Warning | DEPRECATED_ELEMENT | The <list> element is deprecated. Instead, use <dl> for list/@style "hanging"; <ul> for list/@style "empty" or "symbols"; and <ol> for list/@style "letters", "numbers", "counter", or "format".
-[152] Warning | DEPRECATED_ELEMENT | The <spanx> element is deprecated. Instead of <spanx style="emph">, use <em>; instead of <spanx style="strong">, use <strong>; instead of <spanx style="verb">, use <tt>.
+[152] Warning | DEPRECATED_ELEMENT | The <list> element is deprecated. Instead, use <dl> for list/@style "hanging"; <ul> for list/@style "empty" or "symbols"; and <ol> for list/@style "letters", "numbers", "counter", or "format".
 [153] Warning | DEPRECATED_ELEMENT | The <list> element is deprecated. Instead, use <dl> for list/@style "hanging"; <ul> for list/@style "empty" or "symbols"; and <ol> for list/@style "letters", "numbers", "counter", or "format".
-[154] Warning | DEPRECATED_ELEMENT | The <texttable> element is deprecated. Use <table> instead.
-[155] Warning | DEPRECATED_ELEMENT | The <ttcol> element is deprecated. Instead, use <tr>, <td>, and <th>.
-[156] Warning | DEPRECATED_ELEMENT | The <c> element is deprecated. Instead, use <tr>, <td>, and <th>.
+[154] Warning | DEPRECATED_ELEMENT | The <list> element is deprecated. Instead, use <dl> for list/@style "hanging"; <ul> for list/@style "empty" or "symbols"; and <ol> for list/@style "letters", "numbers", "counter", or "format".
+[155] Warning | DEPRECATED_ELEMENT | The <list> element is deprecated. Instead, use <dl> for list/@style "hanging"; <ul> for list/@style "empty" or "symbols"; and <ol> for list/@style "letters", "numbers", "counter", or "format".
+[156] Warning | DEPRECATED_ELEMENT | The <spanx> element is deprecated. Instead of <spanx style="emph">, use <em>; instead of <spanx style="strong">, use <strong>; instead of <spanx style="verb">, use <tt>.
 [157] Warning | DEPRECATED_ELEMENT | The <list> element is deprecated. Instead, use <dl> for list/@style "hanging"; <ul> for list/@style "empty" or "symbols"; and <ol> for list/@style "letters", "numbers", "counter", or "format".
-[158] Warning | DEPRECATED_ELEMENT | The <list> element is deprecated. Instead, use <dl> for list/@style "hanging"; <ul> for list/@style "empty" or "symbols"; and <ol> for list/@style "letters", "numbers", "counter", or "format".
-[159] Warning | DEPRECATED_ELEMENT | The <spanx> element is deprecated. Instead of <spanx style="emph">, use <em>; instead of <spanx style="strong">, use <strong>; instead of <spanx style="verb">, use <tt>.
-[160] Warning | DEPRECATED_ELEMENT | The <spanx> element is deprecated. Instead of <spanx style="emph">, use <em>; instead of <spanx style="strong">, use <strong>; instead of <spanx style="verb">, use <tt>.
-[161] Warning | DEPRECATED_ELEMENT | The <spanx> element is deprecated. Instead of <spanx style="emph">, use <em>; instead of <spanx style="strong">, use <strong>; instead of <spanx style="verb">, use <tt>.
-[162] Warning | DEPRECATED_ELEMENT | The <spanx> element is deprecated. Instead of <spanx style="emph">, use <em>; instead of <spanx style="strong">, use <strong>; instead of <spanx style="verb">, use <tt>.
-[163] Warning | DEPRECATED_ELEMENT | The <spanx> element is deprecated. Instead of <spanx style="emph">, use <em>; instead of <spanx style="strong">, use <strong>; instead of <spanx style="verb">, use <tt>.
-[164] Warning | DEPRECATED_ELEMENT | The <spanx> element is deprecated. Instead of <spanx style="emph">, use <em>; instead of <spanx style="strong">, use <strong>; instead of <spanx style="verb">, use <tt>.
-[165] Warning | DEPRECATED_ELEMENT | The <list> element is deprecated. Instead, use <dl> for list/@style "hanging"; <ul> for list/@style "empty" or "symbols"; and <ol> for list/@style "letters", "numbers", "counter", or "format".
+[158] Warning | DEPRECATED_ELEMENT | The <spanx> element is deprecated. Instead of <spanx style="emph">, use <em>; instead of <spanx style="strong">, use <strong>; instead of <spanx style="verb">, use <tt>.
+[159] Warning | DEPRECATED_ELEMENT | The <list> element is deprecated. Instead, use <dl> for list/@style "hanging"; <ul> for list/@style "empty" or "symbols"; and <ol> for list/@style "letters", "numbers", "counter", or "format".
+[160] Warning | DEPRECATED_ELEMENT | The <texttable> element is deprecated. Use <table> instead.
+[161] Warning | DEPRECATED_ELEMENT | The <ttcol> element is deprecated. Instead, use <tr>, <td>, and <th>.
+[162] Warning | DEPRECATED_ELEMENT | The <c> element is deprecated. Instead, use <tr>, <td>, and <th>.
+[163] Warning | DEPRECATED_ELEMENT | The <list> element is deprecated. Instead, use <dl> for list/@style "hanging"; <ul> for list/@style "empty" or "symbols"; and <ol> for list/@style "letters", "numbers", "counter", or "format".
+[164] Warning | DEPRECATED_ELEMENT | The <list> element is deprecated. Instead, use <dl> for list/@style "hanging"; <ul> for list/@style "empty" or "symbols"; and <ol> for list/@style "letters", "numbers", "counter", or "format".
+[165] Warning | DEPRECATED_ELEMENT | The <spanx> element is deprecated. Instead of <spanx style="emph">, use <em>; instead of <spanx style="strong">, use <strong>; instead of <spanx style="verb">, use <tt>.
 [166] Warning | DEPRECATED_ELEMENT | The <spanx> element is deprecated. Instead of <spanx style="emph">, use <em>; instead of <spanx style="strong">, use <strong>; instead of <spanx style="verb">, use <tt>.
 [167] Warning | DEPRECATED_ELEMENT | The <spanx> element is deprecated. Instead of <spanx style="emph">, use <em>; instead of <spanx style="strong">, use <strong>; instead of <spanx style="verb">, use <tt>.
 [168] Warning | DEPRECATED_ELEMENT | The <spanx> element is deprecated. Instead of <spanx style="emph">, use <em>; instead of <spanx style="strong">, use <strong>; instead of <spanx style="verb">, use <tt>.
 [169] Warning | DEPRECATED_ELEMENT | The <spanx> element is deprecated. Instead of <spanx style="emph">, use <em>; instead of <spanx style="strong">, use <strong>; instead of <spanx style="verb">, use <tt>.
-[170] Warning | DEPRECATED_ELEMENT | The <texttable> element is deprecated. Use <table> instead.
-[171] Warning | DEPRECATED_ELEMENT | The <ttcol> element is deprecated. Instead, use <tr>, <td>, and <th>.
-[172] Warning | DEPRECATED_ELEMENT | The <c> element is deprecated. Instead, use <tr>, <td>, and <th>.
+[170] Warning | DEPRECATED_ELEMENT | The <spanx> element is deprecated. Instead of <spanx style="emph">, use <em>; instead of <spanx style="strong">, use <strong>; instead of <spanx style="verb">, use <tt>.
+[171] Warning | DEPRECATED_ELEMENT | The <list> element is deprecated. Instead, use <dl> for list/@style "hanging"; <ul> for list/@style "empty" or "symbols"; and <ol> for list/@style "letters", "numbers", "counter", or "format".
+[172] Warning | DEPRECATED_ELEMENT | The <spanx> element is deprecated. Instead of <spanx style="emph">, use <em>; instead of <spanx style="strong">, use <strong>; instead of <spanx style="verb">, use <tt>.
 [173] Warning | DEPRECATED_ELEMENT | The <spanx> element is deprecated. Instead of <spanx style="emph">, use <em>; instead of <spanx style="strong">, use <strong>; instead of <spanx style="verb">, use <tt>.
 [174] Warning | DEPRECATED_ELEMENT | The <spanx> element is deprecated. Instead of <spanx style="emph">, use <em>; instead of <spanx style="strong">, use <strong>; instead of <spanx style="verb">, use <tt>.
 [175] Warning | DEPRECATED_ELEMENT | The <spanx> element is deprecated. Instead of <spanx style="emph">, use <em>; instead of <spanx style="strong">, use <strong>; instead of <spanx style="verb">, use <tt>.
-[176] Warning | DEPRECATED_ELEMENT | The <spanx> element is deprecated. Instead of <spanx style="emph">, use <em>; instead of <spanx style="strong">, use <strong>; instead of <spanx style="verb">, use <tt>.
-[177] Warning | DEPRECATED_ELEMENT | The <spanx> element is deprecated. Instead of <spanx style="emph">, use <em>; instead of <spanx style="strong">, use <strong>; instead of <spanx style="verb">, use <tt>.
-[178] Warning | DEPRECATED_ELEMENT | The <spanx> element is deprecated. Instead of <spanx style="emph">, use <em>; instead of <spanx style="strong">, use <strong>; instead of <spanx style="verb">, use <tt>.
+[176] Warning | DEPRECATED_ELEMENT | The <texttable> element is deprecated. Use <table> instead.
+[177] Warning | DEPRECATED_ELEMENT | The <ttcol> element is deprecated. Instead, use <tr>, <td>, and <th>.
+[178] Warning | DEPRECATED_ELEMENT | The <c> element is deprecated. Instead, use <tr>, <td>, and <th>.
 [179] Warning | DEPRECATED_ELEMENT | The <spanx> element is deprecated. Instead of <spanx style="emph">, use <em>; instead of <spanx style="strong">, use <strong>; instead of <spanx style="verb">, use <tt>.
 [180] Warning | DEPRECATED_ELEMENT | The <spanx> element is deprecated. Instead of <spanx style="emph">, use <em>; instead of <spanx style="strong">, use <strong>; instead of <spanx style="verb">, use <tt>.
 [181] Warning | DEPRECATED_ELEMENT | The <spanx> element is deprecated. Instead of <spanx style="emph">, use <em>; instead of <spanx style="strong">, use <strong>; instead of <spanx style="verb">, use <tt>.
@@ -204,14 +204,20 @@ FAIL - Document draft-mih-sato-agent-accountability-composition-02.xml has nits.
 [197] Warning | DEPRECATED_ELEMENT | The <spanx> element is deprecated. Instead of <spanx style="emph">, use <em>; instead of <spanx style="strong">, use <strong>; instead of <spanx style="verb">, use <tt>.
 [198] Warning | DEPRECATED_ELEMENT | The <spanx> element is deprecated. Instead of <spanx style="emph">, use <em>; instead of <spanx style="strong">, use <strong>; instead of <spanx style="verb">, use <tt>.
 [199] Warning | DEPRECATED_ELEMENT | The <spanx> element is deprecated. Instead of <spanx style="emph">, use <em>; instead of <spanx style="strong">, use <strong>; instead of <spanx style="verb">, use <tt>.
-[200] Warning | DEPRECATED_ELEMENT | The <ttcol> element is deprecated. Instead, use <tr>, <td>, and <th>.
-[201] Warning | DEPRECATED_ELEMENT | The <c> element is deprecated. Instead, use <tr>, <td>, and <th>.
+[200] Warning | DEPRECATED_ELEMENT | The <spanx> element is deprecated. Instead of <spanx style="emph">, use <em>; instead of <spanx style="strong">, use <strong>; instead of <spanx style="verb">, use <tt>.
+[201] Warning | DEPRECATED_ELEMENT | The <spanx> element is deprecated. Instead of <spanx style="emph">, use <em>; instead of <spanx style="strong">, use <strong>; instead of <spanx style="verb">, use <tt>.
 [202] Warning | DEPRECATED_ELEMENT | The <spanx> element is deprecated. Instead of <spanx style="emph">, use <em>; instead of <spanx style="strong">, use <strong>; instead of <spanx style="verb">, use <tt>.
 [203] Warning | DEPRECATED_ELEMENT | The <spanx> element is deprecated. Instead of <spanx style="emph">, use <em>; instead of <spanx style="strong">, use <strong>; instead of <spanx style="verb">, use <tt>.
-[204] Warning | DEPRECATED_ELEMENT | The <list> element is deprecated. Instead, use <dl> for list/@style "hanging"; <ul> for list/@style "empty" or "symbols"; and <ol> for list/@style "letters", "numbers", "counter", or "format".
-[205] Warning | DEPRECATED_ELEMENT | The <list> element is deprecated. Instead, use <dl> for list/@style "hanging"; <ul> for list/@style "empty" or "symbols"; and <ol> for list/@style "letters", "numbers", "counter", or "format".
-[206] Warning | DEPRECATED_ELEMENT | The <spanx> element is deprecated. Instead of <spanx style="emph">, use <em>; instead of <spanx style="strong">, use <strong>; instead of <spanx style="verb">, use <tt>.
-[207] Warning | DEPRECATED_ELEMENT | The <list> element is deprecated. Instead, use <dl> for list/@style "hanging"; <ul> for list/@style "empty" or "symbols"; and <ol> for list/@style "letters", "numbers", "counter", or "format".
+[204] Warning | DEPRECATED_ELEMENT | The <spanx> element is deprecated. Instead of <spanx style="emph">, use <em>; instead of <spanx style="strong">, use <strong>; instead of <spanx style="verb">, use <tt>.
+[205] Warning | DEPRECATED_ELEMENT | The <spanx> element is deprecated. Instead of <spanx style="emph">, use <em>; instead of <spanx style="strong">, use <strong>; instead of <spanx style="verb">, use <tt>.
+[206] Warning | DEPRECATED_ELEMENT | The <ttcol> element is deprecated. Instead, use <tr>, <td>, and <th>.
+[207] Warning | DEPRECATED_ELEMENT | The <c> element is deprecated. Instead, use <tr>, <td>, and <th>.
+[208] Warning | DEPRECATED_ELEMENT | The <spanx> element is deprecated. Instead of <spanx style="emph">, use <em>; instead of <spanx style="strong">, use <strong>; instead of <spanx style="verb">, use <tt>.
+[209] Warning | DEPRECATED_ELEMENT | The <spanx> element is deprecated. Instead of <spanx style="emph">, use <em>; instead of <spanx style="strong">, use <strong>; instead of <spanx style="verb">, use <tt>.
+[210] Warning | DEPRECATED_ELEMENT | The <list> element is deprecated. Instead, use <dl> for list/@style "hanging"; <ul> for list/@style "empty" or "symbols"; and <ol> for list/@style "letters", "numbers", "counter", or "format".
+[211] Warning | DEPRECATED_ELEMENT | The <list> element is deprecated. Instead, use <dl> for list/@style "hanging"; <ul> for list/@style "empty" or "symbols"; and <ol> for list/@style "letters", "numbers", "counter", or "format".
+[212] Warning | DEPRECATED_ELEMENT | The <spanx> element is deprecated. Instead of <spanx style="emph">, use <em>; instead of <spanx style="strong">, use <strong>; instead of <spanx style="verb">, use <tt>.
+[213] Warning | DEPRECATED_ELEMENT | The <list> element is deprecated. Instead, use <dl> for list/@style "hanging"; <ul> for list/@style "empty" or "symbols"; and <ol> for list/@style "letters", "numbers", "counter", or "format".
 
 ===== xml · online
 FAIL - Document draft-mih-sato-agent-accountability-composition-02.xml has nits. (mode: normal)
@@ -254,146 +260,146 @@ FAIL - Document draft-mih-sato-agent-accountability-composition-02.xml has nits.
 [36] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST" should be enclosed in <bcp14></bcp14> tags.
 [37] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST NOT" should be enclosed in <bcp14></bcp14> tags.
 [38] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST" should be enclosed in <bcp14></bcp14> tags.
-[39] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST" should be enclosed in <bcp14></bcp14> tags.
+[39] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "SHOULD" should be enclosed in <bcp14></bcp14> tags.
 [40] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST" should be enclosed in <bcp14></bcp14> tags.
-[41] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST" should be enclosed in <bcp14></bcp14> tags.
-[42] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST NOT" should be enclosed in <bcp14></bcp14> tags.
-[43] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST NOT" should be enclosed in <bcp14></bcp14> tags.
+[41] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST NOT" should be enclosed in <bcp14></bcp14> tags.
+[42] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST" should be enclosed in <bcp14></bcp14> tags.
+[43] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST" should be enclosed in <bcp14></bcp14> tags.
 [44] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST" should be enclosed in <bcp14></bcp14> tags.
-[45] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MAY" should be enclosed in <bcp14></bcp14> tags.
+[45] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST NOT" should be enclosed in <bcp14></bcp14> tags.
 [46] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST NOT" should be enclosed in <bcp14></bcp14> tags.
-[47] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST NOT" should be enclosed in <bcp14></bcp14> tags.
-[48] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST NOT" should be enclosed in <bcp14></bcp14> tags.
-[49] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MAY" should be enclosed in <bcp14></bcp14> tags.
-[50] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST" should be enclosed in <bcp14></bcp14> tags.
-[51] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST" should be enclosed in <bcp14></bcp14> tags.
-[52] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST NOT" should be enclosed in <bcp14></bcp14> tags.
-[53] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MAY" should be enclosed in <bcp14></bcp14> tags.
-[54] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST NOT" should be enclosed in <bcp14></bcp14> tags.
+[47] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST" should be enclosed in <bcp14></bcp14> tags.
+[48] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MAY" should be enclosed in <bcp14></bcp14> tags.
+[49] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST NOT" should be enclosed in <bcp14></bcp14> tags.
+[50] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST NOT" should be enclosed in <bcp14></bcp14> tags.
+[51] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST NOT" should be enclosed in <bcp14></bcp14> tags.
+[52] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MAY" should be enclosed in <bcp14></bcp14> tags.
+[53] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST" should be enclosed in <bcp14></bcp14> tags.
+[54] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST" should be enclosed in <bcp14></bcp14> tags.
 [55] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST NOT" should be enclosed in <bcp14></bcp14> tags.
 [56] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MAY" should be enclosed in <bcp14></bcp14> tags.
 [57] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST NOT" should be enclosed in <bcp14></bcp14> tags.
-[58] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST" should be enclosed in <bcp14></bcp14> tags.
-[59] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST NOT" should be enclosed in <bcp14></bcp14> tags.
-[60] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST" should be enclosed in <bcp14></bcp14> tags.
+[58] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST NOT" should be enclosed in <bcp14></bcp14> tags.
+[59] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MAY" should be enclosed in <bcp14></bcp14> tags.
+[60] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST NOT" should be enclosed in <bcp14></bcp14> tags.
 [61] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST" should be enclosed in <bcp14></bcp14> tags.
-[62] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST" should be enclosed in <bcp14></bcp14> tags.
-[63] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST NOT" should be enclosed in <bcp14></bcp14> tags.
+[62] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST NOT" should be enclosed in <bcp14></bcp14> tags.
+[63] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST" should be enclosed in <bcp14></bcp14> tags.
 [64] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST" should be enclosed in <bcp14></bcp14> tags.
-[65] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST NOT" should be enclosed in <bcp14></bcp14> tags.
-[66] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST" should be enclosed in <bcp14></bcp14> tags.
-[67] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST NOT" should be enclosed in <bcp14></bcp14> tags.
-[68] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST" should be enclosed in <bcp14></bcp14> tags.
-[69] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST NOT" should be enclosed in <bcp14></bcp14> tags.
+[65] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST" should be enclosed in <bcp14></bcp14> tags.
+[66] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST NOT" should be enclosed in <bcp14></bcp14> tags.
+[67] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST" should be enclosed in <bcp14></bcp14> tags.
+[68] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST NOT" should be enclosed in <bcp14></bcp14> tags.
+[69] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST" should be enclosed in <bcp14></bcp14> tags.
 [70] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST NOT" should be enclosed in <bcp14></bcp14> tags.
 [71] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST" should be enclosed in <bcp14></bcp14> tags.
-[72] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST" should be enclosed in <bcp14></bcp14> tags.
-[73] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST" should be enclosed in <bcp14></bcp14> tags.
-[74] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST NOT" should be enclosed in <bcp14></bcp14> tags.
+[72] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST NOT" should be enclosed in <bcp14></bcp14> tags.
+[73] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST NOT" should be enclosed in <bcp14></bcp14> tags.
+[74] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST" should be enclosed in <bcp14></bcp14> tags.
 [75] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST" should be enclosed in <bcp14></bcp14> tags.
-[76] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST NOT" should be enclosed in <bcp14></bcp14> tags.
-[77] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST" should be enclosed in <bcp14></bcp14> tags.
-[78] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST NOT" should be enclosed in <bcp14></bcp14> tags.
-[79] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST" should be enclosed in <bcp14></bcp14> tags.
+[76] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST" should be enclosed in <bcp14></bcp14> tags.
+[77] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST NOT" should be enclosed in <bcp14></bcp14> tags.
+[78] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST" should be enclosed in <bcp14></bcp14> tags.
+[79] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST NOT" should be enclosed in <bcp14></bcp14> tags.
 [80] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST" should be enclosed in <bcp14></bcp14> tags.
-[81] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MAY" should be enclosed in <bcp14></bcp14> tags.
+[81] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST NOT" should be enclosed in <bcp14></bcp14> tags.
 [82] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST" should be enclosed in <bcp14></bcp14> tags.
 [83] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST" should be enclosed in <bcp14></bcp14> tags.
-[84] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST" should be enclosed in <bcp14></bcp14> tags.
-[85] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST NOT" should be enclosed in <bcp14></bcp14> tags.
+[84] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MAY" should be enclosed in <bcp14></bcp14> tags.
+[85] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST" should be enclosed in <bcp14></bcp14> tags.
 [86] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST" should be enclosed in <bcp14></bcp14> tags.
 [87] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST" should be enclosed in <bcp14></bcp14> tags.
 [88] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST NOT" should be enclosed in <bcp14></bcp14> tags.
 [89] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST" should be enclosed in <bcp14></bcp14> tags.
 [90] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST" should be enclosed in <bcp14></bcp14> tags.
-[91] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST" should be enclosed in <bcp14></bcp14> tags.
+[91] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST NOT" should be enclosed in <bcp14></bcp14> tags.
 [92] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST" should be enclosed in <bcp14></bcp14> tags.
-[93] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST NOT" should be enclosed in <bcp14></bcp14> tags.
-[94] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MAY" should be enclosed in <bcp14></bcp14> tags.
+[93] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST" should be enclosed in <bcp14></bcp14> tags.
+[94] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST" should be enclosed in <bcp14></bcp14> tags.
 [95] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST" should be enclosed in <bcp14></bcp14> tags.
 [96] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST NOT" should be enclosed in <bcp14></bcp14> tags.
-[97] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST NOT" should be enclosed in <bcp14></bcp14> tags.
-[98] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "SHOULD" should be enclosed in <bcp14></bcp14> tags.
-[99] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "SHOULD" should be enclosed in <bcp14></bcp14> tags.
-[100] Error | MISSING_REQLEVEL_REF | A BCP14 boilerplate is present but no reference to BCP14 was found.
-[101] Warning | DOC_DATE_IN_FUTURE | The document date is 8 days in the future. Is this intentional?
-[102] Warning | DEPRECATED_ELEMENT | The <list> element is deprecated. Instead, use <dl> for list/@style "hanging"; <ul> for list/@style "empty" or "symbols"; and <ol> for list/@style "letters", "numbers", "counter", or "format".
-[103] Warning | DEPRECATED_ELEMENT | The <list> element is deprecated. Instead, use <dl> for list/@style "hanging"; <ul> for list/@style "empty" or "symbols"; and <ol> for list/@style "letters", "numbers", "counter", or "format".
-[104] Warning | DEPRECATED_ELEMENT | The <list> element is deprecated. Instead, use <dl> for list/@style "hanging"; <ul> for list/@style "empty" or "symbols"; and <ol> for list/@style "letters", "numbers", "counter", or "format".
-[105] Warning | DEPRECATED_ELEMENT | The <spanx> element is deprecated. Instead of <spanx style="emph">, use <em>; instead of <spanx style="strong">, use <strong>; instead of <spanx style="verb">, use <tt>.
-[106] Warning | DEPRECATED_ELEMENT | The <spanx> element is deprecated. Instead of <spanx style="emph">, use <em>; instead of <spanx style="strong">, use <strong>; instead of <spanx style="verb">, use <tt>.
-[107] Warning | DEPRECATED_ELEMENT | The <list> element is deprecated. Instead, use <dl> for list/@style "hanging"; <ul> for list/@style "empty" or "symbols"; and <ol> for list/@style "letters", "numbers", "counter", or "format".
-[108] Warning | DEPRECATED_ELEMENT | The <spanx> element is deprecated. Instead of <spanx style="emph">, use <em>; instead of <spanx style="strong">, use <strong>; instead of <spanx style="verb">, use <tt>.
-[109] Warning | DEPRECATED_ELEMENT | The <spanx> element is deprecated. Instead of <spanx style="emph">, use <em>; instead of <spanx style="strong">, use <strong>; instead of <spanx style="verb">, use <tt>.
-[110] Warning | DEPRECATED_ELEMENT | The <spanx> element is deprecated. Instead of <spanx style="emph">, use <em>; instead of <spanx style="strong">, use <strong>; instead of <spanx style="verb">, use <tt>.
-[111] Warning | DEPRECATED_ELEMENT | The <list> element is deprecated. Instead, use <dl> for list/@style "hanging"; <ul> for list/@style "empty" or "symbols"; and <ol> for list/@style "letters", "numbers", "counter", or "format".
-[112] Warning | DEPRECATED_ELEMENT | The <list> element is deprecated. Instead, use <dl> for list/@style "hanging"; <ul> for list/@style "empty" or "symbols"; and <ol> for list/@style "letters", "numbers", "counter", or "format".
-[113] Warning | DEPRECATED_ELEMENT | The <spanx> element is deprecated. Instead of <spanx style="emph">, use <em>; instead of <spanx style="strong">, use <strong>; instead of <spanx style="verb">, use <tt>.
+[97] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MAY" should be enclosed in <bcp14></bcp14> tags.
+[98] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST" should be enclosed in <bcp14></bcp14> tags.
+[99] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST NOT" should be enclosed in <bcp14></bcp14> tags.
+[100] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST NOT" should be enclosed in <bcp14></bcp14> tags.
+[101] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "SHOULD" should be enclosed in <bcp14></bcp14> tags.
+[102] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "SHOULD" should be enclosed in <bcp14></bcp14> tags.
+[103] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST" should be enclosed in <bcp14></bcp14> tags.
+[104] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "SHOULD" should be enclosed in <bcp14></bcp14> tags.
+[105] Comment | MISSING_BCP14_TAGS | The BCP14 keyword "MUST" should be enclosed in <bcp14></bcp14> tags.
+[106] Error | MISSING_REQLEVEL_REF | A BCP14 boilerplate is present but no reference to BCP14 was found.
+[107] Warning | DOC_DATE_IN_FUTURE | The document date is 4 days in the future. Is this intentional?
+[108] Warning | DEPRECATED_ELEMENT | The <list> element is deprecated. Instead, use <dl> for list/@style "hanging"; <ul> for list/@style "empty" or "symbols"; and <ol> for list/@style "letters", "numbers", "counter", or "format".
+[109] Warning | DEPRECATED_ELEMENT | The <list> element is deprecated. Instead, use <dl> for list/@style "hanging"; <ul> for list/@style "empty" or "symbols"; and <ol> for list/@style "letters", "numbers", "counter", or "format".
+[110] Warning | DEPRECATED_ELEMENT | The <list> element is deprecated. Instead, use <dl> for list/@style "hanging"; <ul> for list/@style "empty" or "symbols"; and <ol> for list/@style "letters", "numbers", "counter", or "format".
+[111] Warning | DEPRECATED_ELEMENT | The <spanx> element is deprecated. Instead of <spanx style="emph">, use <em>; instead of <spanx style="strong">, use <strong>; instead of <spanx style="verb">, use <tt>.
+[112] Warning | DEPRECATED_ELEMENT | The <spanx> element is deprecated. Instead of <spanx style="emph">, use <em>; instead of <spanx style="strong">, use <strong>; instead of <spanx style="verb">, use <tt>.
+[113] Warning | DEPRECATED_ELEMENT | The <list> element is deprecated. Instead, use <dl> for list/@style "hanging"; <ul> for list/@style "empty" or "symbols"; and <ol> for list/@style "letters", "numbers", "counter", or "format".
 [114] Warning | DEPRECATED_ELEMENT | The <spanx> element is deprecated. Instead of <spanx style="emph">, use <em>; instead of <spanx style="strong">, use <strong>; instead of <spanx style="verb">, use <tt>.
 [115] Warning | DEPRECATED_ELEMENT | The <spanx> element is deprecated. Instead of <spanx style="emph">, use <em>; instead of <spanx style="strong">, use <strong>; instead of <spanx style="verb">, use <tt>.
 [116] Warning | DEPRECATED_ELEMENT | The <spanx> element is deprecated. Instead of <spanx style="emph">, use <em>; instead of <spanx style="strong">, use <strong>; instead of <spanx style="verb">, use <tt>.
-[117] Warning | DEPRECATED_ELEMENT | The <spanx> element is deprecated. Instead of <spanx style="emph">, use <em>; instead of <spanx style="strong">, use <strong>; instead of <spanx style="verb">, use <tt>.
-[118] Warning | DEPRECATED_ELEMENT | The <spanx> element is deprecated. Instead of <spanx style="emph">, use <em>; instead of <spanx style="strong">, use <strong>; instead of <spanx style="verb">, use <tt>.
+[117] Warning | DEPRECATED_ELEMENT | The <list> element is deprecated. Instead, use <dl> for list/@style "hanging"; <ul> for list/@style "empty" or "symbols"; and <ol> for list/@style "letters", "numbers", "counter", or "format".
+[118] Warning | DEPRECATED_ELEMENT | The <list> element is deprecated. Instead, use <dl> for list/@style "hanging"; <ul> for list/@style "empty" or "symbols"; and <ol> for list/@style "letters", "numbers", "counter", or "format".
 [119] Warning | DEPRECATED_ELEMENT | The <spanx> element is deprecated. Instead of <spanx style="emph">, use <em>; instead of <spanx style="strong">, use <strong>; instead of <spanx style="verb">, use <tt>.
 [120] Warning | DEPRECATED_ELEMENT | The <spanx> element is deprecated. Instead of <spanx style="emph">, use <em>; instead of <spanx style="strong">, use <strong>; instead of <spanx style="verb">, use <tt>.
 [121] Warning | DEPRECATED_ELEMENT | The <spanx> element is deprecated. Instead of <spanx style="emph">, use <em>; instead of <spanx style="strong">, use <strong>; instead of <spanx style="verb">, use <tt>.
 [122] Warning | DEPRECATED_ELEMENT | The <spanx> element is deprecated. Instead of <spanx style="emph">, use <em>; instead of <spanx style="strong">, use <strong>; instead of <spanx style="verb">, use <tt>.
-[123] Warning | DEPRECATED_ELEMENT | The <list> element is deprecated. Instead, use <dl> for list/@style "hanging"; <ul> for list/@style "empty" or "symbols"; and <ol> for list/@style "letters", "numbers", "counter", or "format".
-[124] Warning | DEPRECATED_ELEMENT | The <list> element is deprecated. Instead, use <dl> for list/@style "hanging"; <ul> for list/@style "empty" or "symbols"; and <ol> for list/@style "letters", "numbers", "counter", or "format".
+[123] Warning | DEPRECATED_ELEMENT | The <spanx> element is deprecated. Instead of <spanx style="emph">, use <em>; instead of <spanx style="strong">, use <strong>; instead of <spanx style="verb">, use <tt>.
+[124] Warning | DEPRECATED_ELEMENT | The <spanx> element is deprecated. Instead of <spanx style="emph">, use <em>; instead of <spanx style="strong">, use <strong>; instead of <spanx style="verb">, use <tt>.
 [125] Warning | DEPRECATED_ELEMENT | The <spanx> element is deprecated. Instead of <spanx style="emph">, use <em>; instead of <spanx style="strong">, use <strong>; instead of <spanx style="verb">, use <tt>.
 [126] Warning | DEPRECATED_ELEMENT | The <spanx> element is deprecated. Instead of <spanx style="emph">, use <em>; instead of <spanx style="strong">, use <strong>; instead of <spanx style="verb">, use <tt>.
 [127] Warning | DEPRECATED_ELEMENT | The <spanx> element is deprecated. Instead of <spanx style="emph">, use <em>; instead of <spanx style="strong">, use <strong>; instead of <spanx style="verb">, use <tt>.
 [128] Warning | DEPRECATED_ELEMENT | The <spanx> element is deprecated. Instead of <spanx style="emph">, use <em>; instead of <spanx style="strong">, use <strong>; instead of <spanx style="verb">, use <tt>.
-[129] Warning | DEPRECATED_ELEMENT | The <spanx> element is deprecated. Instead of <spanx style="emph">, use <em>; instead of <spanx style="strong">, use <strong>; instead of <spanx style="verb">, use <tt>.
-[130] Warning | DEPRECATED_ELEMENT | The <spanx> element is deprecated. Instead of <spanx style="emph">, use <em>; instead of <spanx style="strong">, use <strong>; instead of <spanx style="verb">, use <tt>.
+[129] Warning | DEPRECATED_ELEMENT | The <list> element is deprecated. Instead, use <dl> for list/@style "hanging"; <ul> for list/@style "empty" or "symbols"; and <ol> for list/@style "letters", "numbers", "counter", or "format".
+[130] Warning | DEPRECATED_ELEMENT | The <list> element is deprecated. Instead, use <dl> for list/@style "hanging"; <ul> for list/@style "empty" or "symbols"; and <ol> for list/@style "letters", "numbers", "counter", or "format".
 [131] Warning | DEPRECATED_ELEMENT | The <spanx> element is deprecated. Instead of <spanx style="emph">, use <em>; instead of <spanx style="strong">, use <strong>; instead of <spanx style="verb">, use <tt>.
 [132] Warning | DEPRECATED_ELEMENT | The <spanx> element is deprecated. Instead of <spanx style="emph">, use <em>; instead of <spanx style="strong">, use <strong>; instead of <spanx style="verb">, use <tt>.
 [133] Warning | DEPRECATED_ELEMENT | The <spanx> element is deprecated. Instead of <spanx style="emph">, use <em>; instead of <spanx style="strong">, use <strong>; instead of <spanx style="verb">, use <tt>.
 [134] Warning | DEPRECATED_ELEMENT | The <spanx> element is deprecated. Instead of <spanx style="emph">, use <em>; instead of <spanx style="strong">, use <strong>; instead of <spanx style="verb">, use <tt>.
-[135] Warning | DEPRECATED_ELEMENT | The <list> element is deprecated. Instead, use <dl> for list/@style "hanging"; <ul> for list/@style "empty" or "symbols"; and <ol> for list/@style "letters", "numbers", "counter", or "format".
-[136] Warning | DEPRECATED_ELEMENT | The <list> element is deprecated. Instead, use <dl> for list/@style "hanging"; <ul> for list/@style "empty" or "symbols"; and <ol> for list/@style "letters", "numbers", "counter", or "format".
-[137] Warning | DEPRECATED_ELEMENT | The <list> element is deprecated. Instead, use <dl> for list/@style "hanging"; <ul> for list/@style "empty" or "symbols"; and <ol> for list/@style "letters", "numbers", "counter", or "format".
+[135] Warning | DEPRECATED_ELEMENT | The <spanx> element is deprecated. Instead of <spanx style="emph">, use <em>; instead of <spanx style="strong">, use <strong>; instead of <spanx style="verb">, use <tt>.
+[136] Warning | DEPRECATED_ELEMENT | The <spanx> element is deprecated. Instead of <spanx style="emph">, use <em>; instead of <spanx style="strong">, use <strong>; instead of <spanx style="verb">, use <tt>.
+[137] Warning | DEPRECATED_ELEMENT | The <spanx> element is deprecated. Instead of <spanx style="emph">, use <em>; instead of <spanx style="strong">, use <strong>; instead of <spanx style="verb">, use <tt>.
 [138] Warning | DEPRECATED_ELEMENT | The <spanx> element is deprecated. Instead of <spanx style="emph">, use <em>; instead of <spanx style="strong">, use <strong>; instead of <spanx style="verb">, use <tt>.
 [139] Warning | DEPRECATED_ELEMENT | The <spanx> element is deprecated. Instead of <spanx style="emph">, use <em>; instead of <spanx style="strong">, use <strong>; instead of <spanx style="verb">, use <tt>.
-[140] Warning | DEPRECATED_ELEMENT | The <list> element is deprecated. Instead, use <dl> for list/@style "hanging"; <ul> for list/@style "empty" or "symbols"; and <ol> for list/@style "letters", "numbers", "counter", or "format".
+[140] Warning | DEPRECATED_ELEMENT | The <spanx> element is deprecated. Instead of <spanx style="emph">, use <em>; instead of <spanx style="strong">, use <strong>; instead of <spanx style="verb">, use <tt>.
 [141] Warning | DEPRECATED_ELEMENT | The <list> element is deprecated. Instead, use <dl> for list/@style "hanging"; <ul> for list/@style "empty" or "symbols"; and <ol> for list/@style "letters", "numbers", "counter", or "format".
-[142] Warning | DEPRECATED_ELEMENT | The <spanx> element is deprecated. Instead of <spanx style="emph">, use <em>; instead of <spanx style="strong">, use <strong>; instead of <spanx style="verb">, use <tt>.
-[143] Warning | DEPRECATED_ELEMENT | The <spanx> element is deprecated. Instead of <spanx style="emph">, use <em>; instead of <spanx style="strong">, use <strong>; instead of <spanx style="verb">, use <tt>.
+[142] Warning | DEPRECATED_ELEMENT | The <list> element is deprecated. Instead, use <dl> for list/@style "hanging"; <ul> for list/@style "empty" or "symbols"; and <ol> for list/@style "letters", "numbers", "counter", or "format".
+[143] Warning | DEPRECATED_ELEMENT | The <list> element is deprecated. Instead, use <dl> for list/@style "hanging"; <ul> for list/@style "empty" or "symbols"; and <ol> for list/@style "letters", "numbers", "counter", or "format".
 [144] Warning | DEPRECATED_ELEMENT | The <spanx> element is deprecated. Instead of <spanx style="emph">, use <em>; instead of <spanx style="strong">, use <strong>; instead of <spanx style="verb">, use <tt>.
-[145] Warning | DEPRECATED_ELEMENT | The <list> element is deprecated. Instead, use <dl> for list/@style "hanging"; <ul> for list/@style "empty" or "symbols"; and <ol> for list/@style "letters", "numbers", "counter", or "format".
+[145] Warning | DEPRECATED_ELEMENT | The <spanx> element is deprecated. Instead of <spanx style="emph">, use <em>; instead of <spanx style="strong">, use <strong>; instead of <spanx style="verb">, use <tt>.
 [146] Warning | DEPRECATED_ELEMENT | The <list> element is deprecated. Instead, use <dl> for list/@style "hanging"; <ul> for list/@style "empty" or "symbols"; and <ol> for list/@style "letters", "numbers", "counter", or "format".
 [147] Warning | DEPRECATED_ELEMENT | The <list> element is deprecated. Instead, use <dl> for list/@style "hanging"; <ul> for list/@style "empty" or "symbols"; and <ol> for list/@style "letters", "numbers", "counter", or "format".
-[148] Warning | DEPRECATED_ELEMENT | The <list> element is deprecated. Instead, use <dl> for list/@style "hanging"; <ul> for list/@style "empty" or "symbols"; and <ol> for list/@style "letters", "numbers", "counter", or "format".
-[149] Warning | DEPRECATED_ELEMENT | The <list> element is deprecated. Instead, use <dl> for list/@style "hanging"; <ul> for list/@style "empty" or "symbols"; and <ol> for list/@style "letters", "numbers", "counter", or "format".
+[148] Warning | DEPRECATED_ELEMENT | The <spanx> element is deprecated. Instead of <spanx style="emph">, use <em>; instead of <spanx style="strong">, use <strong>; instead of <spanx style="verb">, use <tt>.
+[149] Warning | DEPRECATED_ELEMENT | The <spanx> element is deprecated. Instead of <spanx style="emph">, use <em>; instead of <spanx style="strong">, use <strong>; instead of <spanx style="verb">, use <tt>.
 [150] Warning | DEPRECATED_ELEMENT | The <spanx> element is deprecated. Instead of <spanx style="emph">, use <em>; instead of <spanx style="strong">, use <strong>; instead of <spanx style="verb">, use <tt>.
 [151] Warning | DEPRECATED_ELEMENT | The <list> element is deprecated. Instead, use <dl> for list/@style "hanging"; <ul> for list/@style "empty" or "symbols"; and <ol> for list/@style "letters", "numbers", "counter", or "format".
-[152] Warning | DEPRECATED_ELEMENT | The <spanx> element is deprecated. Instead of <spanx style="emph">, use <em>; instead of <spanx style="strong">, use <strong>; instead of <spanx style="verb">, use <tt>.
+[152] Warning | DEPRECATED_ELEMENT | The <list> element is deprecated. Instead, use <dl> for list/@style "hanging"; <ul> for list/@style "empty" or "symbols"; and <ol> for list/@style "letters", "numbers", "counter", or "format".
 [153] Warning | DEPRECATED_ELEMENT | The <list> element is deprecated. Instead, use <dl> for list/@style "hanging"; <ul> for list/@style "empty" or "symbols"; and <ol> for list/@style "letters", "numbers", "counter", or "format".
-[154] Warning | DEPRECATED_ELEMENT | The <texttable> element is deprecated. Use <table> instead.
-[155] Warning | DEPRECATED_ELEMENT | The <ttcol> element is deprecated. Instead, use <tr>, <td>, and <th>.
-[156] Warning | DEPRECATED_ELEMENT | The <c> element is deprecated. Instead, use <tr>, <td>, and <th>.
+[154] Warning | DEPRECATED_ELEMENT | The <list> element is deprecated. Instead, use <dl> for list/@style "hanging"; <ul> for list/@style "empty" or "symbols"; and <ol> for list/@style "letters", "numbers", "counter", or "format".
+[155] Warning | DEPRECATED_ELEMENT | The <list> element is deprecated. Instead, use <dl> for list/@style "hanging"; <ul> for list/@style "empty" or "symbols"; and <ol> for list/@style "letters", "numbers", "counter", or "format".
+[156] Warning | DEPRECATED_ELEMENT | The <spanx> element is deprecated. Instead of <spanx style="emph">, use <em>; instead of <spanx style="strong">, use <strong>; instead of <spanx style="verb">, use <tt>.
 [157] Warning | DEPRECATED_ELEMENT | The <list> element is deprecated. Instead, use <dl> for list/@style "hanging"; <ul> for list/@style "empty" or "symbols"; and <ol> for list/@style "letters", "numbers", "counter", or "format".
-[158] Warning | DEPRECATED_ELEMENT | The <list> element is deprecated. Instead, use <dl> for list/@style "hanging"; <ul> for list/@style "empty" or "symbols"; and <ol> for list/@style "letters", "numbers", "counter", or "format".
-[159] Warning | DEPRECATED_ELEMENT | The <spanx> element is deprecated. Instead of <spanx style="emph">, use <em>; instead of <spanx style="strong">, use <strong>; instead of <spanx style="verb">, use <tt>.
-[160] Warning | DEPRECATED_ELEMENT | The <spanx> element is deprecated. Instead of <spanx style="emph">, use <em>; instead of <spanx style="strong">, use <strong>; instead of <spanx style="verb">, use <tt>.
-[161] Warning | DEPRECATED_ELEMENT | The <spanx> element is deprecated. Instead of <spanx style="emph">, use <em>; instead of <spanx style="strong">, use <strong>; instead of <spanx style="verb">, use <tt>.
-[162] Warning | DEPRECATED_ELEMENT | The <spanx> element is deprecated. Instead of <spanx style="emph">, use <em>; instead of <spanx style="strong">, use <strong>; instead of <spanx style="verb">, use <tt>.
-[163] Warning | DEPRECATED_ELEMENT | The <spanx> element is deprecated. Instead of <spanx style="emph">, use <em>; instead of <spanx style="strong">, use <strong>; instead of <spanx style="verb">, use <tt>.
-[164] Warning | DEPRECATED_ELEMENT | The <spanx> element is deprecated. Instead of <spanx style="emph">, use <em>; instead of <spanx style="strong">, use <strong>; instead of <spanx style="verb">, use <tt>.
-[165] Warning | DEPRECATED_ELEMENT | The <list> element is deprecated. Instead, use <dl> for list/@style "hanging"; <ul> for list/@style "empty" or "symbols"; and <ol> for list/@style "letters", "numbers", "counter", or "format".
+[158] Warning | DEPRECATED_ELEMENT | The <spanx> element is deprecated. Instead of <spanx style="emph">, use <em>; instead of <spanx style="strong">, use <strong>; instead of <spanx style="verb">, use <tt>.
+[159] Warning | DEPRECATED_ELEMENT | The <list> element is deprecated. Instead, use <dl> for list/@style "hanging"; <ul> for list/@style "empty" or "symbols"; and <ol> for list/@style "letters", "numbers", "counter", or "format".
+[160] Warning | DEPRECATED_ELEMENT | The <texttable> element is deprecated. Use <table> instead.
+[161] Warning | DEPRECATED_ELEMENT | The <ttcol> element is deprecated. Instead, use <tr>, <td>, and <th>.
+[162] Warning | DEPRECATED_ELEMENT | The <c> element is deprecated. Instead, use <tr>, <td>, and <th>.
+[163] Warning | DEPRECATED_ELEMENT | The <list> element is deprecated. Instead, use <dl> for list/@style "hanging"; <ul> for list/@style "empty" or "symbols"; and <ol> for list/@style "letters", "numbers", "counter", or "format".
+[164] Warning | DEPRECATED_ELEMENT | The <list> element is deprecated. Instead, use <dl> for list/@style "hanging"; <ul> for list/@style "empty" or "symbols"; and <ol> for list/@style "letters", "numbers", "counter", or "format".
+[165] Warning | DEPRECATED_ELEMENT | The <spanx> element is deprecated. Instead of <spanx style="emph">, use <em>; instead of <spanx style="strong">, use <strong>; instead of <spanx style="verb">, use <tt>.
 [166] Warning | DEPRECATED_ELEMENT | The <spanx> element is deprecated. Instead of <spanx style="emph">, use <em>; instead of <spanx style="strong">, use <strong>; instead of <spanx style="verb">, use <tt>.
 [167] Warning | DEPRECATED_ELEMENT | The <spanx> element is deprecated. Instead of <spanx style="emph">, use <em>; instead of <spanx style="strong">, use <strong>; instead of <spanx style="verb">, use <tt>.
 [168] Warning | DEPRECATED_ELEMENT | The <spanx> element is deprecated. Instead of <spanx style="emph">, use <em>; instead of <spanx style="strong">, use <strong>; instead of <spanx style="verb">, use <tt>.
 [169] Warning | DEPRECATED_ELEMENT | The <spanx> element is deprecated. Instead of <spanx style="emph">, use <em>; instead of <spanx style="strong">, use <strong>; instead of <spanx style="verb">, use <tt>.
-[170] Warning | DEPRECATED_ELEMENT | The <texttable> element is deprecated. Use <table> instead.
-[171] Warning | DEPRECATED_ELEMENT | The <ttcol> element is deprecated. Instead, use <tr>, <td>, and <th>.
-[172] Warning | DEPRECATED_ELEMENT | The <c> element is deprecated. Instead, use <tr>, <td>, and <th>.
+[170] Warning | DEPRECATED_ELEMENT | The <spanx> element is deprecated. Instead of <spanx style="emph">, use <em>; instead of <spanx style="strong">, use <strong>; instead of <spanx style="verb">, use <tt>.
+[171] Warning | DEPRECATED_ELEMENT | The <list> element is deprecated. Instead, use <dl> for list/@style "hanging"; <ul> for list/@style "empty" or "symbols"; and <ol> for list/@style "letters", "numbers", "counter", or "format".
+[172] Warning | DEPRECATED_ELEMENT | The <spanx> element is deprecated. Instead of <spanx style="emph">, use <em>; instead of <spanx style="strong">, use <strong>; instead of <spanx style="verb">, use <tt>.
 [173] Warning | DEPRECATED_ELEMENT | The <spanx> element is deprecated. Instead of <spanx style="emph">, use <em>; instead of <spanx style="strong">, use <strong>; instead of <spanx style="verb">, use <tt>.
 [174] Warning | DEPRECATED_ELEMENT | The <spanx> element is deprecated. Instead of <spanx style="emph">, use <em>; instead of <spanx style="strong">, use <strong>; instead of <spanx style="verb">, use <tt>.
 [175] Warning | DEPRECATED_ELEMENT | The <spanx> element is deprecated. Instead of <spanx style="emph">, use <em>; instead of <spanx style="strong">, use <strong>; instead of <spanx style="verb">, use <tt>.
-[176] Warning | DEPRECATED_ELEMENT | The <spanx> element is deprecated. Instead of <spanx style="emph">, use <em>; instead of <spanx style="strong">, use <strong>; instead of <spanx style="verb">, use <tt>.
-[177] Warning | DEPRECATED_ELEMENT | The <spanx> element is deprecated. Instead of <spanx style="emph">, use <em>; instead of <spanx style="strong">, use <strong>; instead of <spanx style="verb">, use <tt>.
-[178] Warning | DEPRECATED_ELEMENT | The <spanx> element is deprecated. Instead of <spanx style="emph">, use <em>; instead of <spanx style="strong">, use <strong>; instead of <spanx style="verb">, use <tt>.
+[176] Warning | DEPRECATED_ELEMENT | The <texttable> element is deprecated. Use <table> instead.
+[177] Warning | DEPRECATED_ELEMENT | The <ttcol> element is deprecated. Instead, use <tr>, <td>, and <th>.
+[178] Warning | DEPRECATED_ELEMENT | The <c> element is deprecated. Instead, use <tr>, <td>, and <th>.
 [179] Warning | DEPRECATED_ELEMENT | The <spanx> element is deprecated. Instead of <spanx style="emph">, use <em>; instead of <spanx style="strong">, use <strong>; instead of <spanx style="verb">, use <tt>.
 [180] Warning | DEPRECATED_ELEMENT | The <spanx> element is deprecated. Instead of <spanx style="emph">, use <em>; instead of <spanx style="strong">, use <strong>; instead of <spanx style="verb">, use <tt>.
 [181] Warning | DEPRECATED_ELEMENT | The <spanx> element is deprecated. Instead of <spanx style="emph">, use <em>; instead of <spanx style="strong">, use <strong>; instead of <spanx style="verb">, use <tt>.
@@ -415,21 +421,27 @@ FAIL - Document draft-mih-sato-agent-accountability-composition-02.xml has nits.
 [197] Warning | DEPRECATED_ELEMENT | The <spanx> element is deprecated. Instead of <spanx style="emph">, use <em>; instead of <spanx style="strong">, use <strong>; instead of <spanx style="verb">, use <tt>.
 [198] Warning | DEPRECATED_ELEMENT | The <spanx> element is deprecated. Instead of <spanx style="emph">, use <em>; instead of <spanx style="strong">, use <strong>; instead of <spanx style="verb">, use <tt>.
 [199] Warning | DEPRECATED_ELEMENT | The <spanx> element is deprecated. Instead of <spanx style="emph">, use <em>; instead of <spanx style="strong">, use <strong>; instead of <spanx style="verb">, use <tt>.
-[200] Warning | DEPRECATED_ELEMENT | The <ttcol> element is deprecated. Instead, use <tr>, <td>, and <th>.
-[201] Warning | DEPRECATED_ELEMENT | The <c> element is deprecated. Instead, use <tr>, <td>, and <th>.
+[200] Warning | DEPRECATED_ELEMENT | The <spanx> element is deprecated. Instead of <spanx style="emph">, use <em>; instead of <spanx style="strong">, use <strong>; instead of <spanx style="verb">, use <tt>.
+[201] Warning | DEPRECATED_ELEMENT | The <spanx> element is deprecated. Instead of <spanx style="emph">, use <em>; instead of <spanx style="strong">, use <strong>; instead of <spanx style="verb">, use <tt>.
 [202] Warning | DEPRECATED_ELEMENT | The <spanx> element is deprecated. Instead of <spanx style="emph">, use <em>; instead of <spanx style="strong">, use <strong>; instead of <spanx style="verb">, use <tt>.
 [203] Warning | DEPRECATED_ELEMENT | The <spanx> element is deprecated. Instead of <spanx style="emph">, use <em>; instead of <spanx style="strong">, use <strong>; instead of <spanx style="verb">, use <tt>.
-[204] Warning | DEPRECATED_ELEMENT | The <list> element is deprecated. Instead, use <dl> for list/@style "hanging"; <ul> for list/@style "empty" or "symbols"; and <ol> for list/@style "letters", "numbers", "counter", or "format".
-[205] Warning | DEPRECATED_ELEMENT | The <list> element is deprecated. Instead, use <dl> for list/@style "hanging"; <ul> for list/@style "empty" or "symbols"; and <ol> for list/@style "letters", "numbers", "counter", or "format".
-[206] Warning | DEPRECATED_ELEMENT | The <spanx> element is deprecated. Instead of <spanx style="emph">, use <em>; instead of <spanx style="strong">, use <strong>; instead of <spanx style="verb">, use <tt>.
-[207] Warning | DEPRECATED_ELEMENT | The <list> element is deprecated. Instead, use <dl> for list/@style "hanging"; <ul> for list/@style "empty" or "symbols"; and <ol> for list/@style "letters", "numbers", "counter", or "format".
-[208] Error | SUBMISSION_TYPE_UNEXPECTED | A document stream is specified in the rfc tag but the existing version has no stream on Datatracker. Is this intentional?
+[204] Warning | DEPRECATED_ELEMENT | The <spanx> element is deprecated. Instead of <spanx style="emph">, use <em>; instead of <spanx style="strong">, use <strong>; instead of <spanx style="verb">, use <tt>.
+[205] Warning | DEPRECATED_ELEMENT | The <spanx> element is deprecated. Instead of <spanx style="emph">, use <em>; instead of <spanx style="strong">, use <strong>; instead of <spanx style="verb">, use <tt>.
+[206] Warning | DEPRECATED_ELEMENT | The <ttcol> element is deprecated. Instead, use <tr>, <td>, and <th>.
+[207] Warning | DEPRECATED_ELEMENT | The <c> element is deprecated. Instead, use <tr>, <td>, and <th>.
+[208] Warning | DEPRECATED_ELEMENT | The <spanx> element is deprecated. Instead of <spanx style="emph">, use <em>; instead of <spanx style="strong">, use <strong>; instead of <spanx style="verb">, use <tt>.
+[209] Warning | DEPRECATED_ELEMENT | The <spanx> element is deprecated. Instead of <spanx style="emph">, use <em>; instead of <spanx style="strong">, use <strong>; instead of <spanx style="verb">, use <tt>.
+[210] Warning | DEPRECATED_ELEMENT | The <list> element is deprecated. Instead, use <dl> for list/@style "hanging"; <ul> for list/@style "empty" or "symbols"; and <ol> for list/@style "letters", "numbers", "counter", or "format".
+[211] Warning | DEPRECATED_ELEMENT | The <list> element is deprecated. Instead, use <dl> for list/@style "hanging"; <ul> for list/@style "empty" or "symbols"; and <ol> for list/@style "letters", "numbers", "counter", or "format".
+[212] Warning | DEPRECATED_ELEMENT | The <spanx> element is deprecated. Instead of <spanx style="emph">, use <em>; instead of <spanx style="strong">, use <strong>; instead of <spanx style="verb">, use <tt>.
+[213] Warning | DEPRECATED_ELEMENT | The <list> element is deprecated. Instead, use <dl> for list/@style "hanging"; <ul> for list/@style "empty" or "symbols"; and <ol> for list/@style "letters", "numbers", "counter", or "format".
+[214] Error | SUBMISSION_TYPE_UNEXPECTED | A document stream is specified in the rfc tag but the existing version has no stream on Datatracker. Is this intentional?
 
 ===== xml · submission
 FAIL - Document draft-mih-sato-agent-accountability-composition-02.xml has nits. (mode: submission)
 
 [1] Warning | LINE_PI | Document contains <?line 123?> processing instruction tags.
-[2] Warning | DOC_DATE_IN_FUTURE | The document date is 8 days in the future. Is this intentional?
+[2] Warning | DOC_DATE_IN_FUTURE | The document date is 4 days in the future. Is this intentional?
 [3] Warning | DEPRECATED_ELEMENT | The <list> element is deprecated. Instead, use <dl> for list/@style "hanging"; <ul> for list/@style "empty" or "symbols"; and <ol> for list/@style "letters", "numbers", "counter", or "format".
 [4] Warning | DEPRECATED_ELEMENT | The <list> element is deprecated. Instead, use <dl> for list/@style "hanging"; <ul> for list/@style "empty" or "symbols"; and <ol> for list/@style "letters", "numbers", "counter", or "format".
 [5] Warning | DEPRECATED_ELEMENT | The <list> element is deprecated. Instead, use <dl> for list/@style "hanging"; <ul> for list/@style "empty" or "symbols"; and <ol> for list/@style "letters", "numbers", "counter", or "format".
@@ -543,7 +555,7 @@ FAIL - Document draft-mih-sato-agent-accountability-composition-02.txt has nits.
 
 [1] Comment | NON_ASCII_UTF8 | Review RFC7997 to ensure your document respects UTF-8 rules for non-ASCII.
 [2] Warning | PREFER_BCP14_REF | Consider referencing BCP14 instead of (or in addition to) RFC2119/RFC8174, as BCP14 encompasses both specifications.
-[3] Warning | DOC_DATE_IN_FUTURE | The document date is 8 days in the future. Is this intentional?
+[3] Warning | DOC_DATE_IN_FUTURE | The document date is 4 days in the future. Is this intentional?
 [4] Warning | REFERENCE_NOT_USED | The reference [OpenID4VP] is listed in the References section but is not mentioned in the document text.
 [5] Warning | REFERENCE_NOT_USED | The reference [MACHINE-MANDATE] is listed in the References section but is not mentioned in the document text.
 [6] Error | POSSIBLE_DOWNREF | Reference to draft-schrock-canonical-action-identifier is possible downref
@@ -557,7 +569,7 @@ FAIL - Document draft-mih-sato-agent-accountability-composition-02.txt has nits.
 
 [1] Comment | NON_ASCII_UTF8 | Review RFC7997 to ensure your document respects UTF-8 rules for non-ASCII.
 [2] Warning | PREFER_BCP14_REF | Consider referencing BCP14 instead of (or in addition to) RFC2119/RFC8174, as BCP14 encompasses both specifications.
-[3] Warning | DOC_DATE_IN_FUTURE | The document date is 8 days in the future. Is this intentional?
+[3] Warning | DOC_DATE_IN_FUTURE | The document date is 4 days in the future. Is this intentional?
 [4] Warning | REFERENCE_NOT_USED | The reference [OpenID4VP] is listed in the References section but is not mentioned in the document text.
 [5] Warning | REFERENCE_NOT_USED | The reference [MACHINE-MANDATE] is listed in the References section but is not mentioned in the document text.
 [6] Error | POSSIBLE_DOWNREF | Reference to draft-schrock-canonical-action-identifier is possible downref
@@ -569,6 +581,6 @@ FAIL - Document draft-mih-sato-agent-accountability-composition-02.txt has nits.
 ===== txt · submission
 FAIL - Document draft-mih-sato-agent-accountability-composition-02.txt has nits. (mode: submission)
 
-[1] Warning | DOC_DATE_IN_FUTURE | The document date is 8 days in the future. Is this intentional?
+[1] Warning | DOC_DATE_IN_FUTURE | The document date is 4 days in the future. Is this intentional?
 [2] Warning | REFERENCE_NOT_USED | The reference [OpenID4VP] is listed in the References section but is not mentioned in the document text.
 [3] Warning | REFERENCE_NOT_USED | The reference [MACHINE-MANDATE] is listed in the References section but is not mentioned in the document text.

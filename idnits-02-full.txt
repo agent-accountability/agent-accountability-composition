@@ -1,0 +1,127 @@
+idnits 2.17.1 
+
+draft-mih-sato-agent-accountability-composition-02.txt:
+-(31): Line appears to be too long, but this could be caused by non-ascii characters in UTF-8 encoding
+-(42): Line appears to be too long, but this could be caused by non-ascii characters in UTF-8 encoding
+-(146): Line appears to be too long, but this could be caused by non-ascii characters in UTF-8 encoding
+-(170): Line appears to be too long, but this could be caused by non-ascii characters in UTF-8 encoding
+-(172): Line appears to be too long, but this could be caused by non-ascii characters in UTF-8 encoding
+-(232): Line appears to be too long, but this could be caused by non-ascii characters in UTF-8 encoding
+-(245): Line appears to be too long, but this could be caused by non-ascii characters in UTF-8 encoding
+-(255): Line appears to be too long, but this could be caused by non-ascii characters in UTF-8 encoding
+-(270): Line appears to be too long, but this could be caused by non-ascii characters in UTF-8 encoding
+-(271): Line appears to be too long, but this could be caused by non-ascii characters in UTF-8 encoding
+-(282): Line appears to be too long, but this could be caused by non-ascii characters in UTF-8 encoding
+-(290): Line appears to be too long, but this could be caused by non-ascii characters in UTF-8 encoding
+-(306): Line appears to be too long, but this could be caused by non-ascii characters in UTF-8 encoding
+-(311): Line appears to be too long, but this could be caused by non-ascii characters in UTF-8 encoding
+-(318): Line appears to be too long, but this could be caused by non-ascii characters in UTF-8 encoding
+-(475): Line appears to be too long, but this could be caused by non-ascii characters in UTF-8 encoding
+-(934): Line appears to be too long, but this could be caused by non-ascii characters in UTF-8 encoding
+-(950): Line appears to be too long, but this could be caused by non-ascii characters in UTF-8 encoding
+-(956): Line appears to be too long, but this could be caused by non-ascii characters in UTF-8 encoding
+-(975): Line appears to be too long, but this could be caused by non-ascii characters in UTF-8 encoding
+-(1038): Line appears to be too long, but this could be caused by non-ascii characters in UTF-8 encoding
+-(1116): Line appears to be too long, but this could be caused by non-ascii characters in UTF-8 encoding
+-(1206): Line appears to be too long, but this could be caused by non-ascii characters in UTF-8 encoding
+-(1756): Line appears to be too long, but this could be caused by non-ascii characters in UTF-8 encoding
+-(1765): Line appears to be too long, but this could be caused by non-ascii characters in UTF-8 encoding
+-(1788): Line appears to be too long, but this could be caused by non-ascii characters in UTF-8 encoding
+-(2034): Line appears to be too long, but this could be caused by non-ascii characters in UTF-8 encoding
+-(2472): Line appears to be too long, but this could be caused by non-ascii characters in UTF-8 encoding
+
+  Checking boilerplate required by RFC 5378 and the IETF Trust (see
+  https://trustee.ietf.org/license-info):
+  ----------------------------------------------------------------------------
+
+     No issues found here.
+
+  Checking nits according to https://www.ietf.org/id-info/1id-guidelines.txt:
+  ----------------------------------------------------------------------------
+
+  == There are 95 instances of lines with non-ascii characters in the
+     document.
+
+
+  Checking nits according to https://www.ietf.org/id-info/checklist :
+  ----------------------------------------------------------------------------
+
+  == There are 1 instance of lines with non-RFC2606-compliant FQDNs in the
+     document.
+
+
+  Miscellaneous warnings:
+  ----------------------------------------------------------------------------
+
+  -- The document date (29 October 2026) is 4 days in the future.  Is this
+     intentional?
+
+
+  Checking references for intended status: Informational
+  ----------------------------------------------------------------------------
+
+  == Outdated reference: A later version (-05) exists of
+     draft-schrock-canonical-action-identifier-02
+
+  == Outdated reference: A later version (-08) exists of
+     draft-schrock-ep-authorization-evidence-chain-05
+
+  == Outdated reference: A later version (-07) exists of
+     draft-schrock-action-evidence-boundary-03
+
+  == Outdated reference: A later version (-05) exists of
+     draft-schrock-canonical-action-identifier-04
+
+  -- Duplicate reference: draft-schrock-canonical-action-identifier,
+     mentioned in 'I-D.schrock-caid-current', was also mentioned in
+     'I-D.schrock-caid'.
+
+  == Outdated reference: A later version (-08) exists of
+     draft-schrock-ep-authorization-evidence-chain-07
+
+  -- Duplicate reference: draft-schrock-ep-authorization-evidence-chain,
+     mentioned in 'I-D.schrock-aec-current', was also mentioned in
+     'I-D.schrock-aec'.
+
+  -- Duplicate reference: draft-schrock-action-evidence-boundary, mentioned
+     in 'I-D.schrock-aeb-current', was also mentioned in 'I-D.schrock-aeb'.
+
+  == Outdated reference: A later version (-01) exists of
+     draft-kuehlewind-audit-architecture-00
+
+  == Outdated reference: A later version (-04) exists of
+     draft-etcheverry-action-ref-03
+
+  == Outdated reference: A later version (-08) exists of
+     draft-sharif-agent-audit-trail-00
+
+  == Outdated reference: A later version (-13) exists of
+     draft-schrock-ep-authorization-receipts-11
+
+  -- Unexpected draft version: The latest known version of 
+     draft-mih-agent-bilateral-attestation is -02, but you're referring to
+     -03. (However, the state information for
+     draft-schrock-action-evidence-boundary is not up-to-date.  The last
+     update was unsuccessful)
+
+  == Outdated reference: A later version (-06) exists of
+     draft-sokolov-rats-aep-composition-03
+
+  == Outdated reference: A later version (-08) exists of
+     draft-sato-soos-gar-03
+
+  == Outdated reference: A later version (-08) exists of
+     draft-sato-soos-gar-02
+
+  -- Duplicate reference: draft-sato-soos-gar, mentioned in
+     'I-D.sato-soos-gar-02', was also mentioned in 'I-D.sato-soos-gar'.
+
+  == Outdated reference: A later version (-19) exists of
+     draft-ietf-oauth-sd-jwt-vc-17
+
+
+     Summary: 0 errors (**), 0 flaws (~~), 15 warnings (==), 6 comments (--).
+
+     Run idnits with the --verbose option for more detailed information about
+     the items above.
+

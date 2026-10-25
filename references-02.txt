@@ -1,0 +1,28 @@
+# Every Internet-Draft reference in -02, as built. dt = latest revision on the Datatracker on 2026-10-25.
+# status: posted = the cited revision is on the Datatracker; order = posts earlier in the IETF 127 order
+#   (bilateral-03 -> ER-01 -> EL-01 -> composition-02 -> AAC-06). A later dt revision than the one cited
+#   is a deliberate pin (see build-log-02.txt, idnits 2 'Outdated reference').
+
+anchor                                     section     cited                                              dt  status
+I-D.schrock-caid                           normative   draft-schrock-canonical-action-identifier-02       05  posted
+I-D.schrock-aec                            normative   draft-schrock-ep-authorization-evidence-chain-05   08  posted
+I-D.schrock-aeb                            normative   draft-schrock-action-evidence-boundary-03          07  posted
+I-D.schrock-caid-current                   informative draft-schrock-canonical-action-identifier-04       05  posted
+I-D.schrock-aec-current                    informative draft-schrock-ep-authorization-evidence-chain-07   08  posted
+I-D.schrock-aeb-current                    informative draft-schrock-action-evidence-boundary-07          07  posted
+I-D.kuehlewind-audit-architecture          informative draft-kuehlewind-audit-architecture-00             01  posted
+I-D.etcheverry-action-ref                  informative draft-etcheverry-action-ref-03                     04  posted
+I-D.sharif-agent-audit-trail               informative draft-sharif-agent-audit-trail-00                  08  posted
+I-D.bates-atp                              informative draft-bates-atp-00                                 00  posted
+I-D.aylward-aiga                           informative draft-aylward-aiga-00                              00  posted
+I-D.schrock-human-authorization-binding    informative draft-schrock-human-authorization-binding-00       00  posted
+I-D.schrock-ep-authorization-receipts      informative draft-schrock-ep-authorization-receipts-11         13  posted
+I-D.mih-scitt-agent-action-capsule         informative draft-mih-scitt-agent-action-capsule-05            05  posted
+I-D.mih-sokolov-scitt-payload-binding      informative draft-mih-sokolov-scitt-payload-binding-05         05  posted
+I-D.mih-agent-bilateral-attestation        informative draft-mih-agent-bilateral-attestation-03           02  order
+I-D.bu-agentproto-security-principal-binding-03 informative (no revision in entry; target https://datatracker.ietf.org/doc/draft-bu-agentproto-security-principal-binding/)     n/a
+I-D.lee-orprg-permit-receipts              informative draft-lee-orprg-permit-receipts-00                 00  posted
+I-D.sokolov-rats-aep-composition           informative draft-sokolov-rats-aep-composition-03              06  posted
+I-D.sato-soos-gar                          informative draft-sato-soos-gar-03                             08  posted
+I-D.sato-soos-gar-02                       informative draft-sato-soos-gar-02                             08  posted
+I-D.ietf-oauth-sd-jwt-vc-17                informative draft-ietf-oauth-sd-jwt-vc-17                      19  posted

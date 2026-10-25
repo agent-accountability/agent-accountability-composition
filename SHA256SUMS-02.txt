@@ -1,24 +1,29 @@
-# SHA-256 checksums — composition -02 candidate
+# SHA-256 checksums — composition -02
 
-Supersedes the sheet at 45bd421 (computed at 1de23e2). This candidate is
-45bd421 plus, in order:
+Source commit (the bytes hashed below): 5113d2176758230d73ea32da49124d4c4168a333
+Branch: compose-02, on top of 45bd421500b18cfbc4fe96d393aeef39b2c285d9.
+Toolchain: kramdown-rfc2629 1.7.43 (Ruby 3.3.6), xml2rfc 3.34.1 (Python 3.12.3),
+idnits 2.17.1, idnits 3.1.0 (Node v20.20.2). The reference layout and the exact
+build, lint and validation commands are in build-log-02.txt.
 
-  6a484d1  Songbo Bu's 2026-10-03 evidence-coordinate review patch, applied as
-           sent (patch sha256 ed64bac0d86381f4bc4bf0d8ad6264e238c40a64b307c78e7000f5f843c325e2;
+Commits on 45bd421, in order:
+  6a484d1c44604e1923ca835452909347ce6738f1  Songbo Bu's 2026-10-03 patch, applied as sent
+           (patch sha256 ed64bac0d86381f4bc4bf0d8ad6264e238c40a64b307c78e7000f5f843c325e2;
            the resulting .md and INTEROP.md match his SHA256SUMS.txt)
-  c17cb1d  Anton Sokolov's 2026-10-04 AUDIT verifier-report wording
-  d655aaa  date pinned to 2026-10-29; AAC -06 / CPB -06 / bilateral -03 references
-  3826d65  four reference-accuracy sentence fixes; Changes from -01 entries
-  e3f6648  Changes from -01 entry for the 2026-10-03 evidence-coordinate changes
-  19ade2a  SD-JWT VC reference fields pinned (idnits 3 TABS_NOT_ALLOWED)
+  c17cb1de8a961cdee316fdc4873a00f020179c4b  Anton Sokolov's 2026-10-04 AUDIT verifier wording
+  d655aaa734abe52b05153a66137d1f98fcc6b648  date 2026-10-29; reference refresh
+  3826d652b38b9bd8148d230a451f599d67bb0ce0  four reference-accuracy fixes; change log
+  e3f6648f1f34f9f3b0401813f05f9f2dcce74c54  change-log entry for the 2026-10-03 evidence changes
+  19ade2a316ac87e11d3e16fd21fe6b6c2cbf9597  SD-JWT VC reference fields pinned
+  b5a00c5b6071702c6178c18cd8b1a1b24140ef42  issue #10: principal commitment at the seam
+  5113d2176758230d73ea32da49124d4c4168a333  AAC -05 and payload binding -05 (IETF 127 order)
 
-The date is pinned, so a rebuild on any day reproduces these bytes: the
-committed .xml and .txt are identical to a fresh kramdown-rfc2629 1.7.43 +
-xml2rfc 3.34.1 build of the committed .md (build-log-02.txt).
+The date is pinned, so a rebuild reproduces these bytes on any day.
 
-Computed with sha256sum over the committed files at 19ade2a316ac87e11d3e16fd21fe6b6c2cbf9597.
-
-5801e4490b697a8447a1e6866a14ee1a597f7e409e02631880589375903c34a8  draft-mih-sato-agent-accountability-composition.md
-b1aa73d2ef100caa3d17606a66357a8a5840c55cc0184f117913da7efca9339a  draft-mih-sato-agent-accountability-composition.xml
-20bedf2bb65e1d4cb841e461d261d332ca24cd79395dfea97be164644357b5c5  draft-mih-sato-agent-accountability-composition.txt
+21686074b541de23e09faea3be4ad8605bd70c821df162df6020b0e50d7b605c  draft-mih-sato-agent-accountability-composition.md
+cf6f0edbcf111c26d793afb693bd738d1236029a7de9215f59c850a335ff3473  draft-mih-sato-agent-accountability-composition.xml
+8dc96289a992373df4bdb4344883a9459896738f137e7ead3413f97ae84307fd  draft-mih-sato-agent-accountability-composition.txt
 eb140751febed07f7c15f6ab3e001ce13560466057e95923c95935533eedf625  INTEROP.md
+c4449db9345b0118a712f9cf09ac99fe5a47287c35e7bbfaaee6543718cf4420  legs/who.md
+ef0175eebd0bf2b69d8a30c19448700c79cdb5fa57dacd8e48669940b95fe7ff  diff-composition-01-to-02.txt
+01e3e2a7599f4cfdf1d164fb7e2afb53cb76f00cdf000b7fdcd827952a628fad  references-02.txt

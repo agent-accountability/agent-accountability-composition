@@ -1,71 +1,114 @@
-Build log — composition -02 candidate (source at 19ade2a316ac87e11d3e16fd21fe6b6c2cbf9597)
-Toolchain: kramdown-rfc2629 1.7.43 (Ruby 3.3.6), xml2rfc 3.34.1, idnits 2.17.1, idnits 3.1.0 (Node 20)
-Commands (the Makefile recipe):
+Build and validation log — composition -02 (source commit 5113d2176758230d73ea32da49124d4c4168a333)
+
+== Toolchain ==
+  kramdown-rfc2629 1.7.43 (Ruby 3.3.6)
+  xml2rfc 3.34.1 (Python 3.12.3)
+  idnits 2.17.1
+  idnits 3.1.0 (@ietf-tools/idnits, Node v20.20.2)
+
+== Reference layout ==
+  One generated XML file with references inline under <back> (Normative References,
+  Informative References): no sibling reference files, no xi:include, no external
+  entities. Every Internet-Draft reference is pinned in the Markdown front matter
+  with explicit title/author/date/seriesinfo/target. The RFC references (RFC2119,
+  RFC8174, RFC8785, RFC8792, RFC9334, RFC9901, RFC9943) are kramdown-rfc's canned
+  bibxml from bib.ietf.org. references-02.txt lists every Internet-Draft reference
+  with its revision on the Datatracker.
+
+== Build (the Makefile recipe) ==
   kramdown-rfc2629 draft-mih-sato-agent-accountability-composition.md > draft-mih-sato-agent-accountability-composition.xml
   xml2rfc draft-mih-sato-agent-accountability-composition.xml --text --out draft-mih-sato-agent-accountability-composition.txt
+  kramdown-rfc2629 stderr: 22 x "explicit settings completely override canned bibxml" (one per pinned
+    reference: expected). xml2rfc: no errors; it warns that the date (2026-10-29) is more
+    than 3 days from the build day until 2026-10-26.
+  Reproducibility: the committed .xml and .txt are byte-identical to a fresh build of
+    the committed .md (cmp clean, both files).
 
-=== kramdown-rfc2629 stderr ===
-  22 *** warning: explicit settings completely override canned bibxml (one per I-D reference with explicit fields: expected, not an error)
+== Lint and validation commands (run on copies named draft-mih-sato-agent-accountability-composition-02.{xml,txt}) ==
+  idnits --submitcheck draft-mih-sato-agent-accountability-composition-02.txt            -> idnits-02.txt
+  idnits draft-mih-sato-agent-accountability-composition-02.txt                          -> idnits-02-full.txt  (full mode: runs the reference checks)
+  idnits3 --offline -o simple draft-mih-sato-agent-accountability-composition-02.xml     -> lint-idnits3-02.txt (run 1 of 6)
+  idnits3 -o simple draft-mih-sato-agent-accountability-composition-02.xml               -> lint-idnits3-02.txt (run 2 of 6)
+  idnits3 -m submission -o simple draft-mih-sato-agent-accountability-composition-02.xml -> lint-idnits3-02.txt (run 3 of 6)
+  idnits3 --offline -o simple draft-mih-sato-agent-accountability-composition-02.txt     -> lint-idnits3-02.txt (run 4 of 6)
+  idnits3 -o simple draft-mih-sato-agent-accountability-composition-02.txt               -> lint-idnits3-02.txt (run 5 of 6)
+  idnits3 -m submission -o simple draft-mih-sato-agent-accountability-composition-02.txt -> lint-idnits3-02.txt (run 6 of 6)
+  python3 check-refs.py draft-mih-sato-agent-accountability-composition.xml              -> "references: 32  unused: none", exit 0
+  (idnits = idnits 2.17.1; idnits3 = @ietf-tools/idnits 3.1.0)
+  No idnits option was used to suppress or relabel any diagnostic.
 
-=== xml2rfc ===
-  No errors. Before 2026-10-26 it warns that the document date (2026-10-29) is
-  more than 3 days away from the build day.
+  check-refs.py (verbatim):
+    # check-refs.py <xml>: every <reference anchor> must be the target of an <xref> before <back>
+    import re, sys
+    x = open(sys.argv[1]).read()
+    body = x[:x.index("<back>")]
+    anchors = re.findall(r'<reference anchor="([^"]+)"', x)
+    unused = [a for a in anchors if 'target="%s"' % a not in body]
+    print("references: %d  unused: %s" % (len(anchors), ", ".join(unused) or "none"))
+    sys.exit(1 if unused else 0)
 
-=== reproducibility: committed .xml and .txt vs a fresh build of the committed .md ===
-IDENTICAL (cmp clean, both files)
+== How the reference checks are covered ==
+  * Unresolved citations: xml2rfc stops the build on any <xref> to an unknown anchor.
+  * Unused references: check-refs.py (all 32 cited in the body). Mutant: an added
+    uncited reference makes it print the anchor and exit 1. idnits 3's txt check is
+    not relied on here: its citation pattern misses citations written as "([X])"
+    (lib/parsers/txt.mjs). See REFERENCE_NOT_USED below.
+  * Outdated revisions: idnits 2.17.1 full mode (not --submitcheck, which skips the
+    checklist). Mutant: citing AAC -04 is reported as "Outdated reference: A later
+    version (-05) exists". Every remaining "Outdated reference" is listed below.
+  * Unposted revisions: references-02.txt, against the Datatracker on 2026-10-25.
+    No reference names an unposted revision, except bilateral -03, which posts earlier
+    in the IETF 127 order. One I-D reference carries no revision: bu-agentproto-
+    security-principal-binding, cited by its document page; its anchor and the text
+    name -03 as the historical review input.
+  * Downrefs: idnits 3.1.0 normal mode, online and offline. Submission mode skips the
+    hierarchy check, and idnits 2 --submitcheck skips the checklist. Disposition below.
 
-=== idnits 2.17.1 --submitcheck (full log: idnits-02.txt) ===
-     Summary: 0 errors (**), 0 flaws (~~), 1 warning (==), 0 comments (--).
-  1 warning: non-ASCII lines (em dashes). Same class as posted -01.
+== idnits 2.17.1 ==
+  --submitcheck:
+    1 warning: non-ASCII lines (em dashes), as on posted -01.
+  full mode:     Summary: 0 errors (**), 0 flaws (~~), 15 warnings (==), 6 comments (--).
+    13 x Outdated reference, all deliberate pins. idnits also notes that its local
+      state data for draft-schrock-action-evidence-boundary failed to update; the
+      Datatracker shows -07 (references-02.txt), so AEB -03 is still an outdated,
+      deliberate pin and the reading does not change.
+      - CAID -02, AEC -05, AEB -03 (normative) and CAID -04, AEC -07 (informative
+        transition references): historical run pins, kept by co-author decision
+        (2026-10-02/03).
+      - receipts -11, sato-soos-gar -03 and -02, sokolov-rats-aep-composition -03,
+        kuehlewind-audit-architecture -00, sharif-agent-audit-trail -00,
+        etcheverry-action-ref -03, oauth-sd-jwt-vc -17: the revisions the cited
+        text and reviews were written against; not re-evaluated for -02.
+    1 x non-RFC2606-compliant FQDN: the MachineMandate vct string (txt L862,
+      vocab.tyche.institute), a real profile identifier. Same warning on posted -01.
+    1 x non-ASCII lines.
+    4 x Duplicate reference (comment): CAID/AEC/AEB historical and -current entries,
+      and sato-soos-gar -03 / -02. Intentional; each pair cites two revisions.
+    1 x Unexpected draft version (comment): bilateral -03 is not posted yet; it posts
+      earlier in the IETF 127 order.
+    1 x document date 4 days in the future (comment): the date is pinned for posting.
 
-=== idnits 3.1.0 (full log: lint-idnits3-02.txt) — every code, with disposition ===
-The tool exits 0 and prints FAIL on all six runs. That is NOT a clean result,
-and is not presented as one. Source paths below are inside the
-@ietf-tools/idnits 3.1.0 npm package.
-
-FIXED
-  TABS_NOT_ALLOWED (xml, Error): two tabs came from the canned bibxml abstract
-    of I-D.ietf-oauth-sd-jwt-vc-17; that reference now pins its fields. The
-    rendered .txt is byte-identical to the build before that change.
-
-TOOL LIMITATION — no change to the document
-  REFERENCE_NOT_USED x2 (txt, Warning): OpenID4VP and MACHINE-MANDATE are cited
-    in the body as "([OpenID4VP])" and "([MACHINE-MANDATE])". The txt parser's
-    citation pattern (lib/parsers/txt.mjs) needs whitespace, "]" or a line start
-    before "[", so a citation directly inside "(" is not seen. Mutant: adding
-    spaces inside one citation's parentheses in a copy cleared that one warning
-    and left the other. The xml runs, which read <xref>, do not report it.
-  POSSIBLE_DOWNREF x5 (txt, Error; normal mode, offline and online alike):
-    - CAID -02, AEC -05, AEB -03 are normative references to individual
-      Internet-Drafts. lib/modules/downref.mjs reports POSSIBLE_DOWNREF whenever
-      it cannot obtain a status for a reference. Individual drafts carry no
-      intended status on Datatracker, so the online run reports them too.
-    - OpenID4VP and MACHINE-MANDATE (informative) are added to the
-      possible-downref list because the parser believes they are not cited in
-      the body: the same parenthesis miss.
-    - A downref proper is a normative reference to a document of lower status
-      than the citing document. This document is Informational, so no cited
-      status can be lower. Submission mode skips the downref check
-      (downref.mjs returns early).
-  MISSING_REQLEVEL_REF (xml, Error), MISSING_BCP14_TAGS x96 (Comment),
+== idnits 3.1.0 (lint-idnits3-02.txt): every code, with disposition ==
+  The tool exits 0 and prints FAIL on all six runs. That is NOT a clean result,
+  and is not presented as one.
+  REFERENCE_NOT_USED x2 (txt, Warning): OpenID4VP and MACHINE-MANDATE are cited as
+    "([OpenID4VP])" and "([MACHINE-MANDATE])". The txt citation pattern needs
+    whitespace, "]" or a line start before "[". Mutant: spaces inside one citation's
+    parentheses cleared only that one. check-refs.py confirms that both are cited.
+  POSSIBLE_DOWNREF x5 (txt, normal mode offline and online, Error):
+    - downref.mjs reports this whenever it gets no status for a reference. CAID -02,
+      AEC -05 and AEB -03 are normative references to individual drafts, which have
+      no intended status on the Datatracker.
+    - OpenID4VP and MACHINE-MANDATE are added by the parenthesis miss above.
+    - A downref needs a cited status lower than this Informational document's.
+  MISSING_REQLEVEL_REF (xml, Error), MISSING_BCP14_TAGS x102 (Comment),
   DEPRECATED_ELEMENT x106, DEPRECATED_REFERENCES_TITLE, LINE_PI (Warnings):
-    - The generated XML uses <list>, <spanx>, <texttable> and <?line?>, and has
-      no <bcp14> tags; the BCP 14 boilerplate is written in the source.
-    - idnits 3's xml check (lib/modules/keywords.mjs, xml case) counts
-      RFC2119/RFC8174 only as external entities and raises MISSING_REQLEVEL_REF
-      when it finds no keywords, which it reads only from <bcp14>.
-    - The rendered text carries the RFC 8174 boilerplate, "BCP 14 [RFC2119]
-      [RFC8174]"; idnits 2.17.1 and xml2rfc report no problem.
-    - Moving to v3-native output is a build-format change with a large byte
-      diff. It is left to -03 and was not tested here.
-
-NOT A DEFECT
-  SUBMISSION_TYPE_UNEXPECTED (xml, online and submission, Error): the rfc
-    element carries submissionType="IETF" while Datatracker shows no stream for
-    the existing document. The posted -01 xml (IETF archive copy) carries the
-    same attribute.
-  PREFER_BCP14_REF (txt, Warning): suggests citing BCP14 as one reference. The
-    boilerplate already reads "BCP 14 [RFC2119] [RFC8174]" (RFC 8174 text). Kept.
-  DOC_DATE_IN_FUTURE (Warning): the 2026-10-29 date is pinned for posting; it
-    clears inside the 2026-10-26..2026-11-01 upload window.
-  NON_ASCII_UTF8 (Comment): em dashes, as in posted -01.
+    - The xml check counts RFC2119/RFC8174 only as external entities, and BCP 14
+      keywords only inside <bcp14> (lib/modules/keywords.mjs). kramdown-rfc's default
+      output has neither; the BCP 14 boilerplate is written in the source.
+    - Moving to v3-native output is a build-format change, left to -03 (untested).
+  SUBMISSION_TYPE_UNEXPECTED (xml, online and submission, Error): submissionType="IETF",
+    while the Datatracker shows no stream. Posted -01 carries the same attribute.
+  PREFER_BCP14_REF (txt, Warning): the boilerplate already reads "BCP 14 [RFC2119]
+    [RFC8174]". Kept.
+  DOC_DATE_IN_FUTURE (Warning), NON_ASCII_UTF8 (Comment): expected.

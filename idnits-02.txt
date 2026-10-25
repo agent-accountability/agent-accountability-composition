@@ -1,6 +1,254 @@
 idnits 2.17.1 
 
+
 draft-mih-sato-agent-accountability-composition-02.txt:
+draft-mih-sato-agent-accountability-composition-02.txt(25): Found non-ascii character (â) in position 39.
+draft-mih-sato-agent-accountability-composition-02.txt(26): Found non-ascii character (â) in position 49.
+draft-mih-sato-agent-accountability-composition-02.txt(35): Line appears to be too long, but this could be caused by non-ascii characters in UTF-8 encoding
+draft-mih-sato-agent-accountability-composition-02.txt(35): Found non-ascii character (â) in position 12.
+draft-mih-sato-agent-accountability-composition-02.txt(46): Line appears to be too long, but this could be caused by non-ascii characters in UTF-8 encoding
+draft-mih-sato-agent-accountability-composition-02.txt(46): Found non-ascii character (â) in position 23.
+draft-mih-sato-agent-accountability-composition-02.txt(177): Line appears to be too long, but this could be caused by non-ascii characters in UTF-8 encoding
+draft-mih-sato-agent-accountability-composition-02.txt(177): Found non-ascii character (â) in position 71.
+draft-mih-sato-agent-accountability-composition-02.txt(178): Found non-ascii character (â) in position 70.
+draft-mih-sato-agent-accountability-composition-02.txt(186): Found non-ascii character (â) in position 36.
+draft-mih-sato-agent-accountability-composition-02.txt(187): Found non-ascii character (â) in position 50.
+draft-mih-sato-agent-accountability-composition-02.txt(201): Line appears to be too long, but this could be caused by non-ascii characters in UTF-8 encoding
+draft-mih-sato-agent-accountability-composition-02.txt(201): Found non-ascii character (â) in position 63.
+draft-mih-sato-agent-accountability-composition-02.txt(203): Line appears to be too long, but this could be caused by non-ascii characters in UTF-8 encoding
+draft-mih-sato-agent-accountability-composition-02.txt(203): Found non-ascii character (â) in position 9.
+draft-mih-sato-agent-accountability-composition-02.txt(204): Found non-ascii character (â) in position 28.
+draft-mih-sato-agent-accountability-composition-02.txt(206): Found non-ascii character (â) in position 24.
+draft-mih-sato-agent-accountability-composition-02.txt(238): Found non-ascii character (â) in position 61.
+draft-mih-sato-agent-accountability-composition-02.txt(240): Found non-ascii character (â) in position 12.
+draft-mih-sato-agent-accountability-composition-02.txt(270): Found non-ascii character (â) in position 64.
+draft-mih-sato-agent-accountability-composition-02.txt(272): Line appears to be too long, but this could be caused by non-ascii characters in UTF-8 encoding
+draft-mih-sato-agent-accountability-composition-02.txt(272): Found non-ascii character (â) in position 38.
+draft-mih-sato-agent-accountability-composition-02.txt(293): Line appears to be too long, but this could be caused by non-ascii characters in UTF-8 encoding
+draft-mih-sato-agent-accountability-composition-02.txt(293): Found non-ascii character (â) in position 67.
+draft-mih-sato-agent-accountability-composition-02.txt(299): Found non-ascii character (â) in position 64.
+draft-mih-sato-agent-accountability-composition-02.txt(303): Line appears to be too long, but this could be caused by non-ascii characters in UTF-8 encoding
+draft-mih-sato-agent-accountability-composition-02.txt(303): Found non-ascii character (â) in position 51.
+draft-mih-sato-agent-accountability-composition-02.txt(305): Found non-ascii character (â) in position 4.
+draft-mih-sato-agent-accountability-composition-02.txt(313): Found non-ascii character (â) in position 11.
+draft-mih-sato-agent-accountability-composition-02.txt(315): Found non-ascii character (â) in position 11.
+draft-mih-sato-agent-accountability-composition-02.txt(318): Line appears to be too long, but this could be caused by non-ascii characters in UTF-8 encoding
+draft-mih-sato-agent-accountability-composition-02.txt(318): Found non-ascii character (â) in position 12.
+draft-mih-sato-agent-accountability-composition-02.txt(319): Line appears to be too long, but this could be caused by non-ascii characters in UTF-8 encoding
+draft-mih-sato-agent-accountability-composition-02.txt(319): Found non-ascii character (â) in position 43.
+draft-mih-sato-agent-accountability-composition-02.txt(323): Found non-ascii character (â) in position 13.
+draft-mih-sato-agent-accountability-composition-02.txt(330): Line appears to be too long, but this could be caused by non-ascii characters in UTF-8 encoding
+draft-mih-sato-agent-accountability-composition-02.txt(330): Found non-ascii character (â) in position 32.
+draft-mih-sato-agent-accountability-composition-02.txt(331): Found non-ascii character (â) in position 32.
+draft-mih-sato-agent-accountability-composition-02.txt(346): Line appears to be too long, but this could be caused by non-ascii characters in UTF-8 encoding
+draft-mih-sato-agent-accountability-composition-02.txt(346): Found non-ascii character (â) in position 10.
+draft-mih-sato-agent-accountability-composition-02.txt(352): Found non-ascii character (â) in position 66.
+draft-mih-sato-agent-accountability-composition-02.txt(362): Line appears to be too long, but this could be caused by non-ascii characters in UTF-8 encoding
+draft-mih-sato-agent-accountability-composition-02.txt(362): Found non-ascii character (â) in position 55.
+draft-mih-sato-agent-accountability-composition-02.txt(367): Line appears to be too long, but this could be caused by non-ascii characters in UTF-8 encoding
+draft-mih-sato-agent-accountability-composition-02.txt(367): Found non-ascii character (â) in position 47.
+draft-mih-sato-agent-accountability-composition-02.txt(374): Line appears to be too long, but this could be caused by non-ascii characters in UTF-8 encoding
+draft-mih-sato-agent-accountability-composition-02.txt(374): Found non-ascii character (â) in position 13.
+draft-mih-sato-agent-accountability-composition-02.txt(382): Found non-ascii character (â) in position 13.
+draft-mih-sato-agent-accountability-composition-02.txt(384): Found non-ascii character (â) in position 13.
+draft-mih-sato-agent-accountability-composition-02.txt(397): Found non-ascii character (â) in position 14.
+draft-mih-sato-agent-accountability-composition-02.txt(402): Found non-ascii character (â) in position 15.
+draft-mih-sato-agent-accountability-composition-02.txt(413): Found non-ascii character (â) in position 20.
+draft-mih-sato-agent-accountability-composition-02.txt(576): Found non-ascii character (â) in position 4.
+draft-mih-sato-agent-accountability-composition-02.txt(577): Line appears to be too long, but this could be caused by non-ascii characters in UTF-8 encoding
+draft-mih-sato-agent-accountability-composition-02.txt(577): Found non-ascii character (â) in position 23.
+draft-mih-sato-agent-accountability-composition-02.txt(1078): Found possible FQDN 'vocab.tyche.institute' in position 51; this doesn't match RFC 2606's suggested ".example" or ".example.(com|org|net)".
+draft-mih-sato-agent-accountability-composition-02.txt(1109): Line appears to be too long, but this could be caused by non-ascii characters in UTF-8 encoding
+draft-mih-sato-agent-accountability-composition-02.txt(1109): Found non-ascii character (â) in position 10.
+draft-mih-sato-agent-accountability-composition-02.txt(1116): Found non-ascii character (â) in position 39.
+draft-mih-sato-agent-accountability-composition-02.txt(1125): Found non-ascii character (â) in position 22.
+draft-mih-sato-agent-accountability-composition-02.txt(1133): Line appears to be too long, but this could be caused by non-ascii characters in UTF-8 encoding
+draft-mih-sato-agent-accountability-composition-02.txt(1133): Found non-ascii character (â) in position 4.
+draft-mih-sato-agent-accountability-composition-02.txt(1139): Line appears to be too long, but this could be caused by non-ascii characters in UTF-8 encoding
+draft-mih-sato-agent-accountability-composition-02.txt(1139): Found non-ascii character (â) in position 18.
+draft-mih-sato-agent-accountability-composition-02.txt(1145): Found non-ascii character (â) in position 33.
+draft-mih-sato-agent-accountability-composition-02.txt(1148): Found non-ascii character (â) in position 39.
+draft-mih-sato-agent-accountability-composition-02.txt(1157): Found non-ascii character (â) in position 62.
+draft-mih-sato-agent-accountability-composition-02.txt(1158): Line appears to be too long, but this could be caused by non-ascii characters in UTF-8 encoding
+draft-mih-sato-agent-accountability-composition-02.txt(1158): Found non-ascii character (â) in position 19.
+draft-mih-sato-agent-accountability-composition-02.txt(1182): Found non-ascii character (â) in position 23.
+draft-mih-sato-agent-accountability-composition-02.txt(1183): Found non-ascii character (â) in position 46.
+draft-mih-sato-agent-accountability-composition-02.txt(1193): Found non-ascii character (â) in position 44.
+draft-mih-sato-agent-accountability-composition-02.txt(1244): Found non-ascii character (â) in position 27.
+draft-mih-sato-agent-accountability-composition-02.txt(1245): Line appears to be too long, but this could be caused by non-ascii characters in UTF-8 encoding
+draft-mih-sato-agent-accountability-composition-02.txt(1245): Found non-ascii character (â) in position 28.
+draft-mih-sato-agent-accountability-composition-02.txt(1250): Found non-ascii character (â) in position 27.
+draft-mih-sato-agent-accountability-composition-02.txt(1331): Line appears to be too long, but this could be caused by non-ascii characters in UTF-8 encoding
+draft-mih-sato-agent-accountability-composition-02.txt(1331): Found non-ascii character (â) in position 23.
+draft-mih-sato-agent-accountability-composition-02.txt(1338): Found non-ascii character (â) in position 37.
+draft-mih-sato-agent-accountability-composition-02.txt(1383): Found non-ascii character (â) in position 34.
+draft-mih-sato-agent-accountability-composition-02.txt(1412): Found non-ascii character (â) in position 48.
+draft-mih-sato-agent-accountability-composition-02.txt(1413): Found non-ascii character (â) in position 48.
+draft-mih-sato-agent-accountability-composition-02.txt(1436): Line appears to be too long, but this could be caused by non-ascii characters in UTF-8 encoding
+draft-mih-sato-agent-accountability-composition-02.txt(1436): Found non-ascii character (â) in position 67.
+draft-mih-sato-agent-accountability-composition-02.txt(1437): Found non-ascii character (â) in position 66.
+draft-mih-sato-agent-accountability-composition-02.txt(1467): Found non-ascii character (â) in position 38.
+draft-mih-sato-agent-accountability-composition-02.txt(1469): Found non-ascii character (â) in position 10.
+draft-mih-sato-agent-accountability-composition-02.txt(1502): Found non-ascii character (â) in position 58.
+draft-mih-sato-agent-accountability-composition-02.txt(1504): Found non-ascii character (â) in position 30.
+draft-mih-sato-agent-accountability-composition-02.txt(1521): Found non-ascii character (â) in position 30.
+draft-mih-sato-agent-accountability-composition-02.txt(1522): Found non-ascii character (â) in position 54.
+draft-mih-sato-agent-accountability-composition-02.txt(1535): Found non-ascii character (â) in position 31.
+draft-mih-sato-agent-accountability-composition-02.txt(1536): Found non-ascii character (â) in position 19.
+draft-mih-sato-agent-accountability-composition-02.txt(1585): Found non-ascii character (â) in position 38.
+draft-mih-sato-agent-accountability-composition-02.txt(1635): Found non-ascii character (â) in position 67.
+draft-mih-sato-agent-accountability-composition-02.txt(1637): Found non-ascii character (â) in position 40.
+draft-mih-sato-agent-accountability-composition-02.txt(1746): Found non-ascii character (â) in position 62.
+draft-mih-sato-agent-accountability-composition-02.txt(1829): Found non-ascii character (Â) in position 4.
+draft-mih-sato-agent-accountability-composition-02.txt(2090): Line appears to be too long, but this could be caused by non-ascii characters in UTF-8 encoding
+draft-mih-sato-agent-accountability-composition-02.txt(2090): Found non-ascii character (â) in position 51.
+draft-mih-sato-agent-accountability-composition-02.txt(2091): Found non-ascii character (â) in position 19.
+draft-mih-sato-agent-accountability-composition-02.txt(2099): Line appears to be too long, but this could be caused by non-ascii characters in UTF-8 encoding
+draft-mih-sato-agent-accountability-composition-02.txt(2099): Found non-ascii character (â) in position 37.
+draft-mih-sato-agent-accountability-composition-02.txt(2119): Found non-ascii character (â) in position 62.
+draft-mih-sato-agent-accountability-composition-02.txt(2122): Line appears to be too long, but this could be caused by non-ascii characters in UTF-8 encoding
+draft-mih-sato-agent-accountability-composition-02.txt(2122): Found non-ascii character (â) in position 44.
+draft-mih-sato-agent-accountability-composition-02.txt(2277): Found non-ascii character (â) in position 12.
+draft-mih-sato-agent-accountability-composition-02.txt(2279): Found non-ascii character (â) in position 12.
+draft-mih-sato-agent-accountability-composition-02.txt(2281): Found non-ascii character (â) in position 21.
+draft-mih-sato-agent-accountability-composition-02.txt(2284): Found non-ascii character (â) in position 19.
+draft-mih-sato-agent-accountability-composition-02.txt(2287): Found non-ascii character (â) in position 21.
+draft-mih-sato-agent-accountability-composition-02.txt(2426): Line appears to be too long, but this could be caused by non-ascii characters in UTF-8 encoding
+draft-mih-sato-agent-accountability-composition-02.txt(2426): Found non-ascii character (â) in position 19.
+draft-mih-sato-agent-accountability-composition-02.txt(2533): Found non-ascii character (â) in position 40.
+draft-mih-sato-agent-accountability-composition-02.txt(2539): Found non-ascii character (â) in position 44.
+draft-mih-sato-agent-accountability-composition-02.txt(2705): Found non-ascii character (Ã) in position 16.
+draft-mih-sato-agent-accountability-composition-02.txt(2866): Found non-ascii character (â) in position 64.
+draft-mih-sato-agent-accountability-composition-02.txt(2879): Found non-ascii character (Â) in position 35.
+draft-mih-sato-agent-accountability-composition-02.txt(2883): Found non-ascii character (Â) in position 63.
+draft-mih-sato-agent-accountability-composition-02.txt(2917): Found non-ascii character (Â) in position 59.
+draft-mih-sato-agent-accountability-composition-02.txt(2949): Line appears to be too long, but this could be caused by non-ascii characters in UTF-8 encoding
+draft-mih-sato-agent-accountability-composition-02.txt(2949): Found non-ascii character (Â) in position 66.
+draft-mih-sato-agent-accountability-composition-02.txt(2951): Found non-ascii character (Â) in position 38.
+draft-mih-sato-agent-accountability-composition-02.txt(2952): Found non-ascii character (Â) in position 27.
+
+
+ - The draft-aylward-aiga state file is not from today.
+   Attempting to download a newer one...
+ - Success fetching draft-aylward-aiga state file.
+
+ - The draft-bates-atp state file is not from today.
+   Attempting to download a newer one...
+ - Success fetching draft-bates-atp state file.
+
+ - The draft-bu-agentproto-security-principal-binding state file is not from today.
+   Attempting to download a newer one...
+ - Success fetching draft-bu-agentproto-security-principal-binding state file.
+
+ - The draft-etcheverry-action-ref state file is not from today.
+   Attempting to download a newer one...
+ - Success fetching draft-etcheverry-action-ref state file.
+
+ - The draft-ietf-oauth-sd-jwt-vc state file is not from today.
+   Attempting to download a newer one...
+ - Success fetching draft-ietf-oauth-sd-jwt-vc state file.
+
+ - The draft-kuehlewind-audit-architecture state file is not from today.
+   Attempting to download a newer one...
+ - Success fetching draft-kuehlewind-audit-architecture state file.
+
+ - The draft-mih-agent-bilateral-attestation state file is not from today.
+   Attempting to download a newer one...
+ - Success fetching draft-mih-agent-bilateral-attestation state file.
+
+ - The draft-sato-soos-gar state file is not from today.
+   Attempting to download a newer one...
+ - Success fetching draft-sato-soos-gar state file.
+
+ - The draft-schrock-action-evidence-boundary state file is not from today.
+   Attempting to download a newer one...
+ - Success fetching draft-schrock-action-evidence-boundary state file.
+
+ - The draft-schrock-canonical-action-identifier state file is not from today.
+   Attempting to download a newer one...
+ - Success fetching draft-schrock-canonical-action-identifier state file.
+
+ - The draft-schrock-ep-authorization-evidence-chain state file is not from today.
+   Attempting to download a newer one...
+ - Success fetching draft-schrock-ep-authorization-evidence-chain state file.
+
+ - The draft-schrock-human-authorization-binding state file is not from today.
+   Attempting to download a newer one...
+ - Success fetching draft-schrock-human-authorization-binding state file.
+
+ - The draft-sharif-agent-audit-trail state file is not from today.
+   Attempting to download a newer one...
+ - Success fetching draft-sharif-agent-audit-trail state file.
+
+ - No rfc001 state file. Attempting to download it...
+   Failure fetching the file, proceeding without it.
+
+ - No rfc002 state file. Attempting to download it...
+   Failure fetching the file, proceeding without it.
+
+ - No rfc014 state file. Attempting to download it...
+   Failure fetching the file, proceeding without it.
+
+ - No rfc041 state file. Attempting to download it...
+   Failure fetching the file, proceeding without it.
+
+ - No rfc051 state file. Attempting to download it...
+   Failure fetching the file, proceeding without it.
+
+ - No rfc065 state file. Attempting to download it...
+   Failure fetching the file, proceeding without it.
+
+ - The rfc1190 state file is not from today.
+   Attempting to download a newer one...
+ - Success fetching rfc1190 state file.
+
+ - The rfc1744 state file is not from today.
+   Attempting to download a newer one...
+ - Success fetching rfc1744 state file.
+
+ - The rfc200 state file is not from today.
+   Attempting to download a newer one...
+ - Success fetching rfc200 state file.
+
+ - The rfc2023 state file is not from today.
+   Attempting to download a newer one...
+ - Success fetching rfc2023 state file.
+
+ - The rfc2028 state file is not from today.
+   Attempting to download a newer one...
+ - Success fetching rfc2028 state file.
+
+ - The rfc226 state file is not from today.
+   Attempting to download a newer one...
+ - Success fetching rfc226 state file.
+
+ - The rfc250 state file is not from today.
+   Attempting to download a newer one...
+ - Success fetching rfc250 state file.
+
+ - The rfc299 state file is not from today.
+   Attempting to download a newer one...
+ - Success fetching rfc299 state file.
+
+ - The rfc504 state file is not from today.
+   Attempting to download a newer one...
+ - Success fetching rfc504 state file.
+
+ - The rfc521 state file is not from today.
+   Attempting to download a newer one...
+ - Success fetching rfc521 state file.
+
+ - The rfc708 state file is not from today.
+   Attempting to download a newer one...
+ - Success fetching rfc708 state file.
+
+ - The rfc8792 state file is not from today.
+   Attempting to download a newer one...
+ - Success fetching rfc8792 state file.
+
+ - The rfc9334 state file is not from today.
+   Attempting to download a newer one...
+ - Success fetching rfc9334 state file.
 -(31): Line appears to be too long, but this could be caused by non-ascii characters in UTF-8 encoding
 -(42): Line appears to be too long, but this could be caused by non-ascii characters in UTF-8 encoding
 -(146): Line appears to be too long, but this could be caused by non-ascii characters in UTF-8 encoding
@@ -17,18 +265,18 @@ draft-mih-sato-agent-accountability-composition-02.txt:
 -(311): Line appears to be too long, but this could be caused by non-ascii characters in UTF-8 encoding
 -(318): Line appears to be too long, but this could be caused by non-ascii characters in UTF-8 encoding
 -(475): Line appears to be too long, but this could be caused by non-ascii characters in UTF-8 encoding
--(932): Line appears to be too long, but this could be caused by non-ascii characters in UTF-8 encoding
--(948): Line appears to be too long, but this could be caused by non-ascii characters in UTF-8 encoding
--(954): Line appears to be too long, but this could be caused by non-ascii characters in UTF-8 encoding
--(973): Line appears to be too long, but this could be caused by non-ascii characters in UTF-8 encoding
--(1026): Line appears to be too long, but this could be caused by non-ascii characters in UTF-8 encoding
--(1104): Line appears to be too long, but this could be caused by non-ascii characters in UTF-8 encoding
--(1194): Line appears to be too long, but this could be caused by non-ascii characters in UTF-8 encoding
--(1741): Line appears to be too long, but this could be caused by non-ascii characters in UTF-8 encoding
--(1750): Line appears to be too long, but this could be caused by non-ascii characters in UTF-8 encoding
--(1773): Line appears to be too long, but this could be caused by non-ascii characters in UTF-8 encoding
--(2019): Line appears to be too long, but this could be caused by non-ascii characters in UTF-8 encoding
--(2449): Line appears to be too long, but this could be caused by non-ascii characters in UTF-8 encoding
+-(934): Line appears to be too long, but this could be caused by non-ascii characters in UTF-8 encoding
+-(950): Line appears to be too long, but this could be caused by non-ascii characters in UTF-8 encoding
+-(956): Line appears to be too long, but this could be caused by non-ascii characters in UTF-8 encoding
+-(975): Line appears to be too long, but this could be caused by non-ascii characters in UTF-8 encoding
+-(1038): Line appears to be too long, but this could be caused by non-ascii characters in UTF-8 encoding
+-(1116): Line appears to be too long, but this could be caused by non-ascii characters in UTF-8 encoding
+-(1206): Line appears to be too long, but this could be caused by non-ascii characters in UTF-8 encoding
+-(1756): Line appears to be too long, but this could be caused by non-ascii characters in UTF-8 encoding
+-(1765): Line appears to be too long, but this could be caused by non-ascii characters in UTF-8 encoding
+-(1788): Line appears to be too long, but this could be caused by non-ascii characters in UTF-8 encoding
+-(2034): Line appears to be too long, but this could be caused by non-ascii characters in UTF-8 encoding
+-(2472): Line appears to be too long, but this could be caused by non-ascii characters in UTF-8 encoding
 
   Showing Errors (**), Flaws (~~), Warnings (==), and Comments (--).
   Errors MUST be fixed before draft submission.  Flaws SHOULD be fixed before draft submission.
