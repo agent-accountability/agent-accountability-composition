@@ -174,10 +174,10 @@ informative:
         org: Action State Group
       - name: Anton Sokolov
         org: Tyche Institute
-    date: 2026-09-11
+    date: 2026-10-26
     seriesinfo:
-      Internet-Draft: draft-mih-sokolov-scitt-payload-binding-05
-    target: https://datatracker.ietf.org/doc/html/draft-mih-sokolov-scitt-payload-binding-05
+      Internet-Draft: draft-mih-sokolov-scitt-payload-binding-06
+    target: https://datatracker.ietf.org/doc/html/draft-mih-sokolov-scitt-payload-binding-06
   I-D.mih-agent-bilateral-attestation:
     title: "Bilateral Attestation of Cross-Organization Agent Actions"
     author:
@@ -1968,10 +1968,10 @@ thread (Henri, Anton Sokolov, Joel). Landed in this revision:
   reports required in §6.4.4" and lists only the profile's own reports. No check is
   required of fewer verifiers.
 * References and reference accuracy: Agent Action Capsule -02 to -05, payload binding
-  -01 to -05 (now titled "Canonicalization Declaration for SCITT Signed Statements"),
+  -01 to -06 (now titled "Canonicalization Declaration for SCITT Signed Statements"),
   bilateral attestation -01 to -03. Four sentences describing those documents were
   corrected to match the cited revisions: basis vocabularies are declared and versioned
-  by their owners (payload binding -05 defines no artifact-type registry); the bilateral
+  by their owners (payload binding -06 defines no artifact-type registry); the bilateral
   work establishes the fully-bilateral / reduced-assurance distinction rather than rung
   names; the native-record binding names the Capsule profile's `capsule_id` derivation
   instead of a "JSON-DIGEST construction"; the privacy cross-reference names the Capsule

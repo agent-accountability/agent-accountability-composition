@@ -53,9 +53,7 @@ draft-mih-sato-agent-accountability-composition-02.txt:
   Miscellaneous warnings:
   ----------------------------------------------------------------------------
 
-  -- The document date (29 October 2026) is 4 days in the future.  Is this
-     intentional?
-
+     No issues found here.
 
   Checking references for intended status: Informational
   ----------------------------------------------------------------------------
@@ -92,7 +90,7 @@ draft-mih-sato-agent-accountability-composition-02.txt:
   == Outdated reference: A later version (-04) exists of
      draft-etcheverry-action-ref-03
 
-  == Outdated reference: A later version (-08) exists of
+  == Outdated reference: A later version (-09) exists of
      draft-sharif-agent-audit-trail-00
 
   == Outdated reference: A later version (-13) exists of
@@ -116,11 +114,11 @@ draft-mih-sato-agent-accountability-composition-02.txt:
   -- Duplicate reference: draft-sato-soos-gar, mentioned in
      'I-D.sato-soos-gar-02', was also mentioned in 'I-D.sato-soos-gar'.
 
-  == Outdated reference: A later version (-19) exists of
+  == Outdated reference: A later version (-20) exists of
      draft-ietf-oauth-sd-jwt-vc-17
 
 
-     Summary: 0 errors (**), 0 flaws (~~), 15 warnings (==), 6 comments (--).
+     Summary: 0 errors (**), 0 flaws (~~), 15 warnings (==), 5 comments (--).
 
      Run idnits with the --verbose option for more detailed information about
      the items above.

@@ -1,10 +1,12 @@
-Build and validation log — composition -02 (source commit 5113d2176758230d73ea32da49124d4c4168a333)
+Build and validation log — composition -02 (source: the commit that adds this log, the CPB -06
+re-pin on fa53ac673811d21ac0eebf419eaf8aa2edded0d6; a commit cannot name its own SHA, so the
+full SHA is carried by the Post Pack and the co-author email)
 
 == Toolchain ==
   kramdown-rfc2629 1.7.43 (Ruby 3.3.6)
   xml2rfc 3.34.1 (Python 3.12.3)
   idnits 2.17.1
-  idnits 3.1.0 (@ietf-tools/idnits, Node v20.20.2)
+  idnits 3.1.0 (@ietf-tools/idnits, Node v22.23.3)
 
 == Reference layout ==
   One generated XML file with references inline under <back> (Normative References,
@@ -19,8 +21,8 @@ Build and validation log — composition -02 (source commit 5113d2176758230d73ea
   kramdown-rfc2629 draft-mih-sato-agent-accountability-composition.md > draft-mih-sato-agent-accountability-composition.xml
   xml2rfc draft-mih-sato-agent-accountability-composition.xml --text --out draft-mih-sato-agent-accountability-composition.txt
   kramdown-rfc2629 stderr: 22 x "explicit settings completely override canned bibxml" (one per pinned
-    reference: expected). xml2rfc: no errors; it warns that the date (2026-10-29) is more
-    than 3 days from the build day until 2026-10-26.
+    reference: expected). xml2rfc: no errors or warnings (built 2026-10-27, within 3 days
+    of the pinned date 2026-10-29).
   Reproducibility: the committed .xml and .txt are byte-identical to a fresh build of
     the committed .md (cmp clean, both files).
 
@@ -36,6 +38,15 @@ Build and validation log — composition -02 (source commit 5113d2176758230d73ea
   python3 check-refs.py draft-mih-sato-agent-accountability-composition.xml              -> "references: 32  unused: none", exit 0
   (idnits = idnits 2.17.1; idnits3 = @ietf-tools/idnits 3.1.0)
   No idnits option was used to suppress or relabel any diagnostic.
+  idnits-02.txt and idnits-02-full.txt are the exact output (stdout and stderr) of their
+    commands. Lines starting "-(N):" come from idnits' own second pass, which it runs over a
+    pipe; they are not from a stdin run. Lines naming the file ("...-02.txt(N):") appear
+    only with --verbose. The fa53ac673811d21ac0eebf419eaf8aa2edded0d6 idnits-02.txt was
+    produced with "idnits --submitcheck --verbose", which this log did not state; this
+    revision's file comes from the logged command, without --verbose.
+  lint-idnits3-02.txt is the six outputs in order. Each is preceded by a "===== <file> ·
+    <mode>" line, the whole file starts with a 3-line "#" header, and the run directory's
+    absolute path is removed from each "FAIL - Document <path>" line. Nothing else is edited.
 
   check-refs.py (verbatim):
     # check-refs.py <xml>: every <reference anchor> must be the target of an <xref> before <back>
@@ -55,8 +66,11 @@ Build and validation log — composition -02 (source commit 5113d2176758230d73ea
     (lib/parsers/txt.mjs). See REFERENCE_NOT_USED below.
   * Outdated revisions: idnits 2.17.1 full mode (not --submitcheck, which skips the
     checklist). Mutant: citing AAC -04 is reported as "Outdated reference: A later
-    version (-05) exists". Every remaining "Outdated reference" is listed below.
-  * Unposted revisions: references-02.txt, against the Datatracker on 2026-10-25.
+    version (-05) exists"; the previous head fa53ac673811d21ac0eebf419eaf8aa2edded0d6,
+    which cites payload binding -05, is reported as "Outdated reference: A later version
+    (-06) exists". No Outdated reference names a sibling draft. Every remaining
+    "Outdated reference" is listed below.
+  * Unposted revisions: references-02.txt, against the Datatracker on 2026-10-27.
     No reference names an unposted revision, except bilateral -03, which posts earlier
     in the IETF 127 order. One I-D reference carries no revision: bu-agentproto-
     security-principal-binding, cited by its document page; its anchor and the text
@@ -67,7 +81,7 @@ Build and validation log — composition -02 (source commit 5113d2176758230d73ea
 == idnits 2.17.1 ==
   --submitcheck:
     1 warning: non-ASCII lines (em dashes), as on posted -01.
-  full mode:     Summary: 0 errors (**), 0 flaws (~~), 15 warnings (==), 6 comments (--).
+  full mode:     Summary: 0 errors (**), 0 flaws (~~), 15 warnings (==), 5 comments (--).
     13 x Outdated reference, all deliberate pins. idnits also notes that its local
       state data for draft-schrock-action-evidence-boundary failed to update; the
       Datatracker shows -07 (references-02.txt), so AEB -03 is still an outdated,
@@ -86,7 +100,6 @@ Build and validation log — composition -02 (source commit 5113d2176758230d73ea
       and sato-soos-gar -03 / -02. Intentional; each pair cites two revisions.
     1 x Unexpected draft version (comment): bilateral -03 is not posted yet; it posts
       earlier in the IETF 127 order.
-    1 x document date 4 days in the future (comment): the date is pinned for posting.
 
 == idnits 3.1.0 (lint-idnits3-02.txt): every code, with disposition ==
   The tool exits 0 and prints FAIL on all six runs. That is NOT a clean result,
@@ -111,4 +124,5 @@ Build and validation log — composition -02 (source commit 5113d2176758230d73ea
     while the Datatracker shows no stream. Posted -01 carries the same attribute.
   PREFER_BCP14_REF (txt, Warning): the boilerplate already reads "BCP 14 [RFC2119]
     [RFC8174]". Kept.
-  DOC_DATE_IN_FUTURE (Warning), NON_ASCII_UTF8 (Comment): expected.
+  NON_ASCII_UTF8 (Comment): expected. DOC_DATE_IN_FUTURE no longer fires (built within
+    3 days of the pinned date).

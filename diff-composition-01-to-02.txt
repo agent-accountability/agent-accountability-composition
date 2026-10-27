@@ -1484,9 +1484,9 @@
 ---
 >               Mih, S. and A. Sokolov, "Canonicalization Declaration for
 >               SCITT Signed Statements", Work in Progress, Internet-
->               Draft, draft-mih-sokolov-scitt-payload-binding-05, 11
->               September 2026, <https://datatracker.ietf.org/doc/html/
->               draft-mih-sokolov-scitt-payload-binding-05>.
+>               Draft, draft-mih-sokolov-scitt-payload-binding-06, 26
+>               October 2026, <https://datatracker.ietf.org/doc/html/
+>               draft-mih-sokolov-scitt-payload-binding-06>.
 2563c2780
 <               mih-agent-bilateral-attestation-01, 19 July 2026,
 ---
@@ -1663,11 +1663,11 @@
 > 
 > 
 >    *  References and reference accuracy: Agent Action Capsule -02 to
->       -05, payload binding -01 to -05 (now titled "Canonicalization
+>       -05, payload binding -01 to -06 (now titled "Canonicalization
 >       Declaration for SCITT Signed Statements"), bilateral attestation
 >       -01 to -03.  Four sentences describing those documents were
 >       corrected to match the cited revisions: basis vocabularies are
->       declared and versioned by their owners (payload binding -05
+>       declared and versioned by their owners (payload binding -06
 >       defines no artifact-type registry); the bilateral work establishes
 >       the fully-bilateral / reduced-assurance distinction rather than
 >       rung names; the native-record binding names the Capsule profile's

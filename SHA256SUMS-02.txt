@@ -1,9 +1,11 @@
 # SHA-256 checksums — composition -02
 
-Source commit (the bytes hashed below): 5113d2176758230d73ea32da49124d4c4168a333
+Source commit (the bytes hashed below): the commit that adds this sheet, the CPB -06 re-pin
+on fa53ac673811d21ac0eebf419eaf8aa2edded0d6. A commit cannot name its own SHA; the full SHA is
+in the Post Pack and the co-author email, and `git rev-parse HEAD` on the pushed branch.
 Branch: compose-02, on top of 45bd421500b18cfbc4fe96d393aeef39b2c285d9.
 Toolchain: kramdown-rfc2629 1.7.43 (Ruby 3.3.6), xml2rfc 3.34.1 (Python 3.12.3),
-idnits 2.17.1, idnits 3.1.0 (Node v20.20.2). The reference layout and the exact
+idnits 2.17.1, idnits 3.1.0 (Node v22.23.3). The reference layout and the exact
 build, lint and validation commands are in build-log-02.txt.
 
 Commits on 45bd421, in order:
@@ -17,13 +19,15 @@ Commits on 45bd421, in order:
   19ade2a316ac87e11d3e16fd21fe6b6c2cbf9597  SD-JWT VC reference fields pinned
   b5a00c5b6071702c6178c18cd8b1a1b24140ef42  issue #10: principal commitment at the seam
   5113d2176758230d73ea32da49124d4c4168a333  AAC -05 and payload binding -05 (IETF 127 order)
+  fa53ac673811d21ac0eebf419eaf8aa2edded0d6  -02 artifacts (SHA sheet, build log, lint output)
+  (this commit)                             payload binding -05 -> -06 (posted 2026-10-26)
 
 The date is pinned, so a rebuild reproduces these bytes on any day.
 
-21686074b541de23e09faea3be4ad8605bd70c821df162df6020b0e50d7b605c  draft-mih-sato-agent-accountability-composition.md
-cf6f0edbcf111c26d793afb693bd738d1236029a7de9215f59c850a335ff3473  draft-mih-sato-agent-accountability-composition.xml
-8dc96289a992373df4bdb4344883a9459896738f137e7ead3413f97ae84307fd  draft-mih-sato-agent-accountability-composition.txt
+0ad0330484d54181d8eca5de95b1b494f850086c08a0e7381a0ef2bf65694a3c  draft-mih-sato-agent-accountability-composition.md
+2456ba76dad8d5e125f8bf0184a5fba6cf4b42512ed55eeb04787858c6462b2f  draft-mih-sato-agent-accountability-composition.xml
+61ff847382a5f717712490eee8320ac36ce23d8068a2dd167884d9b7f0ddb0cf  draft-mih-sato-agent-accountability-composition.txt
 eb140751febed07f7c15f6ab3e001ce13560466057e95923c95935533eedf625  INTEROP.md
 c4449db9345b0118a712f9cf09ac99fe5a47287c35e7bbfaaee6543718cf4420  legs/who.md
-ef0175eebd0bf2b69d8a30c19448700c79cdb5fa57dacd8e48669940b95fe7ff  diff-composition-01-to-02.txt
-01e3e2a7599f4cfdf1d164fb7e2afb53cb76f00cdf000b7fdcd827952a628fad  references-02.txt
+140bb10b757abd3e454e7bb2c205e4e98ac5afb686218299cde38d3f176d1e56  diff-composition-01-to-02.txt
+ab249ee9005ed331ae0123cd6da2c9436b2ef5bcfb4444556857bfd4d1767130  references-02.txt
